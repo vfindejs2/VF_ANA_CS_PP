@@ -1,0 +1,1566 @@
+-- DROP SCHEMA dbo;
+
+CREATE SCHEMA dbo;
+-- MPGSkCommNew.dbo.AddressCandidate definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.AddressCandidate;
+
+CREATE TABLE MPGSkCommNew.dbo.AddressCandidate (
+	Id int NOT NULL,
+	Street nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	HouseNumber nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	OrientationNumber nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	City nvarchar(80) COLLATE Slovak_CI_AS NOT NULL,
+	PostalCode nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	Country nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK__AddressC__3214EC07DB0C84DE PRIMARY KEY (Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Address definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Address;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Address (
+	Id bigint NOT NULL,
+	Street nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	HouseNumber nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	OrientationNumber nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	City nvarchar(80) COLLATE Slovak_CI_AS NOT NULL,
+	PostalCode nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	Country nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	WinyXId int NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	KodSidelniJednotky nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK_BCED_Address PRIMARY KEY (Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Bank definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Bank;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Bank (
+	Id int NOT NULL,
+	BankCode nvarchar(4) COLLATE Slovak_CI_AS NOT NULL,
+	SWIFT nvarchar(11) COLLATE Slovak_CI_AS NULL,
+	BankName nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	WinyXId nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK_BCED_Bank PRIMARY KEY (Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContainterType definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContainterType;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContainterType (
+	Id int NOT NULL,
+	Name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	Description nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	[Group] nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	ApplicationArea nvarchar(40) COLLATE Slovak_CI_AS NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_ContainterType PRIMARY KEY (Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractSubjectType definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractSubjectType;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractSubjectType (
+	Id int NOT NULL,
+	Name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	Code nvarchar(10) COLLATE Slovak_CI_AS NOT NULL,
+	Status bit DEFAULT 1 NOT NULL,
+	Created datetime DEFAULT getdate() NOT NULL,
+	LastModified datetime DEFAULT getdate() NOT NULL,
+	WinyXId int NULL,
+	CONSTRAINT PK_BCED_ContractSubjectType PRIMARY KEY (Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerApprovalResult definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerApprovalResult;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerApprovalResult (
+	CustomerToBeApprovedId int NOT NULL,
+	ApprovalResult int NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CustomerId int NULL,
+	CONSTRAINT PK_BCED_CustomerApprovalResult PRIMARY KEY (CustomerToBeApprovedId)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_WasteType definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_WasteType;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_WasteType (
+	Id int NOT NULL,
+	Code nvarchar(15) COLLATE Slovak_CI_AS NOT NULL,
+	WasteCategory nvarchar(4) COLLATE Slovak_CI_AS NOT NULL,
+	Description nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_WasteType PRIMARY KEY (Id)
+);
+
+
+-- MPGSkCommNew.dbo.BankCandidate definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BankCandidate;
+
+CREATE TABLE MPGSkCommNew.dbo.BankCandidate (
+	ID int NOT NULL,
+	BankCode nvarchar(4) COLLATE Slovak_CI_AS NOT NULL,
+	SWIFT nvarchar(11) COLLATE Slovak_CI_AS NULL,
+	BankName nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK__BankCand__3214EC2786B3A4AE PRIMARY KEY (ID)
+);
+
+
+-- MPGSkCommNew.dbo.TMP_BCKUP_BCED_Container_20251126 definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.TMP_BCKUP_BCED_Container_20251126;
+
+CREATE TABLE MPGSkCommNew.dbo.TMP_BCKUP_BCED_Container_20251126 (
+	Id int NOT NULL,
+	EvidenceNumber nvarchar(20) COLLATE Slovak_CI_AS NOT NULL,
+	InternalNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	IdentificationChipNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	ContainerTypeId int NOT NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL
+);
+
+
+-- MPGSkCommNew.dbo.sync_deploy_envs definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.sync_deploy_envs;
+
+CREATE TABLE MPGSkCommNew.dbo.sync_deploy_envs (
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK_sync_deploy_envs PRIMARY KEY (deploy_env)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Address_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Address_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Address_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id bigint NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_Address_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_Address_pasport_synced_at_BCED_Address FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_Address(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_Address_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Address_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Address_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Address_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id bigint NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_Address_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_Address_roadplan_synced_at_BCED_Address FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_Address(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_Address_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Bank_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Bank_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Bank_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_Bank_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_Bank_synced_at_BCED_Bank FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_Bank(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_Bank_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Container definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Container;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Container (
+	Id int NOT NULL,
+	EvidenceNumber nvarchar(20) COLLATE Slovak_CI_AS NOT NULL,
+	InternalNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	IdentificationChipNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	ContainerTypeId int NOT NULL,
+	Status bit DEFAULT 1 NOT NULL,
+	Created datetime DEFAULT getdate() NOT NULL,
+	LastModified datetime DEFAULT getdate() NOT NULL,
+	CONSTRAINT PK_BCED_Container PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_Container_BCED_ContainterType FOREIGN KEY (ContainerTypeId) REFERENCES MPGSkCommNew.dbo.BCED_ContainterType(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContainerType_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContainerType_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContainerType_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_ContainerType_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_ContainerType_pasport_synced_at_BCED_ContainerType FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_ContainterType(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_ContainerType_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContainerType_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContainerType_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContainerType_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_ContainerType_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_ContainerType_roadplan_synced_at_BCED_ContainerType FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_ContainterType(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_ContainerType_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItemContainer_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItemContainer_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItemContainer_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	location_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_ContractItemContainer_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_ContractItemContainer_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItemDaysOfWeek_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItemDaysOfWeek_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItemDaysOfWeek_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	contract_item_id int NOT NULL,
+	[sequence] int NOT NULL,
+	contract_subject_type_id int NOT NULL,
+	customer_site_id int NOT NULL,
+	collection_days_of_week_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_ContractItemDaysOfWeek_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_ContractItemDaysOfWeek_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItem_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItem_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItem_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	customer_site_id int NOT NULL,
+	contract_subject_type_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_ContractItem_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_ContractItem_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+ CREATE NONCLUSTERED INDEX BCED_ContractItem_pasport_synced_at_idx ON MPGSkCommNew.dbo.BCED_ContractItem_pasport_synced_at (  deploy_env ASC  , id ASC  , customer_site_id ASC  , contract_subject_type_id ASC  )  
+	 INCLUDE ( pasport_id , sync_failed_at , synced_at ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- MPGSkCommNew.dbo.BCED_Customer definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Customer;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Customer (
+	Id int NOT NULL,
+	Name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	IdentificationNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	TaxNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	OfficeAddress bigint NOT NULL,
+	VATNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	VATPayer bit NOT NULL,
+	Solvency bit DEFAULT 1 NOT NULL,
+	WinyXId int NULL,
+	Note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_Customer PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_Customer_BCED_Adress FOREIGN KEY (OfficeAddress) REFERENCES MPGSkCommNew.dbo.BCED_Address(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerPerson definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerPerson;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerPerson (
+	Id int NOT NULL,
+	CustomerId int NOT NULL,
+	FirstName nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Surname nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	Email nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Phone nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	[Position] nvarchar(30) COLLATE Slovak_CI_AS NOT NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_CustomerPerson PRIMARY KEY (Id,CustomerId),
+	CONSTRAINT FK_BCED_CustomerPerson_BCED_Customer FOREIGN KEY (CustomerId) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerPerson_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerPerson_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerPerson_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	customer_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_CustomerPerson_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_CustomerPerson_roadplan_synced_at_BCED_CustomerPerson FOREIGN KEY (id,customer_id) REFERENCES MPGSkCommNew.dbo.BCED_CustomerPerson(Id,CustomerId) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CustomerPerson_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_Customer_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Customer_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Customer_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_Customer_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_Customer_pasport_synced_at_BCED_Customer FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_Customer_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+ CREATE NONCLUSTERED INDEX BCED_Customer_deploy_id_idx ON MPGSkCommNew.dbo.BCED_Customer_pasport_synced_at (  deploy_env ASC  , id ASC  )  
+	 INCLUDE ( pasport_id , sync_failed_at , synced_at ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- MPGSkCommNew.dbo.BCED_Customer_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_Customer_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_Customer_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_Customer_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_Customer_synced_at_BCED_Customer FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_Customer_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_OrganizationalUnit definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_OrganizationalUnit;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_OrganizationalUnit (
+	Id int NOT NULL,
+	Name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	Code nvarchar(4) COLLATE Slovak_CI_AS NOT NULL,
+	ParentOrganizationalUnitId int NULL,
+	AddressId bigint NOT NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_OrganizationalUnit PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_OrganizationalUnit_BCED_Address FOREIGN KEY (AddressId) REFERENCES MPGSkCommNew.dbo.BCED_Address(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_WasteType_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_WasteType_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_WasteType_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_WasteType_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_WasteType_pasport_synced_at_BCED_WasteType FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_WasteType(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_WasteType_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_WasteType_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_WasteType_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_WasteType_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_WasteType_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_WasteType_roadplan_synced_at_BCED_WasteType FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_WasteType(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_WasteType_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.CustomerCandidate definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.CustomerCandidate;
+
+CREATE TABLE MPGSkCommNew.dbo.CustomerCandidate (
+	id int NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	IdentificationNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	TaxNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	OfficeAddress int NULL,
+	VATNumber nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	VATPayer bit NOT NULL,
+	Note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK__Customer__3213E83FCD579C27 PRIMARY KEY (id),
+	CONSTRAINT FK_customer_office__address FOREIGN KEY (OfficeAddress) REFERENCES MPGSkCommNew.dbo.AddressCandidate(Id)
+);
+
+
+-- MPGSkCommNew.dbo.CustomerPersonCandidate definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.CustomerPersonCandidate;
+
+CREATE TABLE MPGSkCommNew.dbo.CustomerPersonCandidate (
+	id int NOT NULL,
+	CustomerCandidateId int NOT NULL,
+	FirstName nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Surname nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	Email nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Phone nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	[Position] nvarchar(30) COLLATE Slovak_CI_AS NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK__Customer__3213E83F66EC694B PRIMARY KEY (id),
+	CONSTRAINT FK_customer_person__customer FOREIGN KEY (CustomerCandidateId) REFERENCES MPGSkCommNew.dbo.CustomerCandidate(id)
+);
+
+
+-- MPGSkCommNew.dbo.CustomerSiteCandidate definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.CustomerSiteCandidate;
+
+CREATE TABLE MPGSkCommNew.dbo.CustomerSiteCandidate (
+	Id int NOT NULL,
+	Name nvarchar(150) COLLATE Slovak_CI_AS NULL,
+	CustomerCandidateId int NOT NULL,
+	AddressCandidateId int NOT NULL,
+	Lat decimal(9,6) NULL,
+	Lon decimal(9,6) NULL,
+	ContactInfo nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK__Customer__3214EC077BFC0405 PRIMARY KEY (Id),
+	CONSTRAINT FK_customer_site__address FOREIGN KEY (AddressCandidateId) REFERENCES MPGSkCommNew.dbo.AddressCandidate(Id),
+	CONSTRAINT FK_customer_site__customer FOREIGN KEY (CustomerCandidateId) REFERENCES MPGSkCommNew.dbo.CustomerCandidate(id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_BankAccount definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_BankAccount;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_BankAccount (
+	Id int NOT NULL,
+	CustomerId int NOT NULL,
+	IBAN nvarchar(35) COLLATE Slovak_CI_AS NOT NULL,
+	Prefix nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	AccountNumber nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	BankId int NULL,
+	IsDefault bit NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_BankAccount PRIMARY KEY (Id,CustomerId),
+	CONSTRAINT FK_BCED_BankAccount_BCED_Bank FOREIGN KEY (BankId) REFERENCES MPGSkCommNew.dbo.BCED_Bank(Id),
+	CONSTRAINT FK_BCED_BankAccount_BCED_Customer FOREIGN KEY (CustomerId) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_BankAccount_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_BankAccount_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_BankAccount_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	customer_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_BankAccount_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_BankAccount_synced_at_BCED_BankAccount FOREIGN KEY (id,customer_id) REFERENCES MPGSkCommNew.dbo.BCED_BankAccount(Id,CustomerId) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_BankAccount_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek (
+	Id int NOT NULL,
+	OrganizationalUnitId int NULL,
+	DaysOfWeek nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CountPerMonth int NOT NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit DEFAULT 1 NOT NULL,
+	Created datetime DEFAULT getdate() NOT NULL,
+	LastModified datetime DEFAULT getdate() NOT NULL,
+	CONSTRAINT PK_BCED_CollectionDaysOfWeek PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_CollectionDaysOfWeek_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_CollectionDaysOfWeek_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_CollectionDaysOfWeek_pasport_synced_at_BCED_CollectionDaysOfWeek FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CollectionDaysOfWeek_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CollectionFrequency definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CollectionFrequency;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CollectionFrequency (
+	Id int NOT NULL,
+	Name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	Description nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	[Group] nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	OrganizationalUnitId int NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit DEFAULT 1 NOT NULL,
+	Created datetime DEFAULT getdate() NOT NULL,
+	LastModified datetime DEFAULT getdate() NOT NULL,
+	CONSTRAINT PK_BCED_CollectionFrequency PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_CollectionFrequency_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CollectionFrequency_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CollectionFrequency_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CollectionFrequency_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_CollectionFrequency_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_CollectionFrequency_pasport_synced_at_BCED_CollectionFrequency FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_CollectionFrequency(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CollectionFrequency_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContract definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContract;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContract (
+	Id bigint NOT NULL,
+	OrganizationalUnitId int NOT NULL,
+	PurchaserId int NOT NULL,
+	CustomerId int NOT NULL,
+	Number nvarchar(30) COLLATE Slovak_CI_AS NOT NULL,
+	ValidFrom datetime NULL,
+	ValidTo datetime NULL,
+	Code nvarchar(5) COLLATE Slovak_CI_AS NULL,
+	Category nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	[Type] nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	State nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	CostCenter nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	IsInternal bit DEFAULT 0 NOT NULL,
+	CustomerInfo nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_CustomerContract PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_CustomerContract_BCED_Customer FOREIGN KEY (CustomerId) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id),
+	CONSTRAINT FK_BCED_CustomerContract_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id),
+	CONSTRAINT FK_BCED_CustomerContract_BCED_Purchaser FOREIGN KEY (PurchaserId) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContractWasteType definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContractWasteType;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContractWasteType (
+	CustomerContractId bigint NOT NULL,
+	WasteTypeId int DEFAULT 0 NOT NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_CustomerContractWasteType PRIMARY KEY (CustomerContractId,WasteTypeId),
+	CONSTRAINT FK_BCED_CustomerContractWasteType_BCED_CustomerContract FOREIGN KEY (CustomerContractId) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContract(Id),
+	CONSTRAINT FK_BCED_CustomerContractWasteType_BCED_WasteType FOREIGN KEY (WasteTypeId) REFERENCES MPGSkCommNew.dbo.BCED_WasteType(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContractWasteType_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContractWasteType_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContractWasteType_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	customer_contract_id bigint NOT NULL,
+	waste_type_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_CustomerContractWasteType_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_CustomerContractWasteType_roadplan_synced_at_BCED_CustomerContractWasteType FOREIGN KEY (customer_contract_id,waste_type_id) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContractWasteType(CustomerContractId,WasteTypeId) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CustomerContractWasteType_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContract_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContract_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContract_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id bigint NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_CustomerContract_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_CustomerContract_pasport_synced_at_BCED_CustomerContract FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContract(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CustomerContract_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContract_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContract_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContract_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id bigint NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_CustomerContract_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_CustomerContract_synced_at_BCED_CustomerContract FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContract(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CustomerContract_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerSite definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerSite;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerSite (
+	Id int NOT NULL,
+	CustomerId int NOT NULL,
+	OrganizationalUnitId int DEFAULT 0 NULL,
+	AddressId bigint NOT NULL,
+	Lat decimal(9,6) NULL,
+	Lon decimal(9,6) NULL,
+	ContactInfo nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	Note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_CustomerSite PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_CustomerSite_BCED_Address FOREIGN KEY (AddressId) REFERENCES MPGSkCommNew.dbo.BCED_Address(Id),
+	CONSTRAINT FK_BCED_CustomerSite_BCED_Customer FOREIGN KEY (CustomerId) REFERENCES MPGSkCommNew.dbo.BCED_Customer(Id),
+	CONSTRAINT FK_BCED_CustomerSite_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerSite_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerSite_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerSite_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_CustomerSite_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_CustomerSite_roadplan_synced_at_BCED_CustomerSite FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_CustomerSite(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CustomerSite_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_DisposalSite definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_DisposalSite;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_DisposalSite (
+	Id int NOT NULL,
+	Name nvarchar(150) COLLATE Slovak_CI_AS NOT NULL,
+	IsInternal bit DEFAULT 0 NOT NULL,
+	AddressId bigint NOT NULL,
+	Lat decimal(9,6) NULL,
+	Lon decimal(9,6) NULL,
+	ContactInfo nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	OrganizationalUnitId int NULL,
+	Note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_DisposalSite PRIMARY KEY (Id),
+	CONSTRAINT FK_BCED_DisposalSite_BCED_Address FOREIGN KEY (AddressId) REFERENCES MPGSkCommNew.dbo.BCED_Address(Id),
+	CONSTRAINT FK_BCED_DisposalSite_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_DisposalSiteWasteType definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_DisposalSiteWasteType;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_DisposalSiteWasteType (
+	DisposalSiteId int NOT NULL,
+	WasteTypeId int NOT NULL,
+	LoadingCode nvarchar(15) COLLATE Slovak_CI_AS NOT NULL,
+	OrganizationalUnitId int DEFAULT 0 NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_DisposalSiteWasteType PRIMARY KEY (DisposalSiteId,WasteTypeId,LoadingCode),
+	CONSTRAINT FK_BCED_BCED_DisposalSiteWasteType_BCED_DisposalSite FOREIGN KEY (DisposalSiteId) REFERENCES MPGSkCommNew.dbo.BCED_DisposalSite(Id),
+	CONSTRAINT FK_BCED_BCED_DisposalSiteWasteType_BCED_WasteType FOREIGN KEY (WasteTypeId) REFERENCES MPGSkCommNew.dbo.BCED_WasteType(Id),
+	CONSTRAINT FK_BCED_DisposalSiteWasteType_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_DisposalSiteWasteType_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_DisposalSiteWasteType_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_DisposalSiteWasteType_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	disposal_site_id int NOT NULL,
+	waste_type_id int NOT NULL,
+	loading_code nvarchar(15) COLLATE Slovak_CI_AS NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_DisposalSiteWasteType_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_DisposalSiteWasteType_roadplan_synced_at_BCED_DisposalSiteWasteType FOREIGN KEY (disposal_site_id,waste_type_id,loading_code) REFERENCES MPGSkCommNew.dbo.BCED_DisposalSiteWasteType(DisposalSiteId,WasteTypeId,LoadingCode) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_DisposalSiteWasteType_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_DisposalSite_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_DisposalSite_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_DisposalSite_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_DisposalSite_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_DisposalSite_roadplan_synced_at_BCED_DisposalSite FOREIGN KEY (id) REFERENCES MPGSkCommNew.dbo.BCED_DisposalSite(Id) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_DisposalSite_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BankAccountCandidate definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BankAccountCandidate;
+
+CREATE TABLE MPGSkCommNew.dbo.BankAccountCandidate (
+	Id int NOT NULL,
+	CustomerCandidateId int NOT NULL,
+	IBAN nvarchar(35) COLLATE Slovak_CI_AS NOT NULL,
+	Prefix nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	AccountNumber nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	LastModified datetime NOT NULL,
+	BankCandidateId int NULL,
+	CONSTRAINT PK__BankAcco__3214EC07457BF311 PRIMARY KEY (Id),
+	CONSTRAINT FK_bank_account__bank FOREIGN KEY (BankCandidateId) REFERENCES MPGSkCommNew.dbo.BankCandidate(ID),
+	CONSTRAINT FK_bank_account__customer FOREIGN KEY (CustomerCandidateId) REFERENCES MPGSkCommNew.dbo.CustomerCandidate(id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItem definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItem;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItem (
+	Id int NOT NULL,
+	OrganizationalUnitId int NULL,
+	CustomerContractId bigint NOT NULL,
+	[Sequence] int NOT NULL,
+	ContractSubjectTypeId int NOT NULL,
+	ValidFrom datetime NOT NULL,
+	ValidTo datetime NULL,
+	CustomerSiteId int NOT NULL,
+	ContainerCount decimal(12,4) NOT NULL,
+	ContainerTypeId int NULL,
+	IsOwnProperty bit NULL,
+	WasteTypeId int NOT NULL,
+	CollectionFrequencyId int NULL,
+	CollectionDaysOfWeekId int NULL,
+	EndCustomer nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	NoteForDispatcher nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	ContainerPlacementNote nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	GeneralNote nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit NOT NULL,
+	Created datetime DEFAULT getdate() NOT NULL,
+	LastModified datetime DEFAULT getdate() NOT NULL,
+	CONSTRAINT PK_BCED_ContractItem PRIMARY KEY (Id,[Sequence],ContractSubjectTypeId,CustomerSiteId),
+	CONSTRAINT FK_BCED_ContractItem_BCED_CollectionDaysOfWeek FOREIGN KEY (CollectionDaysOfWeekId) REFERENCES MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek(Id),
+	CONSTRAINT FK_BCED_ContractItem_BCED_CollectionFrequency FOREIGN KEY (CollectionFrequencyId) REFERENCES MPGSkCommNew.dbo.BCED_CollectionFrequency(Id),
+	CONSTRAINT FK_BCED_ContractItem_BCED_ContainterType FOREIGN KEY (ContainerTypeId) REFERENCES MPGSkCommNew.dbo.BCED_ContainterType(Id),
+	CONSTRAINT FK_BCED_ContractItem_BCED_ContractSubjectType FOREIGN KEY (ContractSubjectTypeId) REFERENCES MPGSkCommNew.dbo.BCED_ContractSubjectType(Id),
+	CONSTRAINT FK_BCED_ContractItem_BCED_CustomerContract FOREIGN KEY (CustomerContractId) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContract(Id),
+	CONSTRAINT FK_BCED_ContractItem_BCED_OrganizationalUnit FOREIGN KEY (OrganizationalUnitId) REFERENCES MPGSkCommNew.dbo.BCED_OrganizationalUnit(Id),
+	CONSTRAINT FK_BCED_ContractItem_BCED_WasteType FOREIGN KEY (WasteTypeId) REFERENCES MPGSkCommNew.dbo.BCED_WasteType(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItemContainer definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItemContainer;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItemContainer (
+	ContainerId int NOT NULL,
+	ContractItemId int NOT NULL,
+	CustomerSiteId int NOT NULL,
+	DeliveredDate datetime NOT NULL,
+	TakenAwayDate datetime NULL,
+	WinyXId nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	Status bit DEFAULT 1 NOT NULL,
+	Created datetime DEFAULT getdate() NOT NULL,
+	LastModified datetime DEFAULT getdate() NOT NULL,
+	ContractSubjectTypeId int NOT NULL,
+	LocationId int NOT NULL,
+	ContractItemSequence int NOT NULL,
+	CONSTRAINT PK_BCED_ContractItemContainer PRIMARY KEY (LocationId),
+	CONSTRAINT FK_BCED_ContractItemContainer_BCED_Container FOREIGN KEY (ContainerId) REFERENCES MPGSkCommNew.dbo.BCED_Container(Id),
+	CONSTRAINT FK_BCED_ContractItemContainer_BCED_ContractItem FOREIGN KEY (ContractItemId,ContractItemSequence,ContractSubjectTypeId,CustomerSiteId) REFERENCES MPGSkCommNew.dbo.BCED_ContractItem(Id,[Sequence],ContractSubjectTypeId,CustomerSiteId),
+	CONSTRAINT FK_BCED_ContractItemContainer_BCED_CustomerSite FOREIGN KEY (CustomerSiteId) REFERENCES MPGSkCommNew.dbo.BCED_CustomerSite(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItemDaysOfWeek definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItemDaysOfWeek;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItemDaysOfWeek (
+	ContractItemId int NOT NULL,
+	[Sequence] int NOT NULL,
+	ContractSubjectTypeId int NOT NULL,
+	CustomerSiteId int NOT NULL,
+	CollectionDaysOfWeekId int NOT NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_ContractItemDaysOfWeek PRIMARY KEY (CustomerSiteId,CollectionDaysOfWeekId,ContractItemId,[Sequence],ContractSubjectTypeId),
+	CONSTRAINT FK_BCED_ContractItemDaysOfWeek_BCED_CollectionDaysOfWeek FOREIGN KEY (CollectionDaysOfWeekId) REFERENCES MPGSkCommNew.dbo.BCED_CollectionDaysOfWeek(Id),
+	CONSTRAINT FK_BCED_ContractItemDaysOfWeek_BCED_ContractItem FOREIGN KEY (ContractItemId,[Sequence],ContractSubjectTypeId,CustomerSiteId) REFERENCES MPGSkCommNew.dbo.BCED_ContractItem(Id,[Sequence],ContractSubjectTypeId,CustomerSiteId)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_ContractItemSequence_pasport_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_ContractItemSequence_pasport_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_ContractItemSequence_pasport_synced_at (
+	pasport_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	id int NOT NULL,
+	customer_site_id int NOT NULL,
+	contract_subject_type_id int NOT NULL,
+	[sequence] int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	CONSTRAINT PK_BCED_ContractItemSequence_pasport_synced_at PRIMARY KEY (deploy_env,pasport_id),
+	CONSTRAINT FK_BCED_ContractItemSequence_pasport_synced_at_BCED_ContractItemSequence FOREIGN KEY (id,[sequence],contract_subject_type_id,customer_site_id) REFERENCES MPGSkCommNew.dbo.BCED_ContractItem(Id,[Sequence],ContractSubjectTypeId,CustomerSiteId) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_ContractItemSequence_pasport_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite (
+	CustomerContractId bigint NOT NULL,
+	CustomerSiteId int NOT NULL,
+	Status bit NOT NULL,
+	Created datetime NOT NULL,
+	LastModified datetime NOT NULL,
+	CONSTRAINT PK_BCED_CustomerContractCustomerSite PRIMARY KEY (CustomerContractId,CustomerSiteId),
+	CONSTRAINT [FK_[BCED_CustomerContractCustomerSite_BCED_CustomerContract] FOREIGN KEY (CustomerContractId) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContract(Id),
+	CONSTRAINT [FK_[BCED_CustomerContractCustomerSite_BCED_CustomerSite] FOREIGN KEY (CustomerSiteId) REFERENCES MPGSkCommNew.dbo.BCED_CustomerSite(Id)
+);
+
+
+-- MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite_roadplan_synced_at definition
+
+-- Drop table
+
+-- DROP TABLE MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite_roadplan_synced_at;
+
+CREATE TABLE MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite_roadplan_synced_at (
+	external_id nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	deploy_env nvarchar(250) COLLATE Slovak_CI_AS NOT NULL,
+	customer_contract_id bigint NOT NULL,
+	customer_site_id int NOT NULL,
+	synced_at datetimeoffset NULL,
+	sync_failed_at datetimeoffset NULL,
+	retry_count int DEFAULT 0 NULL,
+	CONSTRAINT PK_BCED_CustomerContractCustomerSite_roadplan_synced_at PRIMARY KEY (deploy_env,external_id),
+	CONSTRAINT FK_BCED_CustomerContractCustomerSite_roadplan_synced_at_BCED_CustomerContractCustomerSite FOREIGN KEY (customer_contract_id,customer_site_id) REFERENCES MPGSkCommNew.dbo.BCED_CustomerContractCustomerSite(CustomerContractId,CustomerSiteId) ON DELETE CASCADE,
+	CONSTRAINT FK_BCED_CustomerContractCustomerSite_roadplan_synced_at_sync_deploy_envs FOREIGN KEY (deploy_env) REFERENCES MPGSkCommNew.dbo.sync_deploy_envs(deploy_env) ON DELETE CASCADE
+);
+
+
+-- dbo.BCED_Address_pasport_sync source
+
+ALTER VIEW BCED_Address_pasport_sync AS (
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_Address a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_Address_pasport_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_Address_roadplan_sync source
+
+ALTER VIEW BCED_Address_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_Address a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_Address_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_BankAccount_roadplan_sync source
+
+ALTER VIEW BCED_BankAccount_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_BankAccount a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_BankAccount_roadplan_synced_at asy ON (a.Id = asy.id)
+        AND (a.CustomerId = asy.customer_id)
+        AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_Bank_roadplan_sync source
+
+ALTER VIEW BCED_Bank_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_Bank a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_Bank_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_CollectionDaysOfWeek_pasport_sync source
+
+ALTER VIEW BCED_CollectionDaysOfWeek_pasport_sync AS
+SELECT
+    asy.pasport_id,
+    denv.deploy_env,
+    a.*,
+    ou.WinyXId as OrganizationalUnitWinyXId,
+    asy.synced_at,
+    asy.sync_failed_at
+FROM
+    BCED_CollectionDaysOfWeek a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CollectionDaysOfWeek_pasport_synced_at asy ON (a.Id = asy.id)
+        AND (denv.deploy_env = asy.deploy_env)
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId;
+
+
+-- dbo.BCED_CollectionFrequency_pasport_sync source
+
+ALTER VIEW BCED_CollectionFrequency_pasport_sync AS
+SELECT
+    asy.pasport_id,
+    denv.deploy_env,
+    a.*,
+    ou.WinyXId as OrganizationalUnitWinyXId,
+    asy.synced_at,
+    asy.sync_failed_at
+FROM
+    BCED_CollectionFrequency a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CollectionFrequency_pasport_synced_at asy ON (a.Id = asy.id)
+        AND (denv.deploy_env = asy.deploy_env)
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId;
+
+
+-- dbo.BCED_ContainerType_pasport_sync source
+
+ALTER VIEW BCED_ContainerType_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_ContainterType a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_ContainerType_pasport_synced_at asy ON (a.Id = asy.id)
+        AND (denv.deploy_env = asy.deploy_env);
+
+
+-- dbo.BCED_ContainerType_roadplan_sync source
+
+ALTER VIEW BCED_ContainerType_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_ContainterType a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_ContainerType_roadplan_synced_at asy 
+        ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env)
+     where a.ApplicationArea = 'RoadPlan');
+
+
+-- dbo.BCED_ContractItemContainer_pasport_sync source
+
+ALTER VIEW BCED_ContractItemContainer_pasport_sync AS  
+    SELECT 
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        a.Status as CurrentStatus,
+        c.EvidenceNumber,
+        ci.OrganizationalUnitId,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_ContractItemContainer a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_ContractItemContainer_pasport_synced_at asy
+        ON  asy.location_id = a.LocationId
+        AND asy.deploy_env = denv.deploy_env
+    LEFT JOIN BCED_Container c
+        ON a.ContainerId = c.Id
+    LEFT JOIN BCED_ContractItem ci
+        ON a.ContractItemId = ci.Id
+        AND a.CustomerSiteId = ci.CustomerSiteId
+        AND a.ContractSubjectTypeId = ci.ContractSubjectTypeId
+        AND a.ContractItemSequence = ci.Sequence;
+
+
+-- dbo.BCED_ContractItemDaysOfWeek_pasport_sync source
+
+ALTER VIEW BCED_ContractItemDaysOfWeek_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_ContractItemDaysOfWeek a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_ContractItemDaysOfWeek_pasport_synced_at asy
+        ON a.ContractItemId = asy.contract_item_id
+        AND a.Sequence = asy.sequence
+        AND a.ContractSubjectTypeId = asy.contract_subject_type_id
+        AND a.CustomerSiteId = asy.customer_site_id
+        AND a.CollectionDaysOfWeekId = asy.collection_days_of_week_id
+       
+        AND denv.deploy_env = asy.deploy_env;
+
+
+-- dbo.BCED_ContractItemSequence_pasport_sync source
+
+ALTER VIEW BCED_ContractItemSequence_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        cst.Code as ContractSubjectTypeCode,
+        cs.AddressId as CustomerSiteAddressId,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_ContractItem a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_ContractItemSequence_pasport_synced_at asy
+        ON  a.Id = asy.id
+        AND a.CustomerSiteId = asy.customer_site_id
+        AND a.Sequence = asy.sequence
+        AND a.ContractSubjectTypeId = asy.contract_subject_type_id
+        AND denv.deploy_env = asy.deploy_env
+    LEFT JOIN BCED_ContractSubjectType cst
+        ON a.ContractSubjectTypeId = cst.Id
+    LEFT JOIN BCED_CustomerSite cs
+        ON (a.CustomerSiteId = cs.Id);
+
+
+-- dbo.BCED_ContractItem_pasport_sync source
+
+ALTER VIEW BCED_ContractItem_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        cst.Code as ContractSubjectTypeCode,
+        cs.AddressId as CustomerSiteAddressId,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_ContractItem a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_ContractItem_pasport_synced_at asy
+        ON  a.Id = asy.id
+        AND a.CustomerSiteId = asy.customer_site_id
+        AND a.ContractSubjectTypeId = asy.contract_subject_type_id
+        AND denv.deploy_env = asy.deploy_env
+    LEFT JOIN BCED_ContractSubjectType cst
+        ON a.ContractSubjectTypeId = cst.Id
+    LEFT JOIN BCED_CustomerSite cs
+        ON (a.CustomerSiteId = cs.Id);
+
+
+-- dbo.BCED_CustomerContractCustomerSite_roadplan_sync source
+
+ALTER VIEW BCED_CustomerContractCustomerSite_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_CustomerContractCustomerSite a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CustomerContractCustomerSite_roadplan_synced_at asy ON (a.CustomerContractId = asy.customer_contract_id)
+        AND (a.CustomerSiteId = asy.customer_site_id)
+        AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_CustomerContractWasteType_roadplan_sync source
+
+ALTER VIEW BCED_CustomerContractWasteType_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_CustomerContractWasteType a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CustomerContractWasteType_roadplan_synced_at asy ON (a.CustomerContractId = asy.customer_contract_id)
+        AND (a.WasteTypeId = asy.waste_type_id)
+        AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_CustomerContract_pasport_sync source
+
+ALTER VIEW BCED_CustomerContract_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        ou.WinyXId as OrganizationalUnitWinyXId,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_CustomerContract a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CustomerContract_pasport_synced_at asy
+        ON  a.Id = asy.id
+        AND denv.deploy_env = asy.deploy_env
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId;
+
+
+-- dbo.BCED_CustomerContract_roadplan_sync source
+
+ALTER VIEW BCED_CustomerContract_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        ou.WinyXId as OrganizationalUnitWinyXId,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_CustomerContract a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CustomerContract_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env)
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId 
+);
+
+
+-- dbo.BCED_CustomerPerson_roadplan_sync source
+
+ALTER VIEW BCED_CustomerPerson_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_CustomerPerson a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CustomerPerson_roadplan_synced_at asy ON (a.Id = asy.id)
+        AND (a.CustomerId = asy.customer_id)
+        AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_CustomerSite_roadplan_sync source
+
+ALTER VIEW BCED_CustomerSite_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        ou.WinyXId as OrganizationalUnitWinyXId,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_CustomerSite a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_CustomerSite_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env)
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId     
+);
+
+
+-- dbo.BCED_Customer_pasport_sync source
+
+ALTER VIEW BCED_Customer_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_Customer a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_Customer_pasport_synced_at asy
+        ON  a.Id = asy.id
+        AND denv.deploy_env = asy.deploy_env;
+
+
+-- dbo.BCED_Customer_roadplan_sync source
+
+ALTER VIEW BCED_Customer_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_Customer a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_Customer_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env));
+
+
+-- dbo.BCED_DisposalSiteWasteType_roadplan_sync source
+
+ALTER VIEW BCED_DisposalSiteWasteType_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        ou.WinyXId as OrganizationalUnitWinyXId,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_DisposalSiteWasteType a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_DisposalSiteWasteType_roadplan_synced_at asy ON (a.DisposalSiteId = asy.disposal_site_id)
+        AND (a.WasteTypeId = asy.waste_type_id)
+        AND (a.LoadingCode = asy.loading_code)
+        AND (denv.deploy_env = asy.deploy_env)
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId         
+    );
+
+
+-- dbo.BCED_DisposalSite_roadplan_sync source
+
+ALTER VIEW BCED_DisposalSite_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        ou.WinyXId as OrganizationalUnitWinyXId,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_DisposalSite a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_DisposalSite_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env)
+    LEFT JOIN BCED_OrganizationalUnit ou ON ou.id = a.OrganizationalUnitId      
+    );
+
+
+-- dbo.BCED_WasteType_pasport_sync source
+
+ALTER VIEW BCED_WasteType_pasport_sync AS
+    SELECT
+        asy.pasport_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at
+    FROM
+        BCED_WasteType a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_WasteType_pasport_synced_at asy
+        ON  a.Id = asy.id
+        AND denv.deploy_env = asy.deploy_env;
+
+
+-- dbo.BCED_WasteType_roadplan_sync source
+
+ALTER VIEW BCED_WasteType_roadplan_sync AS (
+    SELECT
+        asy.external_id,
+        denv.deploy_env,
+        a.*,
+        asy.synced_at,
+        asy.sync_failed_at,
+        IsNULL(asy.retry_count, 0) as retry_count
+    FROM
+        BCED_WasteType a
+    CROSS JOIN sync_deploy_envs denv
+    LEFT JOIN BCED_WasteType_roadplan_synced_at asy ON (a.Id = asy.id) AND (denv.deploy_env = asy.deploy_env));
