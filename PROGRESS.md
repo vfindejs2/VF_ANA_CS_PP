@@ -1,8 +1,8 @@
 # Progress: CS-MPG Analýza
 
 ## Aktuální stav
-Fáze: Analýza datových modelů — v2, přepracování podkladů s novým kontextem (po entitách s review)
-Poslední session: 2026-02-23 (session 8)
+Fáze: Analýza datových modelů — příprava referenčních podkladů dokončena, připraveno na entitní analýzu
+Poslední session: 2026-02-23 (session 9)
 Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
 
 ## TODO
@@ -25,15 +25,25 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
 - [x] Doplnit analýzu o datové slovníky (entitní model) — v1 (archivováno do docs/archive/v1/)
   - Plán: docs/PLAN-doplneni-analyzy-datovy-model.md
   - v1 výstupy archivovány — nedostatečný doménový kontext (DS vs DDL rozdíly, separátní CS model v RP)
+  - **PRAVIDLO: z docs/archive/ nepřebírat** — DS↔DDL mapování vzniklo před doplněním doménového kontextu, hlásí implementační odchylky jako problémy
 - [x] Strukturovaný výtah z Cílového konceptu (docs/vytah-cilovy-koncept.md, 1 165 řádků)
   - Zaměření: datový model a integrace
   - Zpracováno 4 paralelními agenty, konsolidováno do jednoho dokumentu
   - Všechny sekce CK: business procesy, doménový model, etapizace, PP, RP, FOB, integrace, SO, architektura, přílohy
+- [x] Inventář entit DS + DDL (čistý, bez hodnocení)
+  - `docs/inventar-entit-PP.md` (~1 180 řádků, 22 entit + 4 nové pro CS)
+  - `docs/inventar-entit-RP.md` (~2 020 řádků, 31+9 entit + 5 nových pro CS)
+  - Pravidlo: žádné DS↔DDL mapování, žádné hodnocení odchylek
+- [x] Doplnění popisů entit a referencí z tech. projektů do inventářů
+  - Ke každé entitě doplněn popis (z DS/slovníku pojmů) a reference na konkrétní UC/UI stránky tech. projektu
+  - PP: 22 entit s popisy + referencemi (UC 200–500, integrace, synchronizace)
+  - RP: 41 entit s popisy + referencemi (UC 100–800, UI spec, integrace FOB/FLWW2)
 - [ ] Přepracovat podklady pro datové modely — v2 ← PRÁVĚ TADY
   - Postup: po entitách s review
   - Výstup: docs/datovy-model-PP.md a docs/datovy-model-RP.md
   - Nový kontext: DS je konceptuální (analytik), DDL je implementační (vývojář) — vědomé rozdíly jsou OK
   - Nový kontext: RP má dva paralelní světy (kontejnery vs. CS s vlastním UI a datovým modelem)
+  - Referenční vstupy: inventáře entit (docs/inventar-entit-PP.md, docs/inventar-entit-RP.md) + výtah CK (docs/vytah-cilovy-koncept.md)
 - [ ] Review datových modelů se stakeholdery
 - [ ] Návrh cílových datových modelů pro dotčené systémy
 - [ ] Mapování entit mezi systémy
@@ -51,6 +61,8 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
 - **KR-01: Rozšíření scope projektu** — Projekt přejmenován z "CS-MPG Integrace" na "CS-MPG Analýza". Scope rozšířen o dvě nové oblasti: návrh datových modelů a konzultační podpora pro tým. Promítnuto do CLAUDE.md, SPEC.md, PLAN.md.
 - **KR-02: Dvouvrstvý přístup k analýze datových modelů** — Analýza dopadů na datový model bude důsledně rozlišovat entitní model (datový slovník — business atributy, asociace, pravidla) a fyzický model (DDL — tabulky, sloupce, FK, indexy). Datové slovníky z technických projektů PP a RP jsou primárním zdrojem pro logickou vrstvu.
 - **KR-03: Nalezené bugy v DDL** — Identifikovány 4 potenciální chyby v produkčních DDL, které je třeba vyřešit před implementací CS: `address.updated_by` je `bit` místo `int FK` (PP), `address.city` je `nvarchar(50)` vs. DS specifikace 80 znaků (PP), `liquidation_garbage_types` uložen jako JSON místo proper FK (RP), `time_from/time_to` je `varchar(150)` na OS (RP).
+- **KR-04: Archiv = nepřebírat** — Materiály v docs/archive/ byly archivovány cíleně (DS↔DDL mapování vzniklo před doplněním doménového kontextu). Entitní analýzu zahájit od nuly s čistými vstupy (výtah CK + DS přímo + DDL přímo).
+- **KR-05: Výtah CK je nutný, ale ne dostatečný podklad** — Pro datový model a integrace slouží jako business reference. Chybí atributové detaily entit, přesné integrační zprávy a obsah diagramů. Doplňuje se z DS a DDL při entitní analýze.
 
 ## Otevřené otázky
 - OQ-01: Seznam entit MDB vs. REST API v Etapě 1 — **částečně** (DDL znám, rozřazení per entita TBD)
@@ -169,4 +181,22 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
   - Generování OS: 4 scénáře dle vazeb RPO (Rozvrh je nutná podmínka)
   - SoT okruhy: Etapa 1 = HEN, Etapa 2 = PP
   - 16 otevřených bodů z CK s odpověďmi od zákazníka
+- Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
+
+### 2026-02-23, session 9
+- **Review výtahu z Cílového konceptu** (`docs/vytah-cilovy-koncept.md`)
+  - Posouzeno, že výtah splňuje účel jako business reference pro datový model a integrace
+  - Identifikováno 6 mezer: chybí atributové detaily entit, integrační zprávy bez atributové úrovně, diagramy jen referované, lifecycle/stavy ne všech entit, validační pravidla mimo scope CK, datové typy nespecifikovány
+  - Mezery se budou řešit při entitní analýze z DS a DDL
+- **Stanoveno pravidlo: z docs/archive/ nepřebírat** (KR-04)
+  - DS↔DDL mapování v archivu vzniklo před doménovým kontextem o vztahu DS vs DDL
+  - Entitní analýzu zahájit od nuly s čistými vstupy
+- **Vytvořeny inventáře entit DS + DDL** (čistý inventář bez hodnocení)
+  - `docs/inventar-entit-PP.md` — 22 existujících entit + 4 nové pro CS (Okruh, Rozvrh, Kalendář, Zóna)
+  - `docs/inventar-entit-RP.md` — 31 hlavních entit + 9 enumerací + 5 nových pro CS (Okruh, Rozvrh, Okruh dne, Skupina odpadu, RPO)
+  - Ke každé entitě: atributy z DS, sloupce z DDL, asociace z DS (oddělené, bez mapování)
+- **Doplněny popisy a reference z tech. projektů** do obou inventářů
+  - Popis entity (z DS/slovníku pojmů) jako blockquote
+  - Reference na konkrétní UC/UI stránky technického projektu (PP: UC 200–500; RP: UC 100–800)
+- Klíčová rozhodnutí: KR-04 (archiv nepřebírat), KR-05 (výtah CK nutný ale ne dostatečný)
 - Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
