@@ -1,23 +1,160 @@
-# Analýza vstupních dokumentů: CS-MPG Integrace
+# Analýza vstupních dokumentů: CS-MPG Analýza
 
-**Datum analýzy:** 2026-02-11
-**Analyzoval:** Claude (session 1)
-
----
-
-## 1. Seznam zdrojových dokumentů
-
-| # | Dokument | Typ | Velikost | Popis |
-|---|----------|-----|----------|-------|
-| 1 | `PRD_Cyklicke_Svozy_MP_SK.md` | Markdown (PRD) | 17 KB | Produktový dokument — kompletní PRD pro projekt Cyklické svozy MP SK, generovaný z HLC konceptu. Pokrývá MVP (Etapa 1) i Etapu 2. |
-| 2 | `Komunikace mezi systémy - část HLC CS.docx` | Word (HLC výňatek) | 150 KB | Kapitola z cílového konceptu HLC zaměřená na komunikaci mezi systémy — principiální schéma, integrační mapa, předběžný popis datových toků. |
-| 3 | `MDB_schema_DDL.txt` | SQL DDL | 55 KB | Kompletní DDL schema integrační databáze MDB (`MPGSkCommNew`, SQL Server). Obsahuje 22 business entit (BCED_*), 6 candidate/staging tabulek, sync tracking tabulky (*_synced_at) pro Pasport i RoadPlan, a synchronizační views. |
+**Datum analýzy:** 2026-02-11 (aktualizace 2026-02-23)
+**Analyzoval:** Claude
 
 ---
 
-## 2. Extrahované požadavky
+## 1. Přehled vstupních podkladů
 
-### 2.1 Funkční požadavky na integrace
+### Struktura složky `data/input/`
+
+```
+data/input/
+├── cilovy_koncept_CS/                          ← Cílový koncept projektu
+│   ├── PRD_Cyklicke_Svozy_MP_SK.md               (15 KB, markdown)
+│   └── Příloha č. 3_Cílový koncept.docx           (11 MB, Word)
+│
+├── dokumentace_PP/                             ← Technická dokumentace PasPortu
+│   ├── DDL_PP_DB.txt                              (169 KB, SQL DDL)
+│   └── 2026-02-19_technicky-projekt-PP/           (~80 MB, Confluence export)
+│       └── 300+ HTML stránek, 100+ PNG screenshotů
+│
+├── dokumentace_RP/                             ← Technická dokumentace RoadPlanu
+│   ├── DDL_RP_DB.txt                              (125 KB, SQL DDL)
+│   └── 2026-02-19_technicky-projekt-RP/           (~71 MB, Confluence export)
+│       └── 655 stránek, architektura, datové modely, use cases
+│
+└── integrace/                                  ← Integrační vrstva
+    ├── MDB_schema_DDL.txt                         (58 KB, SQL DDL)
+    └── Komunikace mezi systémy - část HLC CS.docx (146 KB, Word)
+```
+
+**Celkem:** ~166 MB, ~2 576 souborů (většina v Confluence exportech)
+
+### Inventář dokumentů
+
+| # | Dokument | Umístění | Formát | Velikost | Oblast projektu |
+|---|----------|----------|--------|----------|-----------------|
+| 1 | PRD Cyklické Svozy MP SK | `cilovy_koncept_CS/` | Markdown | 15 KB | Integrace, Datové modely, Konzultace |
+| 2 | Příloha č. 3 — Cílový koncept | `cilovy_koncept_CS/` | DOCX | 11 MB | Konzultace, Integrace |
+| 3 | DDL PasPort DB | `dokumentace_PP/` | SQL DDL | 169 KB | Datové modely, Integrace |
+| 4 | Technický projekt PP (Confluence) | `dokumentace_PP/` | HTML+PNG | ~80 MB | Konzultace, Datové modely |
+| 5 | DDL RoadPlan DB | `dokumentace_RP/` | SQL DDL | 125 KB | Datové modely, Integrace |
+| 6 | Technický projekt RP (Confluence) | `dokumentace_RP/` | HTML+PNG | ~71 MB | Konzultace, Datové modely |
+| 7 | MDB schema DDL | `integrace/` | SQL DDL | 58 KB | Integrace |
+| 8 | Komunikace mezi systémy (HLC) | `integrace/` | DOCX | 146 KB | Integrace |
+
+### Využití podkladů per oblast
+
+#### Integrace
+| Podklad | K čemu slouží |
+|---------|--------------|
+| PRD (#1) | Definice integračních toků, datové kontrakty (JSON), triggery, sekvence |
+| MDB DDL (#7) | Mapování stávajících MDB entit, rozřazení MDB vs. REST v Etapě 1 |
+| Komunikace HLC (#8) | Principiální schéma komunikace, integrační mapa |
+| DDL PP (#3) + DDL RP (#5) | Pochopení zdrojových/cílových struktur pro datové kontrakty |
+
+#### Datové modely
+| Podklad | K čemu slouží |
+|---------|--------------|
+| DDL PP (#3) | Kompletní schema PasPortu — rozšíření o okruhy, rozvrhy, zóny |
+| DDL RP (#5) | Kompletní schema RoadPlanu — nové entity DV, okruh dne |
+| MDB DDL (#7) | Legacy integrační vrstva — mapování entit HEN↔PP↔RP |
+| PRD (#1) | Doménový model, SoT matice, návrh nových entit |
+| Confluence PP (#4) + RP (#6) | Datové slovníky, persistence, stávající datové modely |
+
+#### Konzultace
+| Podklad | K čemu slouží |
+|---------|--------------|
+| Cílový koncept (#2) | Detailní wireframy, funkční požadavky, UI interakce |
+| Confluence PP (#4) | Use cases (100xx–400xx), UI mockupy, synchronizační logika |
+| Confluence RP (#6) | Architektura (HLC), stavové diagramy, workflow plánování |
+| PRD (#1) | Business pravidla, akceptační kritéria, doménové znalosti |
+
+### Co chybí / k doplnění
+- **OpenAPI specifikace** stávajících služeb (zmíněno v OQ-07, existují, dodat)
+- **Zadání konzultačních témat** od členů týmu (ad-hoc)
+
+---
+
+## 2. Detailní popis dokumentů
+
+### Dok. 1: PRD Cyklické Svozy MP SK
+- **Soubor:** `cilovy_koncept_CS/PRD_Cyklicke_Svozy_MP_SK.md`
+- **Typ:** Produktový dokument (PRD), verze 1.0, generovaný 2026-02-11
+- **Obsah:** Kompletní PRD pokrývající MVP (Etapa 1) i Etapu 2. Definuje cíle, scope, integrační architekturu, datové kontrakty (JSON schema), doménový model, NFR, AI agenty a akceptační kritéria.
+- **Klíčové kapitoly:** kap. 4 (architektonické principy, SoT), kap. 5 (integrační toky + kontrakty), kap. 6 (doménový model), kap. 9 (NFR)
+
+### Dok. 2: Příloha č. 3 — Cílový koncept
+- **Soubor:** `cilovy_koncept_CS/Příloha č. 3_Cílový koncept.docx`
+- **Typ:** Word dokument (~11 MB, obsahuje wireframy jako obrázky)
+- **Obsah:** Detailní cílový koncept s funkčními požadavky, wireframy, systémovými interakcemi pro PP, RP, FOB a HEN.
+- **Využití:** Referenční materiál pro konzultace s týmem, podklad pro review funkčních požadavků.
+
+### Dok. 3: DDL PasPort DB (PasPort_MPGSK)
+- **Soubor:** `dokumentace_PP/DDL_PP_DB.txt`
+- **Typ:** SQL DDL (CREATE TABLE statements)
+- **Databáze:** PasPort_MPGSK, collation Czech_100_CI_AS
+- **Obsah:** Kompletní schéma PP — nádoby, stanoviště, organizace, uživatelé, nastavení. Zahrnuje backup tabulky (TMP_BCKUP) a change tracking.
+- **Využití:** Základ pro návrh rozšíření PP datového modelu o entity cyklických svozů.
+
+### Dok. 4: Technický projekt PP (Confluence export)
+- **Soubor:** `dokumentace_PP/2026-02-19_technicky-projekt-PP/`
+- **Typ:** HTML export z Confluence (380 stránek, 1 chybějící obrázek)
+- **Struktura:**
+  - `datove-modely/` — datové modely a persistence
+  - `funkcionalni-specifikace/` — funkční specifikace
+    - `pripady-uziti/` — use cases organizované v sériích:
+      - 100xx: Spuštění aplikace, login
+      - 101xx: Společné UI prvky (menu, header, modály, notifikace)
+      - 102xx: Mapové služby
+      - 200xx: **Obecná synchronizační komponenta** (8 use cases)
+      - 201-202xx: **Specifická synchronizace s HEN**
+      - 300-307xx: Správa dat (původní umístění, nádoby, zóny)
+      - 400xx: Správa nádob (vzory, kategorie, přehledy)
+    - `ovladaci-prvky/` — UI komponenty s obrázky
+  - `high-level-concept/` — HLC architektura
+  - `systemove-pozadavky/` — systémové požadavky
+- **Využití:** Use cases 200xx (sync) přímo relevantní pro integrace. Zbytek pro konzultace a pochopení stávající logiky PP.
+
+### Dok. 5: DDL RoadPlan DB (RoadPlan_MPGSK)
+- **Soubor:** `dokumentace_RP/DDL_RP_DB.txt`
+- **Typ:** SQL DDL (CREATE TABLE statements)
+- **Databáze:** RoadPlan_MPGSK, collation Slovak_CI_AS
+- **Obsah:** Kompletní schéma RP — trasy, denní výkony, adresy, stanoviště realizace/likvidace, typy aktivit.
+- **Využití:** Základ pro návrh rozšíření RP datového modelu, mapování entit PP↔RP.
+
+### Dok. 6: Technický projekt RP (Confluence export)
+- **Soubor:** `dokumentace_RP/2026-02-19_technicky-projekt-RP/`
+- **Typ:** HTML export z Confluence (655 stránek, 8 chybějících obrázků)
+- **Struktura:**
+  - `datove-modely/` — datový slovník, persistence
+  - `high-level-concept/` — doménový model, funkční přehled, aktéři, stavové diagramy, přehled use cases
+  - `funkcni-specifikace` — funkční specifikace RP
+  - `systemove-pozadavky` — systémové požadavky
+  - `technicka-specifikace` — technická specifikace
+- **Využití:** HLC a datové modely přímo relevantní pro integrace i datové modely. Stavové diagramy a workflow pro konzultace.
+
+### Dok. 7: MDB schema DDL (MPGSkCommNew)
+- **Soubor:** `integrace/MDB_schema_DDL.txt`
+- **Typ:** SQL DDL, legacy integrační databáze
+- **Databáze:** MPGSkCommNew, collation Slovak_CI_AS
+- **Obsah:** 22 BCED_ business entit, 6 candidate/staging tabulek, sync tracking tabulky a views.
+- **Využití:** Klíčový podklad pro integrační analýzu — mapování stávajícího MDB rozhraní, rozřazení entit MDB vs. REST.
+- **Detailní analýza:** viz sekce 9 níže.
+
+### Dok. 8: Komunikace mezi systémy (HLC výtah)
+- **Soubor:** `integrace/Komunikace mezi systémy - část HLC CS.docx`
+- **Typ:** Word dokument (výtah z HLC)
+- **Obsah:** Principiální schéma komunikace, integrační mapa, předběžný popis datových toků mezi PP, RP, FOB a HEN.
+- **Využití:** Vstup pro návrh integrační architektury.
+
+---
+
+## 3. Extrahované požadavky
+
+### 3.1 Funkční požadavky na integrace
 
 #### FR-INT-01: HEN → PP — Přenos číselníků a vazeb
 - **Zdroj:** PRD kap. 5.1, HLC kap. Integrační mapa
@@ -55,7 +192,7 @@
 - **Zdroj:** PRD kap. 5.3.3
 - **Popis:** Po dokončení DV RP exportuje podklady do HEN (POST /dv). HEN vytvoří realizační doklady a vrací potvrzení s identifikátory.
 
-### 2.2 Funkční požadavky na integrační služby (Etapa 2+)
+### 3.2 Funkční požadavky na integrační služby (Etapa 2+)
 
 #### FR-INT-07: Přechod správy okruhů z HEN na PP
 - **Zdroj:** HLC kap. Rozšíření, PRD kap. 3
@@ -69,7 +206,7 @@
 - **Zdroj:** HLC kap. Rozšíření, PRD kap. 8
 - **Popis:** Integrace optimalizačního nástroje do platformy FLW. Přenos výstupů optimalizace do PP pro transformaci na standardní okruhy, rozvrhy a vazby na PZ.
 
-### 2.3 Nefunkční požadavky
+### 3.3 Nefunkční požadavky
 
 #### NFR-INT-01: Výkon a objem
 - **Zdroj:** PRD kap. 5.4, 9
@@ -103,7 +240,7 @@
 
 ---
 
-## 3. Architektonické principy
+## 4. Architektonické principy
 
 | Princip | Popis | Zdroj |
 |---------|-------|-------|
@@ -126,7 +263,7 @@
 
 ---
 
-## 4. Integrační služby — přehled
+## 5. Integrační služby — přehled
 
 | Služba | Směr | Stav | Kanál (Etapa 1) | Kanál (cílový) |
 |--------|------|------|------------------|-----------------|
@@ -138,7 +275,7 @@
 
 ---
 
-## 5. Stakeholders a role
+## 6. Stakeholders a role
 
 | Osoba | Organizace | Role |
 |-------|-----------|------|
@@ -160,7 +297,7 @@
 
 ---
 
-## 6. Identifikované omezení a termíny
+## 7. Identifikované omezení a termíny
 
 ### Termíny (dle konceptu)
 | Milník | Datum | Stav |
@@ -180,7 +317,7 @@
 
 ---
 
-## 7. Nejasnosti a protichůdné informace
+## 8. Nejasnosti a protichůdné informace
 
 ### N-01: Rozsah služby `RP-sync-external-Pasport`
 - **Problém:** HLC schéma uvádí službu `RP-sync-external-Pasport` (RP→PP), ale PRD ani HLC nespecifikuje, jaká data by tekla tímto směrem. Veškerá popsaná komunikace RP→PP není v datech explicitně zmíněna.
@@ -214,7 +351,7 @@
 
 ---
 
-## 8. Otevřené otázky
+## 9. Otevřené otázky
 
 | # | Otázka | Priorita | Stav | Odpověď / Poznámka |
 |---|--------|----------|------|---------------------|
@@ -231,12 +368,12 @@
 
 ---
 
-## 9. Analýza MDB schématu (MPGSkCommNew)
+## 10. Analýza MDB schématu (MPGSkCommNew)
 
-**Zdroj:** `data/input/MDB_schema_DDL.txt`
+**Zdroj:** `data/input/integrace/MDB_schema_DDL.txt`
 **Databáze:** MPGSkCommNew (SQL Server, collation Slovak_CI_AS)
 
-### 9.1 Business entity tabulky (prefix BCED_)
+### 10.1 Business entity tabulky (prefix BCED_)
 
 | Tabulka | Popis | PK | Klíčové FK |
 |---------|-------|----|------------|
@@ -263,7 +400,7 @@
 | `BCED_DisposalSiteWasteType` | Přiřazení typů odpadu k místu zpracování | (DisposalSiteId, WasteTypeId, LoadingCode) | → DisposalSite, → WasteType, → OrganizationalUnit |
 | `BCED_CustomerApprovalResult` | Výsledky schválení zákazníka | CustomerToBeApprovedId | ApprovalResult, CustomerId |
 
-### 9.2 Candidate/staging tabulky
+### 10.2 Candidate/staging tabulky
 
 Pattern: Entity založené v RoadPlanu, přenesené přes MDB do HEN ke kontrole a zavedení. HEN je pro tyto entity source of truth — uživatel v HEN kandidáta zkontroluje a schválí/zamítne. Nemají sloupce Status/Created — jen LastModified.
 
@@ -276,7 +413,7 @@ Pattern: Entity založené v RoadPlanu, přenesené přes MDB do HEN ke kontrole
 | `CustomerSiteCandidate` | Kandidáti stanovišť | → AddressCandidate, → CustomerCandidate |
 | `BankAccountCandidate` | Kandidáti bankovních účtů | → BankCandidate, → CustomerCandidate |
 
-### 9.3 Sync tracking tabulky a views
+### 10.3 Sync tracking tabulky a views
 
 **Pattern:** Pro každou synchronizovanou entitu existuje:
 - `BCED_{Entity}_pasport_synced_at` — tracking syncu do Pasportu (PK: deploy_env + pasport_id)
@@ -293,7 +430,7 @@ Address, Bank, BankAccount, ContainerType, Customer, CustomerPerson, CustomerCon
 - `sync_deploy_envs` — seznam deployment prostředí (PK: deploy_env)
 - `TMP_BCKUP_BCED_Container_20251126` — dočasná záloha (ignorovat)
 
-### 9.4 Klíčové poznatky pro integrační analýzu
+### 10.4 Klíčové poznatky pro analýzu
 
 1. **WinyXId** — sloupec na většině BCED_ entit. Reference na legacy systém WinyX. Relevantní pro mapování identit při migraci.
 2. **Composite PK** — ContractItem má 4-sloupcový PK (Id, Sequence, ContractSubjectTypeId, CustomerSiteId). Komplexní vazby na ContractItemContainer a ContractItemDaysOfWeek.
@@ -306,21 +443,12 @@ Address, Bank, BankAccount, ContainerType, Customer, CustomerPerson, CustomerCon
 
 ---
 
-## 10. Shrnutí pro SPEC.md
+## 11. Shrnutí
 
-Projekt CS-MPG Integrace se zaměřuje na **6 integračních toků** v rámci Etapy 1:
+Vstupní podklady pokrývají všechny tři oblasti projektu:
 
-1. **HEN → PP** (číselníky, vazby) — rozšíření existující služby
-2. **PP → RP** (RPO, nádoby, stanoviště, okruhy, rozvrhy, skupiny odpadu) — **nová služba**
-3. **RP → HEN** (podklady pro realizační doklady) — rozšíření existující služby
-4. **RP → FOB** (DV + okruhy dne) — existující komunikace, rozšíření
-5. **FOB → RP** (události realizace) — existující komunikace, rozšíření
-6. **RP → PP** (dotaz na RPO dle kalendáře) — **nová služba** (součást generování OS)
+- **Integrace** — PRD definuje 6 integračních toků s datovými kontrakty, MDB DDL mapuje stávající rozhraní, HLC dokument popisuje komunikační schéma. Pokrytí dobré.
+- **Datové modely** — DDL schémata obou systémů (PP i RP) jsou k dispozici, MDB schema umožňuje mapování entit. Confluence exporty obsahují datové slovníky. Pokrytí dobré.
+- **Konzultace** — Cílový koncept (wireframy, funkční požadavky) + 955 stránek Confluence dokumentace (use cases, UI, workflow) tvoří rozsáhlou referenční bázi. Pokrytí rozsáhlé.
 
-Plus 3 budoucí toky pro Etapu 2+ (přesun správy okruhů, migrace MDB→API, integrace SP).
-
-Scope tohoto projektu (business analýza) zahrnuje:
-- Analýzu požadavků na všechny integrační toky
-- Návrh architektury a technického řešení
-- Přípravu business zadání pro implementaci
-- **Nikoli** samotnou implementaci
+**K doplnění:** OpenAPI specifikace stávajících služeb (existují, dodat), konkrétní zadání konzultačních témat od týmu.

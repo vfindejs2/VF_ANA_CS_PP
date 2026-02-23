@@ -1,18 +1,31 @@
-# Specifikace: CS-MPG Integrace
+# Specifikace: CS-MPG Analýza
 
 ## Kontext
 Projekt Cyklické svozy MP SK zavádí plánování a realizaci cyklických svozů malých nádob od smluvních zákazníků. Zahrnuje rozšíření systémů Pasport (PP), RoadPlan (RP), FleetwareOnBoard (FOB) a napojení na Helios Nephrite (HEN).
 
-Tento dílčí projekt se zaměřuje na **integrační práce** — analýzu požadavků, návrh architektury a přípravu business zadání pro implementaci integračních toků mezi systémy. Samotná implementace není ve scope.
+Tento dílčí projekt poskytuje **business analytickou a konzultační podporu** napříč třemi oblastmi:
+- **Integrace** — analýza požadavků, návrh architektury a business zadání pro integrační toky
+- **Datové modely** — návrh a review datových struktur pro jednotlivé systémy
+- **Konzultace** — podpora týmu při návrhu dílčích funkčností (workflow, UI logika, business pravidla)
+
+Samotná implementace není ve scope — výstupem jsou specifikace, zadání a doporučení.
 
 Zapojené systémy: PP, RP, FOB (dodavatel RADIUM), HEN (dodavatel D2B).
 Zadavatel: Marius Pedersen, a.s. (MP SK).
 
 ## Cíle
+### Integrace
 1. Zmapovat a detailně specifikovat integrační toky pro Etapu 1
 2. Navrhnout cílovou integrační architekturu (včetně přechodného stavu s MDB)
 3. Připravit business zadání pro implementaci každé integrační služby
-4. Identifikovat rizika, závislosti a otevřené body
+
+### Datové modely
+4. Navrhnout/reviewovat datové modely pro dotčené systémy
+5. Definovat datové kontrakty a mapování mezi systémy
+
+### Konzultace a průřezová podpora
+6. Poskytovat analytickou podporu při návrhu dílčích funkčností
+7. Identifikovat rizika, závislosti a otevřené body napříč oblastmi
 
 ## Požadavky
 ### Funkční požadavky
@@ -33,14 +46,25 @@ Zadavatel: Marius Pedersen, a.s. (MP SK).
 
 ## Scope
 ### In scope
+#### Integrace
 - Analýza a specifikace 4 integračních toků Etapy 1 (HEN→PP, PP→RP, RP→HEN, RP→PP dotaz)
 - Návrh integrační architektury (přímé integrace, REST API + MDB přechodně)
 - Datové kontrakty (JSON schema) pro každý tok
 - Business zadání pro implementaci jednotlivých služeb
 - Identifikace závislostí na třetí strany (D2B)
 
+#### Datové modely
+- Návrh a review datových modelů pro dotčené systémy (PP, RP, FOB)
+- Mapování entit mezi systémy
+- Definice datových kontraktů
+
+#### Konzultace
+- Analytická podpora při návrhu dílčích funkčností pro tým
+- Review business pravidel a workflow
+- Ad-hoc konzultace k technickým a business otázkám
+
 ### Out of scope
-- Implementace integračních služeb
+- Implementace (kód, integrace, datové modely)
 - Integrace RP ↔ FOB (řeší M. Taraba)
 - Služba RP-sync-external-Pasport / RP → PP zápis (až Etapa 2+)
 - Integrace strategické optimalizace (Etapa 2)
@@ -56,8 +80,16 @@ Zadavatel: Marius Pedersen, a.s. (MP SK).
 - Rozhodnutí o paralelním plánování DV (HEN vs. RP) musí předcházet implementaci
 
 ## Akceptační kritéria
+### Integrace
 - [AC-01] Každý integrační tok má kompletní business zadání (směr, účel, triggery, datový kontrakt, chybové stavy, SLA)
 - [AC-02] Integrační architektura je zdokumentována a schválena stakeholdery
 - [AC-03] Otevřené otázky (zejména OQ-05 paralelní plánování DV) jsou rozhodnuty nebo eskalovány
 - [AC-04] Datové kontrakty jsou definovány minimálně na úrovni JSON schema draft
 - [AC-05] Závislosti na D2B/HEN jsou explicitně popsány s navrhovaným řešením
+
+### Datové modely
+- [AC-06] Datové modely pro dotčené systémy jsou navrženy/reviewovány a zdokumentovány
+- [AC-07] Mapování entit mezi systémy je definováno
+
+### Konzultace
+- [AC-08] Výstupy konzultací jsou zachyceny v docs/ (zápisy, doporučení, rozhodnutí)

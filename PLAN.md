@@ -1,4 +1,4 @@
-# Plán prací: CS-MPG Integrace
+# Plán prací: CS-MPG Analýza
 
 ## Fáze 1: Vstupní analýza
 - [x] Sběr a analýza vstupních dokumentů
@@ -21,7 +21,16 @@ Pro každý tok: účel, triggery, datový kontrakt, sekvence, chybové stavy, S
 - [ ] Bezpečnostní model (autentizace, autorizace)
 - [ ] Observabilita a monitoring
 
-## Fáze 4: Business zadání
+## Fáze 4: Datové modely
+- [ ] Review/návrh datových modelů pro PP, RP, FOB
+- [ ] Mapování entit mezi systémy
+- [ ] Datové kontrakty a slovník dat
+
+## Fáze 5: Business zadání
 - [ ] Sestavit business zadání per integrační služba
 - [ ] Review a schválení stakeholdery
 - [ ] Finální dokumentace do docs/
+
+## Průběžně: Konzultace
+- [ ] Ad-hoc analytická podpora pro tým (workflow, business pravidla, funkčnosti)
+- [ ] Zachycení výstupů konzultací do docs/

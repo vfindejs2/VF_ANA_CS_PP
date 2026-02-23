@@ -1,7 +1,12 @@
-# Projekt: CS-MPG Integrace
+# Projekt: CS-MPG Analýza
 
 ## Cíl
-Cílem je analyzovat požadavky na integrační práce v rámci projektu Cyklické svozy, navrhnout architekturu a technické řešení, připravit business zadání pro implementaci jednotlivých integrací. Samotná implementace není ve scope tohoto projektu.
+Business analýza a konzultační podpora projektu Cyklické svozy MP SK. Zahrnuje tři hlavní oblasti:
+1. **Integrace** — analýza požadavků, návrh architektury a business zadání pro integrační toky mezi systémy
+2. **Datové modely** — návrh a review datových modelů pro jednotlivé systémy
+3. **Konzultace** — podpora zbytku týmu při návrhu dílčích funkčností
+
+Samotná implementace není ve scope — výstupem jsou specifikace, zadání a doporučení.
 
 ## Typ projektu
 business-analysis
