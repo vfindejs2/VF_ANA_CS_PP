@@ -1,9 +1,9 @@
 # Progress: CS-MPG Analýza
 
 ## Aktuální stav
-Fáze: Analýza datových modelů — dvouvrstvá analýza kompletní, připraveno na review datových modelů
-Poslední session: 2026-02-23 (session 6)
-Další krok: Review datových modelů se stakeholdery, zahájení detailní specifikace integračních toků (Fáze 2)
+Fáze: Analýza datových modelů — v2, přepracování podkladů s novým kontextem (po entitách s review)
+Poslední session: 2026-02-23 (session 8)
+Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
 
 ## TODO
 ### Integrace
@@ -22,13 +22,21 @@ Další krok: Review datových modelů se stakeholdery, zahájení detailní spe
 - [x] Analýza Cílový koncept vs. DDL — první průchod (docs/analyza-cilovy-koncept-vs-ddl.md)
   - PP: 11 požadavků, 6 nových tabulek + 6 nových sloupců
   - RP: 13 požadavků, ~8 nových tabulek + 11+ nových sloupců
-- [x] Doplnit analýzu o datové slovníky (entitní model)
+- [x] Doplnit analýzu o datové slovníky (entitní model) — v1 (archivováno do docs/archive/v1/)
   - Plán: docs/PLAN-doplneni-analyzy-datovy-model.md
-  - 5 kroků: extrakce entit → mapování DS↔DDL → revize požadavků → nesrovnalosti → konsolidace
-  - Výstupy: 5 dokumentů (4 352 řádků), 4 ER diagramy (2 detailní + 2 konceptuální)
-- [ ] Review datových modelů se stakeholdery ← PRÁVĚ TADY
+  - v1 výstupy archivovány — nedostatečný doménový kontext (DS vs DDL rozdíly, separátní CS model v RP)
+- [x] Strukturovaný výtah z Cílového konceptu (docs/vytah-cilovy-koncept.md, 1 165 řádků)
+  - Zaměření: datový model a integrace
+  - Zpracováno 4 paralelními agenty, konsolidováno do jednoho dokumentu
+  - Všechny sekce CK: business procesy, doménový model, etapizace, PP, RP, FOB, integrace, SO, architektura, přílohy
+- [ ] Přepracovat podklady pro datové modely — v2 ← PRÁVĚ TADY
+  - Postup: po entitách s review
+  - Výstup: docs/datovy-model-PP.md a docs/datovy-model-RP.md
+  - Nový kontext: DS je konceptuální (analytik), DDL je implementační (vývojář) — vědomé rozdíly jsou OK
+  - Nový kontext: RP má dva paralelní světy (kontejnery vs. CS s vlastním UI a datovým modelem)
+- [ ] Review datových modelů se stakeholdery
 - [ ] Návrh cílových datových modelů pro dotčené systémy
-- [ ] Mapování entit mezi systémy (základ v sekci 3 analýzy)
+- [ ] Mapování entit mezi systémy
 
 ### Konzultace
 - [x] Zmapovat dostupnou referenční bázi (Confluence PP 300+ stránek, RP 655 stránek, cílový koncept)
@@ -146,3 +154,19 @@ Další krok: Review datových modelů se stakeholdery, zahájení detailní spe
   - RP: 20 DDL sloupců bez dokumentace v DS (legacy WinyX ID, konfirmační pole)
 - Rozhodnutí: KR-03 (nalezené DDL bugy)
 - Další krok: review datových modelů se stakeholdery, zahájení detailní specifikace integračních toků
+
+### 2026-02-23, session 8
+- **Vytvořen strukturovaný výtah z Cílového konceptu** (`docs/vytah-cilovy-koncept.md`, 1 165 řádků)
+  - Extrahován .docx do MD (Python, 1 377 řádků surového textu)
+  - Rozděleno do 4 sekcí, zpracováno 4 paralelními agenty se sdíleným zadáním
+  - Konsolidováno do jednoho konzistentního dokumentu se zaměřením na datový model a integraci
+  - Zachovány odkazy na kapitoly CK (blockcitace), entity tučně, tabulky v MD formátu
+  - Sekce: Manažerské shrnutí, Business procesy, Doménový model, Etapizace, Aplikace PP/RP/FOB, Komunikace mezi systémy, Strategická optimalizace, Architektura, NFR, Rizika, Přílohy (slovník, aktéři, parametry SP, otevřené body)
+- **Klíčové poznatky z extrakce:**
+  - Kardinality vazeb RPO: RPO↔Okruh M:N, RPO↔Rozvrh M:N, RPO↔Zóna 1:1
+  - Stavový automat okruhů v FOB: 5 stavů, definované zprávy do RP (Zahájit/Ukončit/Přerušit → odesílá se; Vynechat/Zařadit → lokální)
+  - Třístavový model odbavení stanovišť: Červená (neodbaveno) → Žlutá (odbaveno FOB) → Zelená (potvrzeno RP)
+  - Generování OS: 4 scénáře dle vazeb RPO (Rozvrh je nutná podmínka)
+  - SoT okruhy: Etapa 1 = HEN, Etapa 2 = PP
+  - 16 otevřených bodů z CK s odpověďmi od zákazníka
+- Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
