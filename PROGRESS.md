@@ -1,9 +1,9 @@
 # Progress: CS-MPG Analýza
 
 ## Aktuální stav
-Fáze: Rozšířen scope projektu, zmapovány vstupní podklady
-Poslední session: 2026-02-23
-Další krok: Dodat OpenAPI specs stávajících služeb, validace SoT matice, zahájení detailní specifikace toků
+Fáze: Analýza datových modelů — první průchod hotov, plán na doplnění z datových slovníků připraven
+Poslední session: 2026-02-23 (session 5)
+Další krok: Doplnit analýzu o datové slovníky dle plánu `docs/PLAN-doplneni-analyzy-datovy-model.md` (krok 1+2 → 3 → 5)
 
 ## TODO
 ### Integrace
@@ -12,13 +12,19 @@ Další krok: Dodat OpenAPI specs stávajících služeb, validace SoT matice, z
 - [x] Analyzovat vstupní dokumenty (data/input-analysis.md)
 - [x] Analyzovat MDB schéma (DDL) — 22 BCED_ entit, 6 candidate tabulek, sync tracking
 - [x] Doplnit odpovědi na otevřené otázky (OQ-01 až OQ-10) — 5 uzavřeno, 4 částečně/otevřeno, 1 mimo scope
-- [ ] Validace SoT matice se stakeholdery ← PRÁVĚ TADY
+- [ ] Validace SoT matice se stakeholdery
 - [ ] Detailní specifikace integračních toků (INT-01 až INT-06)
 - [ ] Návrh integrační architektury
 - [ ] Business zadání per integrační služba
 
 ### Datové modely
 - [x] Zmapovat vstupní podklady (DDL PP, DDL RP, MDB DDL, Confluence exporty)
+- [x] Analýza Cílový koncept vs. DDL — první průchod (docs/analyza-cilovy-koncept-vs-ddl.md)
+  - PP: 11 požadavků, 6 nových tabulek + 6 nových sloupců
+  - RP: 13 požadavků, ~8 nových tabulek + 11+ nových sloupců
+- [ ] Doplnit analýzu o datové slovníky (entitní model) ← PRÁVĚ TADY
+  - Plán: docs/PLAN-doplneni-analyzy-datovy-model.md
+  - 5 kroků: extrakce entit → mapování DS↔DDL → revize požadavků → nesrovnalosti → konsolidace
 - [ ] Review/návrh datových modelů pro dotčené systémy
 - [ ] Mapování entit mezi systémy
 
@@ -33,6 +39,7 @@ Další krok: Dodat OpenAPI specs stávajících služeb, validace SoT matice, z
 ## Klíčová rozhodnutí
 ### 2026-02-23
 - **KR-01: Rozšíření scope projektu** — Projekt přejmenován z "CS-MPG Integrace" na "CS-MPG Analýza". Scope rozšířen o dvě nové oblasti: návrh datových modelů a konzultační podpora pro tým. Promítnuto do CLAUDE.md, SPEC.md, PLAN.md.
+- **KR-02: Dvouvrstvý přístup k analýze datových modelů** — Analýza dopadů na datový model bude důsledně rozlišovat entitní model (datový slovník — business atributy, asociace, pravidla) a fyzický model (DDL — tabulky, sloupce, FK, indexy). Datové slovníky z technických projektů PP a RP jsou primárním zdrojem pro logickou vrstvu.
 
 ## Otevřené otázky
 - OQ-01: Seznam entit MDB vs. REST API v Etapě 1 — **částečně** (DDL znám, rozřazení per entita TBD)
@@ -87,3 +94,25 @@ Další krok: Dodat OpenAPI specs stávajících služeb, validace SoT matice, z
   - Přidány detailní popisy nových dokumentů (dok. 2–6)
   - Stávající obsah zachován, přečíslován
 - Další krok: dodat OpenAPI specs, validace SoT matice, zahájení detailní specifikace toků
+
+### 2026-02-23, session 5
+- **Zpracován Cílový koncept** (Příloha č. 3_Cílový koncept.docx)
+  - Extrahován kompletní text (.docx → Python) a 12 tabulek (verze, pojmy, aktéři, parametry SO, frekvence, ...)
+- **Vytvořena analýza Cílový koncept vs. DDL** (`docs/analyza-cilovy-koncept-vs-ddl.md`)
+  - PP: 11 požadavků (A1–A11) — 6 nových tabulek, 6 nových sloupců, 1 tabulka Etapa 2
+  - RP: 13 požadavků (B1–B13) — ~8 nových tabulek Etapa 1, ~4 tabulek Etapa 2, 11+ nových sloupců
+  - Zcela nové entity bez DDL protějšku: Okruh, Rozvrh, Zóna, Okruh dne
+  - Klíčový nález: PP `address` nemá lat/lng (RP ano), sdílené číselníky (garbage_group, circuit, schedule) neexistují v RP
+- **Nalezeny a potvrzeny DDL soubory a datové slovníky**
+  - DDL: `DDL_PP_DB.txt` (PasPort_MPGSK), `DDL_RP_DB.txt` (RoadPlan_MPGSK)
+  - DS: `datovy-88033012.html` (PP, 77 entit), `datovy-78681044.html` (RP, 88 entit)
+  - Slovníky pojmů: `slovnik-88032903.html` (PP), `slovnik-78680658.html` (RP)
+  - PP persistence file (`persistence-88033014.html`) je prázdný placeholder
+- **Identifikován gap v analýze** — datové slovníky nebyly plnohodnotně využity (96k+ tokenů per soubor)
+  - DS obsahují business popisy atributů, asociace, povinnosti, pravidla
+  - DS-PP má sloupec `Persistentní reference` pro mapování na DDL
+- **Vytvořen plán doplnění** (`docs/PLAN-doplneni-analyzy-datovy-model.md`)
+  - 5 kroků: extrakce 24 entit z DS → mapování DS↔DDL → revize 24 požadavků do dvouvrstvého formátu → nesrovnalosti → konsolidace
+  - Výstup: přepracovaná analýza rozlišující entitní model vs. fyzický model
+- Klíčové rozhodnutí: KR-02 (dvouvrstvý přístup — entitní + fyzický model)
+- Další krok: realizace plánu doplnění analýzy (navazující session)
