@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Aplikačné nastavenia pre tenanta</title>
+</head>
+<body>
+<div class="wiki-content">
+<p>Aplikačné nastavenia tenanta reflektujú konfiguračné parametre popísané v rámci dokumentácie tu: <a href="../../../konfiguracni-hodnoty/konfiguracni-88033346.html">https://confluence.radium.cz/pages/viewpage.action?pageId=88033346</a> - z dokumentu sa jedná o nastavenia pre "tenanta"</p><p>Pre jednotlivé verzie systému tu sú jednotlivé podstránky s konfiguračnými parametrami aj s vyznačenými zmenami - teda čo je nové/zmena/odstránenie.</p><p> </p><p><strong>Jednotlive hodnoty su len na ukazku, nezodpovedaju konkretnemu nasadeniu.</strong></p><p><strong>Zodpovedaju scheme parametrov ktora ma byt pre danu verziu - vid. jednotlive podstranky pre tuto page</strong></p><p> </p><p>Všetky systémové nastavenia sú spravované cez API, pričom ich nastavenia robíme pre tieto situácie:</p><p> </p><ul><li>Nové nasadenie systému</li><li>update parametrov - Situácia že potrebujeme počas behu systému zmeniť parametre </li></ul><p> </p><p>API na ktoré sa pošlú <strong>všetky parametre</strong> ktoré sa majú nastaviť. API je možné použiť aj na zmenu týchto nastavení počas behu systému.</p><table><tbody><tr><th>endpoint</th><th>method</th><th colspan="1">auth</th><th>data</th><th>resp</th></tr><tr><td>{{url-BE}}/api/tenantSettings</td><td>POST</td><td colspan="1">basic auth</td><td><div class="content-wrapper">js</div></td><td>interface pre konkretnu verziu</td></tr></tbody></table><p>API na získanie info o systémovom nastavení pre konkrétneho tenanta</p><table><tbody><tr><th>endpoint</th><th>method</th><th colspan="1">auth</th><th>query params</th><th colspan="1">resp</th></tr><tr><td>{{url-BE}}/api/tenantSettings/info</td><td>GET</td><td colspan="1">basic auth</td><td><div class="content-wrapper"><p>tenantId=id</p><p> </p></div></td><td colspan="1">interface pre konkretnu verziu</td></tr></tbody></table><p><br>Meno a heslo pre basic auth sa definuje v rámci nasadenia v konfiguračných parametroch (SUPER_USER_USERNAME a SUPER_USER_PASSWORD)</p>
+</div>
+</body>
+</html>

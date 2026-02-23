@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Build Docker Images</title>
+</head>
+<body>
+<div class="wiki-content">
+<h3>Manualne</h3><p>Dockerfile sa nachádza v GIT v root directory pre daný komponent</p><p>V adresári kde sa nacházda Dockerfile pre požadovaný komponent treba spustiť nasledovné docker príkazy pre build docker image a nasledny push do docker registry.</p><p>Docker images sa taguju primarne dvoma tagmi jeden s verziou komponentu a druhy s verziou celeho app stacku</p><p>Verzia komponentu {COMPONENT_TAG_VERSION}  vychádza z git tagu s verziou, Verzia komponentu sa zapisuje do docker image-u ako ENV parameter, ktorý sa následne zobrazuje aj v aplikácii. String verzie komponentu sa dá získať napríklad príkazom</p><div><div>"git describe --long --always"</div></div><table><tbody><tr><th><p>Názov</p></th><th>Príklad Hodnoty</th><th>Popis</th></tr><tr><td>BUILD_NUMBER</td><td> 2106.1502</td><td>Číslo buildu vo formáte ${BUILD_YEAR, XX}${BUILD_MONTH, XX}.${BUILD_DAY, XX}${BUILDS_TODAY, XX}</td></tr><tr><td colspan="1">COMPONENT_TAG_VERSION</td><td colspan="1">1.2.1-0-g773aa5e</td><td colspan="1">číslo verzie pozostávajúce z verzie, počtu commitov od git tagu a short git hash {GIT_TAG}-{počet_commitov}-g{short_git_hash}</td></tr><tr><td colspan="1">DOCKER_REGISTRY</td><td colspan="1"><a href="http://dockerhub.ai-maps.com">dockerhub.ai-maps.com</a></td><td colspan="1"> </td></tr><tr><td colspan="1">PROJECT</td><td colspan="1">flww_pasport</td><td colspan="1">názov projektu</td></tr><tr><td colspan="1">COMPONENT</td><td colspan="1">frontend</td><td colspan="1">názov komponentu</td></tr><tr><td colspan="1">STACK_VERSION</td><td colspan="1">1.0.0</td><td colspan="1">verzia aplikacneho stacku</td></tr><tr><td colspan="1">DOCKER_USR</td><td colspan="1">pouzivatel</td><td colspan="1">meno používateľa docker registry</td></tr><tr><td colspan="1">DOCKER_PSW</td><td colspan="1">heslo</td><td colspan="1">heslo k docker registry</td></tr></tbody></table><p><br><br></p>
+</div>
+</body>
+</html>

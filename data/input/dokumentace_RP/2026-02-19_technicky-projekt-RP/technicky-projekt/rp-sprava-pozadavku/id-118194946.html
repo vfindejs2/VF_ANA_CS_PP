@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-090: Archivace dat v RoadPlan</title>
+</head>
+<body>
+<div class="wiki-content">
+<p><strong>Rozpracováno!</strong></p><p></p><h1>Požadavek</h1><p>Cílem dokumentu je specifikace způsobu, jakým budou zpracována data aplikace RoadPlan při archivaci.</p><p>Poznámka: Princip archivace je pak doplněn ve formě komentáře v rámci <a href="https://jira.radium.cz/browse/POP-2060">POP-2060</a>.</p><h1>Aktuální stav</h1><p>Aktuálně není archivace na straně RoadPlan řešena.</p><h1>Návrh řešení</h1><p>Než se dostaneme k samotnému zpracování dat, musíme specifikovat obecné principy archivace. Z těch je nutné vycházet při návrhu výsledného řešení…</p><ul><li>Archivovaná data budou dostupná v rámci samostatné instance – tomu musí odpovídat struktura i způsob uchování archivovaných dat.</li><li>Archivace je typicky prováděna každý kalendářní rok, skutečná délka období však není pevně dána (může se lišit dle konkrétního zákazníka).</li><li>Instance s archivovanými záznamy jsou dostupné běžným uživatelů, ti jsou vytvářeni ručně či pomocí synchronizace s AD (dle zákazníka).</li><li>Instance s archivovanými záznamy nejsou napojeny na související ERP a jiné systémy (WinyX, Helios, SAP, FOB…).</li></ul><p>V rámci návrhu pak bude upřesněna odpověď na dále uvedené otevřené body:</p><ul><li>Jaká data mohou být aktuálně na úrovni FLWW2 smazána, aniž by to mělo vliv na chod aplikace RoadPlan (resp. jaká data musí být zachována). </li><li>Jaká data musí být na úrovni FLWW2 zachována nad rámec vybraného kalendářního období, aby nedošlo k omezení funkčnosti na straně RoadPlan.</li></ul><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Xxx</h2><ol><li>Systém…</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

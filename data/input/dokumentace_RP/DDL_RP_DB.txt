@@ -1,0 +1,2671 @@
+-- DROP SCHEMA dbo;
+
+CREATE SCHEMA dbo;
+-- RoadPlan_MPGSK.dbo.TMP_BCKUP_execution_site_20230914 definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.TMP_BCKUP_execution_site_20230914;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.TMP_BCKUP_execution_site_20230914 (
+	id int IDENTITY(1,1) NOT NULL,
+	address_id int NOT NULL,
+	lat float NULL,
+	lng float NULL,
+	contact nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	name nvarchar(150) COLLATE Slovak_CI_AS NULL,
+	customer_id int NOT NULL,
+	active bit NOT NULL,
+	winyx_id_old int NULL,
+	geocoding_state int NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_last_modified_at datetimeoffset NULL,
+	organization_unit_id int NULL
+);
+
+
+-- RoadPlan_MPGSK.dbo.TMP_BCKUP_liquidation_site_20230914 definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.TMP_BCKUP_liquidation_site_20230914;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.TMP_BCKUP_liquidation_site_20230914 (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_id int NULL,
+	lat float NULL,
+	lng float NULL,
+	contact nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	organization_unit_id int NULL,
+	active bit NOT NULL,
+	winyx_id_old int NULL,
+	owned_liquidation_site bit NULL,
+	waste_code nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	geocoding_state int NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_last_modified_at datetimeoffset NULL
+);
+
+
+-- RoadPlan_MPGSK.dbo.activity_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.activity_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.activity_type (
+	id int NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__activity__3213E83FA6AA8BC0 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.address_bak definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.address_bak;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.address_bak (
+	id int IDENTITY(1,1) NOT NULL,
+	street nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	registry_number nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	orientation_number nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	city nvarchar(80) COLLATE Slovak_CI_AS NOT NULL,
+	postal_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	country nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	lat float NULL,
+	lng float NULL,
+	active bit NOT NULL,
+	geocoding_state int NOT NULL,
+	winyx_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_last_modified_at datetimeoffset NULL
+);
+
+
+-- RoadPlan_MPGSK.dbo.address_mod definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.address_mod;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.address_mod (
+	address_id int NOT NULL,
+	cnt int NULL
+);
+
+
+-- RoadPlan_MPGSK.dbo.address_tmp definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.address_tmp;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.address_tmp (
+	id int NOT NULL,
+	street nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	registry_number nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	orientation_number nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	city nvarchar(80) COLLATE Slovak_CI_AS NOT NULL,
+	postal_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	country nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	lat float NULL,
+	lng float NULL,
+	active bit NOT NULL,
+	geocoding_state int NOT NULL,
+	winyx_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_last_modified_at datetimeoffset NULL,
+	e_id int NOT NULL,
+	e_lat float NULL,
+	e_lng float NULL
+);
+
+
+-- RoadPlan_MPGSK.dbo.bank definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.bank;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.bank (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	code nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	swift nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	active bit NOT NULL,
+	winyx_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__bank__3213E83F5E8A0973 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX bank_external_id ON RoadPlan_MPGSK.dbo.bank (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.container_operation_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.container_operation_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.container_operation_type (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	is_available bit NOT NULL,
+	CONSTRAINT PK__containe__3213E83F3B8C8B73 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.database_version definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.database_version;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.database_version (
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	version nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT database_version_pk PRIMARY KEY (name)
+);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_item_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_item_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_item_type (
+	id int IDENTITY(1,1) NOT NULL,
+	code nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT day_performance_item_type_pk PRIMARY KEY (id)
+);
+ CREATE UNIQUE NONCLUSTERED INDEX day_performance_item_type_code_uindex ON RoadPlan_MPGSK.dbo.day_performance_item_type (  code ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_restriction_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_restriction_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_restriction_type (
+	id int IDENTITY(1,1) NOT NULL,
+	code nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT day_performance_restriction_type_pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_snapshot_phase definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_snapshot_phase;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_snapshot_phase (
+	id nvarchar(10) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT day_performance_snapshot_phase_pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_status definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_status;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_status (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__day_perf__3213E83F19FC94A6 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.db_version definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.db_version;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.db_version (
+	commit_type varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	commit_number varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	[timestamp] datetimeoffset NULL,
+	[user] nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT db_version_pkey PRIMARY KEY (commit_type,commit_number)
+);
+
+
+-- RoadPlan_MPGSK.dbo.default_settings definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.default_settings;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.default_settings (
+	name nvarchar(150) COLLATE Slovak_CI_AS NOT NULL,
+	val nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__default___72E12F1A6EC0713C PRIMARY KEY (name)
+);
+
+
+-- RoadPlan_MPGSK.dbo.erp_sync_log definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.erp_sync_log;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.erp_sync_log (
+	id int IDENTITY(1,1) NOT NULL,
+	customer_approval_date datetimeoffset NULL,
+	address_date datetimeoffset NULL,
+	organization_unit_date datetimeoffset NULL,
+	garbage_type_date datetimeoffset NULL,
+	bank_date datetimeoffset NULL,
+	customer_date datetimeoffset NULL,
+	customer_persons_date datetimeoffset NULL,
+	container_type_date datetimeoffset NULL,
+	customer_contract_date datetimeoffset NULL,
+	execution_site_date datetimeoffset NULL,
+	liquidation_site_date datetimeoffset NULL,
+	customer_contract_executon_site_date datetimeoffset NULL,
+	customer_contract_garbage_type_date datetimeoffset NULL,
+	liquidation_site_garbage_type_date datetimeoffset NULL,
+	bank_account_date datetimeoffset NULL,
+	CONSTRAINT PK__winyx_sy__3213E83F7E02B4CC PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.execution_condition_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.execution_condition_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.execution_condition_type (
+	id int IDENTITY(1,1) NOT NULL,
+	code nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__execution_condition_type_id PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.fob_device_version_protocol definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.fob_device_version_protocol;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.fob_device_version_protocol (
+	device_id int NOT NULL,
+	version_protocol nvarchar(20) COLLATE Slovak_CI_AS NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	CONSTRAINT PK__fob_devi__3B085D8BABE300B5 PRIMARY KEY (device_id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.garbage_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.garbage_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.garbage_type (
+	code varchar(15) COLLATE Slovak_CI_AS NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	winyx_id int NULL,
+	active bit NOT NULL,
+	category nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__garbage___3213E83F3F115E1A PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX garbage_type_code_index ON RoadPlan_MPGSK.dbo.garbage_type (  code ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX garbage_type_external_id ON RoadPlan_MPGSK.dbo.garbage_type (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.geocoding_state definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.geocoding_state;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.geocoding_state (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(150) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__geocodin__3213E83F02C769E9 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.knex_migrations definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.knex_migrations;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.knex_migrations (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	batch int NULL,
+	migration_time datetime2 NULL,
+	CONSTRAINT PK__knex_mig__3213E83F086F7077 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.knex_migrations_lock definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.knex_migrations_lock;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.knex_migrations_lock (
+	[index] int IDENTITY(1,1) NOT NULL,
+	is_locked int NULL,
+	CONSTRAINT PK__knex_mig__1D0A334862081136 PRIMARY KEY ([index])
+);
+
+
+-- RoadPlan_MPGSK.dbo.legal_form definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.legal_form;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.legal_form (
+	id int NOT NULL,
+	name nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	active bit NOT NULL,
+	CONSTRAINT PF_legal_form PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.measure_unit definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.measure_unit;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.measure_unit (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	symbol nvarchar(15) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__measure___3213E83FA062006A PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.order_status definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_status;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_status (
+	id int NOT NULL,
+	name nvarchar(150) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK_order_status PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location_action definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_location_action;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_location_action (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__ordered___3213E83FCEDA7112 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location_checking_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_location_checking_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_location_checking_type (
+	id int NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT oslct_id__pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_location_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_location_type (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__ordered___3213E83FE772FA60 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_reschedule_method_code definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_reschedule_method_code;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_reschedule_method_code (
+	[type] nvarchar(200) COLLATE Slovak_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT ordered_service_reschedule_method_code_pk PRIMARY KEY ([type])
+);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_status definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_status;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_status (
+	id int NOT NULL,
+	name nvarchar(25) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__ordered___3213E83F2A164134 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_type_code definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_type_code;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_type_code (
+	[type] nvarchar(200) COLLATE Slovak_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT ordered_service_type_code_pk PRIMARY KEY ([type])
+);
+
+
+-- RoadPlan_MPGSK.dbo.organization_unit_erp_mapping definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.organization_unit_erp_mapping;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.organization_unit_erp_mapping (
+	id int NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	erp_id nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__organiza__3213E83FE74F06E8 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.other_component_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.other_component_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.other_component_type (
+	id int IDENTITY(1,1) NOT NULL,
+	code nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK__other_component_type_id PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.price_calculation_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.price_calculation_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.price_calculation_type (
+	id int NOT NULL,
+	name varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT PK_price_calculation_type PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.sync_settings definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.sync_settings;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.sync_settings (
+	param_name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	value text COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__sync_set__71F4BD70A64C2363 PRIMARY KEY (param_name)
+);
+
+
+-- RoadPlan_MPGSK.dbo.transport_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.transport_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.transport_type (
+	id int NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	name_search varchar(500) COLLATE Slovak_CI_AS NULL,
+	is_available bit NOT NULL,
+	CONSTRAINT PK_transport_type PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.vehicle_realizaton_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.vehicle_realizaton_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.vehicle_realizaton_type (
+	id int NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT vrt_id__pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.vehicle_type_enum definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.vehicle_type_enum;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.vehicle_type_enum (
+	id int IDENTITY(1,1) NOT NULL,
+	code nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT vehicle_type_enum_pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.activity_color definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.activity_color;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.activity_color (
+	id int NOT NULL,
+	color nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	color_selected nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	color_text nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	color_text_selected nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	[order] int NOT NULL,
+	is_default bit NOT NULL,
+	activity_type int NOT NULL,
+	active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT PK__activity__3213E83F31328C43 PRIMARY KEY (id),
+	CONSTRAINT ac_activity_type_fk FOREIGN KEY (activity_type) REFERENCES RoadPlan_MPGSK.dbo.activity_type(id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.address definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.address;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.address (
+	id int IDENTITY(1,1) NOT NULL,
+	street nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	registry_number nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	orientation_number nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	city nvarchar(80) COLLATE Slovak_CI_AS NOT NULL,
+	postal_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	country nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	lat float NULL,
+	lng float NULL,
+	active bit NOT NULL,
+	geocoding_state int NULL,
+	winyx_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_register_external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK_address_id PRIMARY KEY (id),
+	CONSTRAINT FK_address_geocoding_state FOREIGN KEY (geocoding_state) REFERENCES RoadPlan_MPGSK.dbo.geocoding_state(id)
+);
+ CREATE NONCLUSTERED INDEX address_external_id ON RoadPlan_MPGSK.dbo.address (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX address_winyx_id_index ON RoadPlan_MPGSK.dbo.address (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.execution_site_erp_mapping definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.execution_site_erp_mapping;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.execution_site_erp_mapping (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	address_id int NOT NULL,
+	lat float NOT NULL,
+	lng float NOT NULL,
+	CONSTRAINT PK__executio__3213E83F9DAC7B2D PRIMARY KEY (id),
+	CONSTRAINT execution_site_erp_mapping_address_id_fk FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id)
+);
+ CREATE NONCLUSTERED INDEX esem_external_id__index ON RoadPlan_MPGSK.dbo.execution_site_erp_mapping (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.organization_unit definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.organization_unit;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.organization_unit (
+	id int NOT NULL,
+	prefix nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	name nvarchar(150) COLLATE Slovak_CI_AS NOT NULL,
+	sequence_name nvarchar(150) COLLATE Slovak_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_id int NULL,
+	superior_organization_unit int NULL,
+	active bit NOT NULL,
+	winyx_id int NULL,
+	opening_hours_from nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	opening_hours_to nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	dispatcher_contact nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	[level] int NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_last_modified_at datetimeoffset NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	lat float NULL,
+	lng float NULL,
+	geocoding_state int NOT NULL,
+	CONSTRAINT PK__organiza__3213E83F68487DD7 PRIMARY KEY (id),
+	CONSTRAINT FK_organization_unit_adress_id FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id)
+);
+ CREATE NONCLUSTERED INDEX organization_unit_address_id_index ON RoadPlan_MPGSK.dbo.organization_unit (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX organization_unit_external_id ON RoadPlan_MPGSK.dbo.organization_unit (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.organization_unit_info definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.organization_unit_info;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.organization_unit_info (
+	organization_unit_id int NOT NULL,
+	icdph nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	ico nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	dic nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	iban nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__organiza__6000C86A878CC9E5 PRIMARY KEY (organization_unit_id),
+	CONSTRAINT organization_unit_info_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.site definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.site;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.site (
+	id int NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	code nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	parent_site_id int NULL,
+	address_id int NULL,
+	lat float NULL,
+	lng float NULL,
+	active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT site_pk PRIMARY KEY (id),
+	CONSTRAINT site_address_id__fk FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id),
+	CONSTRAINT site_parent_site_id__fk FOREIGN KEY (parent_site_id) REFERENCES RoadPlan_MPGSK.dbo.site(id)
+);
+ CREATE NONCLUSTERED INDEX site_code__idx ON RoadPlan_MPGSK.dbo.site (  code ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX site_name__idx ON RoadPlan_MPGSK.dbo.site (  name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.vehicle definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.vehicle;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.vehicle (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(100) COLLATE Slovak_CI_AS NULL,
+	registration_plate nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	organization_unit_id int NULL,
+	flww_id int NULL,
+	identification nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	winyx_id int NULL,
+	object_type int NULL,
+	device_type_id int NULL,
+	color nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	color_inherited bit NULL,
+	cost_center_code nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	group_id int NULL,
+	parent_name nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	vehicle_full_path nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	driver_id nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	has_gps bit NULL,
+	cost_center_id nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	active bit NULL,
+	evidence_number nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	vin nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	vehicle_type_id int NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	sort_id int NULL,
+	date_insertion datetimeoffset NULL,
+	date_rejection datetimeoffset NULL,
+	realization_type int NULL,
+	CONSTRAINT vehicle_pk PRIMARY KEY (id),
+	CONSTRAINT vehicle_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT vehicle_realizaton_type__fk FOREIGN KEY (realization_type) REFERENCES RoadPlan_MPGSK.dbo.vehicle_realizaton_type(id),
+	CONSTRAINT vehicle_vehicle_type_enum_id_fk FOREIGN KEY (vehicle_type_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle_type_enum(id)
+);
+ CREATE NONCLUSTERED INDEX vehicle_external_id ON RoadPlan_MPGSK.dbo.vehicle (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE UNIQUE NONCLUSTERED INDEX vehicle_flww_id_uindex ON RoadPlan_MPGSK.dbo.vehicle (  flww_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX vehicle_vehicle_type_id_index ON RoadPlan_MPGSK.dbo.vehicle (  vehicle_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.vehicle__transport_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.vehicle__transport_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.vehicle__transport_type (
+	vehicle_id int NOT NULL,
+	transport_type_id int NOT NULL,
+	CONSTRAINT vehicle_trailer__transport_type_pk PRIMARY KEY (vehicle_id,transport_type_id),
+	CONSTRAINT vehicle__transport_type_transport_type_id_fk FOREIGN KEY (transport_type_id) REFERENCES RoadPlan_MPGSK.dbo.transport_type(id),
+	CONSTRAINT vehicle__transport_type_vehicle_id_fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id)
+);
+ CREATE UNIQUE NONCLUSTERED INDEX vehicle_trailer__transport_type_transport_type_id_vehicle_trailer_id_uindex ON RoadPlan_MPGSK.dbo.vehicle__transport_type (  transport_type_id ASC  , vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.container_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.container_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.container_type (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	transport_type_id int NULL,
+	active bit NOT NULL,
+	winyx_id int NULL,
+	organization_unit_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__container_id PRIMARY KEY (id),
+	CONSTRAINT FK_container_type_organization_unit_id FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT FK_transport_type_id FOREIGN KEY (transport_type_id) REFERENCES RoadPlan_MPGSK.dbo.transport_type(id)
+);
+ CREATE NONCLUSTERED INDEX container_type_external_id ON RoadPlan_MPGSK.dbo.container_type (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_settings definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_settings;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_settings (
+	id int NOT NULL,
+	vehicle_id int NOT NULL,
+	valid_from date NOT NULL,
+	valid_to date NULL,
+	opening_hours_from nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	opening_hours_to nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	color nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT day_performance_settings_pk PRIMARY KEY (id),
+	CONSTRAINT day_performance_settings_vehicle_id__fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id)
+);
+ CREATE NONCLUSTERED INDEX day_performance_settings_vehicle_id__idx ON RoadPlan_MPGSK.dbo.day_performance_settings (  vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.employee definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.employee;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.employee (
+	id int NOT NULL,
+	firstname nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	surname nvarchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	active bit NOT NULL,
+	personal_number nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	organizational_unit_id int NULL,
+	email nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	phone nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	valid_from date NULL,
+	valid_to date NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	job_title int NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	CONSTRAINT PK__employee__3213E83F33B7E616 PRIMARY KEY (id),
+	CONSTRAINT employee_organizational_unit_id_fk FOREIGN KEY (organizational_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.flww_event definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.flww_event;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.flww_event (
+	id int IDENTITY(1,1) NOT NULL,
+	flww_event_id int NOT NULL,
+	flww_position_id int NOT NULL,
+	vehicle_id int NOT NULL,
+	flww_vehicle_id int NOT NULL,
+	lat float NOT NULL,
+	lng float NOT NULL,
+	description nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	[date] date NOT NULL,
+	[datetime] datetimeoffset NOT NULL,
+	location nvarchar(MAX) COLLATE Slovak_CI_AS NOT NULL,
+	address_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	event_type int NULL,
+	has_pto_input bit NOT NULL,
+	address_street nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_country nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_city nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_postal_code nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT fe_id__pk PRIMARY KEY (id),
+	CONSTRAINT fe_address_id__fk FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id),
+	CONSTRAINT fe_flww_vehicle_id__fk FOREIGN KEY (flww_vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(flww_id),
+	CONSTRAINT fe_vehicle_id__fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id)
+);
+ CREATE NONCLUSTERED INDEX fe_address_id ON RoadPlan_MPGSK.dbo.flww_event (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fe_date ON RoadPlan_MPGSK.dbo.flww_event (  date ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fe_datetime ON RoadPlan_MPGSK.dbo.flww_event (  datetime ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fe_flww_position_id ON RoadPlan_MPGSK.dbo.flww_event (  flww_position_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fe_flww_vehicle_id ON RoadPlan_MPGSK.dbo.flww_event (  flww_vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fe_vehicle_id ON RoadPlan_MPGSK.dbo.flww_event (  vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.flww_position definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.flww_position;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.flww_position (
+	id int IDENTITY(1,1) NOT NULL,
+	flww_position_id int NOT NULL,
+	flww_ride_id int NULL,
+	vehicle_id int NOT NULL,
+	flww_vehicle_id int NOT NULL,
+	lat float NOT NULL,
+	lng float NOT NULL,
+	inputs_on nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	is_engine_on bit NULL,
+	[date] date NOT NULL,
+	[datetime] datetimeoffset NOT NULL,
+	gps_distance int NULL,
+	speed int NULL,
+	address_id int NULL,
+	areas nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	trailers nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	driver_id int NULL,
+	azimuth int NULL,
+	created_at datetimeoffset NOT NULL,
+	address_street nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_country nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_city nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_postal_code nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	has_trailer bit NOT NULL,
+	record_order bigint NULL,
+	CONSTRAINT fp_id__pk PRIMARY KEY (id),
+	CONSTRAINT fp_address_id__fk FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id),
+	CONSTRAINT fp_driver_id__fk FOREIGN KEY (driver_id) REFERENCES RoadPlan_MPGSK.dbo.employee(id),
+	CONSTRAINT fp_flww_vehicle_id__fk FOREIGN KEY (flww_vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(flww_id),
+	CONSTRAINT fp_vehicle_id__fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id)
+);
+ CREATE NONCLUSTERED INDEX fp_address_id ON RoadPlan_MPGSK.dbo.flww_position (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fp_date ON RoadPlan_MPGSK.dbo.flww_position (  date ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fp_datetime ON RoadPlan_MPGSK.dbo.flww_position (  datetime ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fp_flww_position_id ON RoadPlan_MPGSK.dbo.flww_position (  flww_position_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fp_flww_vehicle_id ON RoadPlan_MPGSK.dbo.flww_position (  flww_vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fp_ro ON RoadPlan_MPGSK.dbo.flww_position (  record_order ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX fp_vehicle_id ON RoadPlan_MPGSK.dbo.flww_position (  vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.liquidation_site definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.liquidation_site;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.liquidation_site (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	address_id int NULL,
+	lat float NULL,
+	lng float NULL,
+	contact nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	organization_unit_id int NULL,
+	active bit NOT NULL,
+	winyx_id_old int NULL,
+	owned_liquidation_site bit NULL,
+	geocoding_state int NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__liquidat__3213E83F8507B4B6 PRIMARY KEY (id),
+	CONSTRAINT FK__liquidati__addre__592635D8 FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id),
+	CONSTRAINT FK_liquidation_site_organization_unit_id FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id)
+);
+ CREATE NONCLUSTERED INDEX liquidation_site_address_id_index ON RoadPlan_MPGSK.dbo.liquidation_site (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX liquidation_site_external_id ON RoadPlan_MPGSK.dbo.liquidation_site (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX liquidation_site_organization_unit_id_index ON RoadPlan_MPGSK.dbo.liquidation_site (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX liquidation_site_winyx_id_index ON RoadPlan_MPGSK.dbo.liquidation_site (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.liquidation_site_accepted_garbage_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.liquidation_site_accepted_garbage_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.liquidation_site_accepted_garbage_type (
+	id int IDENTITY(1,1) NOT NULL,
+	liquidation_site_id int NULL,
+	garbage_type_id int NULL,
+	winyx_id int NULL,
+	active bit NOT NULL,
+	loading_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	organization_unit_id int NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__liquidat__3213E83FFFEF751A PRIMARY KEY (id),
+	CONSTRAINT FK__liquidati__liqui__5C02A283 FOREIGN KEY (liquidation_site_id) REFERENCES RoadPlan_MPGSK.dbo.liquidation_site(id),
+	CONSTRAINT FK_liquidation_site_accepted_garbage_type_garbage_type_id FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id),
+	CONSTRAINT org_unit_id__fk FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id)
+);
+ CREATE NONCLUSTERED INDEX liquidation_site_accepted_garbage_type_external_id ON RoadPlan_MPGSK.dbo.liquidation_site_accepted_garbage_type (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX liquidation_site_accepted_garbage_type_garbage_type_id_index ON RoadPlan_MPGSK.dbo.liquidation_site_accepted_garbage_type (  garbage_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX liquidation_site_accepted_garbage_type_liquidation_site_id_index ON RoadPlan_MPGSK.dbo.liquidation_site_accepted_garbage_type (  liquidation_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.site_vehicle_assignment definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.site_vehicle_assignment;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.site_vehicle_assignment (
+	id int NOT NULL,
+	site_id int NOT NULL,
+	vehicle_id int NOT NULL,
+	valid_from date NOT NULL,
+	valid_to date NULL,
+	active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT site_vehicle_assignment_pk PRIMARY KEY (id),
+	CONSTRAINT site_vehicle_assignment_site_id__fk FOREIGN KEY (site_id) REFERENCES RoadPlan_MPGSK.dbo.site(id),
+	CONSTRAINT site_vehicle_assignment_vehicle_id__fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id)
+);
+ CREATE NONCLUSTERED INDEX site_vehicle_assignment_site_id__idx ON RoadPlan_MPGSK.dbo.site_vehicle_assignment (  site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX site_vehicle_assignment_vehicle_id__idx ON RoadPlan_MPGSK.dbo.site_vehicle_assignment (  vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.[user] definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.[user];
+
+CREATE TABLE RoadPlan_MPGSK.dbo.[user] (
+	id int NOT NULL,
+	name nvarchar(150) COLLATE Slovak_CI_AS NOT NULL,
+	valid_from date NULL,
+	valid_to date NULL,
+	employee_id int NULL,
+	employee_name nvarchar(250) COLLATE Slovak_CI_AS NULL,
+	role_id int NULL,
+	role_name nvarchar(150) COLLATE Slovak_CI_AS NULL,
+	active bit NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	CONSTRAINT PK__user__3213E83F498EEC8D PRIMARY KEY (id),
+	CONSTRAINT user_employee_id_fk FOREIGN KEY (employee_id) REFERENCES RoadPlan_MPGSK.dbo.employee(id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.user_settings definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.user_settings;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.user_settings (
+	user_id int NOT NULL,
+	user_settings nvarchar(MAX) COLLATE Slovak_CI_AS NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	CONSTRAINT user_settings_pk PRIMARY KEY (user_id),
+	CONSTRAINT user_settings_user_id_fk FOREIGN KEY (user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.activity_repetition_rules definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.activity_repetition_rules;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.activity_repetition_rules (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	repetition_rule nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	activity_specification nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	is_unlimited bit NOT NULL,
+	active bit NOT NULL,
+	created_by_user_id int NOT NULL,
+	updated_by_user_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NULL,
+	is_repetition_rule_edited bit NOT NULL,
+	CONSTRAINT PK__activity__3213E83FF382042D PRIMARY KEY (id),
+	CONSTRAINT activity_repetition_rules_created_by_user_id_fk FOREIGN KEY (created_by_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id),
+	CONSTRAINT activity_repetition_rules_updated_by_user_id_fk FOREIGN KEY (updated_by_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.activity definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.activity;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.activity (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	type_id int NOT NULL,
+	organization_unit_id int NOT NULL,
+	[start] datetimeoffset NOT NULL,
+	[end] datetimeoffset NOT NULL,
+	active bit NOT NULL,
+	created_by_user_id int NOT NULL,
+	updated_by_user_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NULL,
+	repetition_rule_id int NULL,
+	color_id int NOT NULL,
+	CONSTRAINT PK__activity__3213E83F1C163902 PRIMARY KEY (id),
+	CONSTRAINT activity_color_id_fk FOREIGN KEY (color_id) REFERENCES RoadPlan_MPGSK.dbo.activity_color(id),
+	CONSTRAINT activity_created_by_user_id_fk FOREIGN KEY (created_by_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id),
+	CONSTRAINT activity_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT activity_repetition_rule_id_fk FOREIGN KEY (repetition_rule_id) REFERENCES RoadPlan_MPGSK.dbo.activity_repetition_rules(id),
+	CONSTRAINT activity_type_id_fk FOREIGN KEY (type_id) REFERENCES RoadPlan_MPGSK.dbo.activity_type(id),
+	CONSTRAINT activity_updated_by_user_id_fk FOREIGN KEY (updated_by_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX activity_repetition_rule_id__idx ON RoadPlan_MPGSK.dbo.activity (  repetition_rule_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX end_id__idx ON RoadPlan_MPGSK.dbo.activity (  end ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX org_unit_id__idx ON RoadPlan_MPGSK.dbo.activity (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX start_id__idx ON RoadPlan_MPGSK.dbo.activity (  start ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX type_id__idx ON RoadPlan_MPGSK.dbo.activity (  type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.activity_order definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.activity_order;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.activity_order (
+	id int IDENTITY(1,1) NOT NULL,
+	activity_id int NOT NULL,
+	customer_name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	customer_id int NULL,
+	execution_site_address_id int NULL,
+	execution_site_id int NULL,
+	vehicle_id int NOT NULL,
+	container_type_id int NULL,
+	garbage_type_id int NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	execution_site_lat float NULL,
+	execution_site_lng float NULL,
+	CONSTRAINT PK__activity__3213E83F5063C55A PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX activity_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  activity_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_type_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  container_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  customer_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_name_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  customer_name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX execution_site_address_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  execution_site_address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX execution_site_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  execution_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX garbage_type_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  garbage_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX vehicle_id__idx ON RoadPlan_MPGSK.dbo.activity_order (  vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.bank_account definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.bank_account;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.bank_account (
+	id int IDENTITY(1,1) NOT NULL,
+	customer_id int NOT NULL,
+	iban varchar(35) COLLATE Slovak_CI_AS NULL,
+	prefix varchar(6) COLLATE Slovak_CI_AS NULL,
+	number varchar(20) COLLATE Slovak_CI_AS NULL,
+	bank_id int NULL,
+	active bit NOT NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	winyx_id_old int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__bank_acc__3213E83FD1916984 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX back_account_winyx_id_index ON RoadPlan_MPGSK.dbo.bank_account (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX bank_account_external_id ON RoadPlan_MPGSK.dbo.bank_account (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.contract definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.contract;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.contract (
+	number varchar(30) COLLATE Slovak_CI_AS NOT NULL,
+	valid_from date NOT NULL,
+	valid_to date NULL,
+	winyx_id_old int NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	customer_id int NULL,
+	organization_unit_id int NULL,
+	active bit NOT NULL,
+	category nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	[type] nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	state nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	cost_center nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	is_internal bit NULL,
+	customer_info nvarchar(80) COLLATE Slovak_CI_AS NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__contract__3213E83F76C6F8BD PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX contract_external_id ON RoadPlan_MPGSK.dbo.contract (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX contract_winyx_id_index ON RoadPlan_MPGSK.dbo.contract (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.contract_accepted_execution_site definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.contract_accepted_execution_site;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.contract_accepted_execution_site (
+	id int IDENTITY(1,1) NOT NULL,
+	contract_id int NOT NULL,
+	execution_site_id int NOT NULL,
+	active bit NOT NULL,
+	winyx_id int NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK_contract_accepted_execution_site PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX contract_accepted_execution_site_active_index ON RoadPlan_MPGSK.dbo.contract_accepted_execution_site (  active ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX contract_accepted_execution_site_contract_id_index ON RoadPlan_MPGSK.dbo.contract_accepted_execution_site (  contract_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX contract_accepted_execution_site_execution_site_id_index ON RoadPlan_MPGSK.dbo.contract_accepted_execution_site (  execution_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX contract_accepted_execution_site_external_id ON RoadPlan_MPGSK.dbo.contract_accepted_execution_site (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.contract_accepted_garbage_type definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.contract_accepted_garbage_type;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.contract_accepted_garbage_type (
+	id int IDENTITY(1,1) NOT NULL,
+	contract_id int NOT NULL,
+	garbage_type_id int NOT NULL,
+	active bit NOT NULL,
+	winyx_id int NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__contract__3213E83F15DA3E5D PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX contract_accepted_garbage_type_contract_id_index ON RoadPlan_MPGSK.dbo.contract_accepted_garbage_type (  contract_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX contract_accepted_garbage_type_external_id ON RoadPlan_MPGSK.dbo.contract_accepted_garbage_type (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX contract_accepted_garbage_type_garbage_type_id_index ON RoadPlan_MPGSK.dbo.contract_accepted_garbage_type (  garbage_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.customer definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.customer;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.customer (
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	legal_form int NULL,
+	identification_number nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	tax_number nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	office_address_id int NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	vat_number varchar(20) COLLATE Slovak_CI_AS NULL,
+	vat_payer bit NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	is_business bit NOT NULL,
+	df_statutory_id int NULL,
+	df_contact_id int NULL,
+	df_execution_site_id int NULL,
+	df_bank_account_id int NULL,
+	winyx_id int NULL,
+	created_by int NULL,
+	active bit NOT NULL,
+	is_synchronizing bit NOT NULL,
+	solvency bit NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	is_created_from_registry bit NOT NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__customer__3213E83F37703C52 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX customer_external_id ON RoadPlan_MPGSK.dbo.customer (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_office_address_idx ON RoadPlan_MPGSK.dbo.customer (  office_address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_winyx_id_index ON RoadPlan_MPGSK.dbo.customer (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.customer_person definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.customer_person;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.customer_person (
+	id int IDENTITY(1,1) NOT NULL,
+	customer_id int NOT NULL,
+	title nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	firstname nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	surname nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	email nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	phone nvarchar(30) COLLATE Slovak_CI_AS NULL,
+	active bit NOT NULL,
+	is_statutory bit NOT NULL,
+	is_contact bit NOT NULL,
+	winyx_id_old int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__customer__3213E83FF0417FEA PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX customer_person_external_id ON RoadPlan_MPGSK.dbo.customer_person (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_person_winyx_id_index ON RoadPlan_MPGSK.dbo.customer_person (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance (
+	id int IDENTITY(1,1) NOT NULL,
+	status int NOT NULL,
+	organization_unit_id int NOT NULL,
+	transport_type int NOT NULL,
+	vehicle_id int NULL,
+	realization_date date NOT NULL,
+	start_time nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	start_day_performance_item_id int NULL,
+	finish_day_performance_item_id int NULL,
+	route_duration int NULL,
+	route_distance int NULL,
+	route_geom geometry NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	has_trailer bit NOT NULL,
+	need_reroute bit NOT NULL,
+	is_confirmation_printed bit NOT NULL,
+	is_created_by_user bit NOT NULL,
+	vehicle_identification nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	realization_type int NOT NULL,
+	color nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__day_perf__3213E83FA2FECB07 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX day_performance_organization_unit_id_index ON RoadPlan_MPGSK.dbo.day_performance (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX day_performance_realization_date_index ON RoadPlan_MPGSK.dbo.day_performance (  realization_date ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX day_performance_status_index ON RoadPlan_MPGSK.dbo.day_performance (  status ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX day_performance_transport_type_index ON RoadPlan_MPGSK.dbo.day_performance (  transport_type ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_interval_restriction definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_interval_restriction;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_interval_restriction (
+	id int IDENTITY(1,1) NOT NULL,
+	day_performance_id int NOT NULL,
+	restriction_type int NOT NULL,
+	time_from nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	time_to nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	CONSTRAINT day_performance_interval_restriction_pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX dpir_dp_id ON RoadPlan_MPGSK.dbo.day_performance_interval_restriction (  day_performance_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_item definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_item;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_item (
+	id int IDENTITY(1,1) NOT NULL,
+	[order] int NOT NULL,
+	day_performance_id int NOT NULL,
+	duration int NULL,
+	has_trailer bit NOT NULL,
+	ordered_service_id int NULL,
+	ordered_service_location_id int NULL,
+	day_performance_item_type int NOT NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__day_perf__3213E83F9F2AE8BA PRIMARY KEY (id)
+);
+ CREATE UNIQUE NONCLUSTERED INDEX day_performance_item_ordered_service_id_uindex ON RoadPlan_MPGSK.dbo.day_performance_item (  ordered_service_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE UNIQUE NONCLUSTERED INDEX day_performance_item_ordered_service_location_id_uindex ON RoadPlan_MPGSK.dbo.day_performance_item (  ordered_service_location_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX dpi_dp_id ON RoadPlan_MPGSK.dbo.day_performance_item (  day_performance_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_realization definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_realization;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_realization (
+	id int IDENTITY(1,1) NOT NULL,
+	day_performance_id int NOT NULL,
+	active bit NOT NULL,
+	completed bit NOT NULL,
+	traveled_distance int NOT NULL,
+	start_date_time datetimeoffset NULL,
+	finish_date_time datetimeoffset NULL,
+	route geometry NULL,
+	traveled_distance_with_trailer int NOT NULL,
+	percentage_usage float NOT NULL,
+	route_duration_in_minutes int NOT NULL,
+	is_finished bit NOT NULL,
+	note nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	confirmed_by int NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	confirmation_datetime datetimeoffset NULL,
+	CONSTRAINT day_performance_realization_pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX day_performance_realization_day_performance_id_active_index ON RoadPlan_MPGSK.dbo.day_performance_realization (  day_performance_id ASC  , active ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE UNIQUE NONCLUSTERED INDEX day_performance_realization_day_performance_id_uindex ON RoadPlan_MPGSK.dbo.day_performance_realization (  day_performance_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_snapshot definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_snapshot;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_snapshot (
+	id int IDENTITY(1,1) NOT NULL,
+	day_performance_id int NOT NULL,
+	day_performance_snapshot nvarchar(MAX) COLLATE Slovak_CI_AS NOT NULL,
+	snapshot_phase nvarchar(10) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	CONSTRAINT day_performance_snapshot_pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_trailers definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.day_performance_trailers;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.day_performance_trailers (
+	id int IDENTITY(1,1) NOT NULL,
+	day_performance_id int NOT NULL,
+	trailer_id int NOT NULL,
+	CONSTRAINT day_performance_trailers_pk PRIMARY KEY (id)
+);
+ CREATE UNIQUE NONCLUSTERED INDEX day_performance_trailers_day_performance_id_trailer_id_uindex ON RoadPlan_MPGSK.dbo.day_performance_trailers (  day_performance_id ASC  , trailer_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.execution_site definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.execution_site;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.execution_site (
+	id int IDENTITY(1,1) NOT NULL,
+	address_id int NOT NULL,
+	lat float NULL,
+	lng float NULL,
+	contact nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	customer_id int NOT NULL,
+	active bit NOT NULL,
+	winyx_id_old int NULL,
+	geocoding_state int NULL,
+	winyx_id nvarchar(50) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	organization_unit_id int NULL,
+	external_id nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__executio__3213E83F6D08EB65 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX execution_site_active_index ON RoadPlan_MPGSK.dbo.execution_site (  active ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX execution_site_address_id_index ON RoadPlan_MPGSK.dbo.execution_site (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX execution_site_customer_id_index ON RoadPlan_MPGSK.dbo.execution_site (  customer_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX execution_site_external_id ON RoadPlan_MPGSK.dbo.execution_site (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX execution_site_winyx_id_index ON RoadPlan_MPGSK.dbo.execution_site (  winyx_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.fob_device_day_performance definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.fob_device_day_performance;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.fob_device_day_performance (
+	day_performance_id int NOT NULL,
+	device_id int NOT NULL,
+	route nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	route_version nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	last_change_route_datetime datetimeoffset NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	summary_route_itinerary nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	summary_route_itinerary_version nvarchar(20) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__fob_devi__802457AE67BB4940 PRIMARY KEY (day_performance_id)
+);
+ CREATE NONCLUSTERED INDEX fddp_device_id ON RoadPlan_MPGSK.dbo.fob_device_day_performance (  device_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization (
+	id int IDENTITY(1,1) NOT NULL,
+	message_identifier nvarchar(MAX) COLLATE Slovak_CI_AS NOT NULL,
+	flww_vehicle_id int NOT NULL,
+	ordered_service_location_id int NULL,
+	checking_type int NOT NULL,
+	checking_datetime datetimeoffset NOT NULL,
+	lat float NOT NULL,
+	lng float NOT NULL,
+	address_id int NULL,
+	created_at datetimeoffset NOT NULL,
+	CONSTRAINT foslr_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX foslr_address_id__idx ON RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX foslr_flww_vehicle_id__idx ON RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization (  flww_vehicle_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX foslr_ordered_service_location_id__idx ON RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization (  ordered_service_location_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.[order] definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.[order];
+
+CREATE TABLE RoadPlan_MPGSK.dbo.[order] (
+	created_datetime datetimeoffset NULL,
+	status int NOT NULL,
+	organization_unit_id int NULL,
+	contact_employee_id int NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	deposit numeric(9,2) NOT NULL,
+	customer_id int NULL,
+	customer_email nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	customer_phone nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	customer_office_address_id int NULL,
+	total_price numeric(20,2) NOT NULL,
+	bank_account_id int NULL,
+	customer_statutory_id int NULL,
+	customer_contact_id int NULL,
+	created_user_id int NULL,
+	updated_datetime datetimeoffset NULL,
+	updated_user_id int NULL,
+	order_number varchar(20) COLLATE Slovak_CI_AS NOT NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	is_order_printed bit NOT NULL,
+	is_deposit_confirmation_printed bit NOT NULL,
+	on_demand bit NOT NULL,
+	number_of_generated_ordered_services int NOT NULL,
+	created_by_system bit NOT NULL,
+	CONSTRAINT PK__order__3213E83F339FAB6E PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX order_contact_emplyee_id_idx ON RoadPlan_MPGSK.dbo.order (  contact_employee_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_created_datetime_index ON RoadPlan_MPGSK.dbo.order (  created_datetime ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_customer_id_idx ON RoadPlan_MPGSK.dbo.order (  customer_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_customer_office_address_idx ON RoadPlan_MPGSK.dbo.order (  customer_office_address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_operation_id_idx ON RoadPlan_MPGSK.dbo.order (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] WITH NOCHECK ADD CONSTRAINT CK__order__deposit__436BFEE3 CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.order_favorites definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_favorites;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_favorites (
+	id int IDENTITY(1,1) NOT NULL,
+	order_id int NOT NULL,
+	user_id int NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	CONSTRAINT PK__order_fa__3213E83F7AE8623E PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.order_item definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_item;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_item (
+	id int IDENTITY(1,1) NOT NULL,
+	based_on_contract bit NULL,
+	contract_id int NULL,
+	execution_site_id int NULL,
+	execution_site_contact nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	execution_site_note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	price_calculation_type_id int NULL,
+	order_id int NULL,
+	item_number int NULL,
+	CONSTRAINT PK__order_it__3213E83F4816E961 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX order_item_contract_id_index ON RoadPlan_MPGSK.dbo.order_item (  contract_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_item_execution_site_id_index ON RoadPlan_MPGSK.dbo.order_item (  execution_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_item_order_id_index ON RoadPlan_MPGSK.dbo.order_item (  order_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.order_item_container definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_item_container;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_item_container (
+	id int IDENTITY(1,1) NOT NULL,
+	order_item_id int NOT NULL,
+	transport_type_id int NULL,
+	container_type_id int NULL,
+	quantity int NULL,
+	owned_container bit NULL,
+	CONSTRAINT PK__order_it__3213E83F2E0AE8AD PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX oic_oi_id ON RoadPlan_MPGSK.dbo.order_item_container (  order_item_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.order_item_container_liquidation definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_item_container_liquidation;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_item_container_liquidation (
+	id int IDENTITY(1,1) NOT NULL,
+	order_item_container_id int NOT NULL,
+	garbage_type_id int NULL,
+	liquidation_site_id int NULL,
+	loading_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__order_it__3213E83FA9A7B0CF PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX oicl_garb_id ON RoadPlan_MPGSK.dbo.order_item_container_liquidation (  garbage_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oicl_liq_id ON RoadPlan_MPGSK.dbo.order_item_container_liquidation (  liquidation_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oicl_oi_container_id ON RoadPlan_MPGSK.dbo.order_item_container_liquidation (  order_item_container_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.order_item_container_operation definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_item_container_operation;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_item_container_operation (
+	id int IDENTITY(1,1) NOT NULL,
+	order_item_container_id int NOT NULL,
+	container_operation_type_id int NOT NULL,
+	repetitive bit NOT NULL,
+	execution_condition varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	date_from date NULL,
+	date_to date NULL,
+	unlimited_repetition bit NULL,
+	repetition_rule varchar(MAX) COLLATE Slovak_CI_AS NULL,
+	time_from varchar(150) COLLATE Slovak_CI_AS NULL,
+	time_to varchar(150) COLLATE Slovak_CI_AS NULL,
+	final_execution_site_id int NULL,
+	final_liquidation_site_id int NULL,
+	CONSTRAINT PK__order_it__3213E83FD8314EF9 PRIMARY KEY (id)
+);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_operation WITH NOCHECK ADD CONSTRAINT CK__order_ite__execu__695C9DA1 CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction (
+	id int IDENTITY(1,1) NOT NULL,
+	order_item_id int NOT NULL,
+	garbage_type_id int NULL,
+	measure_unit_id int NULL,
+	unit_price numeric(20,2) NULL,
+	unit_count int NULL,
+	CONSTRAINT PK__order_it__3213E83FEB60C032 PRIMARY KEY (id)
+);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction WITH NOCHECK ADD CONSTRAINT CK__order_ite__unit___7D63964E CHECK (null);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction WITH NOCHECK ADD CONSTRAINT CK__order_ite__unit___7E57BA87 CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component (
+	id int IDENTITY(1,1) NOT NULL,
+	order_item_id int NOT NULL,
+	component varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	measure_unit_id int NULL,
+	unit_price numeric(20,2) NULL,
+	unit_count int NULL,
+	CONSTRAINT PK__order_it__3213E83FEAB16542 PRIMARY KEY (id)
+);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component WITH NOCHECK ADD CONSTRAINT CK__order_ite__compo__02284B6B CHECK (null);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component WITH NOCHECK ADD CONSTRAINT CK__order_ite__unit___041093DD CHECK (null);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component WITH NOCHECK ADD CONSTRAINT CK__order_ite__unit___0504B816 CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.order_template definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Slovak_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	created_datetime datetimeoffset NULL,
+	updated_datetime datetimeoffset NULL,
+	created_user_id int NULL,
+	updated_user_id int NULL,
+	organization_unit_id int NULL,
+	customer_id int NULL,
+	customer_email nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	customer_phone nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	customer_office_address_id int NULL,
+	total_price numeric(20,2) NOT NULL,
+	bank_account_id int NULL,
+	customer_statutory_id int NULL,
+	customer_contact_id int NULL,
+	CONSTRAINT PK__order_te__3213E83F6A30C649 PRIMARY KEY (id),
+	CONSTRAINT UQ__order_te__72E12F1B1F98B2C1 UNIQUE (name)
+);
+ CREATE NONCLUSTERED INDEX order_template_organization_unit_id_index ON RoadPlan_MPGSK.dbo.order_template (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template_item;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template_item (
+	id int IDENTITY(1,1) NOT NULL,
+	based_on_contract bit NULL,
+	contract_id int NULL,
+	execution_site_id int NULL,
+	execution_site_contact nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	execution_site_note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	price_calculation_type_id int NULL,
+	order_template_id int NULL,
+	item_number int NULL,
+	CONSTRAINT PK__order_te__3213E83F76969D2E PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_container definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template_item_container;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template_item_container (
+	id int IDENTITY(1,1) NOT NULL,
+	order_template_item_id int NULL,
+	transport_type_id int NULL,
+	container_type_id int NULL,
+	quantity int NULL,
+	owned_container bit NULL,
+	CONSTRAINT PK__order_te__3213E83F00200768 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_container_liquidation definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template_item_container_liquidation;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template_item_container_liquidation (
+	id int IDENTITY(1,1) NOT NULL,
+	order_template_item_container_id int NULL,
+	garbage_type_id int NULL,
+	liquidation_site_id int NULL,
+	loading_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__order_te__3213E83F06CD04F7 PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_container_operation definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation (
+	id int IDENTITY(1,1) NOT NULL,
+	order_template_item_container_id int NOT NULL,
+	container_operation_type_id int NOT NULL,
+	execution_condition varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	final_execution_site_id int NULL,
+	final_liquidation_site_id int NULL,
+	CONSTRAINT PK__order_te__3213E83F236943A5 PRIMARY KEY (id)
+);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation WITH NOCHECK ADD CONSTRAINT CK__order_tem__execu__2739D489 CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction (
+	id int IDENTITY(1,1) NOT NULL,
+	order_template_item_id int NOT NULL,
+	garbage_type_id int NULL,
+	measure_unit_id int NULL,
+	unit_price numeric(20,2) NULL,
+	unit_count int NULL,
+	CONSTRAINT PK__order_te__3213E83F0D7A0286 PRIMARY KEY (id)
+);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction WITH NOCHECK ADD CONSTRAINT CK__order_tem__unit___1AD3FDA4 CHECK (null);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction WITH NOCHECK ADD CONSTRAINT CK__order_tem__unit___1BC821DD CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component (
+	id int IDENTITY(1,1) NOT NULL,
+	order_template_item_id int NOT NULL,
+	component varchar(50) COLLATE Slovak_CI_AS NOT NULL,
+	measure_unit_id int NULL,
+	unit_price numeric(20,2) NULL,
+	unit_count int NULL,
+	CONSTRAINT PK__order_te__3213E83F14270015 PRIMARY KEY (id)
+);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component WITH NOCHECK ADD CONSTRAINT CK__order_tem__compo__17036CC0 CHECK (null);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component WITH NOCHECK ADD CONSTRAINT CK__order_tem__unit___18EBB532 CHECK (null);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component WITH NOCHECK ADD CONSTRAINT CK__order_tem__unit___19DFD96B CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service (
+	id int IDENTITY(1,1) NOT NULL,
+	status int NOT NULL,
+	container_operation_id int NOT NULL,
+	container_id int NOT NULL,
+	container_number int NOT NULL,
+	date_from date NULL,
+	date_to date NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	time_from varchar(150) COLLATE Slovak_CI_AS NULL,
+	time_to varchar(150) COLLATE Slovak_CI_AS NULL,
+	parent_ordered_service_id int NULL,
+	child_ordered_service_id int NULL,
+	temporary_storage_ordered_service_id int NULL,
+	[type] nvarchar(200) COLLATE Slovak_CI_AS NULL,
+	day_performance_realization_id int NULL,
+	is_realized bit NOT NULL,
+	realization_order int NULL,
+	is_according_to_plan bit NOT NULL,
+	confirmed_by int NULL,
+	rescheduled_to_ordered_service_id int NULL,
+	rescheduled_from_ordered_service_id int NULL,
+	reschedule_method nvarchar(200) COLLATE Slovak_CI_AS NULL,
+	confirmation_datetime datetimeoffset NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	is_created_by_user bit NOT NULL,
+	created_by int NULL,
+	parent_ordered_service_split_type nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	child_ordered_service_split_type nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	split_order int NULL,
+	ordered_service_chain_ids nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	on_demand bit NOT NULL,
+	ordering_within_order int NULL,
+	ride_identifier nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	vehicle_evidence_number nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	default_realization_date date NULL,
+	CONSTRAINT PK__ordered___3213E83F2DE6D218 PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX ordered_service_child_ordered_service_id_index ON RoadPlan_MPGSK.dbo.ordered_service (  child_ordered_service_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_date_from_index ON RoadPlan_MPGSK.dbo.ordered_service (  date_from ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_date_to_index ON RoadPlan_MPGSK.dbo.ordered_service (  date_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_day_performance_realization_id_index ON RoadPlan_MPGSK.dbo.ordered_service (  day_performance_realization_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_parent_ordered_service_id_index ON RoadPlan_MPGSK.dbo.ordered_service (  parent_ordered_service_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_status_index ON RoadPlan_MPGSK.dbo.ordered_service (  status ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX os_cont_id ON RoadPlan_MPGSK.dbo.ordered_service (  container_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX os_cont_operat_id ON RoadPlan_MPGSK.dbo.ordered_service (  container_operation_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX os_default_realization_date__index ON RoadPlan_MPGSK.dbo.ordered_service (  default_realization_date ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX os_ride_identifier__index ON RoadPlan_MPGSK.dbo.ordered_service (  ride_identifier ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service WITH NOCHECK ADD CONSTRAINT CK__ordered_s__conta__31B762FC CHECK (null);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_location;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_location (
+	id int IDENTITY(1,1) NOT NULL,
+	[order] int NOT NULL,
+	[action] int NOT NULL,
+	[type] int NOT NULL,
+	address_id int NULL,
+	lat float NULL,
+	lng float NULL,
+	liquidation_site_id int NULL,
+	[execute] bit NULL,
+	organization_unit_id int NULL,
+	valid bit NULL,
+	next_location_distance float NULL,
+	next_location_time float NULL,
+	route_to_next_location geometry NULL,
+	ordered_service_id int NULL,
+	note nvarchar(255) COLLATE Slovak_CI_AS NULL,
+	time_window_start nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	time_window_end nvarchar(5) COLLATE Slovak_CI_AS NOT NULL,
+	is_time_window_met bit NOT NULL,
+	duration int NULL,
+	is_generated bit NOT NULL,
+	manipulation_time_in_minutes int NULL,
+	is_monitored bit NOT NULL,
+	execution_site_id int NULL,
+	manual_address_change bit NOT NULL,
+	has_flat_rate bit NULL,
+	liquidation_garbage_types nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	loading_code nvarchar(15) COLLATE Slovak_CI_AS NULL,
+	CONSTRAINT PK__ordered___3213E83F38E01ADB PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX ordered_service_location_address_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_location_es_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location (  execution_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_location_ls_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location (  liquidation_site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_location_ordered_service_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location (  ordered_service_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_location_ou_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location_realization definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.ordered_service_location_realization;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.ordered_service_location_realization (
+	id int IDENTITY(1,1) NOT NULL,
+	day_performance_realization_id int NOT NULL,
+	operation_date_time datetimeoffset NULL,
+	lat float NULL,
+	lng float NULL,
+	ordered_service_location_id int NOT NULL,
+	note nvarchar(MAX) COLLATE Slovak_CI_AS NULL,
+	is_visited bit NOT NULL,
+	checking_type int NOT NULL,
+	realization_record_identifier int NULL,
+	CONSTRAINT ordered_service_location_realization_pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX ordered_service_location_realization_day_performance_realization_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location_realization (  day_performance_realization_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ordered_service_location_realization_ordered_service_location_id_index ON RoadPlan_MPGSK.dbo.ordered_service_location_realization (  ordered_service_location_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- RoadPlan_MPGSK.dbo.temporary_day_performance definition
+
+-- Drop table
+
+-- DROP TABLE RoadPlan_MPGSK.dbo.temporary_day_performance;
+
+CREATE TABLE RoadPlan_MPGSK.dbo.temporary_day_performance (
+	id int IDENTITY(1,1) NOT NULL,
+	day_performance_id int NOT NULL,
+	day_performance_snapshot nvarchar(MAX) COLLATE Slovak_CI_AS NOT NULL,
+	created_at datetime NOT NULL,
+	ordered_service_count int NOT NULL,
+	route_distance int NOT NULL,
+	route_duration int NOT NULL,
+	CONSTRAINT temporary_day_performance_pk PRIMARY KEY (id)
+);
+
+
+-- RoadPlan_MPGSK.dbo.activity_order foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_customer_id_fk FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_order_activity_id_fk FOREIGN KEY (activity_id) REFERENCES RoadPlan_MPGSK.dbo.activity(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_order_container_type_id_fk FOREIGN KEY (container_type_id) REFERENCES RoadPlan_MPGSK.dbo.container_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_order_execution_site_address_id_fk FOREIGN KEY (execution_site_address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_order_execution_site_id_fk FOREIGN KEY (execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_order_garbage_type_id_fk FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.activity_order ADD CONSTRAINT activity_order_vehicle_id_fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id);
+
+
+-- RoadPlan_MPGSK.dbo.bank_account foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.bank_account ADD CONSTRAINT FK_bank_account_bank_id FOREIGN KEY (bank_id) REFERENCES RoadPlan_MPGSK.dbo.bank(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.bank_account ADD CONSTRAINT FK_bank_account_customer_id FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id);
+
+
+-- RoadPlan_MPGSK.dbo.contract foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.contract ADD CONSTRAINT FK_contract_customer_id FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.contract ADD CONSTRAINT FK_contract_organization_unit_id FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id);
+
+
+-- RoadPlan_MPGSK.dbo.contract_accepted_execution_site foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.contract_accepted_execution_site ADD CONSTRAINT FK_contract_accepted_execution_site_contract_id FOREIGN KEY (contract_id) REFERENCES RoadPlan_MPGSK.dbo.contract(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.contract_accepted_execution_site ADD CONSTRAINT FK_contract_accepted_execution_site_execution_site_id FOREIGN KEY (execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+
+
+-- RoadPlan_MPGSK.dbo.contract_accepted_garbage_type foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.contract_accepted_garbage_type ADD CONSTRAINT FK_contract_accepted_gatbage_type_garbage_type_id FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.contract_accepted_garbage_type ADD CONSTRAINT FK_contract_accepted_gatbage_type_site_contract_id FOREIGN KEY (contract_id) REFERENCES RoadPlan_MPGSK.dbo.contract(id);
+
+
+-- RoadPlan_MPGSK.dbo.customer foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.customer ADD CONSTRAINT FK__customer__office__370627FE FOREIGN KEY (office_address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.customer ADD CONSTRAINT FK_customer_created_by FOREIGN KEY (created_by) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+ALTER TABLE RoadPlan_MPGSK.dbo.customer ADD CONSTRAINT FK_customer_df_bank_account_id FOREIGN KEY (df_bank_account_id) REFERENCES RoadPlan_MPGSK.dbo.bank_account(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.customer ADD CONSTRAINT FK_customer_df_contact_id FOREIGN KEY (df_contact_id) REFERENCES RoadPlan_MPGSK.dbo.customer_person(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.customer ADD CONSTRAINT FK_customer_df_execution_site_id FOREIGN KEY (df_execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.customer ADD CONSTRAINT FK_customer_df_statutory_id FOREIGN KEY (df_statutory_id) REFERENCES RoadPlan_MPGSK.dbo.customer_person(id);
+
+
+-- RoadPlan_MPGSK.dbo.customer_person foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.customer_person ADD CONSTRAINT FK_customer_id FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT FK_day_performance_organization_unit_id FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT FK_day_performance_status FOREIGN KEY (status) REFERENCES RoadPlan_MPGSK.dbo.day_performance_status(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT FK_day_performance_transport_type FOREIGN KEY (transport_type) REFERENCES RoadPlan_MPGSK.dbo.transport_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT day_performance_day_performance_item_id_fk FOREIGN KEY (start_day_performance_item_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance_item(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT day_performance_day_performance_item_id_fk_2 FOREIGN KEY (finish_day_performance_item_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance_item(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT day_performance_realizaton_type__fk FOREIGN KEY (realization_type) REFERENCES RoadPlan_MPGSK.dbo.vehicle_realizaton_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance ADD CONSTRAINT day_performance_vehicle_id_fk FOREIGN KEY (vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_interval_restriction foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_interval_restriction ADD CONSTRAINT day_performance_interval_restriction_day_performance_id_fk FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_interval_restriction ADD CONSTRAINT day_performance_interval_restriction_day_performance_restriction_type_id_fk FOREIGN KEY (restriction_type) REFERENCES RoadPlan_MPGSK.dbo.day_performance_restriction_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_item foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_item ADD CONSTRAINT FK_day_performance_item_day_performance_id FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_item ADD CONSTRAINT FK_day_performance_item_ordered_service_id FOREIGN KEY (ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_item ADD CONSTRAINT FK_day_performance_item_ordered_service_location_id FOREIGN KEY (ordered_service_location_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_item ADD CONSTRAINT day_performance_item_day_performance_item_type_id_fk FOREIGN KEY (day_performance_item_type) REFERENCES RoadPlan_MPGSK.dbo.day_performance_item_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_realization foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_realization ADD CONSTRAINT day_performance_realization_day_performance_id_fk FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_realization ADD CONSTRAINT day_performance_realization_user_id_fk FOREIGN KEY (confirmed_by) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_snapshot foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_snapshot ADD CONSTRAINT day_performance_snapshot_day_performance_id_fk FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_snapshot ADD CONSTRAINT day_performance_snapshot_day_performance_snapshot_phase_id_fk FOREIGN KEY (snapshot_phase) REFERENCES RoadPlan_MPGSK.dbo.day_performance_snapshot_phase(id);
+
+
+-- RoadPlan_MPGSK.dbo.day_performance_trailers foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_trailers ADD CONSTRAINT day_performance_trailers_day_performance_id_fk FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.day_performance_trailers ADD CONSTRAINT day_performance_trailers_vehicle_id_fk FOREIGN KEY (trailer_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(id) ON DELETE CASCADE;
+
+
+-- RoadPlan_MPGSK.dbo.execution_site foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.execution_site ADD CONSTRAINT FK__execution__addre__16644E42 FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.execution_site ADD CONSTRAINT FK_execution_site_customer_id FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id);
+
+
+-- RoadPlan_MPGSK.dbo.fob_device_day_performance foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.fob_device_day_performance ADD CONSTRAINT fob_device_day_performance_day_performance_id_fk FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id) ON DELETE CASCADE;
+
+
+-- RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization ADD CONSTRAINT foslr_address_id__fk FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization ADD CONSTRAINT foslr_checking_type__fk FOREIGN KEY (checking_type) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location_checking_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization ADD CONSTRAINT foslr_flww_vehicle_id__fk FOREIGN KEY (flww_vehicle_id) REFERENCES RoadPlan_MPGSK.dbo.vehicle(flww_id);
+ALTER TABLE RoadPlan_MPGSK.dbo.fob_ordered_service_location_realization ADD CONSTRAINT foslr_ordered_service_location_id__fk FOREIGN KEY (ordered_service_location_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location(id);
+
+
+-- RoadPlan_MPGSK.dbo.[order] foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK__order__bank_acco__536D5C82 FOREIGN KEY (bank_account_id) REFERENCES RoadPlan_MPGSK.dbo.bank_account(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK__order__contact_e__0BB1B5A5 FOREIGN KEY (contact_employee_id) REFERENCES RoadPlan_MPGSK.dbo.employee(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK__order__customer___4830B400 FOREIGN KEY (customer_office_address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK__order__customer___5555A4F4 FOREIGN KEY (customer_statutory_id) REFERENCES RoadPlan_MPGSK.dbo.customer_person(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK__order__customer___5649C92D FOREIGN KEY (customer_contact_id) REFERENCES RoadPlan_MPGSK.dbo.customer_person(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK_order_customer_id FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT FK_order_status FOREIGN KEY (status) REFERENCES RoadPlan_MPGSK.dbo.order_status(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT order_created_user_id_fk FOREIGN KEY (created_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT order_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.[order] ADD CONSTRAINT order_updated_user_id_fk FOREIGN KEY (updated_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+
+
+-- RoadPlan_MPGSK.dbo.order_favorites foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_favorites ADD CONSTRAINT order_id_fk FOREIGN KEY (order_id) REFERENCES RoadPlan_MPGSK.dbo.[order](id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_favorites ADD CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id) ON DELETE CASCADE;
+
+
+-- RoadPlan_MPGSK.dbo.order_item foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item ADD CONSTRAINT FK__order_ite__contr__0E8E2250 FOREIGN KEY (contract_id) REFERENCES RoadPlan_MPGSK.dbo.contract(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item ADD CONSTRAINT FK__order_ite__execu__1EF99443 FOREIGN KEY (execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item ADD CONSTRAINT FK_order_id FOREIGN KEY (order_id) REFERENCES RoadPlan_MPGSK.dbo.[order](id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item ADD CONSTRAINT FK_price_calculation_type FOREIGN KEY (price_calculation_type_id) REFERENCES RoadPlan_MPGSK.dbo.price_calculation_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_item_container foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container ADD CONSTRAINT FK__order_ite__order__33008CF0 FOREIGN KEY (order_item_id) REFERENCES RoadPlan_MPGSK.dbo.order_item(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container ADD CONSTRAINT FK_container_type FOREIGN KEY (container_type_id) REFERENCES RoadPlan_MPGSK.dbo.container_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container ADD CONSTRAINT FK_transport_type FOREIGN KEY (transport_type_id) REFERENCES RoadPlan_MPGSK.dbo.transport_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_item_container_liquidation foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_liquidation ADD CONSTRAINT FK__order_ite__liqui__61BB7BD9 FOREIGN KEY (liquidation_site_id) REFERENCES RoadPlan_MPGSK.dbo.liquidation_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_liquidation ADD CONSTRAINT FK__order_ite__order__5FD33367 FOREIGN KEY (order_item_container_id) REFERENCES RoadPlan_MPGSK.dbo.order_item_container(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_liquidation ADD CONSTRAINT FK_order_item_container_liquidation_garbage_type_id FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_item_container_operation foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_operation ADD CONSTRAINT FK__order_ite__conta__68687968 FOREIGN KEY (container_operation_type_id) REFERENCES RoadPlan_MPGSK.dbo.container_operation_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_operation ADD CONSTRAINT FK__order_ite__order__6774552F FOREIGN KEY (order_item_container_id) REFERENCES RoadPlan_MPGSK.dbo.order_item_container(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_operation ADD CONSTRAINT final_execution_site_id_fk FOREIGN KEY (final_execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_container_operation ADD CONSTRAINT oico_final_liquidation_site_id_fk FOREIGN KEY (final_liquidation_site_id) REFERENCES RoadPlan_MPGSK.dbo.liquidation_site(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction ADD CONSTRAINT FK__order_ite__measu__7C6F7215 FOREIGN KEY (measure_unit_id) REFERENCES RoadPlan_MPGSK.dbo.measure_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction ADD CONSTRAINT FK_order_item_price_calculation_garbage_transaction_garbage_type_id FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_garbage_transaction ADD CONSTRAINT FK_order_item_price_calculation_garbage_transaction_order_idem_id FOREIGN KEY (order_item_id) REFERENCES RoadPlan_MPGSK.dbo.order_item(id) ON DELETE CASCADE;
+
+
+-- RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component ADD CONSTRAINT FK__order_ite__measu__031C6FA4 FOREIGN KEY (measure_unit_id) REFERENCES RoadPlan_MPGSK.dbo.measure_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_item_price_calculation_other_component ADD CONSTRAINT FK__order_ite__order__01342732 FOREIGN KEY (order_item_id) REFERENCES RoadPlan_MPGSK.dbo.order_item(id) ON DELETE CASCADE;
+
+
+-- RoadPlan_MPGSK.dbo.order_template foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK__order_tem__bank___71D1E811 FOREIGN KEY (bank_account_id) REFERENCES RoadPlan_MPGSK.dbo.bank_account(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK__order_tem__custo__6FE99F9F FOREIGN KEY (customer_office_address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK__order_tem__custo__72C60C4A FOREIGN KEY (customer_statutory_id) REFERENCES RoadPlan_MPGSK.dbo.customer_person(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK__order_tem__custo__73BA3083 FOREIGN KEY (customer_contact_id) REFERENCES RoadPlan_MPGSK.dbo.customer_person(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK__order_tem__organ__6EF57B66 FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK_order_template_created_user_id FOREIGN KEY (created_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK_order_template_customer_id FOREIGN KEY (customer_id) REFERENCES RoadPlan_MPGSK.dbo.customer(id) ON DELETE SET NULL;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template ADD CONSTRAINT FK_order_template_updated_user_id FOREIGN KEY (updated_user_id) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item ADD CONSTRAINT FK__order_tem__contr__797309D9 FOREIGN KEY (contract_id) REFERENCES RoadPlan_MPGSK.dbo.contract(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item ADD CONSTRAINT FK__order_tem__execu__7A672E12 FOREIGN KEY (execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item ADD CONSTRAINT FK__order_tem__order__7C4F7684 FOREIGN KEY (order_template_id) REFERENCES RoadPlan_MPGSK.dbo.order_template(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item ADD CONSTRAINT FK__order_tem__price__7B5B524B FOREIGN KEY (price_calculation_type_id) REFERENCES RoadPlan_MPGSK.dbo.price_calculation_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_container foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container ADD CONSTRAINT FK__order_tem__conta__03F0984C FOREIGN KEY (container_type_id) REFERENCES RoadPlan_MPGSK.dbo.container_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container ADD CONSTRAINT FK__order_tem__order__02084FDA FOREIGN KEY (order_template_item_id) REFERENCES RoadPlan_MPGSK.dbo.order_template_item(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container ADD CONSTRAINT FK__order_tem__trans__02FC7413 FOREIGN KEY (transport_type_id) REFERENCES RoadPlan_MPGSK.dbo.transport_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_container_liquidation foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_liquidation ADD CONSTRAINT FK__order_tem__liqui__0A9D95DB FOREIGN KEY (liquidation_site_id) REFERENCES RoadPlan_MPGSK.dbo.liquidation_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_liquidation ADD CONSTRAINT FK__order_tem__order__08B54D69 FOREIGN KEY (order_template_item_container_id) REFERENCES RoadPlan_MPGSK.dbo.order_template_item_container(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_liquidation ADD CONSTRAINT FK_order_template_item_container_liquidation_garbage_type_id FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_container_operation foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation ADD CONSTRAINT FK__order_tem__conta__25518C17 FOREIGN KEY (container_operation_type_id) REFERENCES RoadPlan_MPGSK.dbo.container_operation_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation ADD CONSTRAINT FK__order_tem__order__2645B050 FOREIGN KEY (order_template_item_container_id) REFERENCES RoadPlan_MPGSK.dbo.order_template_item_container(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation ADD CONSTRAINT order_template_item_container_operation_execution_site_id_fk FOREIGN KEY (final_execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_container_operation ADD CONSTRAINT otico_final_liquidation_site_id_fk FOREIGN KEY (final_liquidation_site_id) REFERENCES RoadPlan_MPGSK.dbo.liquidation_site(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction ADD CONSTRAINT FK__order_tem__measu__114A936A FOREIGN KEY (measure_unit_id) REFERENCES RoadPlan_MPGSK.dbo.measure_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction ADD CONSTRAINT FK__order_tem__order__0F624AF8 FOREIGN KEY (order_template_item_id) REFERENCES RoadPlan_MPGSK.dbo.order_template_item(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_garbage_transaction ADD CONSTRAINT FK_order_template_item_price_calculation_garbage_transaction_garbage_type_id FOREIGN KEY (garbage_type_id) REFERENCES RoadPlan_MPGSK.dbo.garbage_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component ADD CONSTRAINT FK__order_tem__measu__17F790F9 FOREIGN KEY (measure_unit_id) REFERENCES RoadPlan_MPGSK.dbo.measure_unit(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.order_template_item_price_calculation_other_component ADD CONSTRAINT FK__order_tem__order__160F4887 FOREIGN KEY (order_template_item_id) REFERENCES RoadPlan_MPGSK.dbo.order_template_item(id) ON DELETE CASCADE;
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT FK__ordered_s__statu__2FCF1A8A FOREIGN KEY (status) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_status(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT FK_ordered_service_container_id FOREIGN KEY (container_id) REFERENCES RoadPlan_MPGSK.dbo.order_item_container(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT FK_ordered_service_operation_id FOREIGN KEY (container_operation_id) REFERENCES RoadPlan_MPGSK.dbo.order_item_container_operation(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT fk__ordered_service__created_by FOREIGN KEY (created_by) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_day_performance_realization_id_fk FOREIGN KEY (day_performance_realization_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance_realization(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_id_fk FOREIGN KEY (parent_ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_id_fk_2 FOREIGN KEY (child_ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_id_fk_3 FOREIGN KEY (temporary_storage_ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_id_rescheduled_from_ordered_service_id_fk FOREIGN KEY (rescheduled_from_ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_id_rescheduled_to_ordered_service_id_fk FOREIGN KEY (rescheduled_to_ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_reschedule_method_code_type_fk FOREIGN KEY (reschedule_method) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_reschedule_method_code([type]);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_ordered_service_type_code_type_fk FOREIGN KEY ([type]) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_type_code([type]);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service ADD CONSTRAINT ordered_service_user_id_fk FOREIGN KEY (confirmed_by) REFERENCES RoadPlan_MPGSK.dbo.[user](id);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT FK_ordered_service_location_action FOREIGN KEY ([action]) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location_action(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT FK_ordered_service_location_address_id FOREIGN KEY (address_id) REFERENCES RoadPlan_MPGSK.dbo.address(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT FK_ordered_service_location_liquidation_site_id FOREIGN KEY (liquidation_site_id) REFERENCES RoadPlan_MPGSK.dbo.liquidation_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT FK_ordered_service_location_type FOREIGN KEY ([type]) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location_type(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT ordered_service_location_execution_site_id_fk FOREIGN KEY (execution_site_id) REFERENCES RoadPlan_MPGSK.dbo.execution_site(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT ordered_service_location_ordered_service_id_fk FOREIGN KEY (ordered_service_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service(id) ON DELETE CASCADE;
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location ADD CONSTRAINT ordered_service_location_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES RoadPlan_MPGSK.dbo.organization_unit(id);
+
+
+-- RoadPlan_MPGSK.dbo.ordered_service_location_realization foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location_realization ADD CONSTRAINT ordered_service_location_realization_day_performance_realization_id_fk FOREIGN KEY (day_performance_realization_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance_realization(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location_realization ADD CONSTRAINT ordered_service_location_realization_ordered_service_location_id_fk FOREIGN KEY (ordered_service_location_id) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location(id);
+ALTER TABLE RoadPlan_MPGSK.dbo.ordered_service_location_realization ADD CONSTRAINT oslr_checking_type__fk FOREIGN KEY (checking_type) REFERENCES RoadPlan_MPGSK.dbo.ordered_service_location_checking_type(id);
+
+
+-- RoadPlan_MPGSK.dbo.temporary_day_performance foreign keys
+
+ALTER TABLE RoadPlan_MPGSK.dbo.temporary_day_performance ADD CONSTRAINT temporary_day_performance_day_performance_id_fk FOREIGN KEY (day_performance_id) REFERENCES RoadPlan_MPGSK.dbo.day_performance(id);
+
+
+-- dbo.container_type_v source
+
+null;
+
+
+-- dbo.container_unlimited_operations source
+
+null;
+
+
+-- dbo.contract_v source
+
+null;
+
+
+-- dbo.customer_v source
+
+null;
+
+
+-- dbo.day_performance_base_statistics_view source
+
+null;
+
+
+-- dbo.day_performance_order_view source
+
+null;
+
+
+-- dbo.day_performance_realization_event_v source
+
+null;
+
+
+-- dbo.day_performance_realization_position_v source
+
+null;
+
+
+-- dbo.day_performance_realization_statistics_view source
+
+null;
+
+
+-- dbo.day_performance_statistics_v source
+
+null;
+
+
+-- dbo.day_performance_table_view source
+
+null;
+
+
+-- dbo.day_performance_trail_v source
+
+null;
+
+
+-- dbo.execution_site_v source
+
+null;
+
+
+-- dbo.flww_event_v source
+
+null;
+
+
+-- dbo.flww_position_v source
+
+null;
+
+
+-- dbo.fob_ordered_service_location_realization_v source
+
+null;
+
+
+-- dbo.liquidation_site_accepted_garbage_type_grouped_v source
+
+null;
+
+
+-- dbo.liquidation_site_accepted_garbage_type_v source
+
+null;
+
+
+-- dbo.liquidation_site_v source
+
+null;
+
+
+-- dbo.order_item_v source
+
+null;
+
+
+-- dbo.order_ordered_service_v source
+
+null;
+
+
+-- dbo.order_template_v source
+
+null;
+
+
+-- dbo.order_v source
+
+null;
+
+
+-- dbo.ordered_service_day_performance_v source
+
+null;
+
+
+-- dbo.ordered_service_location_v source
+
+null;
+
+
+-- dbo.ordered_service_v source
+
+null;
+
+
+-- dbo.organization_unit_v source
+
+null;
+
+
+-- dbo.vehicle_trailer_v source
+
+null;
+
+
+-- dbo.vehicle_v source
+
+null;

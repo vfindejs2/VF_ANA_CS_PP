@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-020: Revize společnosti při tisku sestavy POVOS</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Tisková sestava Potvrzení o výkonu objednané služby (POVOS) obsahuje mimo jiné informace o konkrétní provozovně, pro kterou je POVOS tištěn, a o společnosti, pod kterou tato provozovna spadá. Aktuálně implementované chování však nepodporuje dceřiné společnosti, v poli Společnost jsou vždy vyplněny informace o MPG SK. Požadována je pak revize tohoto chování. </p><h1>Aktuální stav</h1><p>Pro vyplnění hodnoty v poli Společnost je použita konfigurační hodnota. Ta je pak společná pro všechny provozovny.</p><h1>Návrh řešení</h1><p>Pro vyplnění hodnoty v poli Společnost bude využita provozovna první úrovně (společnost), která je nadřazena provozovně, pro kterou je POVOS tištěn. Formát hodnoty pak bude následující: <strong><Název></strong>, <Adresa>. Dále jsou uvedeny příklady této hodnoty:</p><ul><li><strong>Marius Pedersen, a.s.</strong>, Opatovská 1735, 911 01 Trenčín</li><li><p><strong>Tekovská ekologická</strong>, Nový Tekov 133, 935 33 Nový Tekov</p></li></ul><h1>Akceptační testy</h1><h2>TC01: Tisk formuláře POVOS</h2><ol><li>Uživatel zadá požadavek na tisk potvrzení o výkonu objednané služby (POVOS).</li><li>Systém zobrazí formulář pro nastavení parametrů tisku.</li><li>Uživatel vyplní požadované údaje a potvrdí tisk.</li><li>Systém provede validaci zadaných údajů.</li><li>Systém vygeneruje výsledný soubor dle zadaných informací – v rámci pole Společnost je vyplněna nadřazená provozovna té provozovny, pro kterou je POVOS tištěn, a to v požadovaném formátu (vždy jsou vyplněny informace o provozovně první úrovně).</li><li>Systém zavře formulář.</li><li>Systém předá výsledný souboru uživateli – začne stahování tohoto souboru.</li></ol><h1>Poznámka</h1><p>Uvedené chování se vyskytuje i u dalších tiskových sestav, ty však nebudou řešeny v rámci tohoto požadavku.</p><ul><li><a href="#" data-page-title="103UC01: Vytisknout objednávku">103UC01: Vytisknout objednávku</a></li><li><a href="#" data-page-title="103UC02: Vytisknout potvrzení o vrácení zálohy">103UC02: Vytisknout potvrzení o vrácení zálohy</a></li></ul>
+</div>
+</body>
+</html>

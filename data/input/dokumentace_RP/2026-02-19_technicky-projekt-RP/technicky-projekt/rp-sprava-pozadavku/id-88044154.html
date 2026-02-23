@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-026: Řazení výsledků geokódování</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Při použití funkce geokódování jsou vráceny takové adresní body, které odpovídají zadanému textu. Vráceno je pak prvních N záznamů, kdy není brána v potaz země, ve které se tyto body vyskytují. Požadováno pak je, aby byly jako první řazeny adresní body vyskytující se v rámci Slovenské republiky.</p><h1>Aktuální stav</h1><p>Záznamy jsou zobrazeny ve stejném pořadí, v jakém byly vráceny mapovým serverem. </p><h1>Návrh řešení</h1><p>Z mapového serveru budou získávány pouze takové adresní body, které se vyskytují na území Slovenské republiky.</p><p>Poznámka: Takové chování bude samozřejmě použito nejen na úrovni uživatelského rozhraní (pro uživatele), ale i v rámci chování, které probíhá na pozadí (automatické geokódování adres).</p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Geokódování adresy</h2><ol><li>Uživatel zadá v rámci formuláře hledaný text a stiskne tlačítko pro geokódování.</li><li>Systém zobrazí prvních N nalezených záznamů – všechny vrácené adresní body se nachází na území Slovenské republiky.</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

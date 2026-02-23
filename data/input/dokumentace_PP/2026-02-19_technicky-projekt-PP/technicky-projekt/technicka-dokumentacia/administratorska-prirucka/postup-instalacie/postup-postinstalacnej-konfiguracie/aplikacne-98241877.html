@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Aplikačné nastavenia</title>
+</head>
+<body>
+<div class="wiki-content">
+<p>Aplikačné nastavenia reflektujú konfiguračné parametre popísané v rámci dokumentácie tu: <a href="../../../../konfiguracni-hodnoty/konfiguracni-88033346.html">https://confluence.radium.cz/pages/viewpage.action?pageId=88033346</a>, ale z toho dokumentu sa jedná len o tie čo sú pre “nasadenie”, nie tenanta.</p><p>Pre jednotlivé verzie systému tu sú jednotlivé podstránky s konfiguračnými parametrami aj s vyznačenými zmenami - teda čo je nové/zmena/odstránenie.</p><p> </p><div><p> </p><p><strong>Jednotlive hodnoty su len na ukazku, nezodpovedaju konkretnemu nasadeniu.</strong></p><p><strong>Zodpovedaju scheme parametrov ktora ma byt pre danu verziu - vid. jednotlive podstranky pre tuto page</strong></p><p> </p></div><p> </p><p>Všetky systémové nastavenia sú spravované cez API, pričom ich nastavenia robíme pre tieto situácie:</p><ul><li><p>Nové nasadenie systému</p></li><li><p>update parametrov - Situácia že potrebujeme počas behu systému zmeniť parametre </p></li></ul><p> </p><p>API na ktoré sa pošlú <strong>všetky parametre</strong> ktoré sa majú nastaviť.  API je možné použiť aj na zmenu týchto nastavení počas behu systému.</p><table><tbody><tr><th><p>endpoint</p></th><th><p>method</p></th><th><p>auth</p></th><th><p>data</p></th><th><p>resp</p></th></tr><tr><td><p>{{url-BE}}/api/globalSettings</p></td><td><p>POST</p></td><td><p>basic auth</p></td><td><p>interface pre konkretne verziu - interface pre jednotlive verzie v podstrankach</p><p>Priklad:</p></td><td><p>interface pre konkretnu verziu</p></td></tr></tbody></table><p> </p><p>API na získanie info o systémovom nastavení</p><table><tbody><tr><th><p>endpoint</p></th><th><p>method</p></th><th><p>auth</p></th><th><p>resp</p></th></tr><tr><td><p>{{url-BE}}/api/globalSettings</p></td><td><p>GET</p></td><td><p>basic auth</p></td><td><p>interface pre konkretnu verziu</p></td></tr></tbody></table><p><br>Meno a heslo pre basic auth sa definuje v rámci nasadenia v konfiguračných parametroch (SUPER_USER_USERNAME a SUPER_USER_PASSWORD)</p>
+</div>
+</body>
+</html>

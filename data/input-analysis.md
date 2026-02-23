@@ -25,6 +25,9 @@ data/input/
 │   └── 2026-02-19_technicky-projekt-RP/           (~71 MB, Confluence export)
 │       └── 655 stránek, architektura, datové modely, use cases
 │
+├── helios_user_guides/                        ← Uživatelské příručky Helios Nephrite
+│   └── HeN_ZVOZ+CYKLICKÝ_kontajner_zóna_okruh_trasa.pdf (19 MB, PDF, 57 stran)
+│
 └── integrace/                                  ← Integrační vrstva
     ├── MDB_schema_DDL.txt                         (58 KB, SQL DDL)
     └── Komunikace mezi systémy - část HLC CS.docx (146 KB, Word)
@@ -44,6 +47,7 @@ data/input/
 | 6 | Technický projekt RP (Confluence) | `dokumentace_RP/` | HTML+PNG | ~71 MB | Konzultace, Datové modely |
 | 7 | MDB schema DDL | `integrace/` | SQL DDL | 58 KB | Integrace |
 | 8 | Komunikace mezi systémy (HLC) | `integrace/` | DOCX | 146 KB | Integrace |
+| 9 | Helios Nephrite ZVOZ — User Guide | `helios_user_guides/` | PDF | 19 MB (57 s.) | Integrace, Datové modely, Konzultace |
 
 ### Využití podkladů per oblast
 
@@ -54,6 +58,7 @@ data/input/
 | MDB DDL (#7) | Mapování stávajících MDB entit, rozřazení MDB vs. REST v Etapě 1 |
 | Komunikace HLC (#8) | Principiální schéma komunikace, integrační mapa |
 | DDL PP (#3) + DDL RP (#5) | Pochopení zdrojových/cílových struktur pro datové kontrakty |
+| HEN ZVOZ Guide (#9) | Datový model a business logika HEN — zdrojový systém pro FR-01, cílový pro FR-03 |
 
 #### Datové modely
 | Podklad | K čemu slouží |
@@ -63,6 +68,7 @@ data/input/
 | MDB DDL (#7) | Legacy integrační vrstva — mapování entit HEN↔PP↔RP |
 | PRD (#1) | Doménový model, SoT matice, návrh nových entit |
 | Confluence PP (#4) + RP (#6) | Datové slovníky, persistence, stávající datové modely |
+| HEN ZVOZ Guide (#9) | Detailní atributy entit Rozvrh, Zóna, Okruh, PZ, Nádoba v HEN — referenční model |
 
 #### Konzultace
 | Podklad | K čemu slouží |
@@ -71,10 +77,12 @@ data/input/
 | Confluence PP (#4) | Use cases (100xx–400xx), UI mockupy, synchronizační logika |
 | Confluence RP (#6) | Architektura (HLC), stavové diagramy, workflow plánování |
 | PRD (#1) | Business pravidla, akceptační kritéria, doménové znalosti |
+| HEN ZVOZ Guide (#9) | Workflow cyklického svozu v HEN, verzování PZ, stavový automat výsypov |
 
 ### Co chybí / k doplnění
 - **OpenAPI specifikace** stávajících služeb (zmíněno v OQ-07, existují, dodat)
 - **Zadání konzultačních témat** od členů týmu (ad-hoc)
+- **HEN API dokumentace** — user guide popisuje UI, ale pro integraci potřebujeme REST API kontrakt (D2B)
 
 ---
 

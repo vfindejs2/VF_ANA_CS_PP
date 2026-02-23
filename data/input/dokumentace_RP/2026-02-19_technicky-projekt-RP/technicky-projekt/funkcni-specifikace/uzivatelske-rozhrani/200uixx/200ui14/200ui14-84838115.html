@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>200UI14: Podrobné informace k časovému využití vozidel – Kalendář</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Stručný popis</h1><p>Panel slouží k zobrazení časového využití vozidla za období. Vstupem panelu jsou pak následující data:</p><ul><li>Denní výkon: <a href="../../../../datove-modely/datovy-78681044.html">Denní výkon</a>, pro jehož <a href="../../../../datove-modely/datovy-78681044.html">Vozidlo</a> má být zobrazen kalendář časového využití.</li></ul><p>Poznámka:</p><ul><li>Pokud je na vstupu předáno NULL, je v panelu zobrazen pouze zástupný text: Žádný denní výkon není k dispozici.</li><li>Pokud není k <a href="../../../../datove-modely/datovy-78681044.html">Dennímu výkonu</a> přiřazeno žádné <a href="../../../../datove-modely/datovy-78681044.html">Vozidlo</a> (atribut Vozidlo entity <a href="../../../../datove-modely/datovy-78681044.html">Denní výkon</a> nabývá hodnoty NULL), je v panelu zobrazen pouze zástupný text: U denního výkonu není k dispozici vozidlo.<br></li></ul><h1>Uživatelské rozhraní</h1><p>Obsah panelu pak vychází z <a href="#" data-page-title="200UI09: Obrazovka časového využití vozidla za období"></a> a liší se pouze v následujících ohledech:</p><ul><li>Nástrojová lišta neumožňuje výběr <a href="../../../../datove-modely/datovy-78681044.html">Provozovny</a>.</li><li>Nástrojová lišta neumožňuje výběr <a href="../../../../datove-modely/datovy-78681044.html">Vozidla</a>.</li><li>Není dostupný panel s podrobnými informacemi k časovému využití vozidel.</li></ul><p>Pokud jsou v pořádku vstupní data, viz dříve, je možné načíst potřebné <a href="../../../../datove-modely/datovy-78681044.html">Denní výkony</a> a zobrazit je v panelu – je ale nutné získat vstupní hodnoty pro prvky z nástrojové lišty, které nejsou dostupné:</p><ul><li>Provozovna: atribut Provozovna entity <a href="../../../../datove-modely/datovy-78681044.html">Denní výkon</a>.</li><li>Vozidlo: atribut Vozidlo entity <a href="../../../../datove-modely/datovy-78681044.html">Denní výkon</a>.</li></ul><p>Dále je zobrazen drátový diagram s náhledem, kde jsou naznačeny zmíněné odlišnosti.</p><p></p><h1>Grafický návrh</h1>
+</div>
+</body>
+</html>

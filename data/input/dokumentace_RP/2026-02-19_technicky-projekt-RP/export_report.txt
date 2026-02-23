@@ -1,0 +1,13 @@
+Pocet stazenych stranek: 655
+Pocet chyb (stranky): 0
+Pocet chyb (obrazky): 8
+
+Chyby obrazku:
+- Page 88017481: 200UI01_MapaZobrazujiciDenniVykony_rozlozen&iacute;_wf.png — HTTP Error 404: Not Found
+- Page 104956615: https://confluence.radium.cz/download/attachments/105448400/image2022-3-18+14%3A56%3A1.png?version=1&amp;modificationDate=1647611761430 — HTTP Error 404: Not Found
+- Page 104956615: https://confluence.radium.cz/download/attachments/105448738/image2022-3-31+12%3A23%3A1.png?version=1&amp;modificationDate=1648722181887 — HTTP Error 404: Not Found
+- Page 104956615: https://confluence.radium.cz/download/attachments/105448738/image2022-3-31+14%3A27%3A23.png?version=1&amp;modificationDate=1648729643717 — HTTP Error 404: Not Found
+- Page 122199640: Sn&iacute;mek obrazovky 2025-10-30 131207.png — HTTP Error 404: Not Found
+- Page 122199640: Sn&iacute;mek obrazovky 2025-10-27 101607.png — HTTP Error 404: Not Found
+- Page 122199640: Sn&iacute;mek obrazovky 2025-10-27 101738.png — HTTP Error 404: Not Found
+- Page 122199640: Sn&iacute;mek obrazovky 2025-10-27 100345.png — HTTP Error 404: Not Found

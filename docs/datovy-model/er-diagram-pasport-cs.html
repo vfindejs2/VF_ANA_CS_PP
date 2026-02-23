@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER Diagram — Pasport CS (konceptuální PoC)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f6fa;
+            color: #1e293b;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h1 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .header .badge {
+            font-size: 11px;
+            background: rgba(99, 102, 241, 0.1);
+            color: #4f46e5;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .legend {
+            position: fixed;
+            bottom: 16px;
+            left: 16px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 12px;
+            line-height: 1.8;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .legend-line {
+            width: 30px;
+            height: 2px;
+            flex-shrink: 0;
+        }
+
+        .canvas-container {
+            width: 100vw;
+            height: 100vh;
+            padding-top: 52px;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Entity boxes */
+        .entity {
+            cursor: grab;
+        }
+
+        .entity:active {
+            cursor: grabbing;
+        }
+
+        .entity-bg {
+            rx: 8;
+            ry: 8;
+            stroke-width: 1.5;
+            transition: filter 0.2s;
+        }
+
+        .entity:hover .entity-bg {
+            filter: brightness(0.97);
+        }
+
+        .entity-header {
+            font-size: 13px;
+            font-weight: 700;
+            fill: #1e293b;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .entity-subtitle {
+            font-size: 10px;
+            fill: rgba(0,0,0,0.4);
+            text-anchor: middle;
+            dominant-baseline: middle;
+            font-style: italic;
+        }
+
+        .attr-text {
+            font-size: 11px;
+            fill: #475569;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+
+        .attr-pk {
+            fill: #b45309;
+            font-weight: 600;
+        }
+
+        .attr-fk {
+            fill: #4f46e5;
+        }
+
+        .attr-separator {
+            stroke: rgba(0,0,0,0.1);
+            stroke-width: 1;
+        }
+
+        /* Relationship lines */
+        .rel-line {
+            fill: none;
+            stroke-width: 1.8;
+            opacity: 0.45;
+            transition: opacity 0.2s, stroke-width 0.2s;
+        }
+
+        .rel-line.highlight {
+            opacity: 0.85;
+            stroke-width: 2.5;
+        }
+
+        .rel-label {
+            font-size: 10px;
+            fill: rgba(0,0,0,0.45);
+            text-anchor: middle;
+            dominant-baseline: middle;
+            font-weight: 500;
+        }
+
+        .cardinality {
+            font-size: 11px;
+            font-weight: 700;
+            fill: #b45309;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            z-index: 200;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 12px;
+            line-height: 1.6;
+            max-width: 320px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            color: #1e293b;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip-title {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #0f172a;
+        }
+
+        .tooltip-type {
+            font-size: 10px;
+            color: #4f46e5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .ctrl-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            color: #64748b;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s, color 0.15s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .ctrl-btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Konceptuální ER diagram — Pasport entity pro Cyklické svozy</h1>
+    <span class="badge">PoC &middot; proof of concept</span>
+</div>
+
+<div class="legend">
+    <div class="legend-title">Legenda</div>
+    <div class="legend-item">
+        <div class="legend-swatch" style="background: #6366f1;"></div>
+        <span>Nová entita pro CS</span>
+    </div>
+    <div class="legend-item">
+        <div class="legend-swatch" style="background: #10b981;"></div>
+        <span>Rozšířená existující entita</span>
+    </div>
+    <div class="legend-item">
+        <div class="legend-swatch" style="background: #64748b;"></div>
+        <span>Existující entita (beze změn)</span>
+    </div>
+    <div style="margin-top: 6px;">
+        <div class="legend-item">
+            <div class="legend-line" style="background: #6366f1;"></div>
+            <span>M:N vazba</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #059669;"></div>
+            <span>1:N vazba</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-line" style="background: #d97706;"></div>
+            <span>1:1 vazba</span>
+        </div>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="ctrl-btn" onclick="zoomIn()" title="Zoom in">+</button>
+    <button class="ctrl-btn" onclick="zoomOut()" title="Zoom out">&minus;</button>
+    <button class="ctrl-btn" onclick="resetView()" title="Reset">&#8634;</button>
+</div>
+
+<div class="tooltip" id="tooltip">
+    <div class="tooltip-type" id="tooltip-type"></div>
+    <div class="tooltip-title" id="tooltip-title"></div>
+    <div id="tooltip-body"></div>
+</div>
+
+<div class="canvas-container">
+    <svg id="canvas">
+        <defs>
+            <!-- Arrowhead markers -->
+            <marker id="arrow-purple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#818cf8" opacity="0.6"/>
+            </marker>
+            <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#34d399" opacity="0.6"/>
+            </marker>
+            <marker id="arrow-amber" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#f59e0b" opacity="0.6"/>
+            </marker>
+            <!-- Many indicator (crow's foot) -->
+            <marker id="many-purple" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto">
+                <line x1="12" y1="0" x2="0" y2="5" stroke="#818cf8" stroke-width="1.5" opacity="0.7"/>
+                <line x1="12" y1="10" x2="0" y2="5" stroke="#818cf8" stroke-width="1.5" opacity="0.7"/>
+                <line x1="12" y1="5" x2="0" y2="5" stroke="#818cf8" stroke-width="1.5" opacity="0.7"/>
+            </marker>
+        </defs>
+        <g id="viewport">
+            <!-- Relationships drawn first (behind entities) -->
+            <g id="relationships"></g>
+            <!-- Entities drawn on top -->
+            <g id="entities"></g>
+        </g>
+    </svg>
+</div>
+
+<script>
+// ===================== DATA MODEL =====================
+
+const entities = [
+    {
+        id: 'rpo',
+        name: 'RPO',
+        subtitle: 'Revize položky objednávky',
+        type: 'extended',
+        color: '#10b981',
+        x: 540, y: 280,
+        description: 'Centrální entita CS. Jednoznačný podklad o způsobu obsluhy místa realizace. Zdroj: Předměty smluv HEN. Nové vazby na Okruh, Rozvrh, Zóna, Skupina odpadu.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'kod_polozky', note: 'z HEN' },
+            { name: 'misto_realizace' },
+            { name: 'druh_odpadu_id', fk: true },
+            { name: 'skupina_odpadu_id', fk: true },
+            { name: 'zona_id', fk: true },
+            { name: 'provozovna_id', fk: true },
+            { name: 'platnost_od' },
+            { name: 'platnost_do' },
+            { name: 'stav' },
+        ]
+    },
+    {
+        id: 'okruh',
+        name: 'Okruh',
+        subtitle: 'circuit',
+        type: 'new',
+        color: '#6366f1',
+        x: 140, y: 120,
+        description: 'Nová entita pro CS. Sdružuje RPO obsluhované společně. Stavební kámen pro tvorbu Okruhů dne v RP. V Etapě 1 zdroj z HEN, v Etapě 2 spravuje PP.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'nazev' },
+            { name: 'provozovna_id', fk: true },
+            { name: 'vozidlo_id', fk: true },
+            { name: 'aktivni' },
+        ]
+    },
+    {
+        id: 'rozvrh',
+        name: 'Rozvrh',
+        subtitle: 'schedule',
+        type: 'new',
+        color: '#6366f1',
+        x: 140, y: 440,
+        description: 'Nová entita pro CS. Řídí kalendářní dny, na které se vytváří objednané služby z RPO. Zdroj pravdy: HEN. V PP read-only.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'nazev' },
+            { name: 'provozovna_id', fk: true },
+            { name: 'platnost_od' },
+            { name: 'platnost_do' },
+        ]
+    },
+    {
+        id: 'kalendar',
+        name: 'Kalendar',
+        subtitle: 'calendar day',
+        type: 'new',
+        color: '#6366f1',
+        x: 140, y: 640,
+        description: 'Nová entita pro CS. Konkrétní kalendářní den obsluhy přiřazený k Rozvrhu. Definuje, které dny se reálně sváží.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'rozvrh_id', fk: true },
+            { name: 'datum' },
+            { name: 'typ_dne' },
+        ]
+    },
+    {
+        id: 'zona',
+        name: 'Zona',
+        subtitle: 'zone',
+        type: 'new',
+        color: '#6366f1',
+        x: 940, y: 120,
+        description: 'Nová entita pro CS. Geograficky sdružuje Předměty smluv HEN. Kardinalita k RPO je 1:1. Pomáhá při filtraci pro plánování.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'nazev' },
+            { name: 'provozovna_id', fk: true },
+            { name: 'geometrie' },
+        ]
+    },
+    {
+        id: 'skupina_odpadu',
+        name: 'Skupina odpadu',
+        subtitle: 'waste group',
+        type: 'extended',
+        color: '#10b981',
+        x: 940, y: 440,
+        description: 'Rozšířená existující entita. Seskupení druhů odpadu pro jednodušší výběr RPO při plánování. Klíč pro okruh dne (1 okruh dne = 1 skupina). Evidována per Provozovna.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'nazev' },
+            { name: 'provozovna_id', fk: true },
+            { name: 'je_mix', note: 'kombinovaný svoz' },
+        ]
+    },
+    {
+        id: 'druh_odpadu',
+        name: 'Druh odpadu',
+        subtitle: 'waste type',
+        type: 'extended',
+        color: '#10b981',
+        x: 940, y: 640,
+        description: 'Rozšířená existující entita. Nová asociace → Skupina odpadu (mapování druh→skupina). Číselník slouží pro přehled druhů odpadu.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'kod' },
+            { name: 'nazev' },
+            { name: 'skupina_odpadu_id', fk: true },
+        ]
+    },
+    {
+        id: 'nadoba',
+        name: 'Nadoba',
+        subtitle: 'container',
+        type: 'extended',
+        color: '#10b981',
+        x: 540, y: 640,
+        description: 'Rozšířená existující entita. Dědí z RPO: okruh, rozvrh, zóna, skupina odpadu. Malá odpadová nádoba pro cyklické svozy.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'rfid' },
+            { name: 'typ_nadoby_id', fk: true },
+            { name: 'stanoviste_id', fk: true },
+            { name: 'rpo_id', fk: true },
+            { name: 'objem_litry' },
+        ]
+    },
+    {
+        id: 'stanoviste',
+        name: 'Stanoviste',
+        subtitle: 'location / stand',
+        type: 'extended',
+        color: '#10b981',
+        x: 300, y: 820,
+        description: 'Rozšířená existující entita. Dědí z RPO: okruh, rozvrh, zóna. Fyzické umístění nádob, lokalizace objednaných služeb v RP.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'adresa' },
+            { name: 'gps_lat' },
+            { name: 'gps_lon' },
+            { name: 'rpo_id', fk: true },
+        ]
+    },
+    {
+        id: 'typ_nadoby',
+        name: 'Typ nadoby',
+        subtitle: 'container type',
+        type: 'extended',
+        color: '#10b981',
+        x: 740, y: 820,
+        description: 'Rozšířená existující entita. Nový atribut: čas obsluhy (sekundy). Zdroj: ERP HEN/WINX, read-only, s editovatelným čas_obsluhy.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'nazev' },
+            { name: 'objem_litry' },
+            { name: 'cas_obsluhy_sec', note: 'novy' },
+        ]
+    },
+    {
+        id: 'rpo_okruh',
+        name: 'RPO_Okruh',
+        subtitle: 'M:N vazebni tabulka',
+        type: 'new',
+        color: '#6366f1',
+        x: 270, y: 200,
+        description: 'Vazební tabulka pro M:N vztah RPO ↔ Okruh. Obsahuje časovou platnost přiřazení.',
+        attrs: [
+            { name: 'rpo_id', fk: true, pk: true },
+            { name: 'okruh_id', fk: true, pk: true },
+            { name: 'platnost_od' },
+            { name: 'platnost_do' },
+        ]
+    },
+    {
+        id: 'rpo_rozvrh',
+        name: 'RPO_Rozvrh',
+        subtitle: 'M:N vazebni tabulka',
+        type: 'new',
+        color: '#6366f1',
+        x: 270, y: 440,
+        description: 'Vazební tabulka pro M:N vztah RPO ↔ Rozvrh. Obsahuje časovou platnost přiřazení.',
+        attrs: [
+            { name: 'rpo_id', fk: true, pk: true },
+            { name: 'rozvrh_id', fk: true, pk: true },
+            { name: 'platnost_od' },
+            { name: 'platnost_do' },
+        ]
+    },
+];
+
+const relationships = [
+    // RPO ↔ Okruh (M:N through junction)
+    { from: 'rpo', to: 'rpo_okruh', type: 'mn', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+    { from: 'okruh', to: 'rpo_okruh', type: 'mn', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+
+    // RPO ↔ Rozvrh (M:N through junction)
+    { from: 'rpo', to: 'rpo_rozvrh', type: 'mn', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+    { from: 'rozvrh', to: 'rpo_rozvrh', type: 'mn', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+
+    // RPO → Zóna (1:1)
+    { from: 'rpo', to: 'zona', type: '1to1', label: '1:1', cardFrom: '1', cardTo: '1', color: '#d97706' },
+
+    // RPO → Skupina odpadu (N:1)
+    { from: 'rpo', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+
+    // Druh odpadu → Skupina odpadu (N:1)
+    { from: 'druh_odpadu', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+
+    // Rozvrh → Kalendar (1:N)
+    { from: 'rozvrh', to: 'kalendar', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+
+    // RPO → Nadoba (1:N)
+    { from: 'rpo', to: 'nadoba', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+
+    // Nadoba → Stanoviste (N:1)
+    { from: 'nadoba', to: 'stanoviste', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+
+    // Nadoba → Typ nadoby (N:1)
+    { from: 'nadoba', to: 'typ_nadoby', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+
+    // Stanoviste → RPO (N:1)
+    { from: 'stanoviste', to: 'rpo', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+];
+
+// ===================== RENDERING =====================
+
+const ENTITY_WIDTH = 190;
+const HEADER_HEIGHT = 40;
+const ATTR_HEIGHT = 22;
+
+const svg = document.getElementById('canvas');
+const viewport = document.getElementById('viewport');
+const entitiesGroup = document.getElementById('entities');
+const relsGroup = document.getElementById('relationships');
+const tooltipEl = document.getElementById('tooltip');
+
+let scale = 1;
+let panX = 60, panY = 30;
+let isPanning = false;
+let panStartX, panStartY;
+let dragEntity = null;
+let dragOffsetX, dragOffsetY;
+
+// Entity map for quick lookup
+const entityMap = {};
+entities.forEach(e => entityMap[e.id] = e);
+
+function entityHeight(e) {
+    return HEADER_HEIGHT + 1 + e.attrs.length * ATTR_HEIGHT + 8;
+}
+
+function entityCenter(e) {
+    const h = entityHeight(e);
+    return { x: e.x + ENTITY_WIDTH / 2, y: e.y + h / 2 };
+}
+
+function entityPort(e, targetE) {
+    // Find best connection point on entity border facing the target
+    const cx = e.x + ENTITY_WIDTH / 2;
+    const cy = e.y + entityHeight(e) / 2;
+    const tx = targetE.x + ENTITY_WIDTH / 2;
+    const ty = targetE.y + entityHeight(targetE) / 2;
+
+    const dx = tx - cx;
+    const dy = ty - cy;
+    const hw = ENTITY_WIDTH / 2 + 4;
+    const hh = entityHeight(e) / 2 + 4;
+
+    // Check which edge the line would cross
+    const ratioX = Math.abs(dx) / hw;
+    const ratioY = Math.abs(dy) / hh;
+
+    if (ratioX > ratioY) {
+        // Left or right edge
+        const side = dx > 0 ? 1 : -1;
+        const y = cy + (dy / Math.abs(dx)) * hw;
+        return { x: cx + side * hw, y: Math.max(e.y, Math.min(e.y + entityHeight(e), y)) };
+    } else {
+        // Top or bottom edge
+        const side = dy > 0 ? 1 : -1;
+        const x = cx + (dx / Math.abs(dy)) * hh;
+        return { x: Math.max(e.x, Math.min(e.x + ENTITY_WIDTH, x)), y: cy + side * hh };
+    }
+}
+
+function renderEntity(e) {
+    const h = entityHeight(e);
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.classList.add('entity');
+    g.setAttribute('data-id', e.id);
+    g.setAttribute('transform', `translate(${e.x}, ${e.y})`);
+
+    // Background
+    const bgFill = e.type === 'new' ? 'rgba(99,102,241,0.06)' :
+                   e.type === 'extended' ? 'rgba(16,185,129,0.06)' :
+                   'rgba(100,116,139,0.06)';
+    const bgStroke = e.type === 'new' ? 'rgba(99,102,241,0.4)' :
+                     e.type === 'extended' ? 'rgba(16,185,129,0.4)' :
+                     'rgba(100,116,139,0.4)';
+
+    // White base for entity card
+    const whiteBg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    whiteBg.setAttribute('width', ENTITY_WIDTH);
+    whiteBg.setAttribute('height', h);
+    whiteBg.setAttribute('rx', 8);
+    whiteBg.setAttribute('ry', 8);
+    whiteBg.setAttribute('fill', '#ffffff');
+    whiteBg.setAttribute('stroke', 'none');
+    whiteBg.setAttribute('filter', 'drop-shadow(0 1px 3px rgba(0,0,0,0.08))');
+    g.appendChild(whiteBg);
+
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.classList.add('entity-bg');
+    rect.setAttribute('width', ENTITY_WIDTH);
+    rect.setAttribute('height', h);
+    rect.setAttribute('fill', bgFill);
+    rect.setAttribute('stroke', bgStroke);
+    g.appendChild(rect);
+
+    // Header band
+    const headerBand = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    headerBand.setAttribute('width', ENTITY_WIDTH);
+    headerBand.setAttribute('height', HEADER_HEIGHT);
+    headerBand.setAttribute('rx', 8);
+    headerBand.setAttribute('ry', 8);
+    headerBand.setAttribute('fill', e.color);
+    headerBand.setAttribute('opacity', '0.15');
+    g.appendChild(headerBand);
+
+    // Bottom corners of header (to make it flush)
+    const headerFix = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    headerFix.setAttribute('y', HEADER_HEIGHT - 8);
+    headerFix.setAttribute('width', ENTITY_WIDTH);
+    headerFix.setAttribute('height', 9);
+    headerFix.setAttribute('fill', e.color);
+    headerFix.setAttribute('opacity', '0.15');
+    g.appendChild(headerFix);
+
+    // Entity name
+    const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    nameText.classList.add('entity-header');
+    nameText.setAttribute('x', ENTITY_WIDTH / 2);
+    nameText.setAttribute('y', 16);
+    nameText.textContent = e.name;
+    g.appendChild(nameText);
+
+    // Subtitle
+    const subText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    subText.classList.add('entity-subtitle');
+    subText.setAttribute('x', ENTITY_WIDTH / 2);
+    subText.setAttribute('y', 32);
+    subText.textContent = e.subtitle;
+    g.appendChild(subText);
+
+    // Separator
+    const sep = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    sep.classList.add('attr-separator');
+    sep.setAttribute('x1', 0);
+    sep.setAttribute('x2', ENTITY_WIDTH);
+    sep.setAttribute('y1', HEADER_HEIGHT);
+    sep.setAttribute('y2', HEADER_HEIGHT);
+    g.appendChild(sep);
+
+    // Attributes
+    e.attrs.forEach((attr, i) => {
+        const ay = HEADER_HEIGHT + 4 + i * ATTR_HEIGHT + 14;
+
+        // PK indicator
+        if (attr.pk) {
+            const pkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            pkIcon.setAttribute('x', 10);
+            pkIcon.setAttribute('y', ay);
+            pkIcon.setAttribute('class', 'attr-text attr-pk');
+            pkIcon.setAttribute('font-size', '9');
+            pkIcon.textContent = 'PK';
+            g.appendChild(pkIcon);
+        }
+
+        // FK indicator
+        if (attr.fk && !attr.pk) {
+            const fkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            fkIcon.setAttribute('x', 10);
+            fkIcon.setAttribute('y', ay);
+            fkIcon.setAttribute('class', 'attr-text attr-fk');
+            fkIcon.setAttribute('font-size', '9');
+            fkIcon.textContent = 'FK';
+            g.appendChild(fkIcon);
+        }
+
+        if (attr.fk && attr.pk) {
+            const pfkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            pfkIcon.setAttribute('x', 10);
+            pfkIcon.setAttribute('y', ay);
+            pfkIcon.setAttribute('class', 'attr-text');
+            pfkIcon.setAttribute('font-size', '8');
+            pfkIcon.setAttribute('fill', '#c2410c');
+            pfkIcon.textContent = 'PFK';
+            g.appendChild(pfkIcon);
+        }
+
+        const attrText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        attrText.setAttribute('x', 34);
+        attrText.setAttribute('y', ay);
+        attrText.classList.add('attr-text');
+        if (attr.pk) attrText.classList.add('attr-pk');
+        if (attr.fk && !attr.pk) attrText.classList.add('attr-fk');
+        let label = attr.name;
+        if (attr.note) label += `  (${attr.note})`;
+        attrText.textContent = label;
+        g.appendChild(attrText);
+    });
+
+    // Tooltip events
+    g.addEventListener('mouseenter', (ev) => showTooltip(e, ev));
+    g.addEventListener('mouseleave', hideTooltip);
+    g.addEventListener('mousemove', moveTooltip);
+
+    // Drag events
+    g.addEventListener('mousedown', (ev) => startDrag(e, ev));
+
+    entitiesGroup.appendChild(g);
+}
+
+function renderRelationship(rel) {
+    const fromE = entityMap[rel.from];
+    const toE = entityMap[rel.to];
+    if (!fromE || !toE) return;
+
+    const p1 = entityPort(fromE, toE);
+    const p2 = entityPort(toE, fromE);
+
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('data-from', rel.from);
+    g.setAttribute('data-to', rel.to);
+
+    // Calculate a slight curve
+    const mx = (p1.x + p2.x) / 2;
+    const my = (p1.y + p2.y) / 2;
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    // Slight perpendicular offset for aesthetics
+    const offset = 0;
+    const cx = mx - dy * offset / Math.hypot(dx, dy || 1);
+    const cy = my + dx * offset / Math.hypot(dx, dy || 1);
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.classList.add('rel-line');
+    path.setAttribute('d', `M ${p1.x} ${p1.y} Q ${cx} ${cy} ${p2.x} ${p2.y}`);
+    path.setAttribute('stroke', rel.color);
+    g.appendChild(path);
+
+    // Cardinality labels
+    const t = 0.12;
+    const nearFrom = {
+        x: (1-t)*(1-t)*p1.x + 2*(1-t)*t*cx + t*t*p2.x,
+        y: (1-t)*(1-t)*p1.y + 2*(1-t)*t*cy + t*t*p2.y
+    };
+    const t2 = 0.88;
+    const nearTo = {
+        x: (1-t2)*(1-t2)*p1.x + 2*(1-t2)*t2*cx + t2*t2*p2.x,
+        y: (1-t2)*(1-t2)*p1.y + 2*(1-t2)*t2*cy + t2*t2*p2.y
+    };
+
+    // Offset labels perpendicular to the line
+    const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+    const labelOffset = 14;
+    const perpX = -Math.sin(angle) * labelOffset;
+    const perpY = Math.cos(angle) * labelOffset;
+
+    const cardFromText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    cardFromText.classList.add('cardinality');
+    cardFromText.setAttribute('x', nearFrom.x + perpX);
+    cardFromText.setAttribute('y', nearFrom.y + perpY);
+    cardFromText.textContent = rel.cardFrom;
+    g.appendChild(cardFromText);
+
+    const cardToText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    cardToText.classList.add('cardinality');
+    cardToText.setAttribute('x', nearTo.x + perpX);
+    cardToText.setAttribute('y', nearTo.y + perpY);
+    cardToText.textContent = rel.cardTo;
+    g.appendChild(cardToText);
+
+    relsGroup.appendChild(g);
+}
+
+function renderAll() {
+    entitiesGroup.innerHTML = '';
+    relsGroup.innerHTML = '';
+    relationships.forEach(renderRelationship);
+    entities.forEach(renderEntity);
+    updateViewport();
+}
+
+function updateViewport() {
+    viewport.setAttribute('transform', `translate(${panX}, ${panY}) scale(${scale})`);
+}
+
+// ===================== INTERACTIONS =====================
+
+function showTooltip(e, ev) {
+    const typeLabels = { new: 'Nova entita', extended: 'Rozsirena entita', existing: 'Existujici entita' };
+    document.getElementById('tooltip-type').textContent = typeLabels[e.type] || '';
+    document.getElementById('tooltip-title').textContent = `${e.name} (${e.subtitle})`;
+    document.getElementById('tooltip-body').textContent = e.description;
+    tooltipEl.classList.add('visible');
+    moveTooltip(ev);
+
+    // Highlight connected relationships
+    document.querySelectorAll('.rel-line').forEach(l => {
+        const g = l.parentElement;
+        if (g.dataset.from === e.id || g.dataset.to === e.id) {
+            l.classList.add('highlight');
+        }
+    });
+}
+
+function hideTooltip() {
+    tooltipEl.classList.remove('visible');
+    document.querySelectorAll('.rel-line.highlight').forEach(l => l.classList.remove('highlight'));
+}
+
+function moveTooltip(ev) {
+    let x = ev.clientX + 16;
+    let y = ev.clientY + 16;
+    if (x + 320 > window.innerWidth) x = ev.clientX - 330;
+    if (y + 200 > window.innerHeight) y = ev.clientY - 160;
+    tooltipEl.style.left = x + 'px';
+    tooltipEl.style.top = y + 'px';
+}
+
+// Dragging entities
+function startDrag(e, ev) {
+    if (ev.button !== 0) return;
+    ev.stopPropagation();
+    dragEntity = e;
+    const pt = svgPoint(ev);
+    dragOffsetX = pt.x - e.x;
+    dragOffsetY = pt.y - e.y;
+}
+
+document.addEventListener('mousemove', (ev) => {
+    if (dragEntity) {
+        const pt = svgPoint(ev);
+        dragEntity.x = pt.x - dragOffsetX;
+        dragEntity.y = pt.y - dragOffsetY;
+        renderAll();
+        return;
+    }
+    if (isPanning) {
+        panX += ev.clientX - panStartX;
+        panY += ev.clientY - panStartY;
+        panStartX = ev.clientX;
+        panStartY = ev.clientY;
+        updateViewport();
+    }
+});
+
+document.addEventListener('mouseup', () => {
+    dragEntity = null;
+    isPanning = false;
+});
+
+// Panning
+svg.addEventListener('mousedown', (ev) => {
+    if (ev.target === svg || ev.target === viewport || ev.target.tagName === 'svg') {
+        isPanning = true;
+        panStartX = ev.clientX;
+        panStartY = ev.clientY;
+    }
+});
+
+// Zooming
+svg.addEventListener('wheel', (ev) => {
+    ev.preventDefault();
+    const zoomFactor = ev.deltaY > 0 ? 0.92 : 1.08;
+    const newScale = Math.max(0.3, Math.min(3, scale * zoomFactor));
+
+    // Zoom toward cursor
+    const rect = svg.getBoundingClientRect();
+    const mx = ev.clientX - rect.left;
+    const my = ev.clientY - rect.top;
+
+    panX = mx - (mx - panX) * (newScale / scale);
+    panY = my - (my - panY) * (newScale / scale);
+    scale = newScale;
+    updateViewport();
+});
+
+function svgPoint(ev) {
+    const rect = svg.getBoundingClientRect();
+    return {
+        x: (ev.clientX - rect.left - panX) / scale,
+        y: (ev.clientY - rect.top - panY) / scale
+    };
+}
+
+// Controls
+function zoomIn() {
+    scale = Math.min(3, scale * 1.2);
+    updateViewport();
+}
+
+function zoomOut() {
+    scale = Math.max(0.3, scale / 1.2);
+    updateViewport();
+}
+
+function resetView() {
+    scale = 1;
+    panX = 60;
+    panY = 30;
+    updateViewport();
+}
+
+// ===================== INIT =====================
+renderAll();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2711 @@
+[21:30:17] INFO - Log soubor: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/export.log
+[21:30:17] INFO - === Faze 1: Crawl ===
+[21:41:17] INFO - Faze 1 dokoncena: 655 stranek za 660s
+[21:41:17] INFO - Ukladam checkpoint (655 stranek)...
+[21:41:17] INFO - Checkpoint ulozen.
+[21:41:17] INFO - === Faze 2: Zapis HTML (655 stranek, 655 zbyvajicich) ===
+[21:41:17] INFO - [1/655] Technický projekt (78680466)
+[21:41:17] INFO -   OK (0.0s)
+[21:41:17] INFO - [2/655] Specifikace požadavků MPG SK (rámcová analýza) (74416699)
+[21:41:17] INFO -   OK (0.0s)
+[21:41:17] INFO - [3/655] Otevřené otázky (78680660)
+[21:41:17] INFO -   OK (0.0s)
+[21:41:17] INFO - [4/655] Ukončení realizace denních výkonů (115608193)
+[21:41:17] INFO -   OK (0.0s)
+[21:41:18] INFO - [5/655] High Level Concept (78680646)
+[21:41:18] INFO -   OK (0.0s)
+[21:41:18] INFO - [6/655] Doménový model (78680650)
+[21:41:18] INFO -   Obrazky: [1/1] image2018-7-16 5:31:27.png
+[21:41:18] INFO -   OK (0.7s)
+[21:41:18] INFO - [7/655] Stavové diagramy (78680652)
+[21:41:18] INFO -   Obrazky: [1/3] image2019-7-26 8:14:55.png
+[21:41:19] INFO -   Obrazky: [2/3] image2019-6-11 11:30:20.png
+[21:41:20] INFO -   Obrazky: [3/3] image2019-7-2 22:58:58.png
+[21:41:21] INFO -   OK (2.3s)
+[21:41:21] INFO - [8/655] Funkční celky a odpovídající procesy (78680654)
+[21:41:21] INFO -   Obrazky: [1/4] image2018-8-28 15:4:4.png
+[21:41:22] INFO -   Obrazky: [2/4] image2018-8-28 15:3:41.png
+[21:41:22] INFO -   Obrazky: [3/4] image2018-8-28 15:4:30.png
+[21:41:23] INFO -   Obrazky: [4/4] image2018-8-28 15:4:54.png
+[21:41:24] INFO -   OK (2.9s)
+[21:41:24] INFO - [9/655] Přehled případů užití (78680656)
+[21:41:24] INFO -   Obrazky: [1/1] image2018-9-16 22:40:23.png
+[21:41:25] INFO -   OK (1.0s)
+[21:41:25] INFO - [10/655] Slovník pojmů a zkratek (78680658)
+[21:41:25] INFO -   OK (0.0s)
+[21:41:25] INFO - [11/655] Aktéři (78680673)
+[21:41:25] INFO -   OK (0.0s)
+[21:41:25] INFO - [12/655] Integrace s okolními systémy (78680671)
+[21:41:25] INFO -   Obrazky: [1/1] image2018-11-9 8:35:40.png
+[21:41:26] INFO -   OK (0.7s)
+[21:41:26] INFO - [13/655] Funkční specifikace (78680468)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:26] INFO - [14/655] Ovládací prvky (118197707)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:26] INFO - [15/655] Ovládací prvky třetích stran (118197709)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:26] INFO - [16/655] Persistence stavu UI (78680774)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:26] INFO - [17/655] Stavy v URL parametrech (79429894)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:26] INFO - [18/655] Uživatelská nastavení klienta (86149256)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:26] INFO - [19/655] Případy užití (78680772)
+[21:41:26] INFO -   OK (0.0s)
+[21:41:27] INFO - [20/655] 100UCxx: Objednávky (78680954)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [21/655] 100UC01: Založit objednávku (78681388)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [22/655] 100UC02: Založit objednávku ze šablony (79429803)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [23/655] 100UC03: Upravit objednávku (79429791)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [24/655] 100UC04: Uzavřít objednávku (79429793)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [25/655] 100UC05: Zobrazit přehled objednávek (78681147)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [26/655] 100UC06: Zobrazit detail objednávky (78681283)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [27/655] 100UC07: Vytvořit kopii objednávky (79429801)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [28/655] 100UC08: Odeslat notifikace k upřesnění dispečerem (81592564)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:27] INFO - [29/655] 100UC09: Zrušit objednávku (81592624)
+[21:41:27] INFO -   OK (0.0s)
+[21:41:28] INFO - [30/655] 100UC10: Zobrazit objednané služby v detailu objednávky (81592626)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [31/655] 100UC11: xAktualizovat objednávku (81592476)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [32/655] Aktualizace Objednávek: přehled funkčnosti (82117229)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [33/655] 100UC12: Upravit řádek výpočtu ceny (88020947)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [34/655] 100UC13: Označit objednávku jako oblíbenou (105447445)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [35/655] 100UC14: Zrušit označení objednávky jako oblíbené (105447446)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [36/655] 101UCxx: Objednané služby (81592583)
+[21:41:28] INFO -   OK (0.0s)
+[21:41:28] INFO - [37/655] 101UC01: Vygenerovat objednané služby (82116734)
+[21:41:28] INFO -   Obrazky: [1/1] image2025-5-20 11:35:38.png
+[21:41:29] INFO -   OK (0.7s)
+[21:41:29] INFO - [38/655] 101UC02: Vytvořit objednanou službu na výzvu (82116736)
+[21:41:29] INFO -   OK (0.0s)
+[21:41:29] INFO - [39/655] 101UC03: Zobrazit přehled objednaných služeb (82116738)
+[21:41:29] INFO -   OK (0.0s)
+[21:41:29] INFO - [40/655] 101UC04: Upravit objednanou službu (82116740)
+[21:41:29] INFO -   OK (0.0s)
+[21:41:29] INFO - [41/655] 101UC05: Zrušit objednanou službu (82117419)
+[21:41:29] INFO -   OK (0.0s)
+[21:41:29] INFO - [42/655] 101UC06: Zobrazit detail objednané služby (82117427)
+[21:41:29] INFO -   OK (0.0s)
+[21:41:30] INFO - [43/655] 101UC07: Načíst objednané služby pro přehled (86835582)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [44/655] 101UC08: Aktualizovat pořadí v rámci objednané služby (105448028)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [45/655] 102UCxx: Šablony objednávek (81592581)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [46/655] 102UC01: Založit šablonu objednávky (81593012)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [47/655] 102UC02: Vytvořit šablonu z objednávky (81592809)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [48/655] 102UC03: Upravit šablonu objednávky (81593014)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [49/655] 102UC04: Vytvořit kopii šablony objednávky (81593016)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [50/655] 102UC05: Smazat šablonu objednávky (81593019)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [51/655] 102UC06: Zobrazit přehled šablon objednávek (81592586)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:30] INFO - [52/655] 102UC07: Zobrazit detail šablony objednávky (81593021)
+[21:41:30] INFO -   OK (0.0s)
+[21:41:31] INFO - [53/655] 103UCxx: Tiskové výstupy pro objednávky (81592622)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [54/655] 103UC01: Vytisknout objednávku (82117088)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [55/655] 103UC02: Vytisknout potvrzení o vrácení zálohy (82117091)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [56/655] 200UCxx: Plánování – denní výkony (83266828)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [57/655] 200UC01: Přidat denní výkon (83266874)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [58/655] 200UC02: Upravit denní výkon (83266876)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [59/655] 200UC03: Odebrat denní výkon (83266889)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [60/655] 200UC04: Přiřadit vozidlo dennímu výkonu (83266905)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [61/655] 200UC05: Změnit vozidlo denního výkonu (83266915)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:31] INFO - [62/655] 200UC06: Odebrat vozidlo denního výkonu (83266920)
+[21:41:31] INFO -   OK (0.0s)
+[21:41:32] INFO - [63/655] 200UC07: Vložit objednanou službu do denního výkonu (83266964)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [64/655] 200UC08: Odebrat objednanou službu z denního výkonu (83266966)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [65/655] 200UC09: Vložit přestávku do denního výkonu (83266969)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [66/655] 200UC10: Odebrat přestávku z denního výkonu (83266972)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [67/655] 200UC11: Vložit likvidační místa do denního výkonu (83266974)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [68/655] 200UC12: Odebrat likvidační místo z denního výkonu (83266977)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [69/655] 200UC13: Vložit servis do denního výkonu (83266980)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [70/655] 200UC14: Odebrat servis z denního výkonu (83266982)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [71/655] 200UC15: Vložit provozovnu do denního výkonu (83266941)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:32] INFO - [72/655] 200UC16: Odebrat provozovnu z denního výkonu (83266944)
+[21:41:32] INFO -   OK (0.0s)
+[21:41:33] INFO - [73/655] 200UC17: Vytvořit místo dočasného uložení (83266946)
+[21:41:33] INFO -   Obrazky: [1/4] image2021-3-26 8:37:15.png
+[21:41:33] INFO -   Obrazky: [2/4] image2021-3-26 8:43:10.png
+[21:41:34] INFO -   Obrazky: [3/4] image2025-1-15 13:15:26.png
+[21:41:35] INFO -   Obrazky: [4/4] image2025-1-15 13:17:37.png
+[21:41:35] INFO -   OK (2.7s)
+[21:41:35] INFO - [74/655] 200UC18: Odebrat místo dočasného uložení (83266949)
+[21:41:35] INFO -   OK (0.0s)
+[21:41:35] INFO - [75/655] 200UC19: Vložit bod průjezdu do denního výkonu (83266951)
+[21:41:35] INFO -   OK (0.0s)
+[21:41:36] INFO - [76/655] 200UC20: Odebrat bod průjezdu z denního výkonu (83266953)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [77/655] 200UC21: Vložit rozdělení směny do denního výkonu (83266955)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [78/655] 200UC22: Odebrat rozdělení směny z denního výkonu (83266958)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [79/655] 200UC23: Použít přívěs u denního výkonu (83266960)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [80/655] 200UC24: Zrušit přívěs u denního výkonu (83266962)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [81/655] 200UC25: Vložit položku do denního výkonu (83267057)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [82/655] 200UC26: Odebrat položky z denního výkonu (83267059)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [83/655] 200UC27: Změnit pořadí položky v denním výkonu (83267061)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [84/655] 200UC28: Zobrazit přehled s denními výkony pro plánování (83267063)
+[21:41:36] INFO -   OK (0.0s)
+[21:41:36] INFO - [85/655] 200UC29: Získat trasu denního výkonu (83267154)
+[21:41:37] INFO -   OK (0.0s)
+[21:41:37] INFO - [86/655] 200UC30: Načíst denní výkony pro plánování (83755818)
+[21:41:37] INFO -   OK (0.0s)
+[21:41:37] INFO - [87/655] 200UC31: Upravit servis denního výkonu (84214931)
+[21:41:37] INFO -   OK (0.0s)
+[21:41:37] INFO - [88/655] 200UC32: Upravit přestávku denního výkonu (84215114)
+[21:41:37] INFO -   OK (0.0s)
+[21:41:37] INFO - [89/655] 200UC33: Upravit provozní dobu denního výkonu (84215181)
+[21:41:37] INFO -   OK (0.0s)
+[21:41:37] INFO - [90/655] 200UC34: Rozdělit položku denního výkonu (84215436)
+[21:41:37] INFO -   Obrazky: [1/4] image2021-3-25 8:36:41.png
+[21:41:38] INFO -   Obrazky: [2/4] image2021-3-25 8:51:48.png
+[21:41:38] INFO -   Obrazky: [3/4] image2025-1-15 13:18:28.png
+[21:41:39] INFO -   Obrazky: [4/4] image2025-1-15 13:18:46.png
+[21:41:40] INFO -   OK (2.7s)
+[21:41:40] INFO - [91/655] 200UC35: Sloučit rozdělenou objednanou službu (84215440)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:40] INFO - [92/655] 200UC36: Vyčistit denní výkon (84837721)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:40] INFO - [93/655] 200UC37: Schválit denní výkon (84838959)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:40] INFO - [94/655] 200UC38: Zrušit schválení denního výkonu (84838961)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:40] INFO - [95/655] 200UC39: Uložit průběh editace denního výkonu (84839975)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:40] INFO - [96/655] 200UC40: Načíst uložený průběh editace denního výkonu (84839977)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:40] INFO - [97/655] 200UC41: Smazat uložené průběhy editace denního výkonu (84839979)
+[21:41:40] INFO -   OK (0.0s)
+[21:41:41] INFO - [98/655] 200UC42: Zobrazit přehled denních výkonů (86149957)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [99/655] 200UC43: Zobrazit detail denního výkonu pro přehled (86149958)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [100/655] 200UC44: Načíst denní výkony pro přehled (86149959)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [101/655] 200UC45: Vložit objednané služby na denní výkon (88017014)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [102/655] 200UC46: Odebrat objednané služby z denních výkonů (88017015)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [103/655] 200UC47: Vložit položky do denního výkonu (88017148)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [104/655] 200UC48: Spustit režim hromadného plánování (88017301)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [105/655] 200UC49: Ukončit režim hromadného plánování (88017302)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [106/655] 200UC50: Změnit dobu manipulace (88018354)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:41] INFO - [107/655] 200UC51: Přiřadit přívěs dennímu výkonu (88018526)
+[21:41:41] INFO -   OK (0.0s)
+[21:41:42] INFO - [108/655] 200UC52: Změnit přívěs denního výkonu (88018529)
+[21:41:42] INFO -   OK (0.0s)
+[21:41:42] INFO - [109/655] 200UC53: Odebrat přívěs denního výkonu (88018530)
+[21:41:42] INFO -   OK (0.0s)
+[21:41:42] INFO - [110/655] 200UC54: Přegenerovat denní výkony (88020283)
+[21:41:42] INFO -   OK (0.0s)
+[21:41:42] INFO - [111/655] 200UC55: Sloučit objednanou službu (93593675)
+[21:41:42] INFO -   Obrazky: [1/3] image2021-3-27 15:20:13.png
+[21:41:43] INFO -   Obrazky: [2/3] image2021-3-27 16:1:15.png
+[21:41:43] INFO -   Obrazky: [3/3] image2025-1-15 13:34:8.png
+[21:41:44] INFO -   OK (2.1s)
+[21:41:44] INFO - [112/655] 200UC56: Přeplánovat denní výkon (115213863)
+[21:41:44] INFO -   OK (0.0s)
+[21:41:44] INFO - [113/655] 201UCxx: Plánování – objednané služby (83755413)
+[21:41:44] INFO -   OK (0.0s)
+[21:41:44] INFO - [114/655] 201UC01: Zobrazit přehled s objednanými službami pro plánování (83755779)
+[21:41:44] INFO -   OK (0.0s)
+[21:41:44] INFO - [115/655] 201UC02: Načíst objednané služby mimo den plánování (83755798)
+[21:41:44] INFO -   OK (0.0s)
+[21:41:44] INFO - [116/655] 201UC03: Odebrat objednané služby mimo den plánování (83755801)
+[21:41:44] INFO -   OK (0.0s)
+[21:41:45] INFO - [117/655] 201UC04: Zobrazit mapu s objednanými službami pro plánování (83755781)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [118/655] 201UC05: Nastavit mapu s objednanými službami pro plánování (83755803)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [119/655] 201UC06: Upravit lokace objednané služby (83755415)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [120/655] 201UC07: Nastavit mapu s lokacemi objednané služby (83755424)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [121/655] 201UC08: Načíst objednané služby pro plánování (83755816)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [122/655] 201UC09: Změnit pořadí lokace v objednané službě (84215994)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [123/655] 201UC10: Přidat lokaci typu jiné do objednané služby (84216008)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [124/655] 201UC11: Přidat lokaci typu časový interval do objednané služby (84216056)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [125/655] 201UC12: Odebrat lokaci z objednané služby (84216010)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:45] INFO - [126/655] 201UC13: Změnit časové okno u lokace objednané služby (84836434)
+[21:41:45] INFO -   OK (0.0s)
+[21:41:46] INFO - [127/655] 201UC14: Zrušit časové okno u lokace objednané služby (84836436)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [128/655] 201UC15: Změnit poznámku u lokace objednané služby (84836438)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [129/655] 201UC16: Odebrat poznámku u lokace objednané služby (84836440)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [130/655] 201UC17: Změnit adresu u lokace objednané služby (84836810)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [131/655] 202UCxx: Plánování – obecné (83755765)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [132/655] 202UC01: Zobrazit obrazovku plánování (83755767)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [133/655] 202UC02: Nastavit parametry plánování (83755770)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [134/655] 202UC03: Zobrazit mapu při plánování denních výkonů v samostatném okně (88018063)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [135/655] 202UC04: Zrušit zobrazení mapy při plánování denních výkonů v samostatném okně (88018064)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:46] INFO - [136/655] 202UC05: Zobrazit mapu při editaci denního výkonu v samostatném okně (88018259)
+[21:41:46] INFO -   OK (0.0s)
+[21:41:47] INFO - [137/655] 202UC06: Zrušit zobrazení mapy při editaci denního výkonu v samostatném okně (88018261)
+[21:41:47] INFO -   OK (0.0s)
+[21:41:47] INFO - [138/655] 202UC07: Generovat denní výkony pro plánované období (93587739)
+[21:41:47] INFO -   Obrazky: [1/1] image2021-2-6 10:34:42.png
+[21:41:47] INFO -   OK (0.7s)
+[21:41:47] INFO - [139/655] 202UC08: Generovat denní výkony mimo plánované období (93587740)
+[21:41:47] INFO -   OK (0.0s)
+[21:41:48] INFO - [140/655] 202UC09: Odebrat neschválené denní výkony (93587741)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [141/655] 203UCxx: Plánování – časové využití (84838064)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [142/655] 203UC01: Zobrazit časová využití vozidla za období (84838066)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [143/655] 203UC02: Zobrazit časová využití vozidel za den (84838068)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [144/655] 203UC03: Zobrazit časová využití vozidel za období (84838070)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [145/655] 203UC04: Zobrazit časová využití vozidla za rok (84838072)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [146/655] 203UC05: Zobrazit časová využití vozidel za měsíc (84838074)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [147/655] 203UC06: Načíst denní výkony pro zobrazení časového využití vozidla (84838100)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [148/655] 203UC07: Získat souhrnné informace o denních výkonech (84838110)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:48] INFO - [149/655] 203UC08: Načíst denní výkony pro zobrazení časového využití vozidel (84838582)
+[21:41:48] INFO -   OK (0.0s)
+[21:41:49] INFO - [150/655] 204UCxx: Plánování – tiskové výstupy pro denní výkony (88015068)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [151/655] 204UC01: Vytisknout potvrzení o výkonu objednané služby (88015070)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [152/655] 204UC02: Vytisknout prázdné potvrzení o výkonu objednané služby (88040626)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [153/655] 205UCxx: Generování tras (98241177)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [154/655] 205UC01: Generovat trasu denního výkonu (98241179)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [155/655] 205UC02: Rozdělit trasu denního výkonu (99123344)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [156/655] 205UC03: Založit záznam o přihlášeném zařízení na denním výkonu (99123474)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [157/655] 205UC04: Upravit záznam o přihlášeném zařízení na denním výkonu (99123475)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:49] INFO - [158/655] 205UC05: Odebrat záznam o přihlášeném zařízení na denním výkonu (99123476)
+[21:41:49] INFO -   OK (0.0s)
+[21:41:50] INFO - [159/655] 205UC06: Založit záznam o aktuální verzi komunikačního protokolu zařízení (99123509)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [160/655] 205UC07: Upravit záznam o aktuální verzi komunikačního protokolu zařízení (99123510)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [161/655] 205UC08: Provést aktualizaci trasy denního výkonu (99614859)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [162/655] 205UC09: Provést stažení trasy denního výkonu (99614860)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [163/655] 205UC10: Generovat souhrnný itinerář trasy denního výkonu (115999616)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [164/655] 205UC11: Rozdělit souhrnný itinerář trasy denního výkonu (115999661)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [165/655] 206UCxx: Obrazovka plánování denních výkonů (114460016)
+[21:41:50] INFO -   OK (0.0s)
+[21:41:50] INFO - [166/655] 206UC01: Zobrazit obrazovku plánování denních výkonů (114460020)
+[21:41:50] INFO -   Obrazky: [1/9] image2023-5-27 12:26:29.png
+[21:41:51] INFO -   Obrazky: [2/9] image2023-3-14 17:7:59.png
+[21:41:52] INFO -   Obrazky: [3/9] image2024-10-3 10:12:0.png
+[21:41:52] INFO -   Obrazky: [4/9] image2023-3-14 17:58:21.png
+[21:41:53] INFO -   Obrazky: [5/9] image2024-9-17 13:15:45.png
+[21:41:54] INFO -   Obrazky: [6/9] image2024-10-3 14:48:38.png
+[21:41:54] INFO -   Obrazky: [7/9] image2023-7-16 18:28:57.png
+[21:41:55] INFO -   Obrazky: [8/9] image2023-7-16 18:31:45.png
+[21:41:56] INFO -   Obrazky: [9/9] image2024-10-3 15:1:20.png
+[21:41:56] INFO -   OK (6.1s)
+[21:41:56] INFO - [167/655] 206UC02: Zobrazit panel přehledu objednaných služeb (114460158)
+[21:41:56] INFO -   Obrazky: [1/15] image2023-3-16 10:36:35.png
+[21:41:57] INFO -   Obrazky: [2/15] image2023-3-16 10:52:52.png
+[21:41:58] INFO -   Obrazky: [3/15] image2023-6-29 8:7:27.png
+[21:41:58] INFO -   Obrazky: [4/15] image2023-6-29 8:0:47.png
+[21:41:59] INFO -   Obrazky: [5/15] image2023-6-29 9:56:24.png
+[21:42:00] INFO -   Obrazky: [6/15] image2023-6-29 13:32:12.png
+[21:42:00] INFO -   Obrazky: [7/15] image2023-6-29 14:0:35.png
+[21:42:01] INFO -   Obrazky: [8/15] image2023-7-13 10:21:7.png
+[21:42:02] INFO -   Obrazky: [9/15] image2023-6-30 7:58:11.png
+[21:42:03] INFO -   Obrazky: [10/15] image2023-6-30 7:58:36.png
+[21:42:03] INFO -   Obrazky: [11/15] image2023-6-30 7:58:50.png
+[21:42:04] INFO -   Obrazky: [12/15] image2023-6-28 17:56:26.png
+[21:42:05] INFO -   Obrazky: [13/15] image2023-3-17 11:35:55.png
+[21:42:05] INFO -   Obrazky: [14/15] image2024-9-9 14:30:47.png
+[21:42:06] INFO -   Obrazky: [15/15] image2023-6-22 14:28:42.png
+[21:42:07] INFO -   OK (10.3s)
+[21:42:07] INFO - [168/655] 206UC03: Zobrazit panel mapy objednaných služeb (115212347)
+[21:42:07] INFO -   Obrazky: [1/13] image2023-5-29 14:4:38.png
+[21:42:08] INFO -   Obrazky: [2/13] image2023-6-7 20:6:27.png
+[21:42:08] INFO -   Obrazky: [3/13] image2023-6-7 20:6:14.png
+[21:42:09] INFO -   Obrazky: [4/13] image2023-6-7 20:5:59.png
+[21:42:09] INFO -   Obrazky: [5/13] image2023-6-7 20:5:16.png
+[21:42:10] INFO -   Obrazky: [6/13] image2023-6-7 20:5:5.png
+[21:42:11] INFO -   Obrazky: [7/13] image2023-6-7 20:6:45.png
+[21:42:11] INFO -   Obrazky: [8/13] image2023-6-8 8:43:39.png
+[21:42:12] INFO -   Obrazky: [9/13] image2023-6-8 10:5:50.png
+[21:42:13] INFO -   Obrazky: [10/13] image2023-6-8 11:14:8.png
+[21:42:13] INFO -   Obrazky: [11/13] image2023-6-8 11:6:20.png
+[21:42:14] INFO -   Obrazky: [12/13] image2023-6-8 9:3:36.png
+[21:42:15] INFO -   Obrazky: [13/13] image2023-5-30 11:55:6.png
+[21:42:16] INFO -   OK (8.8s)
+[21:42:16] INFO - [169/655] 206UC04: Zobrazit panel přehledu denních výkonů (115213112)
+[21:42:16] INFO -   Obrazky: [1/29] image2023-6-12 10:37:10.png
+[21:42:16] INFO -   Obrazky: [2/29] image2025-2-25 9:32:37.png
+[21:42:17] INFO -   Obrazky: [3/29] image2023-6-15 12:29:49.png
+[21:42:18] INFO -   Obrazky: [4/29] image2024-9-10 12:19:30.png
+[21:42:18] INFO -   Obrazky: [5/29] image2023-6-15 13:22:47.png
+[21:42:19] INFO -   Obrazky: [6/29] image2024-12-3 9:6:35.png
+[21:42:20] INFO -   Obrazky: [7/29] image2024-2-21 10:27:23.png
+[21:42:20] INFO -   Obrazky: [8/29] image2024-2-21 10:27:6.png
+[21:42:21] INFO -   Obrazky: [9/29] image2024-2-21 10:27:36.png
+[21:42:22] INFO -   Obrazky: [10/29] image2023-6-14 12:55:43.png
+[21:42:22] INFO -   Obrazky: [11/29] image2023-6-14 15:32:37.png
+[21:42:23] INFO -   Obrazky: [12/29] image2023-6-17 11:0:14.png
+[21:42:24] INFO -   Obrazky: [13/29] image2023-6-14 17:54:21.png
+[21:42:24] INFO -   Obrazky: [14/29] image2023-6-14 17:3:14.png
+[21:42:25] INFO -   Obrazky: [15/29] image2023-6-14 17:8:46.png
+[21:42:26] INFO -   Obrazky: [16/29] image2023-6-14 17:32:40.png
+[21:42:26] INFO -   Obrazky: [17/29] image2023-6-14 17:12:17.png
+[21:42:27] INFO -   Obrazky: [18/29] image2023-6-15 10:54:56.png
+[21:42:28] INFO -   Obrazky: [19/29] image2023-6-15 10:54:10.png
+[21:42:28] INFO -   Obrazky: [20/29] image2023-6-15 10:54:14.png
+[21:42:29] INFO -   Obrazky: [21/29] image2023-6-15 10:54:18.png
+[21:42:30] INFO -   Obrazky: [22/29] image2023-6-15 10:55:48.png
+[21:42:30] INFO -   Obrazky: [23/29] image2023-6-15 10:54:35.png
+[21:42:31] INFO -   Obrazky: [24/29] image2023-6-15 10:56:9.png
+[21:42:32] INFO -   Obrazky: [25/29] image2023-7-18 11:27:22.png
+[21:42:32] INFO -   Obrazky: [26/29] image2023-7-18 11:27:37.png
+[21:42:33] INFO -   Obrazky: [27/29] image2023-6-22 14:9:59.png
+[21:42:34] INFO -   Obrazky: [28/29] image2024-2-21 12:11:22.png
+[21:42:34] INFO -   Obrazky: [29/29] image2023-6-22 13:54:10.png
+[21:42:35] INFO -   OK (19.3s)
+[21:42:35] INFO - [170/655] 206UC05: Zobrazit panel mapy denních výkonů (115213117)
+[21:42:35] INFO -   Obrazky: [1/3] image2023-6-9 12:1:3.png
+[21:42:36] INFO -   Obrazky: [2/3] image2023-6-9 7:56:11.png
+[21:42:37] INFO -   Obrazky: [3/3] image2023-6-9 8:9:29.png
+[21:42:37] INFO -   OK (2.2s)
+[21:42:37] INFO - [171/655] 206UC06: Zobrazit panel mapy označeného denního výkonu (115213258)
+[21:42:37] INFO -   Obrazky: [1/2] image2023-7-10 13:51:52.png
+[21:42:38] INFO -   Obrazky: [2/2] image2023-7-10 14:15:15.png
+[21:42:39] INFO -   OK (1.5s)
+[21:42:39] INFO - [172/655] 206UC07: Zobrazit informace o objednané službě (115213558)
+[21:42:39] INFO -   Obrazky: [1/1] image2023-12-6 15:6:29.png
+[21:42:40] INFO -   OK (0.7s)
+[21:42:40] INFO - [173/655] 206UC08: Zobrazit panel objednané služby (115605974)
+[21:42:40] INFO -   Obrazky: [1/16] image2024-9-23 13:36:23.png
+[21:42:40] INFO -   Obrazky: [2/16] image2023-7-11 13:16:16.png
+[21:42:41] INFO -   Obrazky: [3/16] image2023-7-11 13:16:28.png
+[21:42:42] INFO -   Obrazky: [4/16] image2023-7-11 13:18:30.png
+[21:42:43] INFO -   Obrazky: [5/16] image2023-7-11 13:19:14.png
+[21:42:43] INFO -   Obrazky: [6/16] image2023-7-11 14:46:46.png
+[21:42:44] INFO -   Obrazky: [7/16] image2023-7-11 14:49:30.png
+[21:42:44] INFO -   Obrazky: [8/16] image2023-7-11 14:49:55.png
+[21:42:45] INFO -   Obrazky: [9/16] image2023-7-12 10:8:26.png
+[21:42:46] INFO -   Obrazky: [10/16] image2023-7-12 10:30:53.png
+[21:42:47] INFO -   Obrazky: [11/16] image2024-1-18 11:7:48.png
+[21:42:47] INFO -   Obrazky: [12/16] image2023-7-12 12:1:45.png
+[21:42:48] INFO -   Obrazky: [13/16] image2023-7-12 12:2:2.png
+[21:42:49] INFO -   Obrazky: [14/16] image2024-9-23 15:14:59.png
+[21:42:49] INFO -   Obrazky: [15/16] image2024-9-23 15:25:58.png
+[21:42:50] INFO -   Obrazky: [16/16] image2023-7-12 11:37:23.png
+[21:42:51] INFO -   OK (11.0s)
+[21:42:51] INFO - [174/655] 206UC09: Zobrazit formulář pro nastavení panelu objednané služby (115606107)
+[21:42:51] INFO -   Obrazky: [1/7] image2023-7-12 13:4:54.png
+[21:42:52] INFO -   Obrazky: [2/7] image2023-7-12 14:1:22.png
+[21:42:52] INFO -   Obrazky: [3/7] image2023-7-12 14:1:48.png
+[21:42:53] INFO -   Obrazky: [4/7] image2023-7-12 14:2:4.png
+[21:42:54] INFO -   Obrazky: [5/7] image2023-7-12 14:2:20.png
+[21:42:54] INFO -   Obrazky: [6/7] image2023-7-12 14:2:35.png
+[21:42:55] INFO -   Obrazky: [7/7] image2023-7-12 14:2:57.png
+[21:42:56] INFO -   OK (4.8s)
+[21:42:56] INFO - [175/655] 206UC10: Zobrazit panel souhrnného itineráře denních výkonů (119638251)
+[21:42:56] INFO -   Obrazky: [1/2] image2024-9-22 13:16:30.png
+[21:42:56] INFO -   Obrazky: [2/2] image2025-2-25 10:25:38.png
+[21:42:57] INFO -   OK (1.4s)
+[21:42:57] INFO - [176/655] 206UC11: Zobrazit panel lokace objednané služby (119638562)
+[21:42:57] INFO -   Obrazky: [1/10] image2024-9-22 17:45:5.png
+[21:42:58] INFO -   Obrazky: [2/10] image2024-9-22 17:45:24.png
+[21:42:58] INFO -   Obrazky: [3/10] image2024-10-2 13:49:36.png
+[21:42:59] INFO -   Obrazky: [4/10] image2024-9-22 17:44:17.png
+[21:43:00] INFO -   Obrazky: [5/10] image2024-9-22 17:44:37.png
+[21:43:00] INFO -   Obrazky: [6/10] image2024-9-22 19:56:10.png
+[21:43:01] INFO -   Obrazky: [7/10] image2024-9-22 20:7:54.png
+[21:43:02] INFO -   Obrazky: [8/10] image2024-9-22 19:48:40.png
+[21:43:03] INFO -   Obrazky: [9/10] image2024-9-22 19:49:6.png
+[21:43:03] INFO -   Obrazky: [10/10] image2024-10-2 13:59:29.png
+[21:43:04] INFO -   OK (6.7s)
+[21:43:04] INFO - [177/655] 206UC12: Zobrazit panel intervalu omezení denního výkonu (120356911)
+[21:43:04] INFO -   Obrazky: [1/4] image2024-9-24 8:35:33.png
+[21:43:05] INFO -   Obrazky: [2/4] image2024-9-24 8:39:37.png
+[21:43:05] INFO -   Obrazky: [3/4] image2024-9-24 8:35:50.png
+[21:43:06] INFO -   Obrazky: [4/4] image2024-9-24 8:39:1.png
+[21:43:07] INFO -   OK (2.7s)
+[21:43:07] INFO - [178/655] 206UC13: Zobrazit panel hlavičky denního výkonu (120357138)
+[21:43:07] INFO -   Obrazky: [1/4] image2024-12-3 9:20:27.png
+[21:43:07] INFO -   Obrazky: [2/4] image2024-9-27 11:7:57.png
+[21:43:08] INFO -   Obrazky: [3/4] image2024-9-27 11:8:13.png
+[21:43:09] INFO -   Obrazky: [4/4] image2024-9-27 11:8:21.png
+[21:43:09] INFO -   OK (2.7s)
+[21:43:10] INFO - [179/655] 206UC14: Zobrazit panel pokročilého itineráře denních výkonů (120357464)
+[21:43:10] INFO -   Obrazky: [1/5] image2024-10-4 8:35:45.png
+[21:43:10] INFO -   Obrazky: [2/5] image2025-2-25 10:19:58.png
+[21:43:11] INFO -   Obrazky: [3/5] image2024-10-4 8:52:19.png
+[21:43:12] INFO -   Obrazky: [4/5] image2024-10-4 8:56:50.png
+[21:43:12] INFO -   Obrazky: [5/5] image2024-10-4 10:5:46.png
+[21:43:13] INFO -   OK (3.5s)
+[21:43:13] INFO - [180/655] 207UCxx: Zpracování dat o denních výkonech (115608588)
+[21:43:13] INFO -   OK (0.0s)
+[21:43:13] INFO - [181/655] 207UC01: Agregovat objednané služby denního výkonu dle místa realizace (115608590)
+[21:43:13] INFO -   OK (0.0s)
+[21:43:13] INFO - [182/655] 300UCxx: Monitoring realizace denních výkonů (84840370)
+[21:43:13] INFO -   OK (0.0s)
+[21:43:13] INFO - [183/655] 300UC01: Zobrazit obrazovku monitoringu realizace (86147833)
+[21:43:13] INFO -   OK (0.0s)
+[21:43:14] INFO - [184/655] 300UC02: Nastavit parametry monitoringu realizace (88019798)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [185/655] 300UC03: Zobrazit průběh realizace v mapě (88019799)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [186/655] 300UC04: Nastavit mapu s průběhem realizace (88019800)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [187/655] 300UC05: Zobrazit průběh realizace v přehledu (88019801)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [188/655] 300UC06: Přeplánovat denní výkon (88019802)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [189/655] 300UC07: Nastavit denní výkony zobrazené v mapě (88019803)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [190/655] 300UC08: Zobrazit detail realizace denního výkonu (88019804)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [191/655] 300UC09: Zobrazit detail trasy denního výkonu (88019805)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [192/655] 300UC10: Vyhodnotit realizaci denního výkonu (84840374)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:14] INFO - [193/655] 300UC11: Ukončit vyhodnocování realizace denního výkonu (84840376)
+[21:43:14] INFO -   OK (0.0s)
+[21:43:15] INFO - [194/655] 300UC12: Připravit realizaci denního výkonu (116785650)
+[21:43:15] INFO -   OK (0.0s)
+[21:43:15] INFO - [195/655] 300UC13: Zahájit realizaci denního výkonu (116785651)
+[21:43:15] INFO -   Obrazky: [1/1] image2023-11-4 12:32:1.png
+[21:43:15] INFO -   OK (0.7s)
+[21:43:15] INFO - [196/655] 300UC14: Ukončit realizaci denního výkonu (116785653)
+[21:43:15] INFO -   OK (0.0s)
+[21:43:16] INFO - [197/655] 300UC15: Zrušit realizaci denního výkonu (116785654)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [198/655] 300UC16: Aktualizovat realizaci denního výkonu (116786592)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [199/655] 400UCxx: Kontrola realizace denních výkonů (86835398)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [200/655] 400UC01: Zobrazit obrazovku kontroly realizace denního výkonu (86835403)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [201/655] 400UC02: Zobrazit seznam s objednanými službami (86835400)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [202/655] 400UC03: Zobrazit mapu s průběhem realizace (86835648)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [203/655] 400UC04: Zobrazit detail realizace denního výkonu (86835652)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [204/655] 400UC05: Zobrazit detail denního výkonu (86835656)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [205/655] 400UC06: Nastavit příznak realizace objednané služby (86835644)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:16] INFO - [206/655] 400UC07: Přidat objednanou službu do realizace denního výkonu (86835646)
+[21:43:16] INFO -   OK (0.0s)
+[21:43:17] INFO - [207/655] 400UC08: Přeplánovat s rozdělením objednané služby (86835650)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [208/655] 400UC09: Přeplánovat se zadáním místa dočasného uložení (86835654)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [209/655] 400UC10: Přesunout objednanou službu pod jinou realizaci denního výkonu (86835658)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [210/655] 400UC11: Přeplánovat objednanou službu (86835662)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [211/655] 400UC12: Nastavit pořadí objednané služby v přehledu kontroly realizace (86835776)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [212/655] 400UC13: Uložit kontrolu realizace denního výkonu (86835791)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [213/655] 400UC14: Potvrdit realizaci denního výkonu (86835793)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [214/655] 400UC15: Zrušit přeplánování objednané služby (86836278)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [215/655] 400UC16: Odebrat objednanou službu realizovanou mimo plán (86836355)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:17] INFO - [216/655] 400UC17: Změnit poznámku u obsluhy lokace objednané služby (86836361)
+[21:43:17] INFO -   OK (0.0s)
+[21:43:18] INFO - [217/655] 400UC18: Zastavit realizaci objednané služby (86837054)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [218/655] 400UC19: Zrušení neschválených denních výkonů (87327041)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [219/655] 500UCxx: Správa datové základny (82838049)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [220/655] 500UC01: Založit zákazníka (82838053)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [221/655] 500UC02: Najít zákazníka v rejstříku podnikatelských subjektů (82838055)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [222/655] 500UC03: Upravit zákazníka (82838057)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [223/655] 500UC04: Smazat zákazníka (82838059)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [224/655] 500UC05: Zobrazit přehled zákazníků (82838061)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [225/655] 500UC06: Zobrazit údaje o zákazníkovi v detailu (82838063)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:18] INFO - [226/655] 500UC07: Založit místo realizace (82838065)
+[21:43:18] INFO -   OK (0.0s)
+[21:43:19] INFO - [227/655] 500UC08: Upravit místo realizace (82838067)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [228/655] 500UC09: Smazat místo realizace (82838069)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [229/655] 500UC10: Zobrazit přehled míst realizace v detailu zákazníka (82838071)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [230/655] 500UC11: Založit osobu zákazníka (82838073)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [231/655] 500UC12: Upravit osobu zákazníka (82838076)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [232/655] 500UC13: Smazat osobu zákazníka (82838078)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [233/655] 500UC14: Zobrazit přehled osob zákazníka v detailu zákazníka (82838080)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [234/655] 500UC15: Založit bankovní spojení (82838082)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [235/655] 500UC16: Upravit bankovní spojení (82838084)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:19] INFO - [236/655] 500UC17: Smazat bankovní spojení (82838087)
+[21:43:19] INFO -   OK (0.0s)
+[21:43:20] INFO - [237/655] 500UC18: Zobrazit přehled bankovních spojení v detailu zákazníka (82838091)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [238/655] 500UC19: Upravit likvidační místo (82838093)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [239/655] 500UC20: Zobrazit přehled likvidačních míst (82838095)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [240/655] 500UC21: Založit typ nádoby (82838157)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [241/655] 500UC22: Upravit typ nádoby (82838159)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [242/655] 500UC23: Smazat typ nádoby (82838161)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [243/655] 500UC24: Zobrazit přehled typů nádob (82838097)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [244/655] 500UC25: Zobrazit přehled druhů odpadu (82838099)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [245/655] 500UC26: Zobrazit přehled vozidel (83263499)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:20] INFO - [246/655] 500UC27: Zobrazit přehled kontejnerů (83263501)
+[21:43:20] INFO -   OK (0.0s)
+[21:43:21] INFO - [247/655] 500UC28: Zobrazit přehled zaměstnanců (83263503)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [248/655] 500UC29: Zobrazit přehled uživatelů (83263505)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [249/655] 500UC30: Zobrazit přehled smluv (83263507)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [250/655] 500UC31: Zobrazit přehled provozoven (83263509)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [251/655] 500UC32: Zobrazit přehled typů dopravy (83263511)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [252/655] 500UC33: Zobrazit přehled množstevních jednotek (83263513)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [253/655] 500UC34: Založit adresu sídla zákazníka (83264165)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [254/655] 500UC35: Upravit adresu sídla zákazníka (83264168)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [255/655] 500UC36: Smazat adresu sídla zákazníka (83264172)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:21] INFO - [256/655] 500UC37: Zobrazit údaje o likvidačním místu v detailu (83265704)
+[21:43:21] INFO -   OK (0.0s)
+[21:43:22] INFO - [257/655] 500UC38: Upravit provozovnu (84840229)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [258/655] 501UCxx: Správa dat – kalendáře a periodicita (113017536)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [259/655] 501UC01: Založit aktivitu (113017538)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [260/655] 501UC02: Upravit aktivitu (113017539)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [261/655] 501UC03: Odebrat aktivitu (113017540)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [262/655] 501UC04: Založit zakázku (113017545)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [263/655] 501UC05: Upravit zakázku (113017546)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [264/655] 501UC06: Odebrat zakázku (113017547)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [265/655] 501UC07: Založit pravidlo opakování aktivity (113018250)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:22] INFO - [266/655] 501UC08: Upravit pravidlo opakování aktivity (113018253)
+[21:43:22] INFO -   OK (0.0s)
+[21:43:23] INFO - [267/655] 501UC09: Odebrat pravidlo opakování aktivity (113018254)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [268/655] 600UCxx: Import dat (83264994)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [269/655] 600UC01: Import dat z WinyX (83264996)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [270/655] 600UC02: Předání dat z WinyX do Fleetware (83265163)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [271/655] 600UC03: Automatický geokóding adres (83265161)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [272/655] 600UC04: Import dat z Fleetware (88026803)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [273/655] 600UC05: Import číselníku právních forem (88026804)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [274/655] 601UCxx: Export dat (83265169)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [275/655] 601UC01: Export nových zákazníků (83265165)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:23] INFO - [276/655] 602UCxx: FOB: Komunikační rozhraní (98241324)
+[21:43:23] INFO -   OK (0.0s)
+[21:43:24] INFO - [277/655] 602UC01: Odeslat zprávu na FOB (98241328)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [278/655] 602UC02: Přijmout zprávu z FOB (98241327)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [279/655] 602UC03: Odeslat potvrzení o přijetí zprávy na FOB (98242090)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [280/655] 602UC04: Přijmout potvrzení o přijetí zprávy z FOB (98242089)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [281/655] 602UC05: Odeslat informaci o chybě na FOB (98242245)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [282/655] 602UC06: Přijmout informaci o chybě z FOB (98242246)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [283/655] 602UC07: Přijmout požadavek na získání dostupných tras z FOB (98242352)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [284/655] 602UC08: Odeslat dostupné trasy na FOB (98242167)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:24] INFO - [285/655] 602UC09: Přijmout požadavek na získání konkrétních částí trasy z FOB (98242354)
+[21:43:24] INFO -   OK (0.0s)
+[21:43:25] INFO - [286/655] 602UC10: Odeslat konkrétní části trasy na FOB (98242331)
+[21:43:25] INFO -   OK (0.0s)
+[21:43:25] INFO - [287/655] 602UC11: Odeslat notifikaci o akci nad trasou na FOB (98242112)
+[21:43:25] INFO -   OK (0.0s)
+[21:43:25] INFO - [288/655] 602UC12: Přijmout požadavek na získání konkrétních částí souhrnného itineráře trasy z FOB (115999609)
+[21:43:25] INFO -   OK (0.0s)
+[21:43:25] INFO - [289/655] 602UC13: Odeslat konkrétní části souhrnného itineráře trasy na FOB (115999611)
+[21:43:25] INFO -   OK (0.0s)
+[21:43:25] INFO - [290/655] 602UC14: Přijmout informace o realizaci lokace objednané služby (116785394)
+[21:43:25] INFO -   OK (0.0s)
+[21:43:25] INFO - [291/655] 603UCxx: Helios: Synchronizace dat – MPG SK (109084766)
+[21:43:25] INFO -   Obrazky: [1/1] image2022-6-9 10:8:27.png
+[21:43:26] INFO -   OK (0.7s)
+[21:43:26] INFO - [292/655] 603UC01: Zahájit import záznamů (109085204)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:26] INFO - [293/655] 603UC02: Získat zákazníky (109085229)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:26] INFO - [294/655] 603UC03: Odeslat zákazníky (109085284)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:26] INFO - [295/655] 603UC04: Získat osoby zákazníka (109085230)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:26] INFO - [296/655] 603UC05: Odeslat osoby zákazníka (109085288)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:26] INFO - [297/655] 603UC06: Získat bankovní spojení (109085233)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:26] INFO - [298/655] 603UC07: Odeslat bankovní spojení (109085289)
+[21:43:26] INFO -   OK (0.0s)
+[21:43:27] INFO - [299/655] 603UC08: Získat banky (109085234)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [300/655] 603UC09: Odeslat banky (109085290)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [301/655] 603UC10: Získat místa realizace (109085235)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [302/655] 603UC11: Odeslat místa realizace (109085291)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [303/655] 603UC12: Získat likvidační místa (109085236)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [304/655] 603UC13: Získat druhy odpadu likvidačního místa (109085237)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [305/655] 603UC14: Získat kódy nakládání (109085238)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [306/655] 603UC15: Získat rámcové smlouvy (109085239)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [307/655] 603UC16: Získat druhy odpadu ve smlouvě (109085240)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:27] INFO - [308/655] 603UC17: Získat místa realizace ve smlouvě (109085241)
+[21:43:27] INFO -   OK (0.0s)
+[21:43:28] INFO - [309/655] 603UC18: Získat typy nádob (109085242)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [310/655] 603UC19: Získat adresy (109085243)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [311/655] 603UC20: Odeslat adresy (109085293)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [312/655] 603UC21: Získat druhy odpadu (109085244)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [313/655] 603UC22: Zahájit export záznamů (109085277)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [314/655] 603UC23: Získat výsledky schválení zákazníků (111281932)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [315/655] 604UCxx: FLWW2: Synchronizace dat (111706734)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [316/655] 502UC01: Založit FLW pozici (116785601)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [317/655] 502UC02: Založit FLW událost (116785608)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:28] INFO - [318/655] 502UC03: Založit FOB informace o realizaci lokace objednané služby (116785609)
+[21:43:28] INFO -   OK (0.0s)
+[21:43:29] INFO - [319/655] 502UC04: Založit realizaci denního výkonu (116785680)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [320/655] 502UC05: Upravit realizaci denního výkonu (116785682)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [321/655] 502UC06: Odebrat realizaci denního výkonu (116785683)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [322/655] 502UC07: Založit obsluhu lokace objednané služby (116785684)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [323/655] 502UC08: Upravit obsluhu lokace objednané služby (116785685)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [324/655] 502UC09: Odebrat obsluhu lokace objednané služby (116785686)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [325/655] 604UC01: Získat záznam (112132318)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [326/655] 604UC02: Získat provozovnu (111706736)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [327/655] 604UC03: Získat objekt (111706738)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:29] INFO - [328/655] 604UC04: Získat uživatele (112132409)
+[21:43:29] INFO -   OK (0.0s)
+[21:43:30] INFO - [329/655] 604UC05: Získat zaměstnance (112132411)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [330/655] 604UC06: Získat pracovní pozici (112132672)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [331/655] 604UC07: Získat FLW pozice (116785594)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [332/655] 604UC08: Získat FLW události (116785595)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [333/655] 604UC09: Získat stanoviště (121342159)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [334/655] 604UC10: Získat přiřazení objektu ke stanovišti (121342160)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [335/655] 604UC11: Získat nastavení objektů pro denní výkony (122197395)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [336/655] 604UC12: Provést kontrolní synchronizaci (122201363)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [337/655] 605UCxx: WinyX: Synchronizace dat – Recovera (116788563)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:30] INFO - [338/655] 605UC01: Zahájit import záznamů (116788568)
+[21:43:30] INFO -   OK (0.0s)
+[21:43:31] INFO - [339/655] 605UC02: Získat likvidační místa (116788569)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [340/655] 605UC03: Získat jízdy (116788570)
+[21:43:31] INFO -   OK (0.1s)
+[21:43:31] INFO - [341/655] 605UC04: Import předávacích míst (119636843)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [342/655] 700UCxx: Obecné (78681343)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [343/655] 700UC01: Přihlásit uživatele (78681345)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [344/655] 700UC02: Odhlásit uživatele (78680675)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [345/655] 700UC03: Otevřít aplikaci FLWW2 (86149589)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [346/655] 701UCxx: Tabulkové přehledy (82118037)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:31] INFO - [347/655] 701UC01: Fulltextový filtr (82118039)
+[21:43:31] INFO -   OK (0.0s)
+[21:43:32] INFO - [348/655] 702UCxx: Kalendáře a periodicita (82117347)
+[21:43:32] INFO -   OK (0.0s)
+[21:43:32] INFO - [349/655] 702UC01: Definovat pravidlo opakování (80511455)
+[21:43:32] INFO -   OK (0.0s)
+[21:43:32] INFO - [350/655] 702UC02: Definovat termín (82117352)
+[21:43:32] INFO -   OK (0.0s)
+[21:43:32] INFO - [351/655] 702UC03: Zobrazit dispečerskou plachtu (112559262)
+[21:43:32] INFO -   Obrazky: [1/5] image2024-8-4 10:29:48.png
+[21:43:33] INFO -   Obrazky: [2/5] image2024-8-4 10:40:12.png
+[21:43:33] INFO -   Obrazky: [3/5] image2022-12-7 10:43:52.png
+[21:43:34] INFO -   Obrazky: [4/5] image2022-12-6 10:49:43.png
+[21:43:35] INFO -   Obrazky: [5/5] image2024-8-4 11:8:51.png
+[21:43:35] INFO -   OK (3.4s)
+[21:43:35] INFO - [352/655] 702UC04: Zobrazit formulář aktivity (112559340)
+[21:43:35] INFO -   Obrazky: [1/3] image2024-8-11 11:32:47.png
+[21:43:36] INFO -   Obrazky: [2/3] image2024-8-19 8:59:33.png
+[21:43:37] INFO -   Obrazky: [3/3] image2022-12-2 10:11:49.png
+[21:43:38] INFO -   OK (2.3s)
+[21:43:38] INFO - [353/655] 702UC05: Zobrazit horizontální kalendář (112559809)
+[21:43:38] INFO -   Obrazky: [1/19] image2023-1-2 10:49:7.png
+[21:43:39] INFO -   Obrazky: [2/19] image2024-8-9 9:50:54.png
+[21:43:39] INFO -   Obrazky: [3/19] image2022-12-8 9:28:1.png
+[21:43:40] INFO -   Obrazky: [4/19] image2022-12-8 9:28:19.png
+[21:43:41] INFO -   Obrazky: [5/19] image2024-8-9 10:0:9.png
+[21:43:41] INFO -   Obrazky: [6/19] image2022-12-8 9:53:5.png
+[21:43:42] INFO -   Obrazky: [7/19] image2022-12-8 9:53:49.png
+[21:43:43] INFO -   Obrazky: [8/19] image2022-12-8 9:54:4.png
+[21:43:43] INFO -   Obrazky: [9/19] image2022-12-8 9:54:30.png
+[21:43:44] INFO -   Obrazky: [10/19] image2022-12-8 11:52:14.png
+[21:43:45] INFO -   Obrazky: [11/19] image2024-8-11 14:7:52.png
+[21:43:45] INFO -   Obrazky: [12/19] image2023-1-11 16:21:28.png
+[21:43:46] INFO -   Obrazky: [13/19] image2023-1-1 19:28:28.png
+[21:43:47] INFO -   Obrazky: [14/19] image2023-1-1 19:34:7.png
+[21:43:47] INFO -   Obrazky: [15/19] image2024-8-7 14:42:53.png
+[21:43:48] INFO -   Obrazky: [16/19] image2024-8-7 10:22:25.png
+[21:43:49] INFO -   Obrazky: [17/19] image2024-8-7 14:43:17.png
+[21:43:49] INFO -   Obrazky: [18/19] image2024-8-7 10:55:48.png
+[21:43:50] INFO -   Obrazky: [19/19] image2022-12-9 8:34:9.png
+[21:43:51] INFO -   OK (13.1s)
+[21:43:51] INFO - [354/655] 702UC06: Generovat aktivity dle pravidla opakování (113018807)
+[21:43:51] INFO -   OK (0.0s)
+[21:43:51] INFO - [355/655] 702UC07: Zastavit generování aktivit dle pravidla opakování (113018809)
+[21:43:51] INFO -   OK (0.0s)
+[21:43:51] INFO - [356/655] 702UC08: Zobrazit detail položky horizontálního kalendáře (119308967)
+[21:43:51] INFO -   Obrazky: [1/4] image2024-8-1 13:34:11.png
+[21:43:52] INFO -   Obrazky: [2/4] image2024-8-1 14:35:59.png
+[21:43:52] INFO -   Obrazky: [3/4] image2024-8-16 8:9:17.png
+[21:43:53] INFO -   Obrazky: [4/4] image2024-8-2 14:15:39.png
+[21:43:54] INFO -   OK (2.7s)
+[21:43:54] INFO - [357/655] 702UC09: Upravit aktivity dle pravidla opakování (119636386)
+[21:43:54] INFO -   OK (0.0s)
+[21:43:54] INFO - [358/655] 702UC10: Zobrazit vertikální kalendář (119638249)
+[21:43:54] INFO -   Obrazky: [1/8] image2024-9-18 11:47:12.png
+[21:43:55] INFO -   Obrazky: [2/8] image2024-9-19 11:22:29.png
+[21:43:56] INFO -   Obrazky: [3/8] image2024-9-20 8:37:19.png
+[21:43:56] INFO -   Obrazky: [4/8] image2024-9-20 8:53:43.png
+[21:43:57] INFO -   Obrazky: [5/8] image2024-9-20 9:35:42.png
+[21:43:58] INFO -   Obrazky: [6/8] image2024-10-7 11:16:26.png
+[21:43:58] INFO -   Obrazky: [7/8] image2024-9-20 10:21:40.png
+[21:43:59] INFO -   Obrazky: [8/8] image2024-10-8 11:35:13.png
+[21:44:00] INFO -   OK (5.7s)
+[21:44:00] INFO - [359/655] 703UCxx: O aplikaci (81593093)
+[21:44:00] INFO -   OK (0.0s)
+[21:44:00] INFO - [360/655] 703UC01: Zobrazit stránku O aplikaci (81593095)
+[21:44:00] INFO -   OK (0.0s)
+[21:44:01] INFO - [361/655] 704UCxx: Toast notifikace (82837842)
+[21:44:01] INFO -   OK (0.0s)
+[21:44:01] INFO - [362/655] 704UC01: Zobrazit Toast notifikaci (82837844)
+[21:44:01] INFO -   Obrazky: [1/3] image2026-1-28 13:46:10.png
+[21:44:01] INFO -   Obrazky: [2/3] image2026-1-28 13:57:36.png
+[21:44:02] INFO -   Obrazky: [3/3] image2026-1-28 14:2:25.png
+[21:44:03] INFO -   OK (2.0s)
+[21:44:03] INFO - [363/655] 705UCxx: Společné funkce uživatelského rozhraní (88018010)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:03] INFO - [364/655] 705UC01: Zobrazit mapu v samostatném okně (88018012)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:03] INFO - [365/655] 705UC02: Zrušit zobrazení mapy v samostatném okně (88018014)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:03] INFO - [366/655] 705UC03: Nastavit zobrazení sloupců tabulky (88020706)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:03] INFO - [367/655] 706UC03: Získat trajektorii lokací od OSRM (120750843)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:03] INFO - [368/655] 706UC04: Získat trajektorii lokací od CEDA (120750845)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:03] INFO - [369/655] 706UCxx: Mapové služby (116786993)
+[21:44:03] INFO -   OK (0.0s)
+[21:44:04] INFO - [370/655] 706UC01: Získat adresu dle souřadnic (116786995)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [371/655] 706UC02: Získat souřadnice dle adresy (117211324)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [372/655] 707UCxx: Asynchronní export záznamů (122194289)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [373/655] 707UC01: Exportovat do CSV (122194291)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [374/655] 707UC02: Exportovat do XLSX (122194292)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [375/655] 707UC03: Asynchronní zpracování exportů (122204193)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [376/655] 701UCxx: Společné prvky uživatelského rozhraní (115213566)
+[21:44:04] INFO -   OK (0.0s)
+[21:44:04] INFO - [377/655] 701UC03: Zobrazit kontextovou nápovědu (115213569)
+[21:44:04] INFO -   Obrazky: [1/2] image2023-6-15 8:12:28.png
+[21:44:05] INFO -   Obrazky: [2/2] image2023-6-15 8:12:46.png
+[21:44:06] INFO -   OK (1.4s)
+[21:44:06] INFO - [378/655] 701UC04: Zobrazit kontextovou nabídku (115213617)
+[21:44:06] INFO -   Obrazky: [1/2] image2023-6-15 9:46:15.png
+[21:44:06] INFO -   Obrazky: [2/2] image2023-6-15 9:46:37.png
+[21:44:07] INFO -   OK (1.3s)
+[21:44:07] INFO - [379/655] 701UC05: Zobrazit rozbalovací panel (120357292)
+[21:44:07] INFO -   Obrazky: [1/1] image2024-9-28 13:28:0.png
+[21:44:08] INFO -   OK (0.6s)
+[21:44:08] INFO - [380/655] 800UCxx: Výsledky exportů (122204230)
+[21:44:08] INFO -   OK (0.0s)
+[21:44:08] INFO - [381/655] 800UC01: Zobrazit Výsledky exportů (122204234)
+[21:44:08] INFO -   Obrazky: [1/3] image2026-1-30 9:23:31.png
+[21:44:09] INFO -   Obrazky: [2/3] image2026-1-30 9:42:9.png
+[21:44:09] INFO -   Obrazky: [3/3] image2026-2-11 8:10:52.png
+[21:44:10] INFO -   OK (2.1s)
+[21:44:10] INFO - [382/655] 800UC02: Stažení vygenerovaného exportu (122204267)
+[21:44:10] INFO -   OK (0.0s)
+[21:44:10] INFO - [383/655] XXUCXX: Šablona pro popis UC (78681351)
+[21:44:10] INFO -   OK (0.0s)
+[21:44:10] INFO - [384/655] Uživatelské rozhraní (79429649)
+[21:44:10] INFO -   OK (0.0s)
+[21:44:10] INFO - [385/655] 100UIxx: Objednávky (79429652)
+[21:44:10] INFO -   OK (0.0s)
+[21:44:11] INFO - [386/655] 100UI01: Formulář objednávky (79429663)
+[21:44:11] INFO -   OK (0.0s)
+[21:44:11] INFO - [387/655] 100UI01: Skupina Nadpis formuláře (81035459)
+[21:44:11] INFO -   Obrazky: [1/2] 100UI01_skupinaNadpisFormulare_wf.png
+[21:44:11] INFO -   Obrazky: [2/2] 100UI01_skupinaNadpisFormulare_ui.png
+[21:44:12] INFO -   OK (1.3s)
+[21:44:12] INFO - [388/655] 100UI01: Skupina Provozovna (81035455)
+[21:44:12] INFO -   Obrazky: [1/2] 100UI01_skupinaProvozovna_wf.png
+[21:44:13] INFO -   Obrazky: [2/2] 100UI01_skupinaProvozovna_ui.png
+[21:44:13] INFO -   OK (1.4s)
+[21:44:14] INFO - [389/655] 100UI01: Skupina Objednavatel (81035457)
+[21:44:14] INFO -   Obrazky: [1/2] 100UI01_skupinaObjednavatel_wf.png
+[21:44:14] INFO -   Obrazky: [2/2] 100UI01_skupinaObjednavatel_ui.png
+[21:44:15] INFO -   OK (1.4s)
+[21:44:15] INFO - [390/655] 100UI01: Skupina Položky objednávky (81035461)
+[21:44:15] INFO -   Obrazky: [1/6] 100UI01_polozkyObjednavky_wf.png
+[21:44:16] INFO -   Obrazky: [2/6] 100UI01_polozkyObjednavky_nadobyUkony_wf.png
+[21:44:17] INFO -   Obrazky: [3/6] 100UI01_polozkyObjednavky_kalkulaceZnehodnoceniZhodnoceniOdpadu_wf.png
+[21:44:17] INFO -   Obrazky: [4/6] 100UI01_polozkyObjednavky_kalkulaceKalkulace_wf.png
+[21:44:18] INFO -   Obrazky: [5/6] 100UI01_polozkyObjednavky_kalkulacePausal_wf.png
+[21:44:19] INFO -   Obrazky: [6/6] 100UI01_polozkyObjednavky_ui.png
+[21:44:19] INFO -   OK (4.2s)
+[21:44:19] INFO - [391/655] 100UI01: Skupina Dokončení objednávky (81035463)
+[21:44:19] INFO -   Obrazky: [1/2] 100UI01_skupinaDokoncitObjednavku_wf.png
+[21:44:20] INFO -   Obrazky: [2/2] 100UI01_skupinaDokoncitObjednavku_ui.png
+[21:44:21] INFO -   OK (1.4s)
+[21:44:21] INFO - [392/655] 100UI01: Formulář Přidat nádobu (81035601)
+[21:44:21] INFO -   Obrazky: [1/2] 100UI01_formularPridatNadobu_wf.png
+[21:44:22] INFO -   Obrazky: [2/2] 100UI01_formularPridatNadobu_ui.png
+[21:44:22] INFO -   OK (1.4s)
+[21:44:22] INFO - [393/655] 100UI02: Obrazovka přehledu objednávek (79429710)
+[21:44:22] INFO -   Obrazky: [1/6] 100UI02_nahledDetail.png
+[21:44:23] INFO -   Obrazky: [2/6] 100UI02_nahledBezDetailu.png
+[21:44:24] INFO -   Obrazky: [3/6] 100UI02_rozlozeni.png
+[21:44:25] INFO -   Obrazky: [4/6] 100UI02_nastrojovaLista.png
+[21:44:25] INFO -   Obrazky: [5/6] image2019-6-4 15:48:44.png
+[21:44:26] INFO -   Obrazky: [6/6] 100UI02_prehled.png
+[21:44:27] INFO -   OK (4.5s)
+[21:44:27] INFO - [394/655] 100UI03: Detail objednávky (80511686)
+[21:44:27] INFO -   Obrazky: [1/11] image2018-8-17 6:49:46.png
+[21:44:28] INFO -   Obrazky: [2/11] image2019-6-4 15:27:17.png
+[21:44:29] INFO -   Obrazky: [3/11] image2018-8-24 5:58:28.png
+[21:44:29] INFO -   Obrazky: [4/11] image2018-8-24 6:48:56.png
+[21:44:30] INFO -   Obrazky: [5/11] image2018-8-24 6:49:10.png
+[21:44:31] INFO -   Obrazky: [6/11] image2018-8-24 6:13:35.png
+[21:44:31] INFO -   Obrazky: [7/11] image2018-8-24 6:14:15.png
+[21:44:32] INFO -   Obrazky: [8/11] image2018-8-24 6:17:22.png
+[21:44:33] INFO -   Obrazky: [9/11] image2018-8-24 6:29:15.png
+[21:44:33] INFO -   Obrazky: [10/11] image2018-8-24 6:36:36.png
+[21:44:34] INFO -   Obrazky: [11/11] image2018-8-17 7:7:30.png
+[21:44:35] INFO -   OK (7.7s)
+[21:44:35] INFO - [395/655] 100UI04: Formulář pro nastavení notifikace (81592891)
+[21:44:35] INFO -   OK (0.0s)
+[21:44:35] INFO - [396/655] 100UI05: Objednané služby objednávky (82117701)
+[21:44:35] INFO -   Obrazky: [1/1] image2022-3-15 19:50:13.png
+[21:44:36] INFO -   OK (0.7s)
+[21:44:36] INFO - [397/655] 100UI06: Formulář objednávky (v2) (87327679)
+[21:44:36] INFO -   Obrazky: [1/9] 100UI06_rozlozeni_wf.png
+[21:44:36] INFO -   Obrazky: [2/9] 100UI06_rozlozeni_hlavicka.png
+[21:44:37] INFO -   Obrazky: [3/9] 100UI06_rozlozeni_provozovna.png
+[21:44:38] INFO -   Obrazky: [4/9] 100UI06_rozlozeni_objednavatel.png
+[21:44:39] INFO -   Obrazky: [5/9] 100UI06_rozlozeni_polozkyObjednavky.png
+[21:44:39] INFO -   Obrazky: [6/9] 100UI06_rozlozeni_objednaneNadoby_radek.png
+[21:44:40] INFO -   Obrazky: [7/9] 100UI06_rozlozeni_objednaneNadoby_nastrojovaLista.png
+[21:44:41] INFO -   Obrazky: [8/9] 100UI06_rozlozeni_vypocetCeny_nastrojovaLista.png
+[21:44:41] INFO -   Obrazky: [9/9] 100UI06_rozlozeni_dokonceni.png
+[21:44:42] INFO -   OK (6.3s)
+[21:44:42] INFO - [398/655] 100UI07: Formulář pro nastavení řádku výpočtu ceny (87328235)
+[21:44:42] INFO -   Obrazky: [1/1] 100UI07_rozlozeni_wf.png
+[21:44:43] INFO -   OK (0.7s)
+[21:44:43] INFO - [399/655] 101UIxx: Objednané služby (82116744)
+[21:44:43] INFO -   OK (0.0s)
+[21:44:43] INFO - [400/655] 101UI01: Obrazovka přehledu objednaných služeb (82116746)
+[21:44:43] INFO -   Obrazky: [1/7] 101UI01_nahledDetail_wf.png
+[21:44:44] INFO -   Obrazky: [2/7] 101UI01_nahledBezDetailu_wf.png
+[21:44:44] INFO -   Obrazky: [3/7] 101UI01_rozlozeni_wf.png
+[21:44:45] INFO -   Obrazky: [4/7] 101UI01_hlavicka.png
+[21:44:46] INFO -   Obrazky: [5/7] image2019-6-5 12:12:46.png
+[21:44:47] INFO -   Obrazky: [6/7] image2022-6-13 8:45:16.png
+[21:44:47] INFO -   Obrazky: [7/7] image2022-3-14 10:24:23.png
+[21:44:48] INFO -   OK (5.0s)
+[21:44:48] INFO - [401/655] 101UI02: Formulář pro vytvoření objednané služby na výzvu (82116748)
+[21:44:48] INFO -   Obrazky: [1/2] image2018-9-28 12:21:52.png
+[21:44:49] INFO -   Obrazky: [2/2] 101UI02_rozlozeni_ui.png
+[21:44:49] INFO -   OK (1.4s)
+[21:44:50] INFO - [402/655] 101UI03: Formulář pro upravení objednané služby (82116750)
+[21:44:50] INFO -   Obrazky: [1/2] image2018-9-19 11:11:54.png
+[21:44:50] INFO -   Obrazky: [2/2] 101UI03_rozlozeni_ui.png
+[21:44:51] INFO -   OK (1.4s)
+[21:44:51] INFO - [403/655] 101UI04: Detail objednané služby (82117434)
+[21:44:51] INFO -   Obrazky: [1/2] 101UI04_rozlozeni_wf.png
+[21:44:52] INFO -   Obrazky: [2/2] 101UI04_tabulka.png
+[21:44:53] INFO -   OK (1.6s)
+[21:44:53] INFO - [404/655] 101UI05: Panel objednané služby (88017367)
+[21:44:53] INFO -   Obrazky: [1/1] image2021-3-26 14:18:58.png
+[21:44:53] INFO -   OK (0.7s)
+[21:44:54] INFO - [405/655] 102UIxx: Šablony objednávek (81592589)
+[21:44:54] INFO -   OK (0.0s)
+[21:44:54] INFO - [406/655] 102UI01: Formulář šablony objednávky (81592592)
+[21:44:54] INFO -   Obrazky: [1/7] 102UI01_rozlozeni_wf.png
+[21:44:54] INFO -   Obrazky: [2/7] 102UI01_skupinaNadpisFormulare_wf.png
+[21:44:55] INFO -   Obrazky: [3/7] 102UI01_skupinaInformaceSablonaObjednavky_wf.png
+[21:44:56] INFO -   Obrazky: [4/7] 102UI01_skupinaProvozovna_wf.png
+[21:44:56] INFO -   Obrazky: [5/7] 102UI01_tabulkaNadoby_wf.png
+[21:44:57] INFO -   Obrazky: [6/7] 102UI01_skupinaDokoncitSablonuObjednavky_wf.png
+[21:44:58] INFO -   Obrazky: [7/7] 102UI01_rozlozeni_ui.png
+[21:44:58] INFO -   OK (4.9s)
+[21:44:59] INFO - [407/655] 102UI02: Obrazovka přehledu šablon objednávek (81592594)
+[21:44:59] INFO -   Obrazky: [1/8] 102UI02_prehled_wf.png
+[21:44:59] INFO -   Obrazky: [2/8] 102UI02_rozlozeniBezDetailu_wf.png
+[21:45:00] INFO -   Obrazky: [3/8] 102UI02_rozlozeniSkupiny.png
+[21:45:01] INFO -   Obrazky: [4/8] 102UI02_nadpis.png
+[21:45:02] INFO -   Obrazky: [5/8] 102UI02_tabulkaRozlozeni.png
+[21:45:02] INFO -   Obrazky: [6/8] 102UI02_nastrojovaLista.png
+[21:45:03] INFO -   Obrazky: [7/8] 102UI02_tabulka.png
+[21:45:04] INFO -   Obrazky: [8/8] 102UI02_prehled_ui.png
+[21:45:04] INFO -   OK (5.8s)
+[21:45:05] INFO - [408/655] 102UI03: Detail šablony objednávky (81592664)
+[21:45:05] INFO -   Obrazky: [1/7] 102UI03_rozlozeni_wf.png
+[21:45:05] INFO -   Obrazky: [2/7] image2018-9-15 18:56:45.png
+[21:45:06] INFO -   Obrazky: [3/7] image2018-9-15 19:16:52.png
+[21:45:07] INFO -   Obrazky: [4/7] image2018-9-15 19:22:58.png
+[21:45:07] INFO -   Obrazky: [5/7] image2018-9-15 19:46:39.png
+[21:45:08] INFO -   Obrazky: [6/7] image2018-9-15 19:43:28.png
+[21:45:09] INFO -   Obrazky: [7/7] 102UI03_rozlozeni_ui.png
+[21:45:09] INFO -   OK (4.9s)
+[21:45:10] INFO - [409/655] 103UIxx: Tiskové výstupy pro objednávky (82117096)
+[21:45:10] INFO -   OK (0.0s)
+[21:45:10] INFO - [410/655] 103UI01: Tisková sestava objednávky (82117098)
+[21:45:10] INFO -   Obrazky: [1/16] 103UC01_rozlozeni1_wf.png
+[21:45:10] INFO -   Obrazky: [2/16] 103UC01_rozlozeni2_wf.png
+[21:45:11] INFO -   Obrazky: [3/16] 103UI01_formularNastaveni.png
+[21:45:12] INFO -   Obrazky: [4/16] 103UI01_rozlozeni.png
+[21:45:13] INFO -   Obrazky: [5/16] 103UI01_nadpis.png
+[21:45:13] INFO -   Obrazky: [6/16] 103UI01_dodavatel.png
+[21:45:14] INFO -   Obrazky: [7/16] 103UI01_objednavatel.png
+[21:45:15] INFO -   Obrazky: [8/16] 103UI01_rozlozeni_polozkaObjednavky.png
+[21:45:15] INFO -   Obrazky: [9/16] 103UI01_ramcovaSmlouva.png
+[21:45:16] INFO -   Obrazky: [10/16] 103UI01_mistoRealizace.png
+[21:45:17] INFO -   Obrazky: [11/16] 103UI01_objednaneNadoby.png
+[21:45:17] INFO -   Obrazky: [12/16] 103UI01_vypocetCeny.png
+[21:45:18] INFO -   Obrazky: [13/16] 103UI01_podpisDokumentu.png
+[21:45:19] INFO -   Obrazky: [14/16] 103UI01_paticka.png
+[21:45:20] INFO -   Obrazky: [15/16] 103UI01_logoSchema.png
+[21:45:20] INFO -   Obrazky: [16/16] 103UI01_zalomeniObsahu.png
+[21:45:21] INFO -   OK (11.5s)
+[21:45:21] INFO - [411/655] 103UI02: Tisková sestava potvrzení o vrácení zálohy (82117100)
+[21:45:21] INFO -   OK (0.0s)
+[21:45:21] INFO - [412/655] 200UIxx: Plánování denních výkonů (83265950)
+[21:45:21] INFO -   OK (0.0s)
+[21:45:21] INFO - [413/655] 200UI01: Obrazovka pro plánování denních výkonů (83265952)
+[21:45:21] INFO -   Obrazky: [1/5] image2019-9-23 15:5:8.png
+[21:45:22] INFO -   Obrazky: [2/5] image2021-3-29 12:57:28.png
+[21:45:23] INFO -   Obrazky: [3/5] image2019-10-3 13:12:57.png
+[21:45:24] INFO -   Obrazky: [4/5] image2019-10-3 12:58:23.png
+[21:45:24] INFO -   Obrazky: [5/5] image2019-10-17 12:30:15.png
+[21:45:25] INFO -   OK (3.6s)
+[21:45:25] INFO - [414/655] 200UI01: Hlavička (88017498)
+[21:45:25] INFO -   Obrazky: [1/2] 200UI01_hlavicka_rozlozeni_wf.png
+[21:45:26] INFO -   Obrazky: [2/2] 200UI01_hlavicka_rezimMapa.png
+[21:45:27] INFO -   OK (1.5s)
+[21:45:27] INFO - [415/655] 200UI01: Mapa zobrazující denní výkony (88017481)
+[21:45:27] INFO -   Obrazky: [1/2] 200UI01_MapaZobrazujiciDenniVykony_rozlozen&iacute;_wf.png
+[21:45:27] WARNING -   Nelze stahnout 200UI01_MapaZobrazujiciDenniVykony_rozlozen&iacute;_wf.png: HTTP Error 404: Not Found
+[21:45:27] INFO -   Obrazky: [2/2] 200UI01_MapaZobrazujiciDenniVykony_nastrojovaLista.png
+[21:45:28] INFO -   OK (0.8s)
+[21:45:28] INFO - [416/655] 200UI01: Mapa zobrazující objednané služby (83266007)
+[21:45:28] INFO -   Obrazky: [1/13] image2019-9-30 10:15:9.png
+[21:45:28] INFO -   Obrazky: [2/13] 200UI01_mapaObjednanychSluzeb_mistoRealizace.png
+[21:45:29] INFO -   Obrazky: [3/13] 200UI01_mapaObjednanychSluzeb_mistoRealizaceCasoveOkno.png
+[21:45:30] INFO -   Obrazky: [4/13] 200UI01_mapaObjednanychSluzeb_mistoRealizaceMinulost.png
+[21:45:30] INFO -   Obrazky: [5/13] 200UI01_mapaObjednanychSluzeb_likvidacniMisto.png
+[21:45:31] INFO -   Obrazky: [6/13] 200UI01_mapaObjednanychSluzeb_likvidacniMisto.png
+[21:45:32] INFO -   Obrazky: [7/13] 200UI01_mapaObjednanychSluzeb_skladisteKontejneru.png
+[21:45:33] INFO -   Obrazky: [8/13] 200UI01_mapaObjednanychSluzeb_mistoDocasnehoUlozeni.png
+[21:45:34] INFO -   Obrazky: [9/13] 200UI01_mapaObjednanychSluzeb_zvyrazneniShluk.png
+[21:45:35] INFO -   Obrazky: [10/13] 200UI01_mapaObjednanychSluzeb_nabidkaNahled.png
+[21:45:36] INFO -   Obrazky: [11/13] 200UI01_mapaObjednanychSluzeb_nabidkaRozlozeni.png
+[21:45:36] INFO -   Obrazky: [12/13] image2019-9-30 14:28:41.png
+[21:45:37] INFO -   Obrazky: [13/13] 200UI01_mapaObjednanychSluzeb_zvyrazneniShluk.png
+[21:45:38] INFO -   OK (10.1s)
+[21:45:38] INFO - [417/655] 200UI01: Mapa zobrazující vybraný denní výkon (83266011)
+[21:45:38] INFO -   OK (0.0s)
+[21:45:38] INFO - [418/655] 200UI01: Nástrojová lišta (83266003)
+[21:45:38] INFO -   Obrazky: [1/2] image2019-11-18 18:10:25.png
+[21:45:39] INFO -   Obrazky: [2/2] 200UI01_nastrojovaLista_ui.png
+[21:45:39] INFO -   OK (1.5s)
+[21:45:40] INFO - [419/655] 200UI01: Přehled denních výkonů (83266009)
+[21:45:40] INFO -   Obrazky: [1/10] 200UI01_prehledDennichVykonu_rozlozeni_wf.png
+[21:45:40] INFO -   Obrazky: [2/10] image2019-11-20 10:7:44.png
+[21:45:41] INFO -   Obrazky: [3/10] 200UI01_prehledDennichVykonu_prestavka.png
+[21:45:42] INFO -   Obrazky: [4/10] image2019-11-20 9:38:29.png
+[21:45:42] INFO -   Obrazky: [5/10] image2019-11-20 9:32:42.png
+[21:45:43] INFO -   Obrazky: [6/10] 200UI01_prehledDennichVykonu_diagram.png
+[21:45:44] INFO -   Obrazky: [7/10] 200UI01_prehledDennichVykonu_napovedaObjednanaSluzba.png
+[21:45:44] INFO -   Obrazky: [8/10] image2022-6-14 13:14:25.png
+[21:45:45] INFO -   Obrazky: [9/10] 200UI01_prehledDennichVykonu_napovedaProvozovna.png
+[21:45:46] INFO -   Obrazky: [10/10] 200UI01_prehledDennichVykonu_dragDrop.png
+[21:45:46] INFO -   OK (6.8s)
+[21:45:46] INFO - [420/655] 200UI01: Přehled objednaných služeb (83266005)
+[21:45:46] INFO -   Obrazky: [1/13] 200UI01_prehledObjednanychSluzeb_rozlozeni_wf.png
+[21:45:47] INFO -   Obrazky: [2/13] 200UI01_prehledObjednanychSluzeb_nastrojovaLista.png
+[21:45:48] INFO -   Obrazky: [3/13] 200UI01_prehledObjednanychSluzeb_nastrojovaListaHromadnePlanovani.png
+[21:45:48] INFO -   Obrazky: [4/13] 200UI01_prehledObjednanychSluzeb_prehled.png
+[21:45:49] INFO -   Obrazky: [5/13] image2021-3-29 15:12:16.png
+[21:45:50] INFO -   Obrazky: [6/13] image2021-3-29 17:43:39.png
+[21:45:50] INFO -   Obrazky: [7/13] image2021-3-29 17:43:59.png
+[21:45:51] INFO -   Obrazky: [8/13] image2021-3-29 17:44:12.png
+[21:45:52] INFO -   Obrazky: [9/13] image2021-3-29 18:41:43.png
+[21:45:52] INFO -   Obrazky: [10/13] 200UI01_prehledObjednanychSluzeb_panelObjednaneSluzbyHromadnePlanovani.png
+[21:45:53] INFO -   Obrazky: [11/13] 200UI01_prehledObjednanychSluzeb_panelObjednaneSluzbyOznacena.png
+[21:45:54] INFO -   Obrazky: [12/13] 200UI01_prehledObjednanychSluzeb_panelObjednaneSluzbyStav.png
+[21:45:55] INFO -   Obrazky: [13/13] image2019-10-1 9:58:49.png
+[21:45:55] INFO -   OK (9.0s)
+[21:45:56] INFO - [421/655] 200UI02: Formulář denního výkonu (83265956)
+[21:45:56] INFO -   Obrazky: [1/4] 200UI02_rozlozeni_wf.png
+[21:45:56] INFO -   Obrazky: [2/4] 200UI02_zobrazeniMapySamostatneOkno.png
+[21:45:57] INFO -   Obrazky: [3/4] 200UI02_rozlozeni_primarni.png
+[21:45:58] INFO -   Obrazky: [4/4] image2019-10-17 12:31:37.png
+[21:45:58] INFO -   OK (2.7s)
+[21:45:58] INFO - [422/655] 200UI02: Diagram využití (84214530)
+[21:45:58] INFO -   Obrazky: [1/5] 200UI02_diagramVyuziti_rozlozeni_wf.png
+[21:45:59] INFO -   Obrazky: [2/5] 200UI02_diagramVyuziti_diagramObecny.png
+[21:46:00] INFO -   Obrazky: [3/5] 200UI02_diagramVyuziti_mimoRozsah.png
+[21:46:00] INFO -   Obrazky: [4/5] 200UI02_diagramVyuziti_přesServis.png
+[21:46:01] INFO -   Obrazky: [5/5] image2019-10-6 10:27:16.png
+[21:46:02] INFO -   OK (3.4s)
+[21:46:02] INFO - [423/655] 200UI02: Hlavička (84837280)
+[21:46:02] INFO -   Obrazky: [1/3] 200UI02_hlavicka_rozlozeni_wf.png
+[21:46:03] INFO -   Obrazky: [2/3] 200UI02_hlavicka_privesy.png
+[21:46:03] INFO -   Obrazky: [3/3] 200UI02_hlavicka_zobrazeniMapySamostatneOkno.png%09
+[21:46:04] INFO -   OK (2.1s)
+[21:46:04] INFO - [424/655] 200UI02: Mapa zobrazující denní výkon (84214536)
+[21:46:04] INFO -   Obrazky: [1/13] image2019-10-7 12:6:3.png
+[21:46:05] INFO -   Obrazky: [2/13] image2019-2-10 15:37:43.png
+[21:46:06] INFO -   Obrazky: [3/13] image2019-2-10 15:38:3.png
+[21:46:06] INFO -   Obrazky: [4/13] image2019-2-10 15:38:19.png
+[21:46:07] INFO -   Obrazky: [5/13] image2019-2-10 15:38:35.png
+[21:46:08] INFO -   Obrazky: [6/13] image2019-2-10 15:39:27.png
+[21:46:08] INFO -   Obrazky: [7/13] image2019-2-10 15:50:22.png
+[21:46:09] INFO -   Obrazky: [8/13] image2019-2-10 15:50:39.png
+[21:46:10] INFO -   Obrazky: [9/13] image2019-2-10 15:39:41.png
+[21:46:10] INFO -   Obrazky: [10/13] image2019-4-8 16:31:24.png
+[21:46:11] INFO -   Obrazky: [11/13] image2019-2-10 16:51:47.png
+[21:46:12] INFO -   Obrazky: [12/13] image2019-2-10 16:36:6.png
+[21:46:12] INFO -   Obrazky: [13/13] image2019-2-10 16:36:17.png
+[21:46:13] INFO -   OK (8.8s)
+[21:46:13] INFO - [425/655] 200UI02: Panel se záložkami (84214538)
+[21:46:13] INFO -   Obrazky: [1/4] image2019-10-6 18:12:23.png
+[21:46:14] INFO -   Obrazky: [2/4] image2019-10-6 18:12:50.png
+[21:46:15] INFO -   Obrazky: [3/4] image2019-10-7 12:52:49.png
+[21:46:15] INFO -   Obrazky: [4/4] image2022-3-8 18:49:37.png
+[21:46:16] INFO -   OK (3.0s)
+[21:46:16] INFO - [426/655] 200UI02: Tabulka pro editaci denního výkonu (84214534)
+[21:46:16] INFO -   Obrazky: [1/21] 200UI02_tabulkaProEditaciDennihoVykonu_rozlozeni_wf.png
+[21:46:17] INFO -   Obrazky: [2/21] 200UI02_tabulkaProEditaciDennihoVykonu_nastrojovaLista.png
+[21:46:18] INFO -   Obrazky: [3/21] 200UI02_tabulkaProEditaciDennihoVykonu_nabidkaPrestavka.png
+[21:46:18] INFO -   Obrazky: [4/21] 200UI02_tabulkaProEditaciDennihoVykonu_nabidkaLikvidacniMisto.png
+[21:46:19] INFO -   Obrazky: [5/21] 200UI02_tabulkaProEditaciDennihoVykonu_nabidkaServis.png
+[21:46:20] INFO -   Obrazky: [6/21] 200UI02_tabulkaProEditaciDennihoVykonu_nabidkaPrives.png
+[21:46:20] INFO -   Obrazky: [7/21] 200UI02_tabulkaProEditaciDennihoVykonu_tabulka.png
+[21:46:21] INFO -   Obrazky: [8/21] 200UI02_tabulkaProEditaciDennihoVykonu_polozkaDennihoVykonuRozlozeni.png
+[21:46:22] INFO -   Obrazky: [9/21] 200UI02_tabulkaProEditaciDennihoVykonu_polozkyDennihoVykonu.png
+[21:46:22] INFO -   Obrazky: [10/21] image2021-3-28 13:24:20.png
+[21:46:23] INFO -   Obrazky: [11/21] 200UI02_tabulkaProEditaciDennihoVykonu_casovaOkna.png
+[21:46:24] INFO -   Obrazky: [12/21] 200UI02_tabulkaProEditaciDennihoVykonu_casoveOknoRozlozeni.png
+[21:46:24] INFO -   Obrazky: [13/21] 200UI02_tabulkaProEditaciDennihoVykonu_dragDropPolozky.png
+[21:46:25] INFO -   Obrazky: [14/21] 200UI02_tabulkaProEditaciDennihoVykonu_dragDropLokace.png
+[21:46:26] INFO -   Obrazky: [15/21] 200UI02_tabulkaProEditaciDennihoVykonu_dragDropLikvidacniMista.png
+[21:46:27] INFO -   Obrazky: [16/21] 200UI02_tabulkaProEditaciDennihoVykonu_oznaceniPolozkaObjednanaSluzba.png
+[21:46:27] INFO -   Obrazky: [17/21] 200UI02_tabulkaProEditaciDennihoVykonu_oznaceniPolozkaOstatni.png
+[21:46:28] INFO -   Obrazky: [18/21] 200UI02_tabulkaProEditaciDennihoVykonu_oznaceniLokace.png
+[21:46:29] INFO -   Obrazky: [19/21] image2021-3-28 13:47:48.png
+[21:46:29] INFO -   Obrazky: [20/21] 200UI02_tabulkaProEditaciDennihoVykonu_polozkyCasovyInterval.png
+[21:46:30] INFO -   Obrazky: [21/21] image2021-12-22 10:10:33.png
+[21:46:31] INFO -   OK (14.6s)
+[21:46:31] INFO - [427/655] 200UI02: Uložení denního výkonu (84214541)
+[21:46:31] INFO -   Obrazky: [1/1] image2024-12-2 15:6:25.png
+[21:46:32] INFO -   OK (0.8s)
+[21:46:32] INFO - [428/655] 200UI03: Obrazovka přehledu denních výkonů (83265958)
+[21:46:32] INFO -   Obrazky: [1/5] 200UI03_rozlozeni_wf.png
+[21:46:33] INFO -   Obrazky: [2/5] 200UI03_rozlozeni.png
+[21:46:33] INFO -   Obrazky: [3/5] 200UI03_hlavicka.png
+[21:46:34] INFO -   Obrazky: [4/5] 200UI03_tabulka.png
+[21:46:35] INFO -   Obrazky: [5/5] image2022-3-8 12:40:52.png
+[21:46:35] INFO -   OK (3.5s)
+[21:46:35] INFO - [429/655] 200UI04: Detail denního výkonu (83265960)
+[21:46:35] INFO -   Obrazky: [1/3] image2019-5-29 9:1:52.png
+[21:46:36] INFO -   Obrazky: [2/3] image2019-5-29 9:4:8.png
+[21:46:37] INFO -   Obrazky: [3/3] image2019-5-28 14:51:7.png
+[21:46:38] INFO -   OK (2.3s)
+[21:46:38] INFO - [430/655] 200UI05: Formulář lokací objednané služby (83266480)
+[21:46:38] INFO -   Obrazky: [1/5] image2021-3-27 16:49:39.png
+[21:46:39] INFO -   Obrazky: [2/5] image2023-5-25 12:43:37.png
+[21:46:39] INFO -   Obrazky: [3/5] image2021-3-27 16:56:7.png
+[21:46:40] INFO -   Obrazky: [4/5] image2023-5-25 12:55:7.png
+[21:46:41] INFO -   Obrazky: [5/5] image2023-5-25 13:14:54.png
+[21:46:41] INFO -   OK (3.6s)
+[21:46:41] INFO - [431/655] 200UI06: Formulář adresy se souřadnicemi (83755400)
+[21:46:41] INFO -   Obrazky: [1/1] 200UI06_rozlozeni_wf.png
+[21:46:42] INFO -   OK (0.8s)
+[21:46:42] INFO - [432/655] 200UI07: Formulář rozdělení objednané služby (84215360)
+[21:46:42] INFO -   Obrazky: [1/6] image2021-3-26 15:6:9.png
+[21:46:43] INFO -   Obrazky: [2/6] image2021-3-26 15:1:11.png
+[21:46:44] INFO -   Obrazky: [3/6] image2021-3-26 16:13:33.png
+[21:46:45] INFO -   Obrazky: [4/6] image2021-3-26 15:39:49.png
+[21:46:45] INFO -   Obrazky: [5/6] 200UI07_panelRozlozeni.png
+[21:46:46] INFO -   Obrazky: [6/6] image2019-3-31+13%3A41%3A49.png
+[21:46:47] INFO -   OK (4.2s)
+[21:46:47] INFO - [433/655] 200UI08: Formulář poznámky (84836456)
+[21:46:47] INFO -   Obrazky: [1/1] image2019-2-5 14:5:45.png
+[21:46:47] INFO -   OK (0.7s)
+[21:46:47] INFO - [434/655] 200UI09: Obrazovka časového využití vozidla za období (84838002)
+[21:46:47] INFO -   Obrazky: [1/5] 200UI09_rozlozeni_wf.png
+[21:46:48] INFO -   Obrazky: [2/5] 200UI09_rozlozeni_nahled.png
+[21:46:49] INFO -   Obrazky: [3/5] 200UI09_rozlozeni_nastrojovaLista.png
+[21:46:50] INFO -   Obrazky: [4/5] 200UI09_rozlozeni_tabulka.png
+[21:46:50] INFO -   Obrazky: [5/5] 200UI09_rozlozeni_souhrnneInformace.png
+[21:46:51] INFO -   OK (3.4s)
+[21:46:51] INFO - [435/655] 200UI10: Obrazovka časového využití vozidel za den (84838004)
+[21:46:51] INFO -   Obrazky: [1/5] 200UI10_rozlozeni_wf.png
+[21:46:52] INFO -   Obrazky: [2/5] 200UI10_rozlozeni_nahled.png
+[21:46:52] INFO -   Obrazky: [3/5] 200UI10_rozlozeni_nastrojovaLista.png
+[21:46:53] INFO -   Obrazky: [4/5] 200UI10_rozlozeni_tabulka.png
+[21:46:54] INFO -   Obrazky: [5/5] 200UI10_rozlozeni_souhrnneInformace.png
+[21:46:54] INFO -   OK (3.4s)
+[21:46:55] INFO - [436/655] 200UI11: Obrazovka časového využití vozidel za období (84838006)
+[21:46:55] INFO -   Obrazky: [1/6] 200UI11_rozlozeni_wf.png
+[21:46:55] INFO -   Obrazky: [2/6] 200UI11_rozlozeni_nahled.png
+[21:46:56] INFO -   Obrazky: [3/6] 200UI11_rozlozeni_nastrojovaLista.png
+[21:46:57] INFO -   Obrazky: [4/6] 200UI11_rozlozeni_tabulka.png
+[21:46:57] INFO -   Obrazky: [5/6] 200UI11_tabulka_oznacenaBunka.png
+[21:46:58] INFO -   Obrazky: [6/6] 200UI11_tabulka_sirkaSloupcu.png
+[21:46:59] INFO -   OK (4.1s)
+[21:46:59] INFO - [437/655] 200UI12: Obrazovka časového využití vozidla za rok (84838008)
+[21:46:59] INFO -   Obrazky: [1/4] 200UI12_rozlozeni_wf.png
+[21:46:59] INFO -   Obrazky: [2/4] 200UI12_rozlozeni_kalendar.png
+[21:47:00] INFO -   Obrazky: [3/4] 200UI12_rozlozeni_nastrojovaLista.png
+[21:47:01] INFO -   Obrazky: [4/4] image2019-3-15 16:3:56.png
+[21:47:02] INFO -   OK (3.0s)
+[21:47:02] INFO - [438/655] 200UI13: Obrazovka časového využití vozidel za měsíc (84838010)
+[21:47:02] INFO -   Obrazky: [1/4] 200UI13_rozlozeni_wf.png
+[21:47:02] INFO -   Obrazky: [2/4] 200UI13_rozlozeni_nahled.png
+[21:47:03] INFO -   Obrazky: [3/4] 200UI13_rozlozeni_nastrojovaLista.png
+[21:47:04] INFO -   Obrazky: [4/4] 200UI13_rozlozeni_kalendar.png
+[21:47:04] INFO -   OK (2.7s)
+[21:47:05] INFO - [439/655] 200UI14: Podrobné informace k časovému využití vozidel (84838014)
+[21:47:05] INFO -   OK (0.0s)
+[21:47:05] INFO - [440/655] 200UI14: Podrobné informace k časovému využití vozidel – Detail (84838117)
+[21:47:05] INFO -   Obrazky: [1/1] 200UI14_rozlozeni_detail_wf.png
+[21:47:05] INFO -   OK (0.7s)
+[21:47:06] INFO - [441/655] 200UI14: Podrobné informace k časovému využití vozidel – Kalendář (84838115)
+[21:47:06] INFO -   OK (0.0s)
+[21:47:06] INFO - [442/655] 200UI14: Podrobné informace k časovému využití vozidel – Souhrn (84838116)
+[21:47:06] INFO -   Obrazky: [1/1] 200UI14_rozlozeni_souhrn_wf.png
+[21:47:06] INFO -   OK (0.7s)
+[21:47:06] INFO - [443/655] 200UI15: Formulář vytvoření místa dočasného uložení (84839829)
+[21:47:06] INFO -   Obrazky: [1/7] image2019-3-31 13:5:29.png
+[21:47:07] INFO -   Obrazky: [2/7] image2021-3-26 14:55:5.png
+[21:47:08] INFO -   Obrazky: [3/7] image2021-3-26 16:13:23.png
+[21:47:09] INFO -   Obrazky: [4/7] image2019-3-31 13:40:50.png
+[21:47:10] INFO -   Obrazky: [5/7] image2019-3-31 13:41:24.png
+[21:47:10] INFO -   Obrazky: [6/7] image2021-3-26 15:30:25.png
+[21:47:11] INFO -   Obrazky: [7/7] image2019-3-31 13:41:49.png
+[21:47:12] INFO -   OK (5.2s)
+[21:47:12] INFO - [444/655] 200UI16: Formulář nastavení tiskové sestavy pro potvrzení o výkonu objednané služby (Lisovací vozidlo) (88015086)
+[21:47:12] INFO -   Obrazky: [1/2] image2021-12-2 9:52:38.png
+[21:47:13] INFO -   Obrazky: [2/2] image2021-12-2 10:41:50.png
+[21:47:13] INFO -   OK (1.6s)
+[21:47:14] INFO - [445/655] 200UI17: Potvrzení o výkonu objednané služby (HNK, RNK, Valník) (88015087)
+[21:47:14] INFO -   Obrazky: [1/6] 200UI17_rozlozeni_strana.png
+[21:47:14] INFO -   Obrazky: [2/6] image2020-8-29 15:59:22.png
+[21:47:15] INFO -   Obrazky: [3/6] image2020-8-29 16:0:9.png
+[21:47:16] INFO -   Obrazky: [4/6] image2020-8-29 16:1:57.png
+[21:47:17] INFO -   Obrazky: [5/6] image2020-8-29 16:6:22.png
+[21:47:18] INFO -   Obrazky: [6/6] image2019-10-14 11:9:36.png
+[21:47:18] INFO -   OK (4.8s)
+[21:47:18] INFO - [446/655] 200UI18: Formulář nastavení prázdné tiskové sestavy pro potvrzení o výkonu objednané služby (88040631)
+[21:47:18] INFO -   Obrazky: [1/2] image2021-12-2 10:27:36.png
+[21:47:19] INFO -   Obrazky: [2/2] image2021-12-2 10:40:2.png
+[21:47:20] INFO -   OK (1.7s)
+[21:47:20] INFO - [447/655] 200UI19: Prázdné potvrzení o výkonu objednané služby (HNK, RNK, Valník) (88040633)
+[21:47:20] INFO -   Obrazky: [1/3] image2020-8-31 13:7:51.png
+[21:47:21] INFO -   Obrazky: [2/3] image2020-8-31 13:9:16.png
+[21:47:22] INFO -   Obrazky: [3/3] image2020-8-29 18:55:11.png
+[21:47:23] INFO -   OK (2.3s)
+[21:47:23] INFO - [448/655] 200UI20: Formulář sloučení objednané služby (93593689)
+[21:47:23] INFO -   Obrazky: [1/5] image2021-3-27 10:56:14.png
+[21:47:23] INFO -   Obrazky: [2/5] image2021-3-27 11:2:1.png
+[21:47:24] INFO -   Obrazky: [3/5] image2021-3-27 14:28:57.png
+[21:47:25] INFO -   Obrazky: [4/5] image2021-3-27 11:12:9.png
+[21:47:25] INFO -   Obrazky: [5/5] image2021-3-27 13:26:46.png
+[21:47:26] INFO -   OK (3.4s)
+[21:47:26] INFO - [449/655] 200UI21: Zjednodušený itinerář trasy denního výkonu (103284873)
+[21:47:26] INFO -   Obrazky: [1/9] image2021-11-27 20:51:46.png
+[21:47:27] INFO -   Obrazky: [2/9] image2021-11-27 21:31:56.png
+[21:47:27] INFO -   Obrazky: [3/9] image2021-11-28 13:32:4.png
+[21:47:28] INFO -   Obrazky: [4/9] image2021-11-29 18:14:4.png
+[21:47:29] INFO -   Obrazky: [5/9] image2021-11-29 18:14:18.png
+[21:47:30] INFO -   Obrazky: [6/9] image2021-11-28 14:33:1.png
+[21:47:30] INFO -   Obrazky: [7/9] image2021-11-28 14:20:51.png
+[21:47:31] INFO -   Obrazky: [8/9] image2021-11-28 14:48:34.png
+[21:47:32] INFO -   Obrazky: [9/9] image2021-11-27 16:3:46.png
+[21:47:32] INFO -   OK (6.4s)
+[21:47:33] INFO - [450/655] 200UI22: Potvrzení o výkonu objednané služby (Lisovací vozidlo) (103284871)
+[21:47:33] INFO -   Obrazky: [1/14] image2021-11-29 14:20:45.png
+[21:47:33] INFO -   Obrazky: [2/14] image2021-11-29 17:30:48.png
+[21:47:34] INFO -   Obrazky: [3/14] image2021-11-29 14:46:48.png
+[21:47:35] INFO -   Obrazky: [4/14] image2021-11-29 18:11:39.png
+[21:47:35] INFO -   Obrazky: [5/14] image2021-11-29 18:11:58.png
+[21:47:36] INFO -   Obrazky: [6/14] image2021-11-29 17:51:5.png
+[21:47:37] INFO -   Obrazky: [7/14] image2021-11-29 17:37:51.png
+[21:47:37] INFO -   Obrazky: [8/14] image2021-11-30 12:2:57.png
+[21:47:38] INFO -   Obrazky: [9/14] image2021-11-30 10:23:18.png
+[21:47:39] INFO -   Obrazky: [10/14] image2021-11-30 9:14:48.png
+[21:47:39] INFO -   Obrazky: [11/14] image2021-11-30 10:12:6.png
+[21:47:40] INFO -   Obrazky: [12/14] image2021-11-30 9:55:58.png
+[21:47:41] INFO -   Obrazky: [13/14] image2021-11-28 16:29:22.png
+[21:47:42] INFO -   Obrazky: [14/14] image2021-11-28 16:29:40.png
+[21:47:42] INFO -   OK (9.7s)
+[21:47:42] INFO - [451/655] 200UI23: Prázdné potvrzení o výkonu objednané služby (Lisovací vozidlo) (103284870)
+[21:47:42] INFO -   Obrazky: [1/11] image2021-11-30 14:39:25.png
+[21:47:43] INFO -   Obrazky: [2/11] image2021-11-30 14:41:5.png
+[21:47:44] INFO -   Obrazky: [3/11] image2021-11-30 14:45:3.png
+[21:47:45] INFO -   Obrazky: [4/11] image2021-11-30 14:55:28.png
+[21:47:45] INFO -   Obrazky: [5/11] image2021-11-30 14:55:51.png
+[21:47:46] INFO -   Obrazky: [6/11] image2021-11-30 14:57:28.png
+[21:47:46] INFO -   Obrazky: [7/11] image2021-11-30 14:57:54.png
+[21:47:47] INFO -   Obrazky: [8/11] image2021-11-30 15:0:12.png
+[21:47:48] INFO -   Obrazky: [9/11] image2021-11-30 15:18:23.png
+[21:47:49] INFO -   Obrazky: [10/11] image2021-11-30 15:22:30.png
+[21:47:49] INFO -   Obrazky: [11/11] image2021-11-30 15:26:22.png
+[21:47:50] INFO -   OK (7.7s)
+[21:47:50] INFO - [452/655] 200UI24: Formulář nastavení tiskové sestavy pro potvrzení o výkonu objednané služby (HNK, RNK, Valník) (103285228)
+[21:47:50] INFO -   Obrazky: [1/1] image2021-11-30 18:30:25.png
+[21:47:51] INFO -   OK (0.7s)
+[21:47:51] INFO - [453/655] 200UI25: Potvrzení o výkonu objednané služby (Komunální vozidlo – pilot) (114458807)
+[21:47:51] INFO -   Obrazky: [1/3] image2023-2-22 8:14:55.png
+[21:47:52] INFO -   Obrazky: [2/3] image2023-2-22 8:0:9.png
+[21:47:53] INFO -   Obrazky: [3/3] image2023-2-21 17:58:38.png
+[21:47:53] INFO -   OK (2.2s)
+[21:47:53] INFO - [454/655] 200UI26: Prázdné potvrzení o výkonu objednané služby (Komunální vozidlo – pilot) (114458820)
+[21:47:53] INFO -   Obrazky: [1/3] image2023-2-22 8:23:30.png
+[21:47:54] INFO -   Obrazky: [2/3] image2023-2-22 8:32:15.png
+[21:47:55] INFO -   Obrazky: [3/3] image2023-2-22 8:46:49.png
+[21:47:56] INFO -   OK (2.4s)
+[21:47:56] INFO - [455/655] 300UIxx: Monitoring realizace denních výkonů (86147453)
+[21:47:56] INFO -   OK (0.0s)
+[21:47:56] INFO - [456/655] 300UI01: Obrazovka pro monitoring realizace denních výkonů (86147457)
+[21:47:56] INFO -   Obrazky: [1/9] image2026-1-5 9:56:41.png
+[21:47:57] INFO -   Obrazky: [2/9] image2026-1-5 10:12:45.png
+[21:47:57] INFO -   Obrazky: [3/9] 300UI01_rozlozeni_nahled_4.png
+[21:47:58] INFO -   Obrazky: [4/9] 300UI01_rozlozeni_nahled_3.png
+[21:47:59] INFO -   Obrazky: [5/9] 300UI01_rozlozeni_nahled_1.png
+[21:47:59] INFO -   Obrazky: [6/9] 300UI01_rozlozeni_nahled_2.png
+[21:48:00] INFO -   Obrazky: [7/9] image2026-1-5 10:24:0.png
+[21:48:01] INFO -   Obrazky: [8/9] image2026-1-5 10:29:47.png
+[21:48:01] INFO -   Obrazky: [9/9] image2025-12-12 9:24:29.png
+[21:48:03] INFO -   OK (6.6s)
+[21:48:03] INFO - [457/655] 300UI01: Detail realizace denního výkonu (86147774)
+[21:48:03] INFO -   Obrazky: [1/1] 300UI01_rozlozeni_detailRealizaceDennihoVyoknu_wf.png
+[21:48:03] INFO -   OK (0.7s)
+[21:48:03] INFO - [458/655] 300UI01: Detail událostí (122202007)
+[21:48:03] INFO -   Obrazky: [1/2] image2026-1-5 10:56:14.png
+[21:48:04] INFO -   Obrazky: [2/2] image2025-12-11 10:29:58.png
+[21:48:05] INFO -   OK (1.6s)
+[21:48:05] INFO - [459/655] 300UI01: Mapa realizace denních výkonů (86147502)
+[21:48:05] INFO -   Obrazky: [1/29] 300UI01_MapaRealizaceDennichVykonu_wf.png
+[21:48:06] INFO -   Obrazky: [2/29] 300UI01_MapaRealizaceDennichVykonu_vozidlo3.png
+[21:48:07] INFO -   Obrazky: [3/29] 300UI01_MapaRealizaceDennichVykonu_vozidlo4.png
+[21:48:07] INFO -   Obrazky: [4/29] 300UI01_MapaRealizaceDennichVykonu_vozidlo1.png
+[21:48:08] INFO -   Obrazky: [5/29] 300UI01_MapaRealizaceDennichVykonu_vozidlo2.png
+[21:48:09] INFO -   Obrazky: [6/29] 300UI01_MapaRealizaceDennichVykonu_popisek.png
+[21:48:09] INFO -   Obrazky: [7/29] 300UI01_MapaRealizaceDennichVykonu_stopa2.png
+[21:48:10] INFO -   Obrazky: [8/29] 300UI01_MapaRealizaceDennichVykonu_stopa1.png
+[21:48:11] INFO -   Obrazky: [9/29] 300UI01_MapaRealizaceDennichVykonu_udalost1.png
+[21:48:11] INFO -   Obrazky: [10/29] 300UI01_MapaRealizaceDennichVykonu_udalost2.png
+[21:48:12] INFO -   Obrazky: [11/29] image2023-11-1 9:54:27.png
+[21:48:13] INFO -   Obrazky: [12/29] image2025-6-7 14:36:15.png
+[21:48:13] INFO -   Obrazky: [13/29] image2023-11-1 9:56:6.png
+[21:48:14] INFO -   Obrazky: [14/29] image2025-6-7 14:34:35.png
+[21:48:15] INFO -   Obrazky: [15/29] image2025-2-17 15:4:38.png
+[21:48:16] INFO -   Obrazky: [16/29] image2025-2-17 15:6:54.png
+[21:48:16] INFO -   Obrazky: [17/29] image2025-2-17 15:11:19.png
+[21:48:17] INFO -   Obrazky: [18/29] 300UI01_MapaRealizaceDennichVykonu_stopa4.png
+[21:48:18] INFO -   Obrazky: [19/29] 300UI01_MapaRealizaceDennichVykonu_stopa3.png
+[21:48:18] INFO -   Obrazky: [20/29] image2025-2-11 8:56:51.png
+[21:48:19] INFO -   Obrazky: [21/29] image2025-2-11 8:57:5.png
+[21:48:20] INFO -   Obrazky: [22/29] 300UI01_MapaRealizaceDennichVykonu_lokace2.png
+[21:48:21] INFO -   Obrazky: [23/29] image2025-2-11 8:57:19.png
+[21:48:21] INFO -   Obrazky: [24/29] 300UI01_MapaRealizaceDennichVykonu_lokace3.png
+[21:48:22] INFO -   Obrazky: [25/29] image2025-2-11 8:57:31.png
+[21:48:23] INFO -   Obrazky: [26/29] 300UI01_MapaRealizaceDennichVykonu_lokace4.png
+[21:48:23] INFO -   Obrazky: [27/29] image2025-12-1 13:32:31.png
+[21:48:24] INFO -   Obrazky: [28/29] 300UI01_MapaRealizaceDennichVykonu_nastrojovaLista.png
+[21:48:25] INFO -   Obrazky: [29/29] image2025-12-11 14:15:29.png
+[21:48:26] INFO -   OK (20.3s)
+[21:48:26] INFO - [460/655] 300UI01: Nástrojová lišta (86147497)
+[21:48:26] INFO -   Obrazky: [1/3] 300UI01_nastrojovaLista_wf.png
+[21:48:26] INFO -   Obrazky: [2/3] 300UI01_nastrojovaLista_typDopravy_nabidka.png
+[21:48:27] INFO -   Obrazky: [3/3] 300UI01_nastrojovaLista_ui.png
+[21:48:28] INFO -   OK (2.0s)
+[21:48:28] INFO - [461/655] 300UI01: Přehled realizace denních výkonů (86147500)
+[21:48:28] INFO -   Obrazky: [1/7] 300UI01_prehled_rozlozeni.png
+[21:48:29] INFO -   Obrazky: [2/7] 300UI01_prehled_nastrojovaLista_wf.png
+[21:48:29] INFO -   Obrazky: [3/7] 300UI01_prehled_tabulka.png
+[21:48:30] INFO -   Obrazky: [4/7] 300UI01_prehled_diagram.png
+[21:48:31] INFO -   Obrazky: [5/7] image2019-10-28 18:43:45.png
+[21:48:31] INFO -   Obrazky: [6/7] image2025-2-10 15:33:18.png
+[21:48:32] INFO -   Obrazky: [7/7] image2025-2-11 8:10:54.png
+[21:48:33] INFO -   OK (4.8s)
+[21:48:33] INFO - [462/655] 300UI01: Průběh realizace (86147773)
+[21:48:33] INFO -   Obrazky: [1/2] image2026-1-5 10:48:52.png
+[21:48:34] INFO -   Obrazky: [2/2] image2025-12-15 12:32:18.png
+[21:48:34] INFO -   OK (1.7s)
+[21:48:35] INFO - [463/655] 400UIxx: Kontrola realizace denních výkonů (86836007)
+[21:48:35] INFO -   OK (0.0s)
+[21:48:35] INFO - [464/655] 400UI01: Obrazovka pro kontrolu realizace denních výkonů (86836009)
+[21:48:35] INFO -   Obrazky: [1/5] 400UI01_rozlozeni.png
+[21:48:35] INFO -   Obrazky: [2/5] 400UI01_hlavicka.png
+[21:48:36] INFO -   Obrazky: [3/5] 400UI01_skupinyPoradi2.png
+[21:48:37] INFO -   Obrazky: [4/5] 400UI01_skupinyPoradi1.png
+[21:48:37] INFO -   Obrazky: [5/5] 400UI01_nahled_wf.png
+[21:48:38] INFO -   OK (3.6s)
+[21:48:38] INFO - [465/655] 400UI01: Panel se záložkami s detailem realizace denního výkonu (86836020)
+[21:48:38] INFO -   Obrazky: [1/16] 400UI01_nahled_mapa_wf.png
+[21:48:39] INFO -   Obrazky: [2/16] 400UI01_rozlozeni_mapa.png
+[21:48:40] INFO -   Obrazky: [3/16] 400UI01_mapa_trasaSkutecnost.png
+[21:48:40] INFO -   Obrazky: [4/16] 400UI01_mapa_udalost.png
+[21:48:41] INFO -   Obrazky: [5/16] image2023-11-11 11:48:48.png
+[21:48:42] INFO -   Obrazky: [6/16] 400UI01_mapa_trasaPlan.png
+[21:48:42] INFO -   Obrazky: [7/16] 400UI01_mapa_mr.png
+[21:48:43] INFO -   Obrazky: [8/16] 400UI01_mapa_lm.png
+[21:48:44] INFO -   Obrazky: [9/16] 400UI01_mapa_provozovna.png
+[21:48:44] INFO -   Obrazky: [10/16] 400UI01_mapa_mdu.png
+[21:48:45] INFO -   Obrazky: [11/16] 400UI01_mapa_oznacenaSLuzba.png
+[21:48:46] INFO -   Obrazky: [12/16] 400UI01_mapa_nastrojovaLista.png
+[21:48:46] INFO -   Obrazky: [13/16] 400UI01_nahled_realizaceDennihoVykonu_wf.png
+[21:48:47] INFO -   Obrazky: [14/16] 400UI01_rozlozeni_realizaceDennihoVykonu.png
+[21:48:48] INFO -   Obrazky: [15/16] 400UI01_nahled_denniVykon_wf.png
+[21:48:49] INFO -   Obrazky: [16/16] 400UI01_rozlozeni_denniVykon.png
+[21:48:49] INFO -   OK (11.1s)
+[21:48:49] INFO - [466/655] 400UI01: Potvrzení realizace denního výkonu (86836019)
+[21:48:49] INFO -   Obrazky: [1/1] image2019-6-9 11:3:18.png
+[21:48:50] INFO -   OK (0.7s)
+[21:48:50] INFO - [467/655] 400UI01: Přehled objednaných služeb realizace denního výkonu (86836021)
+[21:48:50] INFO -   Obrazky: [1/7] 400UI01_prehled_rozlozeni.png
+[21:48:51] INFO -   Obrazky: [2/7] 400UI01_prehled_nahled_wf.png
+[21:48:52] INFO -   Obrazky: [3/7] 400UI01_prehled_nastrojovaLista.png
+[21:48:52] INFO -   Obrazky: [4/7] image2025-12-2 12:5:15.png
+[21:48:53] INFO -   Obrazky: [5/7] 400UI01_prehled_dragDrop.png
+[21:48:54] INFO -   Obrazky: [6/7] image2025-12-2 13:46:9.png
+[21:48:54] INFO -   Obrazky: [7/7] image2021-3-28 14:58:45.png
+[21:48:55] INFO -   OK (4.9s)
+[21:48:55] INFO - [468/655] 500UIxx: Správa dat (82640921)
+[21:48:55] INFO -   OK (0.0s)
+[21:48:55] INFO - [469/655] 500UI01: Obrazovka přehledu správy dat (82640923)
+[21:48:55] INFO -   Obrazky: [1/4] 500UIxx_rozlozeni_wf.png
+[21:48:56] INFO -   Obrazky: [2/4] 500UIxx_nadpisPrehledu.png
+[21:48:57] INFO -   Obrazky: [3/4] 500UIxx_menuRozlozeni_wf.png
+[21:48:57] INFO -   Obrazky: [4/4] 500UIxx_nadpisTabulkyPrehledu.png
+[21:48:58] INFO -   OK (2.7s)
+[21:48:58] INFO - [470/655] 500UI01: Obrazovka přehledu pro druhy odpadu (82837532)
+[21:48:58] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_druhyOdpadu.png
+[21:48:59] INFO -   OK (0.6s)
+[21:48:59] INFO - [471/655] 500UI01: Obrazovka přehledu pro kontejnery (82837874)
+[21:48:59] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_kontejnery.png
+[21:49:00] INFO -   OK (0.7s)
+[21:49:00] INFO - [472/655] 500UI01: Obrazovka přehledu pro likvidační místa (82837530)
+[21:49:00] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_likvidacniMista.png
+[21:49:00] INFO -   OK (0.7s)
+[21:49:01] INFO - [473/655] 500UI01: Obrazovka přehledu pro množstevní jednotky (82837538)
+[21:49:01] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_mnozstevniJednotky.png
+[21:49:01] INFO -   OK (0.7s)
+[21:49:01] INFO - [474/655] 500UI01: Obrazovka přehledu pro provozovny (82837528)
+[21:49:01] INFO -   Obrazky: [1/1] image2019-4-5 13:47:53.png
+[21:49:02] INFO -   OK (0.6s)
+[21:49:02] INFO - [475/655] 500UI01: Obrazovka přehledu pro smlouvy (82837526)
+[21:49:02] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_smlouvy.png
+[21:49:03] INFO -   OK (0.7s)
+[21:49:03] INFO - [476/655] 500UI01: Obrazovka přehledu pro typy dopravy (82837534)
+[21:49:03] INFO -   Obrazky: [1/1] image2018-10-5 13:43:30.png
+[21:49:03] INFO -   OK (0.6s)
+[21:49:04] INFO - [477/655] 500UI01: Obrazovka přehledu pro typy nádob (82837536)
+[21:49:04] INFO -   Obrazky: [1/1] image2018-11-12 14:43:44.png
+[21:49:04] INFO -   OK (0.7s)
+[21:49:04] INFO - [478/655] 500UI01: Obrazovka přehledu pro uživatele (82837715)
+[21:49:04] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_uzivatele.png
+[21:49:05] INFO -   OK (0.6s)
+[21:49:05] INFO - [479/655] 500UI01: Obrazovka přehledu pro vozidla (82640950)
+[21:49:05] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_vozidla.png
+[21:49:06] INFO -   OK (0.7s)
+[21:49:06] INFO - [480/655] 500UI01: Obrazovka přehledu pro zákazníky (82640954)
+[21:49:06] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_zakaznici.png
+[21:49:07] INFO -   OK (0.7s)
+[21:49:07] INFO - [481/655] 500UI01: Obrazovka přehledu pro zaměstnance (82640952)
+[21:49:07] INFO -   Obrazky: [1/1] 500UI01_nastrojovaLista_zamestnanci.png
+[21:49:07] INFO -   OK (0.7s)
+[21:49:08] INFO - [482/655] 500UI02: Detail zákazníka (82837652)
+[21:49:08] INFO -   Obrazky: [1/10] image2024-9-29 20:25:47.png
+[21:49:08] INFO -   Obrazky: [2/10] image2024-9-29 11:30:39.png
+[21:49:09] INFO -   Obrazky: [3/10] image2024-9-29 20:32:10.png
+[21:49:10] INFO -   Obrazky: [4/10] image2024-9-29 11:30:57.png
+[21:49:10] INFO -   Obrazky: [5/10] image2024-9-29 20:32:31.png
+[21:49:11] INFO -   Obrazky: [6/10] image2024-9-29 11:31:15.png
+[21:49:12] INFO -   Obrazky: [7/10] image2024-9-29 20:33:2.png
+[21:49:12] INFO -   Obrazky: [8/10] 500UI02_osobaZakaznika_detail.png
+[21:49:13] INFO -   Obrazky: [9/10] 500UI02_bankovniSpojeni_detail.png
+[21:49:14] INFO -   Obrazky: [10/10] 500UI02_mistoRealizace_detail.png
+[21:49:14] INFO -   OK (6.8s)
+[21:49:14] INFO - [483/655] 500UI03: Formulář zákazníka (82837649)
+[21:49:14] INFO -   Obrazky: [1/1] image2020-7-28 14:21:1.png
+[21:49:15] INFO -   OK (0.8s)
+[21:49:15] INFO - [484/655] 500UI04: Formulář místa realizace (82837662)
+[21:49:15] INFO -   Obrazky: [1/5] 500UI04_rozlozeni_jednaAdresa_wf.png
+[21:49:16] INFO -   Obrazky: [2/5] 500UI04_rozlozeni_viceAdres_wf.png
+[21:49:17] INFO -   Obrazky: [3/5] 500UI04_hledaniAdresy_zadnyText.png
+[21:49:18] INFO -   Obrazky: [4/5] 500UI04_hledaniAdresy_kratkyText.png
+[21:49:18] INFO -   Obrazky: [5/5] 500UI04_hledaniAdresy_nalezeneHodnoty.png
+[21:49:19] INFO -   OK (3.5s)
+[21:49:19] INFO - [485/655] 500UI05: Formulář bankovního spojení (82837664)
+[21:49:19] INFO -   Obrazky: [1/1] 500UI05_rozlozeni_wf.png
+[21:49:20] INFO -   OK (0.7s)
+[21:49:20] INFO - [486/655] 500UI06: Formulář osoby zákazníka (82837666)
+[21:49:20] INFO -   Obrazky: [1/1] image2019-8-29 13:10:41.png
+[21:49:20] INFO -   OK (0.7s)
+[21:49:21] INFO - [487/655] 500UI07: Formulář typu nádoby (83263601)
+[21:49:21] INFO -   Obrazky: [1/1] 500UI07_rozlozeni_wf.png
+[21:49:21] INFO -   OK (0.6s)
+[21:49:21] INFO - [488/655] 500UI08: Formulář likvidačního místa (83263838)
+[21:49:21] INFO -   Obrazky: [1/1] 500UI08_rozlozeni_wf.png
+[21:49:22] INFO -   OK (0.8s)
+[21:49:22] INFO - [489/655] 500UI09: Formulář adresy (83263989)
+[21:49:22] INFO -   Obrazky: [1/1] 500UI09_rozlozeni_wf.png
+[21:49:23] INFO -   OK (0.7s)
+[21:49:23] INFO - [490/655] 500UI10: Detail likvidačního místa (83265707)
+[21:49:23] INFO -   Obrazky: [1/2] 500UI10_rozlozeni_wf.png
+[21:49:24] INFO -   Obrazky: [2/2] 500UI10_nastrojovaLista.png
+[21:49:24] INFO -   OK (1.4s)
+[21:49:25] INFO - [491/655] 500UI11: Formulář adresy se souřadnicemi (84215313)
+[21:49:25] INFO -   Obrazky: [1/1] 500UI11_rozlozeni_wf.png
+[21:49:25] INFO -   OK (0.8s)
+[21:49:25] INFO - [492/655] 500UI12: Formulář provozovny (84840305)
+[21:49:25] INFO -   Obrazky: [1/1] 500UI12_rozlozeni_wf.png
+[21:49:26] INFO -   OK (0.8s)
+[21:49:26] INFO - [493/655] 500UI13: Formulář adresy sídla zákazníka (87327114)
+[21:49:26] INFO -   Obrazky: [1/1] image2019-7-3 14:14:26.png
+[21:49:27] INFO -   OK (0.8s)
+[21:49:27] INFO - [494/655] 700UIxx: Obecné (79429654)
+[21:49:27] INFO -   OK (0.0s)
+[21:49:27] INFO - [495/655] 700UI01: Komponenty (79429727)
+[21:49:27] INFO -   Obrazky: [1/21] Komponenty_Label.png
+[21:49:28] INFO -   Obrazky: [2/21] Komponenty_TextovePole.png
+[21:49:29] INFO -   Obrazky: [3/21] Komponenty_ViceradkoveTextovePole.png
+[21:49:29] INFO -   Obrazky: [4/21] Komponenty_NumericUpDown.png
+[21:49:30] INFO -   Obrazky: [5/21] Komponenty_Tlacitko.png
+[21:49:31] INFO -   Obrazky: [6/21] Komponenty_ToggleButton.png
+[21:49:31] INFO -   Obrazky: [7/21] Komponenty_SwitchButton.png
+[21:49:32] INFO -   Obrazky: [8/21] Komponenty_ZaskrtavaciPolicko.png
+[21:49:33] INFO -   Obrazky: [9/21] Komponenty_Prepinac.png
+[21:49:33] INFO -   Obrazky: [10/21] Komponenty_Zalozka.png
+[21:49:34] INFO -   Obrazky: [11/21] Komponenty_RozbalovaciNabidka.png
+[21:49:35] INFO -   Obrazky: [12/21] Komponenty_Naseptavac.png
+[21:49:35] INFO -   Obrazky: [13/21] Komponenty_NaseptavacPridat.png
+[21:49:36] INFO -   Obrazky: [14/21] Komponenty_DatePicker.png
+[21:49:37] INFO -   Obrazky: [15/21] Komponenty_TimePicker.png
+[21:49:37] INFO -   Obrazky: [16/21] Komponenty_TextovyFiltr.png
+[21:49:38] INFO -   Obrazky: [17/21] Komponenty_Tabulka.png
+[21:49:39] INFO -   Obrazky: [18/21] Komponenty_Graf.png
+[21:49:39] INFO -   Obrazky: [19/21] Komponenty_Mapa.png
+[21:49:40] INFO -   Obrazky: [20/21] image2018-12-17 9:7:52.png
+[21:49:41] INFO -   Obrazky: [21/21] Komponenty_naseptavac_priklad.png
+[21:49:41] INFO -   OK (14.0s)
+[21:49:41] INFO - [496/655] 700UI01: Komponenty – časové využití vozidel (84838020)
+[21:49:41] INFO -   Obrazky: [1/2] 700UI02_casoveVyuzitiVozidel_diagram.png
+[21:49:42] INFO -   Obrazky: [2/2] 700UI02_casoveVyuzitiVozidel_kalendar.png
+[21:49:43] INFO -   OK (1.4s)
+[21:49:43] INFO - [497/655] 700UI01: Komponenty – mapa (83266189)
+[21:49:43] INFO -   Obrazky: [1/9] 700UI01_mapa_rozlozeni_wf.png
+[21:49:44] INFO -   Obrazky: [2/9] 700UI01_mapa_nastrojovaListaRozlozeni.png
+[21:49:44] INFO -   Obrazky: [3/9] 700UI01_mapa_nastrojovaLista_skryvani.png
+[21:49:45] INFO -   Obrazky: [4/9] 700UI01_mapa_nastrojovaListaMapovePodklady.png
+[21:49:46] INFO -   Obrazky: [5/9] 700UI01_mapa_nastrojovaListaVrstvy.png
+[21:49:46] INFO -   Obrazky: [6/9] 700UI01_mapa_prepinaceChovani.png
+[21:49:47] INFO -   Obrazky: [7/9] image2019-11-1 14:8:11.png
+[21:49:48] INFO -   Obrazky: [8/9] image2019-11-1 14:7:34.png
+[21:49:49] INFO -   Obrazky: [9/9] image2019-11-1 14:22:43.png
+[21:49:49] INFO -   OK (6.6s)
+[21:49:50] INFO - [498/655] 700UI01: Komponenty – mapa (kopie) (120753812)
+[21:49:50] INFO -   Obrazky: [1/1] image2025-2-5 9:35:47.png
+[21:49:50] INFO -   OK (0.8s)
+[21:49:50] INFO - [499/655] 700UI01: Komponenty – tabulka (86835711)
+[21:49:50] INFO -   Obrazky: [1/32] image2020-9-16 10:54:21.png
+[21:49:51] INFO -   Obrazky: [2/32] image2019-11-1 15:15:3.png
+[21:49:52] INFO -   Obrazky: [3/32] image2019-11-1 15:17:24.png
+[21:49:53] INFO -   Obrazky: [4/32] image2020-9-16 11:1:49.png
+[21:49:53] INFO -   Obrazky: [5/32] image2020-9-16 11:55:1.png
+[21:49:54] INFO -   Obrazky: [6/32] image2026-1-5 9:20:52.png
+[21:49:55] INFO -   Obrazky: [7/32] image2023-1-3 11:43:34.png
+[21:49:55] INFO -   Obrazky: [8/32] image2023-1-3 12:58:0.png
+[21:49:56] INFO -   Obrazky: [9/32] image2023-1-3 13:2:47.png
+[21:49:56] INFO -   Obrazky: [10/32] image2023-1-3 12:31:14.png
+[21:49:57] INFO -   Obrazky: [11/32] image2022-4-1 8:39:42.png
+[21:49:58] INFO -   Obrazky: [12/32] image2019-11-1 15:4:0.png
+[21:49:58] INFO -   Obrazky: [13/32] image2019-11-1 15:4:8.png
+[21:49:59] INFO -   Obrazky: [14/32] image2019-11-1 15:4:17.png
+[21:50:00] INFO -   Obrazky: [15/32] image2019-11-1 15:0:37.png
+[21:50:00] INFO -   Obrazky: [16/32] image2019-11-4 9:59:16.png
+[21:50:01] INFO -   Obrazky: [17/32] image2019-11-1 15:2:0.png
+[21:50:02] INFO -   Obrazky: [18/32] image2019-11-5 9:23:56.png
+[21:50:03] INFO -   Obrazky: [19/32] image2019-11-4 9:59:16.png
+[21:50:03] INFO -   Obrazky: [20/32] image2019-11-5 10:37:34.png
+[21:50:04] INFO -   Obrazky: [21/32] image2019-11-5 10:37:48.png
+[21:50:05] INFO -   Obrazky: [22/32] image2019-11-5 11:29:35.png
+[21:50:05] INFO -   Obrazky: [23/32] image2019-11-5 11:31:44.png
+[21:50:06] INFO -   Obrazky: [24/32] image2019-11-5 11:33:59.png
+[21:50:07] INFO -   Obrazky: [25/32] image2019-11-5 11:32:54.png
+[21:50:07] INFO -   Obrazky: [26/32] image2026-2-10 12:55:2.png
+[21:50:08] INFO -   Obrazky: [27/32] image2026-2-11 7:57:32.png
+[21:50:09] INFO -   Obrazky: [28/32] image2026-2-11 7:56:33.png
+[21:50:09] INFO -   Obrazky: [29/32] image2023-2-6 11:20:44.png
+[21:50:10] INFO -   Obrazky: [30/32] image2022-4-1 9:7:25.png
+[21:50:11] INFO -   Obrazky: [31/32] image2023-6-13 10:11:19.png
+[21:50:11] INFO -   Obrazky: [32/32] image2023-6-13 10:11:52.png
+[21:50:12] INFO -   OK (21.4s)
+[21:50:12] INFO - [500/655] 700UI02: Hlavní menu (79429669)
+[21:50:12] INFO -   Obrazky: [1/1] 700UI02_rozlozeni_wf.png
+[21:50:13] INFO -   OK (0.7s)
+[21:50:13] INFO - [501/655] 700UI03: Hlavička aplikace (79429678)
+[21:50:13] INFO -   OK (0.0s)
+[21:50:13] INFO - [502/655] 700UI04: Přihlašovací obrazovka (79429901)
+[21:50:13] INFO -   Obrazky: [1/1] image2018-7-30 22:30:4.png
+[21:50:14] INFO -   OK (0.7s)
+[21:50:14] INFO - [503/655] 700UI05: Výběrové dialogy (79430047)
+[21:50:14] INFO -   Obrazky: [1/4] image2018-10-5 8:48:18.png
+[21:50:14] INFO -   Obrazky: [2/4] image2018-10-5 8:56:17.png
+[21:50:15] INFO -   Obrazky: [3/4] image2018-10-5 9:3:22.png
+[21:50:16] INFO -   Obrazky: [4/4] image2018-10-5 9:3:57.png
+[21:50:16] INFO -   OK (2.8s)
+[21:50:17] INFO - [504/655] 700UI06: Systémové hlášky (79430049)
+[21:50:17] INFO -   Obrazky: [1/1] 700UI06_okno_wf.png
+[21:50:17] INFO -   OK (0.7s)
+[21:50:17] INFO - [505/655] 700UI07: Rychlý rozšířený filtr (83266117)
+[21:50:17] INFO -   OK (0.0s)
+[21:50:17] INFO - [506/655] 700UI08: Časová osa (83266783)
+[21:50:17] INFO -   Obrazky: [1/4] 700UI08_rozlozeni_wf.png
+[21:50:18] INFO -   Obrazky: [2/4] 700UI08_nastaveniZobrazenehoObdobi.png
+[21:50:20] INFO -   Obrazky: [3/4] 700UI08_zobrazenyCasovyInterval.png
+[21:50:20] INFO -   Obrazky: [4/4] 700UI08_casovaOsa.png
+[21:50:21] INFO -   OK (3.6s)
+[21:50:21] INFO - [507/655] 700UI09: Kontextová nabídka (84840357)
+[21:50:21] INFO -   Obrazky: [1/2] 700UI09_rozlozeni_wf.png
+[21:50:22] INFO -   Obrazky: [2/2] 700UI09_druhaUroven.png
+[21:50:22] INFO -   OK (1.4s)
+[21:50:23] INFO - [508/655] 700UI10: Modální okno (88033317)
+[21:50:23] INFO -   Obrazky: [1/1] image2020-5-29 10:1:36.png
+[21:50:23] INFO -   OK (0.6s)
+[21:50:23] INFO - [509/655] 702UIxx: Kalendáře a periodicita (82117359)
+[21:50:23] INFO -   OK (0.0s)
+[21:50:23] INFO - [510/655] 702UI01: Formulář pro nastavení pravidla opakování (80511467)
+[21:50:23] INFO -   Obrazky: [1/5] 702UI01_rozlozeni_wf.png
+[21:50:24] INFO -   Obrazky: [2/5] 702UI01_pravidloOpakovani.png
+[21:50:25] INFO -   Obrazky: [3/5] 702UI01_casoveOkno.png
+[21:50:25] INFO -   Obrazky: [4/5] 702UI01_obdobi.png
+[21:50:26] INFO -   Obrazky: [5/5] 702UI01_rozlozeni_ui.png
+[21:50:27] INFO -   OK (3.5s)
+[21:50:27] INFO - [511/655] 702UI02: Formulář pro nastavení termínu (82117361)
+[21:50:27] INFO -   Obrazky: [1/2] 702UI02_rozlozeni_wf.png
+[21:50:28] INFO -   Obrazky: [2/2] 702UI02_rozlozeni_ui.png
+[21:50:28] INFO -   OK (1.4s)
+[21:50:28] INFO - [512/655] 702UI03: Formulář pro nastavení délky trvání (84215090)
+[21:50:28] INFO -   Obrazky: [1/2] 702UI03_rozlozeni_v2_wf.png
+[21:50:29] INFO -   Obrazky: [2/2] 702UI03_rozlozeni_v2_ui.png
+[21:50:30] INFO -   OK (1.4s)
+[21:50:30] INFO - [513/655] 702UI04: Nabídka pro výběr období (84838362)
+[21:50:30] INFO -   OK (0.0s)
+[21:50:30] INFO - [514/655] 703UIxx: O aplikaci (88016324)
+[21:50:30] INFO -   OK (0.0s)
+[21:50:30] INFO - [515/655] 703UI01: Obrazovka O aplikaci (88016327)
+[21:50:30] INFO -   Obrazky: [1/1] image2019-9-4 14:18:19.png
+[21:50:31] INFO -   OK (0.7s)
+[21:50:31] INFO - [516/655] 705UIxx: Společné funkce uživatelského rozhraní (88020715)
+[21:50:31] INFO -   OK (0.0s)
+[21:50:31] INFO - [517/655] 705UI01: Formulář nastavení zobrazení sloupců (88020718)
+[21:50:31] INFO -   Obrazky: [1/4] image2019-11-5 16:23:41.png
+[21:50:32] INFO -   Obrazky: [2/4] image2019-11-5 16:37:32.png
+[21:50:32] INFO -   Obrazky: [3/4] image2019-11-5 17:9:16.png
+[21:50:33] INFO -   Obrazky: [4/4] image2019-11-6 9:56:45.png
+[21:50:34] INFO -   OK (2.6s)
+[21:50:34] INFO - [518/655] Datové modely (78681042)
+[21:50:34] INFO -   OK (0.0s)
+[21:50:34] INFO - [519/655] Datový slovník (78681044)
+[21:50:34] INFO -   Obrazky: [1/2] image2018-8-9 15:2:20.png
+[21:50:35] INFO -   Obrazky: [2/2] image2018-8-9 13:30:11.png
+[21:50:35] INFO -   OK (1.5s)
+[21:50:35] INFO - [520/655] Persistence dat v dynamických entitách (79430071)
+[21:50:35] INFO -   OK (0.0s)
+[21:50:36] INFO - [521/655] Uživatelská oprávnění a role (78681297)
+[21:50:36] INFO -   Obrazky: [1/1] image2023-9-12 9:44:33.png
+[21:50:36] INFO -   OK (0.7s)
+[21:50:36] INFO - [522/655] Nastavení uživatelských oprávnění v MPG SK (87327794)
+[21:50:36] INFO -   OK (0.0s)
+[21:50:37] INFO - [523/655] Systémové hlášky (78681299)
+[21:50:37] INFO -   OK (0.0s)
+[21:50:37] INFO - [524/655] Auditní logování (80511311)
+[21:50:37] INFO -   OK (0.0s)
+[21:50:37] INFO - [525/655] Archivace dat (80511481)
+[21:50:37] INFO -   OK (0.0s)
+[21:50:37] INFO - [526/655] Používané formáty zobrazení údajů (81592337)
+[21:50:37] INFO -   OK (0.0s)
+[21:50:37] INFO - [527/655] Konfigurační hodnoty (81592468)
+[21:50:37] INFO -   OK (0.0s)
+[21:50:37] INFO - [528/655] Správa revizí (84837824)
+[21:50:37] INFO -   Obrazky: [1/94] check.png
+[21:50:38] INFO -   Obrazky: [2/94] check.png
+[21:50:38] INFO -   Obrazky: [3/94] check.png
+[21:50:39] INFO -   Obrazky: [4/94] check.png
+[21:50:40] INFO -   Obrazky: [5/94] check.png
+[21:50:40] INFO -   Obrazky: [6/94] check.png
+[21:50:41] INFO -   Obrazky: [7/94] check.png
+[21:50:42] INFO -   Obrazky: [8/94] check.png
+[21:50:42] INFO -   Obrazky: [9/94] check.png
+[21:50:43] INFO -   Obrazky: [10/94] check.png
+[21:50:44] INFO -   Obrazky: [11/94] check.png
+[21:50:45] INFO -   Obrazky: [12/94] check.png
+[21:50:45] INFO -   Obrazky: [13/94] check.png
+[21:50:46] INFO -   Obrazky: [14/94] check.png
+[21:50:47] INFO -   Obrazky: [15/94] check.png
+[21:50:47] INFO -   Obrazky: [16/94] check.png
+[21:50:48] INFO -   Obrazky: [17/94] check.png
+[21:50:49] INFO -   Obrazky: [18/94] check.png
+[21:50:49] INFO -   Obrazky: [19/94] check.png
+[21:50:50] INFO -   Obrazky: [20/94] check.png
+[21:50:51] INFO -   Obrazky: [21/94] check.png
+[21:50:51] INFO -   Obrazky: [22/94] check.png
+[21:50:52] INFO -   Obrazky: [23/94] check.png
+[21:50:53] INFO -   Obrazky: [24/94] check.png
+[21:50:53] INFO -   Obrazky: [25/94] check.png
+[21:50:54] INFO -   Obrazky: [26/94] check.png
+[21:50:55] INFO -   Obrazky: [27/94] check.png
+[21:50:55] INFO -   Obrazky: [28/94] check.png
+[21:50:56] INFO -   Obrazky: [29/94] check.png
+[21:50:56] INFO -   Obrazky: [30/94] check.png
+[21:50:57] INFO -   Obrazky: [31/94] check.png
+[21:50:58] INFO -   Obrazky: [32/94] check.png
+[21:50:58] INFO -   Obrazky: [33/94] check.png
+[21:50:59] INFO -   Obrazky: [34/94] check.png
+[21:51:00] INFO -   Obrazky: [35/94] check.png
+[21:51:00] INFO -   Obrazky: [36/94] check.png
+[21:51:01] INFO -   Obrazky: [37/94] check.png
+[21:51:02] INFO -   Obrazky: [38/94] check.png
+[21:51:02] INFO -   Obrazky: [39/94] check.png
+[21:51:03] INFO -   Obrazky: [40/94] check.png
+[21:51:04] INFO -   Obrazky: [41/94] check.png
+[21:51:04] INFO -   Obrazky: [42/94] check.png
+[21:51:05] INFO -   Obrazky: [43/94] check.png
+[21:51:06] INFO -   Obrazky: [44/94] check.png
+[21:51:06] INFO -   Obrazky: [45/94] check.png
+[21:51:07] INFO -   Obrazky: [46/94] check.png
+[21:51:08] INFO -   Obrazky: [47/94] check.png
+[21:51:08] INFO -   Obrazky: [48/94] check.png
+[21:51:09] INFO -   Obrazky: [49/94] check.png
+[21:51:10] INFO -   Obrazky: [50/94] check.png
+[21:51:10] INFO -   Obrazky: [51/94] check.png
+[21:51:11] INFO -   Obrazky: [52/94] check.png
+[21:51:12] INFO -   Obrazky: [53/94] check.png
+[21:51:12] INFO -   Obrazky: [54/94] check.png
+[21:51:13] INFO -   Obrazky: [55/94] check.png
+[21:51:14] INFO -   Obrazky: [56/94] check.png
+[21:51:14] INFO -   Obrazky: [57/94] check.png
+[21:51:15] INFO -   Obrazky: [58/94] check.png
+[21:51:16] INFO -   Obrazky: [59/94] check.png
+[21:51:16] INFO -   Obrazky: [60/94] check.png
+[21:51:17] INFO -   Obrazky: [61/94] check.png
+[21:51:18] INFO -   Obrazky: [62/94] check.png
+[21:51:18] INFO -   Obrazky: [63/94] check.png
+[21:51:19] INFO -   Obrazky: [64/94] check.png
+[21:51:20] INFO -   Obrazky: [65/94] check.png
+[21:51:20] INFO -   Obrazky: [66/94] check.png
+[21:51:21] INFO -   Obrazky: [67/94] check.png
+[21:51:22] INFO -   Obrazky: [68/94] check.png
+[21:51:22] INFO -   Obrazky: [69/94] check.png
+[21:51:23] INFO -   Obrazky: [70/94] check.png
+[21:51:24] INFO -   Obrazky: [71/94] check.png
+[21:51:25] INFO -   Obrazky: [72/94] check.png
+[21:51:25] INFO -   Obrazky: [73/94] check.png
+[21:51:26] INFO -   Obrazky: [74/94] check.png
+[21:51:27] INFO -   Obrazky: [75/94] check.png
+[21:51:27] INFO -   Obrazky: [76/94] check.png
+[21:51:28] INFO -   Obrazky: [77/94] check.png
+[21:51:29] INFO -   Obrazky: [78/94] check.png
+[21:51:29] INFO -   Obrazky: [79/94] check.png
+[21:51:30] INFO -   Obrazky: [80/94] check.png
+[21:51:31] INFO -   Obrazky: [81/94] check.png
+[21:51:31] INFO -   Obrazky: [82/94] check.png
+[21:51:32] INFO -   Obrazky: [83/94] check.png
+[21:51:34] INFO -   Obrazky: [84/94] check.png
+[21:51:34] INFO -   Obrazky: [85/94] check.png
+[21:51:35] INFO -   Obrazky: [86/94] check.png
+[21:51:36] INFO -   Obrazky: [87/94] check.png
+[21:51:36] INFO -   Obrazky: [88/94] check.png
+[21:51:37] INFO -   Obrazky: [89/94] check.png
+[21:51:38] INFO -   Obrazky: [90/94] check.png
+[21:51:38] INFO -   Obrazky: [91/94] check.png
+[21:51:39] INFO -   Obrazky: [92/94] check.png
+[21:51:40] INFO -   Obrazky: [93/94] check.png
+[21:51:40] INFO -   Obrazky: [94/94] check.png
+[21:51:41] INFO -   OK (63.9s)
+[21:51:41] INFO - [529/655] Správa revizí (archiv) (109085133)
+[21:51:41] INFO -   OK (0.1s)
+[21:51:41] INFO - [530/655] Správa požadavků (stará) (84840742)
+[21:51:41] INFO -   Obrazky: [1/21] image2019-4-11 11:7:1.png
+[21:51:42] INFO -   Obrazky: [2/21] image2019-4-12 14:13:2.png
+[21:51:43] INFO -   Obrazky: [3/21] image2019-4-16 10:35:1.png
+[21:51:43] INFO -   Obrazky: [4/21] image2019-4-16 10:34:48.png
+[21:51:44] INFO -   Obrazky: [5/21] image2019-4-16 12:37:36.png
+[21:51:45] INFO -   Obrazky: [6/21] image2019-7-8 9:35:49.png
+[21:51:46] INFO -   Obrazky: [7/21] image2019-7-8 9:37:52.png
+[21:51:46] INFO -   Obrazky: [8/21] image2019-10-31 13:51:35.png
+[21:51:47] INFO -   Obrazky: [9/21] image2019-7-18 9:42:34.png
+[21:51:48] INFO -   Obrazky: [10/21] image2019-7-18 9:42:45.png
+[21:51:49] INFO -   Obrazky: [11/21] image2019-7-24 15:28:59.png
+[21:51:49] INFO -   Obrazky: [12/21] image2019-4-16 9:33:49.png
+[21:51:50] INFO -   Obrazky: [13/21] image2019-4-16 10:40:56.png
+[21:51:51] INFO -   Obrazky: [14/21] image2019-4-16 12:44:56.png
+[21:51:51] INFO -   Obrazky: [15/21] image2019-4-19 20:29:32.png
+[21:51:52] INFO -   Obrazky: [16/21] image2019-4-17 10:41:8.png
+[21:51:53] INFO -   Obrazky: [17/21] image2020-1-16 12:38:49.png
+[21:51:54] INFO -   Obrazky: [18/21] image2019-4-19 20:29:59.png
+[21:51:54] INFO -   Obrazky: [19/21] image2019-7-8 21:50:4.png
+[21:51:55] INFO -   Obrazky: [20/21] image2020-3-10 16:20:46.png
+[21:51:56] INFO -   Obrazky: [21/21] image2019-10-16 15:21:29.png
+[21:51:57] INFO -   OK (15.3s)
+[21:51:57] INFO - [531/655] Návrhy realizace požadavků (86147199)
+[21:51:57] INFO -   Obrazky: [1/60] EditaceDennihoVykonu_doplneni.png
+[21:51:57] INFO -   Obrazky: [2/60] image2019-7-1 16:9:56.png
+[21:51:58] INFO -   Obrazky: [3/60] image2019-7-2 8:30:38.png
+[21:51:59] INFO -   Obrazky: [4/60] image2019-7-2 8:31:40.png
+[21:52:00] INFO -   Obrazky: [5/60] image2019-7-2 8:37:57.png
+[21:52:00] INFO -   Obrazky: [6/60] image2019-7-2 8:40:17.png
+[21:52:01] INFO -   Obrazky: [7/60] image2019-7-2 8:40:1.png
+[21:52:02] INFO -   Obrazky: [8/60] image2019-7-3 8:26:1.png
+[21:52:03] INFO -   Obrazky: [9/60] image2019-7-29 12:11:13.png
+[21:52:03] INFO -   Obrazky: [10/60] image2019-7-29 12:12:10.png
+[21:52:04] INFO -   Obrazky: [11/60] image2019-7-29 12:13:37.png
+[21:52:05] INFO -   Obrazky: [12/60] image2019-9-11 11:59:45.png
+[21:52:05] INFO -   Obrazky: [13/60] image2019-9-12 11:6:7.png
+[21:52:06] INFO -   Obrazky: [14/60] image2019-9-12 11:8:46.png
+[21:52:07] INFO -   Obrazky: [15/60] image2019-9-12 12:43:1.png
+[21:52:08] INFO -   Obrazky: [16/60] image2019-9-12 12:43:36.png
+[21:52:08] INFO -   Obrazky: [17/60] image2019-9-12 12:41:47.png
+[21:52:09] INFO -   Obrazky: [18/60] image2019-9-12 12:45:5.png
+[21:52:10] INFO -   Obrazky: [19/60] image2019-10-23 10:32:53.png
+[21:52:10] INFO -   Obrazky: [20/60] image2019-10-10 15:11:5.png
+[21:52:11] INFO -   Obrazky: [21/60] image2019-10-10 15:12:39.png
+[21:52:12] INFO -   Obrazky: [22/60] image2019-10-10 15:11:22.png
+[21:52:12] INFO -   Obrazky: [23/60] image2019-10-23 11:16:41.png
+[21:52:13] INFO -   Obrazky: [24/60] image2019-10-23 11:17:43.png
+[21:52:14] INFO -   Obrazky: [25/60] image2019-10-31 9:25:2.png
+[21:52:14] INFO -   Obrazky: [26/60] image2019-10-25 15:15:53.png
+[21:52:15] INFO -   Obrazky: [27/60] image2019-10-28 14:27:26.png
+[21:52:16] INFO -   Obrazky: [28/60] image2019-10-25 15:0:17.png
+[21:52:16] INFO -   Obrazky: [29/60] image2019-11-7 14:21:17.png
+[21:52:17] INFO -   Obrazky: [30/60] image2019-11-7 14:33:43.png
+[21:52:18] INFO -   Obrazky: [31/60] image2019-11-7 14:34:5.png
+[21:52:18] INFO -   Obrazky: [32/60] image2019-11-7 16:11:28.png
+[21:52:19] INFO -   Obrazky: [33/60] image2019-11-7 16:11:12.png
+[21:52:20] INFO -   Obrazky: [34/60] image2019-11-7 16:10:21.png
+[21:52:21] INFO -   Obrazky: [35/60] image2019-11-7 16:10:52.png
+[21:52:22] INFO -   Obrazky: [36/60] image2019-11-7 16:26:47.png
+[21:52:22] INFO -   Obrazky: [37/60] image2019-11-7 16:27:7.png
+[21:52:23] INFO -   Obrazky: [38/60] image2019-11-19 11:30:34.png
+[21:52:24] INFO -   Obrazky: [39/60] image2019-11-19 11:30:15.png
+[21:52:25] INFO -   Obrazky: [40/60] image2019-11-19 11:30:52.png
+[21:52:25] INFO -   Obrazky: [41/60] image2019-11-19 11:31:13.png
+[21:52:26] INFO -   Obrazky: [42/60] image2020-2-6 13:48:47.png
+[21:52:27] INFO -   Obrazky: [43/60] image2020-2-17 7:49:39.png
+[21:52:28] INFO -   Obrazky: [44/60] image2020-2-16 13:30:26.png
+[21:52:28] INFO -   Obrazky: [45/60] image2020-2-13 12:30:27.png
+[21:52:29] INFO -   Obrazky: [46/60] image2020-2-6 13:50:42.png
+[21:52:30] INFO -   Obrazky: [47/60] image2020-2-13 17:10:23.png
+[21:52:31] INFO -   Obrazky: [48/60] image2020-2-13 17:10:53.png
+[21:52:32] INFO -   Obrazky: [49/60] image2020-2-6 13:59:58.png
+[21:52:32] INFO -   Obrazky: [50/60] image2020-2-13 16:25:12.png
+[21:52:33] INFO -   Obrazky: [51/60] image2020-2-13 16:30:49.png
+[21:52:34] INFO -   Obrazky: [52/60] image2020-3-4 13:43:8.png
+[21:52:35] INFO -   Obrazky: [53/60] image2020-3-5 8:30:47.png
+[21:52:35] INFO -   Obrazky: [54/60] image2020-3-5 8:31:29.png
+[21:52:36] INFO -   Obrazky: [55/60] image2020-3-5 11:29:20.png
+[21:52:37] INFO -   Obrazky: [56/60] image2020-3-5 9:14:51.png
+[21:52:37] INFO -   Obrazky: [57/60] image2020-3-5 9:15:17.png
+[21:52:39] INFO -   Obrazky: [58/60] image2020-2-19 12:18:7.png
+[21:52:40] INFO -   Obrazky: [59/60] image2020-2-16 16:43:43.png
+[21:52:41] INFO -   Obrazky: [60/60] image2020-2-19 11:58:56.png
+[21:52:41] INFO -   OK (44.6s)
+[21:52:41] INFO - [532/655] Návrhy realizace požadavků pro M10 (88015546)
+[21:52:41] INFO -   Obrazky: [1/60] image2019-9-18 14:52:23.png
+[21:52:42] INFO -   Obrazky: [2/60] image2019-9-15 18:11:45.png
+[21:52:43] INFO -   Obrazky: [3/60] image2019-9-18 15:1:20.png
+[21:52:44] INFO -   Obrazky: [4/60] image2019-9-16 8:27:26.png
+[21:52:44] INFO -   Obrazky: [5/60] image2019-9-12 13:0:33.png
+[21:52:45] INFO -   Obrazky: [6/60] image2019-8-30 12:29:41.png
+[21:52:46] INFO -   Obrazky: [7/60] image2019-9-18 15:3:10.png
+[21:52:46] INFO -   Obrazky: [8/60] image2019-9-15 18:19:41.png
+[21:52:47] INFO -   Obrazky: [9/60] image2019-8-28 14:32:12.png
+[21:52:48] INFO -   Obrazky: [10/60] image2019-8-28 14:35:14.png
+[21:52:48] INFO -   Obrazky: [11/60] image2019-8-28 13:27:44.png
+[21:52:49] INFO -   Obrazky: [12/60] image2019-9-23 15:2:57.png
+[21:52:50] INFO -   Obrazky: [13/60] image2019-9-18 15:6:25.png
+[21:52:51] INFO -   Obrazky: [14/60] image2019-9-15 18:39:5.png
+[21:52:51] INFO -   Obrazky: [15/60] image2019-8-28 14:27:35.png
+[21:52:52] INFO -   Obrazky: [16/60] image2019-8-28 14:27:35.png
+[21:52:53] INFO -   Obrazky: [17/60] image2019-8-23 9:13:13.png
+[21:52:53] INFO -   Obrazky: [18/60] image2019-8-23 9:13:29.png
+[21:52:54] INFO -   Obrazky: [19/60] image2019-8-23 9:12:35.png
+[21:52:55] INFO -   Obrazky: [20/60] image2019-8-22 13:53:44.png
+[21:52:55] INFO -   Obrazky: [21/60] image2019-8-22 13:58:1.png
+[21:52:56] INFO -   Obrazky: [22/60] image2019-8-22 14:0:37.png
+[21:52:57] INFO -   Obrazky: [23/60] image2019-8-22 14:0:55.png
+[21:52:57] INFO -   Obrazky: [24/60] image2019-8-22 14:1:12.png
+[21:52:58] INFO -   Obrazky: [25/60] image2019-8-22 14:1:26.png
+[21:52:59] INFO -   Obrazky: [26/60] image2019-8-22 13:46:3.png
+[21:52:59] INFO -   Obrazky: [27/60] image2019-8-22 14:0:37.png
+[21:53:00] INFO -   Obrazky: [28/60] image2019-8-22 14:33:34.png
+[21:53:01] INFO -   Obrazky: [29/60] image2019-8-22 14:1:12.png
+[21:53:01] INFO -   Obrazky: [30/60] image2019-8-22 14:1:26.png
+[21:53:02] INFO -   Obrazky: [31/60] image2019-8-22 14:29:12.png
+[21:53:03] INFO -   Obrazky: [32/60] image2019-8-23 15:14:19.png
+[21:53:04] INFO -   Obrazky: [33/60] image2019-9-15 18:53:11.png
+[21:53:04] INFO -   Obrazky: [34/60] image2019-9-16 9:1:47.png
+[21:53:05] INFO -   Obrazky: [35/60] image2019-8-29 11:53:34.png
+[21:53:06] INFO -   Obrazky: [36/60] image2019-8-29 11:53:16.png
+[21:53:07] INFO -   Obrazky: [37/60] image2019-8-28 14:32:12.png
+[21:53:07] INFO -   Obrazky: [38/60] image2019-8-28 14:33:34.png
+[21:53:08] INFO -   Obrazky: [39/60] image2019-8-28 13:27:0.png
+[21:53:09] INFO -   Obrazky: [40/60] image2019-8-28 14:10:10.png
+[21:53:09] INFO -   Obrazky: [41/60] image2019-8-28 14:11:58.png
+[21:53:10] INFO -   Obrazky: [42/60] image2019-8-28 14:27:35.png
+[21:53:11] INFO -   Obrazky: [43/60] image2019-8-28 14:27:35.png
+[21:53:11] INFO -   Obrazky: [44/60] image2019-8-28 14:10:55.png
+[21:53:12] INFO -   Obrazky: [45/60] image2019-8-28 14:12:38.png
+[21:53:13] INFO -   Obrazky: [46/60] image2019-8-28 14:29:0.png
+[21:53:13] INFO -   Obrazky: [47/60] image2019-8-28 14:28:50.png
+[21:53:14] INFO -   Obrazky: [48/60] image2019-8-28 14:27:35.png
+[21:53:15] INFO -   Obrazky: [49/60] image2019-8-28 14:27:35.png
+[21:53:15] INFO -   Obrazky: [50/60] image2019-8-23 9:13:13.png
+[21:53:16] INFO -   Obrazky: [51/60] image2019-8-23 9:13:29.png
+[21:53:17] INFO -   Obrazky: [52/60] image2019-8-23 11:21:27.png
+[21:53:17] INFO -   Obrazky: [53/60] image2019-8-28 15:8:10.png
+[21:53:18] INFO -   Obrazky: [54/60] image2019-9-12 13:15:37.png
+[21:53:19] INFO -   Obrazky: [55/60] image2019-9-15 19:11:18.png
+[21:53:20] INFO -   Obrazky: [56/60] image2019-9-15 19:11:57.png
+[21:53:20] INFO -   Obrazky: [57/60] image2019-9-12 15:19:17.png
+[21:53:21] INFO -   Obrazky: [58/60] image2019-9-12 14:57:15.png
+[21:53:22] INFO -   Obrazky: [59/60] image2019-9-12 14:56:20.png
+[21:53:23] INFO -   Obrazky: [60/60] image2019-9-9 5:16:4.png
+[21:53:23] INFO -   OK (41.9s)
+[21:53:23] INFO - [533/655] Návrhy realizace požadavků pro M11 (88019093)
+[21:53:23] INFO -   Obrazky: [1/24] image2019-10-15 13:12:24.png
+[21:53:24] INFO -   Obrazky: [2/24] image2019-10-15 14:29:16.png
+[21:53:25] INFO -   Obrazky: [3/24] image2019-10-15 14:37:2.png
+[21:53:26] INFO -   Obrazky: [4/24] image2019-10-15 14:37:15.png
+[21:53:26] INFO -   Obrazky: [5/24] image2019-10-15 14:37:27.png
+[21:53:27] INFO -   Obrazky: [6/24] image2019-10-15 14:37:39.png
+[21:53:28] INFO -   Obrazky: [7/24] image2019-10-16 12:56:26.png
+[21:53:28] INFO -   Obrazky: [8/24] image2019-10-21 12:0:13.png
+[21:53:29] INFO -   Obrazky: [9/24] image2019-10-16 15:3:49.png
+[21:53:30] INFO -   Obrazky: [10/24] image2019-10-16 15:9:3.png
+[21:53:31] INFO -   Obrazky: [11/24] image2019-10-15 15:50:52.png
+[21:53:31] INFO -   Obrazky: [12/24] image2019-10-15 16:11:40.png
+[21:53:32] INFO -   Obrazky: [13/24] image2019-10-15 16:14:43.png
+[21:53:33] INFO -   Obrazky: [14/24] image2019-10-15 16:36:11.png
+[21:53:33] INFO -   Obrazky: [15/24] image2019-10-15 16:36:42.png
+[21:53:34] INFO -   Obrazky: [16/24] image2019-10-15 16:35:56.png
+[21:53:35] INFO -   Obrazky: [17/24] image2019-10-15 16:41:32.png
+[21:53:36] INFO -   Obrazky: [18/24] image2019-10-16 12:38:48.png
+[21:53:36] INFO -   Obrazky: [19/24] image2019-10-16 12:15:15.png
+[21:53:37] INFO -   Obrazky: [20/24] image2019-10-21 9:34:1.png
+[21:53:38] INFO -   Obrazky: [21/24] image2019-10-17 9:16:39.png
+[21:53:38] INFO -   Obrazky: [22/24] image2019-10-17 9:26:14.png
+[21:53:39] INFO -   Obrazky: [23/24] image2019-10-17 9:27:15.png
+[21:53:40] INFO -   Obrazky: [24/24] image2019-10-21 9:37:37.png
+[21:53:41] INFO -   OK (17.1s)
+[21:53:41] INFO - [534/655] RP_Správa požadavků (88032107)
+[21:53:41] INFO -   OK (0.0s)
+[21:53:41] INFO - [535/655] ID-001: Revize chování při uzavření objednávky (88032115)
+[21:53:41] INFO -   OK (0.0s)
+[21:53:41] INFO - [536/655] ID-002: Kopírování bodu průjezdu (88032333)
+[21:53:41] INFO -   Obrazky: [1/8] image2020-5-19 14:32:34.png
+[21:53:42] INFO -   Obrazky: [2/8] image2020-5-19 14:38:46.png
+[21:53:42] INFO -   Obrazky: [3/8] image2020-5-19 14:39:28.png
+[21:53:43] INFO -   Obrazky: [4/8] image2020-5-19 14:40:1.png
+[21:53:44] INFO -   Obrazky: [5/8] image2020-5-19 14:40:28.png
+[21:53:45] INFO -   Obrazky: [6/8] image2020-5-19 14:40:56.png
+[21:53:45] INFO -   Obrazky: [7/8] image2020-6-3 11:59:45.png
+[21:53:46] INFO -   Obrazky: [8/8] image2020-6-3 12:32:52.png
+[21:53:47] INFO -   OK (5.8s)
+[21:53:47] INFO - [537/655] ID-003: Tablety jako náhrada CT (88032334)
+[21:53:47] INFO -   OK (0.0s)
+[21:53:47] INFO - [538/655] ID-004: Informace o rozhraní FLWW2-WINYX (88032335)
+[21:53:47] INFO -   OK (0.0s)
+[21:53:47] INFO - [539/655] ID-005: Omezení při vytváření zákazníka dle existujícího podnikatelského subjektu (88032940)
+[21:53:47] INFO -   OK (0.0s)
+[21:53:47] INFO - [540/655] ID-006: Zobrazení detailu zákazníka při velkém množství míst realizace (88032336)
+[21:53:47] INFO -   Obrazky: [1/1] image2020-5-19 11:6:35.png
+[21:53:48] INFO -   OK (0.8s)
+[21:53:48] INFO - [541/655] ID-007: Načtení adresy zákazníka pomocí služby FinStat (88032337)
+[21:53:48] INFO -   OK (0.0s)
+[21:53:48] INFO - [542/655] ID-008: Prodleva při načítání dat pro monitoring realizace (88032338)
+[21:53:48] INFO -   Obrazky: [1/1] image2020-5-19 10:42:19.png
+[21:53:49] INFO -   OK (0.9s)
+[21:53:49] INFO - [543/655] ID-009: Zobrazení itineráře trasy u monitoringu realizace (88032339)
+[21:53:49] INFO -   Obrazky: [1/2] image2020-5-19 10:26:46.png
+[21:53:50] INFO -   Obrazky: [2/2] image2020-5-19 10:33:19.png
+[21:53:51] INFO -   OK (1.6s)
+[21:53:51] INFO - [544/655] ID-010: Změna provozní doby (88032340)
+[21:53:51] INFO -   OK (0.0s)
+[21:53:51] INFO - [545/655] ID-011: Revize formuláře pro změnu souřadnic místa realizace (možnost změny pozice) (88032342)
+[21:53:51] INFO -   OK (0.0s)
+[21:53:51] INFO - [546/655] ID-012: Získání informace o trase po výpadku GPS (88032488)
+[21:53:51] INFO -   OK (0.0s)
+[21:53:51] INFO - [547/655] ID-013: Výpadky – nedostupné pozice (88032490)
+[21:53:51] INFO -   OK (0.0s)
+[21:53:51] INFO - [548/655] ID-014: Aktualizace denních výkonů dle aktuálního vozového parku (88032343)
+[21:53:51] INFO -   Obrazky: [1/2] image2020-9-1 12:18:48.png
+[21:53:52] INFO -   Obrazky: [2/2] image2020-10-23 15:41:48.png
+[21:53:53] INFO -   OK (1.5s)
+[21:53:53] INFO - [549/655] ID-015: Dostupnost likvidačních míst dle společností (88037836)
+[21:53:53] INFO -   OK (0.0s)
+[21:53:53] INFO - [550/655] ID-016: Tisk prázdného formuláře POVOS (88037685)
+[21:53:53] INFO -   Obrazky: [1/7] image2020-7-13 14:54:15.png
+[21:53:54] INFO -   Obrazky: [2/7] image2020-7-13 15:31:46.png
+[21:53:54] INFO -   Obrazky: [3/7] image2020-7-13 15:34:26.png
+[21:53:55] INFO -   Obrazky: [4/7] image2020-7-13 15:34:59.png
+[21:53:56] INFO -   Obrazky: [5/7] image2020-7-13 15:31:46.png
+[21:53:56] INFO -   Obrazky: [6/7] image2020-7-13 15:34:26.png
+[21:53:57] INFO -   Obrazky: [7/7] image2020-7-13 15:34:59.png
+[21:53:58] INFO -   OK (5.0s)
+[21:53:58] INFO - [551/655] ID-017: Zobrazení informací o tisku sestavy POVOS (88037955)
+[21:53:58] INFO -   Obrazky: [1/2] image2020-11-10 14:47:54.png
+[21:53:59] INFO -   Obrazky: [2/2] image2020-11-10 14:56:37.png
+[21:53:59] INFO -   OK (1.5s)
+[21:54:00] INFO - [552/655] ID-018: Odesílání informací o zákazníkovi do systému WinyX (88038758)
+[21:54:00] INFO -   OK (0.0s)
+[21:54:00] INFO - [553/655] ID-019: Jednorázové smazání zrušených denních výkonů (88039958)
+[21:54:00] INFO -   OK (0.0s)
+[21:54:00] INFO - [554/655] ID-020: Revize společnosti při tisku sestavy POVOS (88039297)
+[21:54:00] INFO -   OK (0.0s)
+[21:54:00] INFO - [555/655] ID-021: Rozšíření rozhraní o nová vozidla (88041467)
+[21:54:00] INFO -   OK (0.0s)
+[21:54:00] INFO - [556/655] ID-022: Nastavení počtu záznamů na stránce tabulky (88041463)
+[21:54:00] INFO -   Obrazky: [1/1] image2020-9-11 9:41:25.png
+[21:54:01] INFO -   OK (0.7s)
+[21:54:01] INFO - [557/655] ID-023: Převedení rámcových smluv k jiné provozovně (88041465)
+[21:54:01] INFO -   Obrazky: [1/1] image2020-9-14 13:32:31.png
+[21:54:02] INFO -   OK (0.8s)
+[21:54:02] INFO - [558/655] ID-024: Export záznamů zobrazených v přehledu objednávek „do Excelu“ (88042126)
+[21:54:02] INFO -   OK (0.0s)
+[21:54:02] INFO - [559/655] ID-025: Změna souřadnic lokace objednané služby z obrazovky kontroly realizace DV (88041255)
+[21:54:02] INFO -   OK (0.0s)
+[21:54:02] INFO - [560/655] ID-026: Řazení výsledků geokódování (88044154)
+[21:54:02] INFO -   OK (0.0s)
+[21:54:02] INFO - [561/655] ID-027: Pořadí položek v rámci hlavního menu aplikace (88044158)
+[21:54:02] INFO -   OK (0.0s)
+[21:54:02] INFO - [562/655] ID-029: Objednávky vytvořené pro zákazníka v prodlení s platbou (89063919)
+[21:54:02] INFO -   Obrazky: [1/1] image2020-10-26 10:46:54.png
+[21:54:03] INFO -   OK (0.7s)
+[21:54:03] INFO - [563/655] ID-030: Porovnání plánované a skutečné realizace denního výkonu (report) (89065044)
+[21:54:03] INFO -   Obrazky: [1/4] image2020-11-9 15:15:22.png
+[21:54:04] INFO -   Obrazky: [2/4] image2020-11-10 14:56:28.png
+[21:54:04] INFO -   Obrazky: [3/4] image2020-11-9 16:6:27.png
+[21:54:05] INFO -   Obrazky: [4/4] image2020-11-9 16:18:51.png
+[21:54:06] INFO -   OK (2.9s)
+[21:54:06] INFO - [564/655] ID-031: Report s objednanými službami na výzvu (103287386)
+[21:54:06] INFO -   Obrazky: [1/2] image2022-1-3 11:57:43.png
+[21:54:07] INFO -   Obrazky: [2/2] image2022-1-3 11:55:56.png
+[21:54:07] INFO -   OK (1.4s)
+[21:54:07] INFO - [565/655] ID-032: Hromadná změna doby manipulace (89065179)
+[21:54:07] INFO -   OK (0.0s)
+[21:54:08] INFO - [566/655] ID-034: Výchozí doba manipulace dle typu dopravy (89065114)
+[21:54:08] INFO -   OK (0.0s)
+[21:54:08] INFO - [567/655] ID-035: Označení objednávek s objednaným úkonem na výzvu (89065453)
+[21:54:08] INFO -   OK (0.0s)
+[21:54:08] INFO - [568/655] ID-036: Vyhledávání rámcové smlouvy ve formuláři objednávky (89063943)
+[21:54:08] INFO -   Obrazky: [1/5] image2020-10-26 11:35:57.png
+[21:54:08] INFO -   Obrazky: [2/5] image2020-11-11 18:23:52.png
+[21:54:09] INFO -   Obrazky: [3/5] image2020-11-11 18:15:48.png
+[21:54:10] INFO -   Obrazky: [4/5] image2020-10-26 12:1:33.png
+[21:54:10] INFO -   Obrazky: [5/5] image2020-10-26 12:51:47.png
+[21:54:11] INFO -   OK (3.3s)
+[21:54:11] INFO - [569/655] ID-037: Grafické úpravy v tabulce objednaných služeb na obrazovce editace denního výkonu (89063493)
+[21:54:11] INFO -   Obrazky: [1/2] image2020-10-20 16:1:41.png
+[21:54:12] INFO -   Obrazky: [2/2] image2020-10-20 16:17:5.png
+[21:54:13] INFO -   OK (1.5s)
+[21:54:13] INFO - [570/655] ID-038: Zobrazení souhrnných údajů o trase na obrazovce editace denního výkonu (89063968)
+[21:54:13] INFO -   Obrazky: [1/2] image2020-10-26 15:22:21.png
+[21:54:14] INFO -   Obrazky: [2/2] image2020-10-26 16:3:15.png
+[21:54:14] INFO -   OK (1.5s)
+[21:54:14] INFO - [571/655] ID-039: Zobrazení přehledu objednaných služeb v detailu denního výkonu (89065535)
+[21:54:14] INFO -   Obrazky: [1/12] image2020-11-13 8:31:56.png
+[21:54:15] INFO -   Obrazky: [2/12] image2020-11-15 15:44:50.png
+[21:54:16] INFO -   Obrazky: [3/12] image2020-11-15 15:45:7.png
+[21:54:16] INFO -   Obrazky: [4/12] image2020-11-15 15:45:23.png
+[21:54:17] INFO -   Obrazky: [5/12] image2020-11-15 15:45:35.png
+[21:54:18] INFO -   Obrazky: [6/12] image2020-11-15 15:46:4.png
+[21:54:18] INFO -   Obrazky: [7/12] image2020-11-15 15:46:15.png
+[21:54:19] INFO -   Obrazky: [8/12] image2020-11-15 15:11:47.png
+[21:54:20] INFO -   Obrazky: [9/12] image2020-11-15 15:12:15.png
+[21:54:21] INFO -   Obrazky: [10/12] image2020-11-16 10:26:41.png
+[21:54:21] INFO -   Obrazky: [11/12] image2020-11-16 10:27:18.png
+[21:54:22] INFO -   Obrazky: [12/12] image2020-11-16 10:27:58.png
+[21:54:23] INFO -   OK (8.1s)
+[21:54:23] INFO - [572/655] ID-040: Násobné rozdělení objednané služby (89065686)
+[21:54:23] INFO -   Obrazky: [1/33] image2020-11-16 14:43:43.png
+[21:54:23] INFO -   Obrazky: [2/33] image2020-11-17 13:29:0.png
+[21:54:24] INFO -   Obrazky: [3/33] image2020-11-17 13:6:6.png
+[21:54:25] INFO -   Obrazky: [4/33] image2020-11-17 13:25:22.png
+[21:54:25] INFO -   Obrazky: [5/33] image2020-11-17 13:40:35.png
+[21:54:26] INFO -   Obrazky: [6/33] image2020-11-17 13:47:16.png
+[21:54:27] INFO -   Obrazky: [7/33] image2020-11-17 18:59:35.png
+[21:54:27] INFO -   Obrazky: [8/33] image2020-11-17 18:59:47.png
+[21:54:28] INFO -   Obrazky: [9/33] image2020-11-17 19:19:33.png
+[21:54:29] INFO -   Obrazky: [10/33] image2020-11-17 19:19:49.png
+[21:54:29] INFO -   Obrazky: [11/33] image2020-11-17 19:20:26.png
+[21:54:30] INFO -   Obrazky: [12/33] image2020-11-17 19:21:20.png
+[21:54:31] INFO -   Obrazky: [13/33] image2020-11-17 19:22:11.png
+[21:54:31] INFO -   Obrazky: [14/33] image2020-11-17 19:44:11.png
+[21:54:32] INFO -   Obrazky: [15/33] image2020-11-17 19:59:19.png
+[21:54:33] INFO -   Obrazky: [16/33] image2020-11-17 20:0:19.png
+[21:54:34] INFO -   Obrazky: [17/33] image2020-11-19 10:33:8.png
+[21:54:34] INFO -   Obrazky: [18/33] image2020-11-20 11:54:34.png
+[21:54:35] INFO -   Obrazky: [19/33] image2020-11-20 12:44:46.png
+[21:54:36] INFO -   Obrazky: [20/33] image2020-11-20 12:51:55.png
+[21:54:37] INFO -   Obrazky: [21/33] image2020-11-20 14:20:0.png
+[21:54:37] INFO -   Obrazky: [22/33] image2020-11-20 14:29:46.png
+[21:54:38] INFO -   Obrazky: [23/33] image2020-11-20 14:30:18.png
+[21:54:39] INFO -   Obrazky: [24/33] image2020-11-20 14:3:50.png
+[21:54:40] INFO -   Obrazky: [25/33] image2020-11-20 14:9:46.png
+[21:54:40] INFO -   Obrazky: [26/33] image2020-11-20 14:13:42.png
+[21:54:41] INFO -   Obrazky: [27/33] image2020-11-20 13:58:58.png
+[21:54:42] INFO -   Obrazky: [28/33] image2020-11-20 15:22:40.png
+[21:54:42] INFO -   Obrazky: [29/33] image2020-11-20 14:47:16.png
+[21:54:43] INFO -   Obrazky: [30/33] image2020-11-23 8:1:11.png
+[21:54:44] INFO -   Obrazky: [31/33] image2020-11-20 14:58:47.png
+[21:54:44] INFO -   Obrazky: [32/33] image2020-11-20 15:1:20.png
+[21:54:45] INFO -   Obrazky: [33/33] image2020-11-20 15:9:19.png
+[21:54:46] INFO -   OK (23.2s)
+[21:54:46] INFO - [573/655] ID-041: Zobrazení časového využití v přehledu denních výkonů (89065120)
+[21:54:46] INFO -   Obrazky: [1/2] image2020-11-10 9:27:54.png
+[21:54:47] INFO -   Obrazky: [2/2] image2020-11-10 9:53:39.png
+[21:54:47] INFO -   OK (1.4s)
+[21:54:47] INFO - [574/655] ID-042: Revize společnosti při tisku objednávky (89066082)
+[21:54:47] INFO -   Obrazky: [1/1] image2021-7-2 12:48:43.png
+[21:54:48] INFO -   OK (0.7s)
+[21:54:48] INFO - [575/655] ID-043: Možnost nastavit druh dopravy vozidla nezávisle na IdentificationNumber z WinyX (93588180)
+[21:54:48] INFO -   OK (0.0s)
+[21:54:48] INFO - [576/655] ID-044: Revize formátu zadní strany sestavy POVOS (93590749)
+[21:54:48] INFO -   Obrazky: [1/1] image2021-3-6 9:57:16.png
+[21:54:49] INFO -   OK (0.8s)
+[21:54:49] INFO - [577/655] ID-045: Tisková sestava pro itinerář trasy denního výkonu (93590761)
+[21:54:49] INFO -   Obrazky: [1/14] image2021-3-10 16:3:31.png
+[21:54:50] INFO -   Obrazky: [2/14] image2021-3-12 14:16:41.png
+[21:54:51] INFO -   Obrazky: [3/14] image2021-3-15 11:38:2.png
+[21:54:51] INFO -   Obrazky: [4/14] image2021-3-16 9:5:29.png
+[21:54:52] INFO -   Obrazky: [5/14] image2021-3-16 9:4:48.png
+[21:54:53] INFO -   Obrazky: [6/14] image2021-3-16 9:6:7.png
+[21:54:53] INFO -   Obrazky: [7/14] image2021-3-16 10:28:57.png
+[21:54:54] INFO -   Obrazky: [8/14] image2021-3-16 11:14:33.png
+[21:54:55] INFO -   Obrazky: [9/14] image2021-3-16 11:2:25.png
+[21:54:55] INFO -   Obrazky: [10/14] image2021-3-16 11:2:51.png
+[21:54:56] INFO -   Obrazky: [11/14] image2021-3-16 11:5:55.png
+[21:54:57] INFO -   Obrazky: [12/14] image2021-3-16 11:1:51.png
+[21:54:57] INFO -   Obrazky: [13/14] image2021-3-16 10:26:23.png
+[21:54:58] INFO -   Obrazky: [14/14] image2021-3-16 8:56:44.png
+[21:54:59] INFO -   OK (9.4s)
+[21:54:59] INFO - [578/655] ID-046: Úprava synchronizace typů nádob (94538902)
+[21:54:59] INFO -   OK (0.0s)
+[21:54:59] INFO - [579/655] ID-047: Ruční spuštění synchronizace informací o realizaci denních výkonů (89063946)
+[21:54:59] INFO -   OK (0.0s)
+[21:54:59] INFO - [580/655] ID-048: Integrace mapových služeb CEDA (117211340)
+[21:54:59] INFO -   OK (0.0s)
+[21:54:59] INFO - [581/655] ID-049: Revize velikosti písma sestavy POVOS (97649997)
+[21:54:59] INFO -   Obrazky: [1/2] image2021-7-22 11:2:23.png
+[21:55:00] INFO -   Obrazky: [2/2] image2021-9-10 13:57:18.png
+[21:55:01] INFO -   OK (1.5s)
+[21:55:01] INFO - [582/655] ID-050: Revize informací dostupných v rámci objednané nádoby (97649998)
+[21:55:01] INFO -   OK (0.0s)
+[21:55:01] INFO - [583/655] ID-051: Revize informací dostupných v přehledu objednaných služeb (97649999)
+[21:55:01] INFO -   Obrazky: [1/1] image2022-1-13 13:0:10.png
+[21:55:02] INFO -   OK (0.8s)
+[21:55:02] INFO - [584/655] ID-052: Revize informací dostupných v detailu objednávky (karta Objednané služby) (97650000)
+[21:55:02] INFO -   OK (0.0s)
+[21:55:02] INFO - [585/655] ID-053: Revize způsobu zobrazení objednaných služeb v detailu objednávky (rozdělené objednané služby) (97650001)
+[21:55:02] INFO -   Obrazky: [1/6] image2021-12-29 12:24:23.png
+[21:55:02] INFO -   Obrazky: [2/6] image2022-1-13 13:44:8.png
+[21:55:03] INFO -   Obrazky: [3/6] image2022-1-13 13:46:5.png
+[21:55:04] INFO -   Obrazky: [4/6] image2021-12-29 12:39:8.png
+[21:55:05] INFO -   Obrazky: [5/6] image2021-12-29 12:38:41.png
+[21:55:05] INFO -   Obrazky: [6/6] image2021-12-29 13:28:49.png
+[21:55:06] INFO -   OK (4.2s)
+[21:55:06] INFO - [586/655] ID-054: Podpora pro filtrování objednávek s objednaným úkonem na výzvu (97650002)
+[21:55:06] INFO -   OK (0.0s)
+[21:55:06] INFO - [587/655] ID-055: Zjednodušená tisková sestava pro itinerář trasy denního výkonu (97650022)
+[21:55:06] INFO -   Obrazky: [1/14] image2021-7-22 11:55:32.png
+[21:55:07] INFO -   Obrazky: [2/14] image2021-7-22 12:2:28.png
+[21:55:08] INFO -   Obrazky: [3/14] image2021-7-22 12:2:54.png
+[21:55:09] INFO -   Obrazky: [4/14] image2021-7-22 12:3:25.png
+[21:55:09] INFO -   Obrazky: [5/14] image2021-7-22 12:3:47.png
+[21:55:10] INFO -   Obrazky: [6/14] image2021-10-8 11:32:13.png
+[21:55:11] INFO -   Obrazky: [7/14] image2021-10-25 15:10:13.png
+[21:55:12] INFO -   Obrazky: [8/14] image2021-10-22 12:57:25.png
+[21:55:12] INFO -   Obrazky: [9/14] image2021-10-22 13:57:51.png
+[21:55:13] INFO -   Obrazky: [10/14] image2021-10-22 13:9:10.png
+[21:55:14] INFO -   Obrazky: [11/14] image2021-10-22 13:9:35.png
+[21:55:14] INFO -   Obrazky: [12/14] image2021-10-22 12:38:16.png
+[21:55:15] INFO -   Obrazky: [13/14] image2021-10-22 12:41:21.png
+[21:55:16] INFO -   Obrazky: [14/14] image2021-10-22 12:43:47.png
+[21:55:17] INFO -   OK (10.4s)
+[21:55:17] INFO - [588/655] ID-056: Diagram denního výkonu na obrazovce plánování (90832979)
+[21:55:17] INFO -   Obrazky: [1/4] image2021-11-16 14:35:36.png
+[21:55:17] INFO -   Obrazky: [2/4] image2021-11-16 15:1:40.png
+[21:55:18] INFO -   Obrazky: [3/4] image2021-11-16 14:36:20.png
+[21:55:19] INFO -   Obrazky: [4/4] image2021-11-16 15:17:41.png
+[21:55:20] INFO -   OK (2.9s)
+[21:55:20] INFO - [589/655] ID-057: Rozšíření možností při editaci objednávky (103287279)
+[21:55:20] INFO -   OK (0.0s)
+[21:55:20] INFO - [590/655] ID-058: Zobrazení míst realizace zákazníka dle provozovny ve správě systému (103287262)
+[21:55:20] INFO -   Obrazky: [1/1] image2021-12-23 13:47:0.png
+[21:55:20] INFO -   OK (0.7s)
+[21:55:21] INFO - [591/655] ID-059: Rozšíření filtrů na obrazovce monitoringu realizace denních výkonů (103287252)
+[21:55:21] INFO -   Obrazky: [1/1] image2021-12-22 16:6:19.png
+[21:55:21] INFO -   OK (0.9s)
+[21:55:22] INFO - [592/655] ID-060: Pokročilé filtrování denních výkonů v přehledu dle typu dopravy (103287247)
+[21:55:22] INFO -   Obrazky: [1/1] image2021-12-22 15:28:35.png
+[21:55:22] INFO -   OK (0.7s)
+[21:55:22] INFO - [593/655] ID-061: Revize ovládacího prvku pro nastavení přívěsu na obrazovce editace DV (103287210)
+[21:55:22] INFO -   Obrazky: [1/5] image2021-12-22 12:14:29.png
+[21:55:23] INFO -   Obrazky: [2/5] image2021-12-22 12:33:1.png
+[21:55:24] INFO -   Obrazky: [3/5] image2021-12-22 12:35:26.png
+[21:55:24] INFO -   Obrazky: [4/5] image2021-12-22 12:35:42.png
+[21:55:25] INFO -   Obrazky: [5/5] image2021-12-22 12:36:5.png
+[21:55:26] INFO -   OK (3.4s)
+[21:55:26] INFO - [594/655] ID-062: Revize dostupných typů úkonu (104956612)
+[21:55:26] INFO -   OK (0.0s)
+[21:55:26] INFO - [595/655] ID-063: Evidence provedených změn v objednávkách (104956613)
+[21:55:26] INFO -   OK (0.0s)
+[21:55:26] INFO - [596/655] ID-064: Operativní změny na úrovni objednaných služeb (104956614)
+[21:55:26] INFO -   OK (0.0s)
+[21:55:26] INFO - [597/655] ID-065: Revize obrazovky plánování denních výkonů (104956615)
+[21:55:26] INFO -   Obrazky: [1/147] image2022-2-21 10:41:40.png
+[21:55:27] INFO -   Obrazky: [2/147] image2022-7-20 12:44:9.png
+[21:55:28] INFO -   Obrazky: [3/147] image2022-7-20 15:41:10.png
+[21:55:29] INFO -   Obrazky: [4/147] image2022-7-20 14:40:1.png
+[21:55:29] INFO -   Obrazky: [5/147] image2022-7-20 14:40:20.png
+[21:55:30] INFO -   Obrazky: [6/147] image2022-7-20 14:40:34.png
+[21:55:30] INFO -   Obrazky: [7/147] image2022-7-20 13:17:45.png
+[21:55:31] INFO -   Obrazky: [8/147] image2022-7-20 18:33:12.png
+[21:55:32] INFO -   Obrazky: [9/147] image2022-7-20 18:33:27.png
+[21:55:33] INFO -   Obrazky: [10/147] image2022-7-20 18:33:41.png
+[21:55:33] INFO -   Obrazky: [11/147] image2022-7-20 18:31:29.png
+[21:55:34] INFO -   Obrazky: [12/147] image2022-7-20 19:12:35.png
+[21:55:35] INFO -   Obrazky: [13/147] image2022-7-20 19:14:7.png
+[21:55:35] INFO -   Obrazky: [14/147] image2022-7-20 19:16:30.png
+[21:55:36] INFO -   Obrazky: [15/147] image2022-7-20 19:16:44.png
+[21:55:37] INFO -   Obrazky: [16/147] image2022-7-20 19:17:2.png
+[21:55:37] INFO -   Obrazky: [17/147] image2022-7-20 19:17:16.png
+[21:55:38] INFO -   Obrazky: [18/147] image2022-7-20 19:17:29.png
+[21:55:39] INFO -   Obrazky: [19/147] image2022-7-20 19:17:47.png
+[21:55:39] INFO -   Obrazky: [20/147] image2022-12-19 15:27:18.png
+[21:55:40] INFO -   Obrazky: [21/147] image2022-7-20 19:17:57.png
+[21:55:41] INFO -   Obrazky: [22/147] image2022-7-20 19:18:8.png
+[21:55:41] INFO -   Obrazky: [23/147] image2022-7-20 19:18:21.png
+[21:55:42] INFO -   Obrazky: [24/147] image2022-7-20 19:18:39.png
+[21:55:42] INFO -   Obrazky: [25/147] image2022-7-20 19:18:49.png
+[21:55:43] INFO -   Obrazky: [26/147] image2022-7-20 19:19:0.png
+[21:55:44] INFO -   Obrazky: [27/147] image2022-7-20 19:20:44.png
+[21:55:44] INFO -   Obrazky: [28/147] image2022-7-20 19:22:11.png
+[21:55:45] INFO -   Obrazky: [29/147] image2022-7-20 19:24:0.png
+[21:55:46] INFO -   Obrazky: [30/147] image2022-3-18+14%3A56%3A1.png
+[21:55:46] WARNING -   Nelze stahnout image2022-3-18+14%3A56%3A1.png: HTTP Error 404: Not Found
+[21:55:46] INFO -   Obrazky: [31/147] image2022-7-20 19:24:59.png
+[21:55:47] INFO -   Obrazky: [32/147] image2022-7-20 19:25:43.png
+[21:55:47] INFO -   Obrazky: [33/147] image2022-7-20 19:29:21.png
+[21:55:48] INFO -   Obrazky: [34/147] image2022-7-20 19:31:35.png
+[21:55:49] INFO -   Obrazky: [35/147] image2022-7-20 19:31:46.png
+[21:55:49] INFO -   Obrazky: [36/147] image2022-7-20 19:32:7.png
+[21:55:50] INFO -   Obrazky: [37/147] image2022-7-20 19:32:19.png
+[21:55:51] INFO -   Obrazky: [38/147] image2022-7-20 19:32:28.png
+[21:55:51] INFO -   Obrazky: [39/147] image2022-7-20 19:32:40.png
+[21:55:52] INFO -   Obrazky: [40/147] image2022-7-20 19:32:51.png
+[21:55:53] INFO -   Obrazky: [41/147] image2022-7-20 19:33:5.png
+[21:55:53] INFO -   Obrazky: [42/147] image2022-7-20 19:33:17.png
+[21:55:54] INFO -   Obrazky: [43/147] image2022-7-20 19:33:30.png
+[21:55:55] INFO -   Obrazky: [44/147] image2022-7-20 19:33:40.png
+[21:55:55] INFO -   Obrazky: [45/147] image2022-7-20 19:35:36.png
+[21:55:56] INFO -   Obrazky: [46/147] image2022-7-20 19:35:53.png
+[21:55:57] INFO -   Obrazky: [47/147] image2022-7-20 19:36:1.png
+[21:55:57] INFO -   Obrazky: [48/147] image2022-7-20 19:36:16.png
+[21:55:58] INFO -   Obrazky: [49/147] image2022-7-21 9:45:28.png
+[21:55:59] INFO -   Obrazky: [50/147] image2022-7-21 9:46:53.png
+[21:55:59] INFO -   Obrazky: [51/147] image2022-7-21 9:47:23.png
+[21:56:00] INFO -   Obrazky: [52/147] image2022-7-21 9:52:29.png
+[21:56:01] INFO -   Obrazky: [53/147] image2022-7-21 9:53:12.png
+[21:56:02] INFO -   Obrazky: [54/147] image2022-7-21 9:53:56.png
+[21:56:02] INFO -   Obrazky: [55/147] image2022-7-21 9:55:28.png
+[21:56:03] INFO -   Obrazky: [56/147] image2022-7-21 9:56:5.png
+[21:56:04] INFO -   Obrazky: [57/147] image2022-7-21 9:56:14.png
+[21:56:04] INFO -   Obrazky: [58/147] image2022-3-31+12%3A23%3A1.png
+[21:56:04] WARNING -   Nelze stahnout image2022-3-31+12%3A23%3A1.png: HTTP Error 404: Not Found
+[21:56:04] INFO -   Obrazky: [59/147] image2022-7-21 9:56:32.png
+[21:56:05] INFO -   Obrazky: [60/147] image2022-7-21 9:56:42.png
+[21:56:06] INFO -   Obrazky: [61/147] image2022-7-21 9:57:2.png
+[21:56:06] INFO -   Obrazky: [62/147] image2022-7-21 9:57:13.png
+[21:56:07] INFO -   Obrazky: [63/147] image2022-7-21 10:0:41.png
+[21:56:08] INFO -   Obrazky: [64/147] image2022-7-21 10:0:29.png
+[21:56:08] INFO -   Obrazky: [65/147] image2022-7-21 10:1:39.png
+[21:56:09] INFO -   Obrazky: [66/147] image2022-3-31+14%3A27%3A23.png
+[21:56:09] WARNING -   Nelze stahnout image2022-3-31+14%3A27%3A23.png: HTTP Error 404: Not Found
+[21:56:09] INFO -   Obrazky: [67/147] image2022-7-22 11:57:23.png
+[21:56:10] INFO -   Obrazky: [68/147] image2022-7-22 12:26:18.png
+[21:56:11] INFO -   Obrazky: [69/147] image2022-7-22 12:28:0.png
+[21:56:11] INFO -   Obrazky: [70/147] image2022-7-22 12:13:19.png
+[21:56:12] INFO -   Obrazky: [71/147] image2022-7-22 12:19:5.png
+[21:56:13] INFO -   Obrazky: [72/147] image2022-7-22 12:20:43.png
+[21:56:13] INFO -   Obrazky: [73/147] image2022-7-22 12:21:0.png
+[21:56:14] INFO -   Obrazky: [74/147] image2022-7-22 12:20:0.png
+[21:56:15] INFO -   Obrazky: [75/147] image2022-7-22 12:20:10.png
+[21:56:15] INFO -   Obrazky: [76/147] image2022-7-22 12:20:24.png
+[21:56:16] INFO -   Obrazky: [77/147] image2022-7-22 12:17:29.png
+[21:56:17] INFO -   Obrazky: [78/147] image2022-7-22 12:19:33.png
+[21:56:17] INFO -   Obrazky: [79/147] image2022-7-22 13:24:5.png
+[21:56:18] INFO -   Obrazky: [80/147] image2022-7-22 13:24:26.png
+[21:56:19] INFO -   Obrazky: [81/147] image2022-7-22 13:25:19.png
+[21:56:19] INFO -   Obrazky: [82/147] image2022-7-25 7:47:25.png
+[21:56:20] INFO -   Obrazky: [83/147] image2022-7-25 7:51:20.png
+[21:56:21] INFO -   Obrazky: [84/147] image2022-7-25 7:55:52.png
+[21:56:21] INFO -   Obrazky: [85/147] image2022-7-22 12:21:0.png
+[21:56:22] INFO -   Obrazky: [86/147] image2022-7-25 7:53:49.png
+[21:56:23] INFO -   Obrazky: [87/147] image2022-7-21 10:28:46.png
+[21:56:23] INFO -   Obrazky: [88/147] image2022-7-21 10:30:5.png
+[21:56:24] INFO -   Obrazky: [89/147] image2022-7-21 10:30:59.png
+[21:56:25] INFO -   Obrazky: [90/147] image2022-7-21 10:31:10.png
+[21:56:25] INFO -   Obrazky: [91/147] image2022-7-21 10:31:21.png
+[21:56:26] INFO -   Obrazky: [92/147] image2022-7-21 10:31:35.png
+[21:56:27] INFO -   Obrazky: [93/147] image2022-7-21 10:31:45.png
+[21:56:27] INFO -   Obrazky: [94/147] image2022-7-21 10:31:55.png
+[21:56:28] INFO -   Obrazky: [95/147] image2022-7-21 10:32:9.png
+[21:56:29] INFO -   Obrazky: [96/147] image2022-7-21 10:32:20.png
+[21:56:29] INFO -   Obrazky: [97/147] image2022-7-21 10:32:33.png
+[21:56:30] INFO -   Obrazky: [98/147] image2022-7-21 10:32:43.png
+[21:56:31] INFO -   Obrazky: [99/147] image2022-7-21 10:32:55.png
+[21:56:31] INFO -   Obrazky: [100/147] image2022-7-21 10:33:5.png
+[21:56:32] INFO -   Obrazky: [101/147] image2022-7-21 10:33:22.png
+[21:56:33] INFO -   Obrazky: [102/147] image2022-7-21 10:33:32.png
+[21:56:33] INFO -   Obrazky: [103/147] image2022-7-21 10:34:9.png
+[21:56:34] INFO -   Obrazky: [104/147] image2022-7-21 10:34:34.png
+[21:56:35] INFO -   Obrazky: [105/147] image2022-7-21 10:34:43.png
+[21:56:35] INFO -   Obrazky: [106/147] image2022-7-21 10:34:52.png
+[21:56:36] INFO -   Obrazky: [107/147] image2022-7-21 10:35:11.png
+[21:56:37] INFO -   Obrazky: [108/147] image2022-7-21 10:36:21.png
+[21:56:37] INFO -   Obrazky: [109/147] image2022-7-21 10:36:49.png
+[21:56:38] INFO -   Obrazky: [110/147] image2022-7-25 11:15:59.png
+[21:56:39] INFO -   Obrazky: [111/147] image2022-7-21 10:47:41.png
+[21:56:39] INFO -   Obrazky: [112/147] image2022-7-21 11:10:53.png
+[21:56:40] INFO -   Obrazky: [113/147] image2022-7-21 11:11:18.png
+[21:56:41] INFO -   Obrazky: [114/147] image2022-7-21 11:11:51.png
+[21:56:42] INFO -   Obrazky: [115/147] image2022-7-21 11:12:10.png
+[21:56:42] INFO -   Obrazky: [116/147] image2022-7-21 11:12:20.png
+[21:56:43] INFO -   Obrazky: [117/147] image2022-7-21 11:12:36.png
+[21:56:43] INFO -   Obrazky: [118/147] image2022-12-26 11:3:45.png
+[21:56:44] INFO -   Obrazky: [119/147] image2022-12-26 11:44:5.png
+[21:56:45] INFO -   Obrazky: [120/147] image2022-12-26 16:8:26.png
+[21:56:46] INFO -   Obrazky: [121/147] image2022-12-26 16:46:36.png
+[21:56:46] INFO -   Obrazky: [122/147] image2022-12-26 16:42:56.png
+[21:56:47] INFO -   Obrazky: [123/147] image2022-12-26 15:8:47.png
+[21:56:48] INFO -   Obrazky: [124/147] image2022-12-26 15:9:20.png
+[21:56:48] INFO -   Obrazky: [125/147] image2022-12-26 15:9:6.png
+[21:56:49] INFO -   Obrazky: [126/147] image2022-12-26 15:19:24.png
+[21:56:49] INFO -   Obrazky: [127/147] image2022-12-26 11:46:23.png
+[21:56:50] INFO -   Obrazky: [128/147] image2022-12-26 11:2:43.png
+[21:56:51] INFO -   Obrazky: [129/147] image2022-12-26 11:44:0.png
+[21:56:52] INFO -   Obrazky: [130/147] image2022-12-26 16:9:30.png
+[21:56:52] INFO -   Obrazky: [131/147] image2022-12-26 16:40:17.png
+[21:56:53] INFO -   Obrazky: [132/147] image2022-12-26 16:42:20.png
+[21:56:54] INFO -   Obrazky: [133/147] image2022-12-26 15:5:44.png
+[21:56:54] INFO -   Obrazky: [134/147] image2022-12-26 15:7:44.png
+[21:56:55] INFO -   Obrazky: [135/147] image2022-12-26 15:6:8.png
+[21:56:56] INFO -   Obrazky: [136/147] image2022-12-26 15:18:57.png
+[21:56:56] INFO -   Obrazky: [137/147] image2022-12-26 11:45:54.png
+[21:56:57] INFO -   Obrazky: [138/147] image2022-12-20 20:47:32.png
+[21:56:58] INFO -   Obrazky: [139/147] image2022-12-20 21:8:1.png
+[21:56:58] INFO -   Obrazky: [140/147] image2022-12-20 21:23:41.png
+[21:56:59] INFO -   Obrazky: [141/147] image2022-2-21 10:27:16.png
+[21:57:00] INFO -   Obrazky: [142/147] image2022-2-21 11:42:58.png
+[21:57:01] INFO -   Obrazky: [143/147] image2022-2-21 12:5:0.png
+[21:57:01] INFO -   Obrazky: [144/147] image2022-2-21 12:21:50.png
+[21:57:02] INFO -   Obrazky: [145/147] image2022-2-21 12:40:31.png
+[21:57:03] INFO -   Obrazky: [146/147] image2022-2-21 13:41:25.png
+[21:57:03] INFO -   Obrazky: [147/147] image2022-2-21 14:5:53.png
+[21:57:04] INFO -   OK (97.9s)
+[21:57:04] INFO - [598/655] ID-065: Aktualizace návrhu pro fázi 3 (119637423)
+[21:57:04] INFO -   Obrazky: [1/30] image2024-9-6 11:15:13.png
+[21:57:05] INFO -   Obrazky: [2/30] image2024-9-8 10:30:13.png
+[21:57:06] INFO -   Obrazky: [3/30] image2024-9-6 11:21:2.png
+[21:57:06] INFO -   Obrazky: [4/30] image2024-9-6 11:21:55.png
+[21:57:07] INFO -   Obrazky: [5/30] image2024-9-9 11:52:47.png
+[21:57:08] INFO -   Obrazky: [6/30] image2024-9-6 11:22:8.png
+[21:57:08] INFO -   Obrazky: [7/30] image2024-9-6 11:22:23.png
+[21:57:09] INFO -   Obrazky: [8/30] image2024-9-6 11:22:32.png
+[21:57:09] INFO -   Obrazky: [9/30] image2024-9-6 11:41:31.png
+[21:57:10] INFO -   Obrazky: [10/30] image2024-9-6 11:46:29.png
+[21:57:11] INFO -   Obrazky: [11/30] image2024-9-6 11:54:33.png
+[21:57:12] INFO -   Obrazky: [12/30] image2024-9-6 12:14:24.png
+[21:57:12] INFO -   Obrazky: [13/30] image2024-9-6 12:16:5.png
+[21:57:13] INFO -   Obrazky: [14/30] image2024-9-6 12:34:1.png
+[21:57:14] INFO -   Obrazky: [15/30] image2024-9-6 12:34:43.png
+[21:57:14] INFO -   Obrazky: [16/30] image2024-9-6 12:35:39.png
+[21:57:15] INFO -   Obrazky: [17/30] image2024-9-6 12:36:2.png
+[21:57:16] INFO -   Obrazky: [18/30] image2024-9-6 12:36:22.png
+[21:57:16] INFO -   Obrazky: [19/30] image2024-9-6 12:36:44.png
+[21:57:17] INFO -   Obrazky: [20/30] image2024-9-6 12:37:3.png
+[21:57:18] INFO -   Obrazky: [21/30] image2024-9-6 12:37:12.png
+[21:57:18] INFO -   Obrazky: [22/30] image2024-9-6 12:37:23.png
+[21:57:19] INFO -   Obrazky: [23/30] image2024-9-6 12:43:46.png
+[21:57:19] INFO -   Obrazky: [24/30] image2024-9-6 12:44:30.png
+[21:57:20] INFO -   Obrazky: [25/30] image2024-9-6 12:46:27.png
+[21:57:21] INFO -   Obrazky: [26/30] image2024-9-6 12:48:27.png
+[21:57:21] INFO -   Obrazky: [27/30] image2024-9-4 12:54:2.png
+[21:57:22] INFO -   Obrazky: [28/30] image2024-9-4 14:42:20.png
+[21:57:23] INFO -   Obrazky: [29/30] image2024-9-4 16:4:56.png
+[21:57:23] INFO -   Obrazky: [30/30] image2024-9-4 16:26:19.png
+[21:57:24] INFO -   OK (19.9s)
+[21:57:24] INFO - [599/655] ID-066: Revize rozložení obrazovky modulu objednávek (108134630)
+[21:57:24] INFO -   Obrazky: [1/1] image2022-5-30 10:16:11.png
+[21:57:25] INFO -   OK (0.7s)
+[21:57:25] INFO - [600/655] ID-067: Revize chování hlavního menu aplikace (108134631)
+[21:57:25] INFO -   OK (0.0s)
+[21:57:25] INFO - [601/655] ID-068: Revize synchronizace druhů odpadu ve smlouvě (109544094)
+[21:57:25] INFO -   OK (0.0s)
+[21:57:25] INFO - [602/655] ID-069: Doplnění obrazovky potvrzení realizace denního výkonu o informace o schválení (110919802)
+[21:57:25] INFO -   Obrazky: [1/6] image2022-8-30 12:55:38.png
+[21:57:26] INFO -   Obrazky: [2/6] image2022-8-30 15:49:14.png
+[21:57:27] INFO -   Obrazky: [3/6] image2022-8-30 16:12:15.png
+[21:57:27] INFO -   Obrazky: [4/6] image2022-8-31 11:8:3.png
+[21:57:28] INFO -   Obrazky: [5/6] image2022-8-31 11:19:59.png
+[21:57:29] INFO -   Obrazky: [6/6] image2022-8-30 16:2:34.png
+[21:57:30] INFO -   OK (4.4s)
+[21:57:30] INFO - [603/655] ID-070: Zkušební provoz pro cyklický svoz odpadu (113018544)
+[21:57:30] INFO -   Obrazky: [1/5] image2023-2-3 10:22:43.png
+[21:57:30] INFO -   Obrazky: [2/5] image2023-5-24 11:38:9.png
+[21:57:31] INFO -   Obrazky: [3/5] image2023-1-17 21:5:48.png
+[21:57:32] INFO -   Obrazky: [4/5] image2023-1-17 21:10:23.png
+[21:57:33] INFO -   Obrazky: [5/5] image2023-1-17 21:21:6.png
+[21:57:33] INFO -   OK (3.4s)
+[21:57:33] INFO - [604/655] ID-071: Získání adresy ze souřadnic ve formulářích s adresou (113476266)
+[21:57:33] INFO -   Obrazky: [1/1] image2023-2-6 14:13:17.png
+[21:57:34] INFO -   OK (0.7s)
+[21:57:34] INFO - [605/655] ID-072: Zobrazení souhrnného itineráře trasy ve FOB (114462957)
+[21:57:34] INFO -   Obrazky: [1/7] MicrosoftTeams-image%20%28104%29.png
+[21:57:35] INFO -   Obrazky: [2/7] MicrosoftTeams-image%20%28105%29.png
+[21:57:36] INFO -   Obrazky: [3/7] Frontpress_S%C3%BAhrnn%C3%BD%20itiner%C3%A1r.jpg
+[21:57:37] INFO -   Obrazky: [4/7] Valn%C3%ADk_S%C3%BAhrnn%C3%BD%20itiner%C3%A1r.jpg
+[21:57:37] INFO -   Obrazky: [5/7] Lisovacia%20vozidlo-pilot_S%C3%BAhrnn%C3%BD%20itiner%C3%A1r.jpg
+[21:57:38] INFO -   Obrazky: [6/7] 2 (2).png
+[21:57:39] INFO -   Obrazky: [7/7] 3 (2).png
+[21:57:40] INFO -   OK (5.7s)
+[21:57:40] INFO - [606/655] ID-081: Potvrzení realizace objednané služby z FOB nad rámec původního plánu (114463931)
+[21:57:40] INFO -   Obrazky: [1/2] image2023-5-17 11:0:15.png
+[21:57:41] INFO -   Obrazky: [2/2] image2023-5-17 11:0:3.png
+[21:57:42] INFO -   OK (1.6s)
+[21:57:42] INFO - [607/655] ID-082: Zobrazení informací o aktivaci PTO (122192812)
+[21:57:42] INFO -   Obrazky: [1/2] image2025-7-9 19:2:46.png
+[21:57:42] INFO -   Obrazky: [2/2] image2025-6-13 14:23:42.png
+[21:57:43] INFO -   OK (1.3s)
+[21:57:43] INFO - [608/655] ID-083: Zobrazení informace o práci čerpadla na obrazovce monitoringu realizace (114459945)
+[21:57:43] INFO -   OK (0.0s)
+[21:57:43] INFO - [609/655] ID-084: Přímé vyhodnocení realizace objednané služby dle informací z tabletu (114460676)
+[21:57:43] INFO -   Obrazky: [1/4] image2023-3-22 19:57:1.png
+[21:57:44] INFO -   Obrazky: [2/4] image2023-4-27 14:31:18.png
+[21:57:45] INFO -   Obrazky: [3/4] image2023-4-27 14:43:11.png
+[21:57:45] INFO -   Obrazky: [4/4] image2023-4-27 13:44:3.png
+[21:57:46] INFO -   OK (3.1s)
+[21:57:46] INFO - [610/655] ID-087 / 138: Kopírování obsahu buňky v tabulce do systémové schránky (114464255)
+[21:57:46] INFO -   OK (0.0s)
+[21:57:46] INFO - [611/655] ID-088: Potvrzení realizace atypických úkonů ve FOB (116787221)
+[21:57:46] INFO -   OK (0.0s)
+[21:57:47] INFO - [612/655] ID-089: Doplnění nových typů úkonu (118194499)
+[21:57:47] INFO -   Obrazky: [1/2] image2024-2-27 16:56:39.png
+[21:57:47] INFO -   Obrazky: [2/2] image2024-2-27 16:56:55.png
+[21:57:48] INFO -   OK (1.4s)
+[21:57:48] INFO - [613/655] ID-090: Archivace dat v RoadPlan (118194946)
+[21:57:48] INFO -   OK (0.0s)
+[21:57:48] INFO - [614/655] ID-091: Revize generování DV dle data zařazení vozidla (119637062)
+[21:57:48] INFO -   OK (0.0s)
+[21:57:48] INFO - [615/655] ID-092: Možnost skrytí položek v detailu zákazníka (119638304)
+[21:57:48] INFO -   Obrazky: [1/2] image2024-9-18 10:24:9.png
+[21:57:49] INFO -   Obrazky: [2/2] image2024-9-18 10:24:48.png
+[21:57:50] INFO -   OK (1.4s)
+[21:57:50] INFO - [616/655] ID-093: Změna stanoviště vozidla (120356989)
+[21:57:50] INFO -   OK (0.0s)
+[21:57:50] INFO - [617/655] ID-094: Úprava zobrazení itineráře (120358891)
+[21:57:50] INFO -   Obrazky: [1/9] image2024-11-8 19:52:57.png
+[21:57:51] INFO -   Obrazky: [2/9] image2024-11-8 20:8:0.png
+[21:57:51] INFO -   Obrazky: [3/9] image2024-11-4 11:55:44.png
+[21:57:52] INFO -   Obrazky: [4/9] image2024-11-4 11:52:19.png
+[21:57:53] INFO -   Obrazky: [5/9] image2024-11-4 11:52:41.png
+[21:57:53] INFO -   Obrazky: [6/9] image2024-11-4 11:52:57.png
+[21:57:54] INFO -   Obrazky: [7/9] image2024-11-4 11:53:17.png
+[21:57:55] INFO -   Obrazky: [8/9] image2024-11-8 20:29:57.png
+[21:57:55] INFO -   Obrazky: [9/9] image2024-11-8 20:36:20.png
+[21:57:56] INFO -   OK (6.1s)
+[21:57:56] INFO - [618/655] ID-095: CEDA routing – revize chování aplikace (120359128)
+[21:57:56] INFO -   Obrazky: [1/5] image2024-11-7 8:32:8.png
+[21:57:57] INFO -   Obrazky: [2/5] image2024-11-24 17:29:9.png
+[21:57:58] INFO -   Obrazky: [3/5] image2024-11-24 17:36:59.png
+[21:57:58] INFO -   Obrazky: [4/5] image2024-11-24 17:40:18.png
+[21:57:59] INFO -   Obrazky: [5/5] image2024-11-7 8:32:8.png
+[21:58:00] INFO -   OK (4.0s)
+[21:58:00] INFO - [619/655] ID-096: Připomínky k potvrzování realizace z FOB (120751577)
+[21:58:00] INFO -   Obrazky: [1/5] image2024-12-28 11:35:2.png
+[21:58:01] INFO -   Obrazky: [2/5] image2024-12-28 12:6:15.png
+[21:58:02] INFO -   Obrazky: [3/5] image2025-1-20 8:39:44.png
+[21:58:03] INFO -   Obrazky: [4/5] image2025-1-20 8:55:16.png
+[21:58:03] INFO -   Obrazky: [5/5] image2025-1-10 15:6:40.png
+[21:58:04] INFO -   OK (3.9s)
+[21:58:04] INFO - [620/655] ID-097: Report problematických jízd (120752021)
+[21:58:04] INFO -   OK (0.0s)
+[21:58:04] INFO - [621/655] ID-098: Export objednaných služeb (122193405)
+[21:58:04] INFO -   Obrazky: [1/1] image2025-7-12 16:35:30.png
+[21:58:05] INFO -   OK (0.6s)
+[21:58:05] INFO - [622/655] ID-099: Modul Monitoring DV (122199640)
+[21:58:05] INFO -   Obrazky: [1/8] MDV4.png
+[21:58:06] INFO -   Obrazky: [2/8] image2025-11-3 12:38:33.png
+[21:58:07] INFO -   Obrazky: [3/8] image2025-11-3 12:41:30.png
+[21:58:08] INFO -   Obrazky: [4/8] Sn&iacute;mek obrazovky 2025-10-30 131207.png
+[21:58:08] WARNING -   Nelze stahnout Sn&iacute;mek obrazovky 2025-10-30 131207.png: HTTP Error 404: Not Found
+[21:58:08] INFO -   Obrazky: [5/8] Sn&iacute;mek obrazovky 2025-10-27 101607.png
+[21:58:08] WARNING -   Nelze stahnout Sn&iacute;mek obrazovky 2025-10-27 101607.png: HTTP Error 404: Not Found
+[21:58:08] INFO -   Obrazky: [6/8] Sn&iacute;mek obrazovky 2025-10-27 101738.png
+[21:58:08] WARNING -   Nelze stahnout Sn&iacute;mek obrazovky 2025-10-27 101738.png: HTTP Error 404: Not Found
+[21:58:08] INFO -   Obrazky: [7/8] Sn&iacute;mek obrazovky 2025-10-27 100345.png
+[21:58:08] WARNING -   Nelze stahnout Sn&iacute;mek obrazovky 2025-10-27 100345.png: HTTP Error 404: Not Found
+[21:58:08] INFO -   Obrazky: [8/8] image.png
+[21:58:09] INFO -   OK (3.9s)
+[21:58:09] INFO - [623/655] ID-100: Migrace objednávek do Helios (122204913)
+[21:58:09] INFO -   OK (0.0s)
+[21:58:09] INFO - [624/655] ID-101: Monitoring - úprava zobrazení času konce realizace (123371968)
+[21:58:09] INFO -   Obrazky: [1/2] image2026-2-18 9:50:15.png
+[21:58:10] INFO -   Obrazky: [2/2] image2026-2-18 9:41:18.png
+[21:58:11] INFO -   OK (1.4s)
+[21:58:11] INFO - [625/655] ID-101: Změna způsobu výpočtu trasy DV (123371988)
+[21:58:11] INFO -   OK (0.0s)
+[21:58:11] INFO - [626/655] ID-XXX: Název změnového požadavku (103287208)
+[21:58:11] INFO -   OK (0.0s)
+[21:58:11] INFO - [627/655] Nacenění požadavků (88037295)
+[21:58:11] INFO -   OK (0.0s)
+[21:58:11] INFO - [628/655] Roadplan - Aktuální Roadmapa (104726651)
+[21:58:11] INFO -   Obrazky: [1/2] image2025-12-17 14:52:10.png
+[21:58:12] INFO -   Obrazky: [2/2] image2026-1-23 11:16:21.png
+[21:58:12] INFO -   OK (1.4s)
+[21:58:12] INFO - [629/655] Plan vyvoja - Q1 (117571922)
+[21:58:12] INFO -   Obrazky: [1/1] image2024-1-15 12:9:9.png
+[21:58:13] INFO -   OK (0.8s)
+[21:58:13] INFO - [630/655] RN - RoadPlan (mimo MPGSK) (113018648)
+[21:58:13] INFO -   OK (0.0s)
+[21:58:13] INFO - [631/655] Technická dokumentácia (120751154)
+[21:58:13] INFO -   OK (0.0s)
+[21:58:14] INFO - [632/655] Administrátorská príručka (120751156)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [633/655] Inštalácia podporných komponentov (120751194)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [634/655] Postup nasadenia novej inštancie (120751190)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [635/655] Autentifikácia a autorizácia (120751160)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [636/655] Debug nástroje (121341886)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [637/655] Integrácia - FLWW služby (120751196)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [638/655] Komunikacia s FOB prostrednictvom FLWW Rabbit (120751208)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [639/655] Posielanie emailov prostrednictvom FLWW Rabbit (120751204)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [640/655] Synchronizácia základných entít z FLWW (120751199)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:14] INFO - [641/655] Integrácie - služby 3.strán (120751210)
+[21:58:14] INFO -   OK (0.0s)
+[21:58:15] INFO - [642/655] Jazyková lokalizácia (120751163)
+[21:58:15] INFO -   OK (0.0s)
+[21:58:15] INFO - [643/655] Konceptuálna architektúra riešenia (120751158)
+[21:58:15] INFO -   Obrazky: [1/1] image2024-12-11 8:1:3.png
+[21:58:15] INFO -   OK (0.7s)
+[21:58:15] INFO - [644/655] Logovanie (120751168)
+[21:58:15] INFO -   Obrazky: [1/1] 7eb7bfb8-1e6d-48c0-b9c4-48469fe8b894.png
+[21:58:16] INFO -   OK (0.7s)
+[21:58:16] INFO - [645/655] Mapové služby (120751222)
+[21:58:16] INFO -   OK (0.0s)
+[21:58:16] INFO - [646/655] Geocoding (120751226)
+[21:58:16] INFO -   OK (0.0s)
+[21:58:16] INFO - [647/655] Mapové podklady (120751224)
+[21:58:16] INFO -   OK (0.0s)
+[21:58:17] INFO - [648/655] Routing (120751228)
+[21:58:17] INFO -   OK (0.0s)
+[21:58:17] INFO - [649/655] Routing Valhalla - identifikace hlášených problémů (122200039)
+[21:58:17] INFO -   Obrazky: [1/10] image2025-11-10 8:39:53.png
+[21:58:18] INFO -   Obrazky: [2/10] image2025-11-10 8:41:33.png
+[21:58:19] INFO -   Obrazky: [3/10] image2025-11-10 8:45:52.png
+[21:58:21] INFO -   Obrazky: [4/10] image2025-11-10 8:52:35.png
+[21:58:21] INFO -   Obrazky: [5/10] image2025-11-10 8:58:54.png
+[21:58:22] INFO -   Obrazky: [6/10] image2025-11-10 9:49:11.png
+[21:58:23] INFO -   Obrazky: [7/10] image2025-11-10 9:47:57.png
+[21:58:24] INFO -   Obrazky: [8/10] image2025-11-10 9:49:53.png
+[21:58:25] INFO -   Obrazky: [9/10] image2025-11-10 10:13:41.png
+[21:58:26] INFO -   Obrazky: [10/10] image2025-11-10 9:59:34.png
+[21:58:27] INFO -   OK (10.3s)
+[21:58:27] INFO - [650/655] Synchronizácia dát z ERP (120751230)
+[21:58:27] INFO -   OK (0.0s)
+[21:58:27] INFO - [651/655] WinyX / Helios Sync Service (122198093)
+[21:58:27] INFO -   Obrazky: [1/3] image2021-6-28_11-15-40.png
+[21:58:29] INFO -   Obrazky: [2/3] image2021-6-28_11-23-46.png
+[21:58:30] INFO -   Obrazky: [3/3] image2021-6-28_11-24-27.png
+[21:58:32] INFO -   OK (4.7s)
+[21:58:32] INFO - [652/655] Zákaznícke špecifiká (120751214)
+[21:58:32] INFO -   OK (0.0s)
+[21:58:32] INFO - [653/655] MPG - specifika (120751234)
+[21:58:32] INFO -   Obrazky: [1/2] image2024-12-11 8:7:20.png
+[21:58:33] INFO -   Obrazky: [2/2] image2024-12-11 8:7:31.png
+[21:58:34] INFO -   OK (1.6s)
+[21:58:34] INFO - [654/655] Recovera - specifika (120751241)
+[21:58:34] INFO -   Obrazky: [1/1] image2024-12-11 8:9:4.png
+[21:58:34] INFO -   OK (0.7s)
+[21:58:34] INFO - [655/655] Zoznam pravidelnych jobov (120751212)
+[21:58:34] INFO -   OK (0.0s)
+[21:58:35] INFO - Faze 2 dokoncena za 1037s
+[21:58:35] INFO - Index vygenerovan: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/index.html
+[21:58:35] INFO - Export dokoncen do slozky: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt
+[21:58:35] INFO -   Celkem stranek: 655
+[21:58:35] INFO -   Zapsano: 655
+[21:58:35] INFO -   Chyby (obrazky): 8
+[21:58:35] INFO -   Report: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/export_report.txt

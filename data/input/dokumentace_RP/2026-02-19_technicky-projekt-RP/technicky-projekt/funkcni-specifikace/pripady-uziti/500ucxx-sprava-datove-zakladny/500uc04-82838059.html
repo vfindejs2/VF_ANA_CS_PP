@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>500UC04: Smazat zákazníka</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Stručný popis, cíl UC</h1><p>Cílem UC je smazání existujícího Zákazníka.</p><h1>Seznam aktérů</h1><table><tbody><tr><th>Aktér</th><th>Popis</th><th colspan="1">Typická role</th></tr><tr><td>Uživatel</td><td><p>Jedná se o uživatele aplikace RoadPlan, který musí mít oprávnění spouštět tento UC.</p></td><td colspan="1"><p> </p></td></tr></tbody></table><h1>Spuštění případu užití</h1><p>Uživatel zadá požadavek ke smazání existujícího Zákazníka jedním z těchto způsobů:</p><ul><li>Smazání existujícího Zákazníka z přehledu Zákazníků (<a href="500uc05-82838061.html">500UC05: Zobrazit přehled zákazníků</a>).</li></ul><h1>Vstupní podmínky</h1><p>Je možné smazat pouze takového Zákazníka, který zatím není zanesen v systému WinyX.</p><p>Uživatel má následující <a href="../../../uzivatelska-78681297.html">oprávnění na typ entit</a>:</p><ul><li>Zákazníci - zobrazení a modifikace.</li></ul><h3>Vstupní data</h3><ul><li>Identifikace entity <a href="../../../datove-modely/datovy-78681044.html">Zákazník</a>.</li></ul><h1>Základní tok událostí</h1><ol><li>Systém zobrazí modální okno s dotazem pro potvrzení požadavku na smazání Zákazníka – MSG_CONF_CANCEL_DELETE_ITEM, viz <a href="../../../systemove-78681299.html">Systémové hlášky</a>.</li><li>Uživatel potvrdí požadavek na smazání – stiskne tlačítko Ano.</li><li>Systém smaže požadovaného Zákazníka.</li><li>Systém zavře modální okno.</li></ol><h1>Alternativní toky událostí</h1><p>Nejsou.</p><h1>Výjimkové toky událostí</h1><h3>EF01: Storno</h3><h4>Tok událostí</h4><ol><li>Výjimkový tok událostí začíná krokem 2 základního toku událostí.</li><li>KDYŽ uživatel stiskne tlačítko Ne.<br><ol><li><strong>Návrat na krok 4 základního toku událostí</strong>.</li></ol></li><li>KDYŽ uživatel stiskne tlačítko křížku pro zavření modálního okna.<br><ol><li><strong>Návrat na krok 4 základního toku událostí</strong>.</li></ol></li></ol><h4>Výstupní podmínky</h4><ul><li>Nebyl smazán Zákazník.</li></ul><h1>Výstupní podmínky</h1><ul><li>Byl smazán Zákazník.</li></ul><h1>Validace</h1><p>Nejsou.</p><h1>Algoritmy</h1><p>Nejsou.</p><h1>Uživatelské rozhraní</h1><p>Rozložení okna pro potvrzení smazání je uvedeno v samostatném dokumentu – viz <a href="../../uzivatelske-rozhrani/700uixx-obecne/700ui06-79430049.html">700UI06: Systémové hlášky</a>.</p>
+</div>
+</body>
+</html>

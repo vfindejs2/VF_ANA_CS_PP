@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-009: Zobrazení itineráře trasy u monitoringu realizace</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Na obrazovce monitoringu realizace denních výkonů je možné zobrazit kontextovou nabídku s itinerářem trasy požadovaného denního výkonu. Ta je zobrazena po najetí myší na odpovídající ikonu v rámci přehledu. Je pak požadována revize tohoto chování, může totiž nastat situace, kdy se zobrazená tabulka nevejde do prostoru v rámci obrazovky – část tabulky není viditelná, viz obrázek.</p><p><img src="id-009-zobrazeni-itinerare-trasy-u-monitoringu-realizace-88032339_images/image2020-5-19 10-26-46.png" data-attachment="true"></p><h1>Aktuální stav</h1><p>Prostor, ve kterém je zobrazena nabídka, je volen komponentou třetí strany. Mohou tak nastat situace, kdy dojde k zobrazení, které není korektní.</p><h1>Návrh řešení</h1><p>Bude provedena revize aktuálního chování, kdy bude nabídka upravena tak, aby mohla vyplnit vetší část prostoru obrazovky (viz obrázek). Díky tomu bude možné zobrazit v nabídce více lokací objednané služby než nyní. Bude tak pokryta značná část problémových případů.</p><p><img src="id-009-zobrazeni-itinerare-trasy-u-monitoringu-realizace-88032339_images/image2020-5-19 10-33-19.png" data-attachment="true"></p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Zobrazení kontextové nabídky</h2><ol><li>Uživatel zadá požadavek na zobrazení kontextové nabídky s itinerářem trasy.</li><li>Systém zobrazí kontextovou nabídky vždy vpravo nebo vlevo od místa, kde je vyvoláno zobrazení itineráře trasy (ikona v rámci přehledu denních výkonů).</li></ol><p>Poznámka: Uvedený případ může stále nastat, jeho výskyt je však omezen na extrémní případy.</p><h1>Poznámka</h1><p>Jedná se o dříve řešený požadavek, je tedy uveden pouze zákazníkem zvolený návrh řešení.</p>
+</div>
+</body>
+</html>

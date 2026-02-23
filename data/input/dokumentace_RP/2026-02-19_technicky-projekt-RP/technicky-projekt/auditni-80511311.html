@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Auditní logování</title>
+</head>
+<body>
+<div class="wiki-content">
+<p>Návrh vychází z auditního logování ve FLWW2: <a href="#" data-page-title="Audit log">Audit log</a></p><p><strong>Rozpracováno</strong></p><h1>Zadání</h1><h4>Požadavky</h4><ul><li>systém musí logovat všechny důležité změny dat a činnosti, aby bylo možné je dohledat</li><li>dohledání v první fázi stačí administrátorsky, není třeba uživatelský přístup</li><li>logování musí být dostatečně rychlé, nesmí zdržovat ostatní činnosti</li><li>není třeba logovat vše do velkých podrobností <br><ul><li><em>např. u změny číselníku stačí informace kdo a kdy položku upravil, není nutné logovat co vše se konkrétně změnilo</em><em><br></em></li></ul></li><li>v případě chyby by měla být událost zalogována<br><ul><li>musí být vidět, že se někdo o akci neúspěšně pokusil</li><li>z toho plyne, že logovat musíme asynchronně v samostatném DB contextu<br><br></li></ul></li></ul><table><tbody><tr><th>Sloupec</th><th colspan="1">Povinnost</th><th>Význam</th></tr><tr><td>AuditLogId</td><td colspan="1">A</td><td> </td></tr><tr><td colspan="1">UserId</td><td colspan="1">A</td><td colspan="1">uživatel, který vyvolal událost</td></tr><tr><td>AuditLogLevel</td><td colspan="1">A</td><td>typ (úroveň) záznamu 0= Info, 1 = Error</td></tr><tr><td colspan="1">Message</td><td colspan="1">N</td><td colspan="1">text zprávy</td></tr><tr><td colspan="1">ActionTime</td><td colspan="1">N</td><td colspan="1">čas události (klientský)</td></tr><tr><td colspan="1">ActionId</td><td colspan="1">N</td><td colspan="1">identifikátor uživ. akce, viz níže</td></tr><tr><td colspan="1">CategoryId</td><td colspan="1">N</td><td colspan="1">kategorie uživ akce</td></tr></tbody></table><h1>Typy logovaných akcí</h1><p>Seznam typů akcí, které se budou logovat. Kódy budou přiděleny během implementace. </p><table><tbody><tr><th>Kategorie (ID)</th><th>Typ akce </th><th colspan="1">ID akce</th><th>Popis akce</th></tr><tr><td> </td><td> </td><td colspan="1"> </td><td> </td></tr><tr><td> </td><td> </td><td colspan="1"> </td><td> </td></tr></tbody></table>
+</div>
+</body>
+</html>

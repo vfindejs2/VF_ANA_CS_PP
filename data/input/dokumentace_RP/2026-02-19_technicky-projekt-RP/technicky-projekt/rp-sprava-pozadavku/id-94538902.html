@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-046: Úprava synchronizace typů nádob</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V souvislosti s projektem Pasport dochází k následujícím změnám v datové struktuře typů nádob (tabulka BCED_ContrainerType) v integrační databázi s WinyX:</p><ul><li>Nově bude přenášen číselník ze všech společností. (Nyní pouze za společnost Marius Pedersen.)<br><ul><li>V této souvislosti je tabulka rozšířena o slouec OrganizationalUnitId.</li></ul></li><li>Budou předávany i další hodnoty (např. malé nádoby), nejen hodnoty relevantní pro aplikaci RoadPlan.<br><ul><li> V této souvislosti je tabulka rozšířena o sloupec ApplicationArea.</li></ul></li></ul><p>Požadavkem je upravit synchronizaci tak, aby byl pro aplikaci Pasport zachován status quo, tj. stejné hodnoty číselníku jako doposud.</p><p>(Poznámka: V souvislosti s přechodem na nový ERP systém bude číselník centralizován, tj. všechny společnosti budou sdílet společný číselník.)</p><h1>Aktuální stav</h1><p>Pokud by nedošlo k úpravám synchronizace, aktuální chování bude následující:</p><ul><li>V aplikaci RoadPlan se budou vyskytovat duplicity v číselníku (ekvivalentní hodnoty z různých společností).</li><li>A dále dojde k rozšíření o nerelevantní hodnoty číselníku (např. malé nádoby).</li></ul><h1>Návrh řešení</h1><p>Do synchronizační komponenty přidat následující logiku:</p><ul><li>Přenášeny budou jen záznamy, pro které platí: BCED_ContrainerType.ApplicationArea = 'e-dispečing'.</li></ul><p>Ostatní záznamy budou ignorovány.</p><p>Návrh spoléhá na to, že položky s oblastí použití "e-dispečink" jsou vytvořeny výhradně pro společnost Marius Pedersen. Zákazník tuto skutečnost potvrdí, v opačném případě je nutno přidat ještě další podmínku - kontrolu příslušnosti záznamu pod společnost Marius Pedersen.</p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Dostupné typy nádob</h2><ol><li>V aplikaci RoadPlan jsou dostupné stejné typy nádob jako před rozšířením rozhraní v rámci projektu Pasport. Jedná se o nádoby, které mají v integrační DB hodnotu BCED_ContrainerType.ApplicationArea = 'e-dispečing'.</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

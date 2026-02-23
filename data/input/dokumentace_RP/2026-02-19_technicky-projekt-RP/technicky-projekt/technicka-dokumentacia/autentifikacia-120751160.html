@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Autentifikácia a autorizácia</title>
+</head>
+<body>
+<div class="wiki-content">
+<h1>Základný popis</h1><ul><li><p>UI získava jednak token + prava z FLWW API a token generovaný zo samotného backendu systému (budeme nazývať ako "aplikačný token")</p></li><li><p>FLWW token je následne používaný na dopytovanie FLWW endpointov</p></li><li><p>všetky endpointy ktorý UI dopytuje voči aplikačnému backendu su zabezpečené - vyžadujú aplikačný token (JWT)</p></li><li><p>po prihlásení sú flww token a aplikačný token uchované v rámci local storage prehliadača, čo umožňuje pri ďalšom spustení aplikácie sa rovno prihlásiť do systému bez zadávania mena a hesla</p></li></ul><h1>Spôsoby prihlásenia</h1><h2>Prihlásenie cez meno a heslo</h2><p>Postup udalosti na UI:</p><ol><li><p>v rámci login obrazovky zadávame len <strong>meno</strong> a <strong>heslo</strong>.</p></li><li><p>odosle request na FLWW API na ziskanie “flww tokenu”</p></li><li><p>odosle request na ziskanie prav z FLWW API</p></li><li><p>odosle request na API backendu na ziskanie “aplikacneho tokenu”</p></li></ol><h2>Prihlásenie pomocou URL</h2><p>Účel je umožniť používateľovi aplikáciu priamo z FLWW UI bez toho, aby bol používateľ presmerovaný na login obrazovku. Pri redirect z FLWW UI sú v rámci URL nasledovné parametre:</p><ul><li><p>access_token - FLWW token</p></li><li><p>expires_in - čas v sekundách za koľko tento token expiruje</p></li><li><p>user (alebo userName) - používateľske meno </p></li></ul><p> </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-038: Zobrazení souhrnných údajů o trase na obrazovce editace denního výkonu</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Na obrazovce editace denního výkonu (M5) je umožněno detailní plánování a optimalizace trasy denního výkonu. K dispozici pak jsou mimo jiné i souhrnné informace o trase tohoto denního výkonu (celkem ujetá vzdálenost, doba jízdy…). Požadováno pak je zobrazení těchto informací v rámci obrazovky tak, aby byly na první pohled jasně viditelné.</p><h1>Aktuální stav</h1><p>Aktuální stav, tedy místa, kde je možné informace získat, nejsou z uvedených důvodů vyhovující:</p><ul><li>Tabulka denních výkonů (poslední řádek) – při větším počtu lokací je nutné použít k zobrazení posuvník.</li><li>Detail denního výkonu – na stejném panelu jsou i další záložky, např. ta s hlavní mapou. Uživatelé pak často panel se záložkami skrývají úplně.</li></ul><p>Ani v jednom z případů tedy nejsou potřebné informace vidět na první pohled. </p><p><img src="id-038-zobrazeni-souhrnnych-udaju-o-trase-na-obrazovce-editace-denniho-vykonu-89063968_images/image2020-10-26 15-22-21.png" data-attachment="true"></p><h1>Návrh řešení</h1><p>Navrhujeme tedy doplnění těchto informací i do „spodní“ lišty obrazovky, jak naznačuje přiložený náhled. Doplněny jsou následující položky: </p><ul><li>Doba jízdy – celková doba jízdy denního výkonu,</li><li>Vzdálenost – celkem ujetá vzdálenost v rámci denního výkonu.</li></ul><p><img src="id-038-zobrazeni-souhrnnych-udaju-o-trase-na-obrazovce-editace-denniho-vykonu-89063968_images/image2020-10-26 16-3-15.png" data-attachment="true"></p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Zobrazení souhrnných informací o denním výkonu</h2><p>V rámci „spodní“ lišty obrazovky jsou zobrazeny informace o celkové době jízdy a celkem ujeté vzdálenosti v rámci denního výkonu. Informace pak odpovídají aktuálnímu stavu denního výkonu, tedy i změnám, které uživatel v rámci obrazovky provedl.</p><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

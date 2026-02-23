@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-059: Rozšíření filtrů na obrazovce monitoringu realizace denních výkonů</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V rámci obrazovky monitoringu realizace je požadováno doplnění možnosti filtrovat denní výkony na úrovni konkrétního vozidla, to má následující důvody:</p><ul><li>Uživatel chce vidět v mapě informace o realizaci právě pro jedno vozidlo.</li><li>Stejně tak chce vidět odpovídající diagram denního tohoto vozidla v tabulce (u větších provozoven to může vyžadovat použití posuvníku).</li></ul><h1>Aktuální stav</h1><p>Aktuálně je možné zobrazit v mapě informace pouze pro právě označené denní výkonu v tabulce (nastavení režimu zobrazení). Může však nastat situace, kdy je odpovídající denní výkon mimo aktuálně zobrazené denní výkony v přehledu (uživatel musí použít posuvník).</p><h1>Návrh řešení</h1><p>Navrhujeme tedy doplnění rychlého filtru v přehledu denních výkonů (viz obrázek, naznačeno červeně). Ten bude umožňovat výběr konkrétního denního výkonu, kdy bude možné vybírat z těch denních výkonů, které jsou v rámci tohoto přehledu načteny. Po aplikaci filtru dojde k zobrazení pouze zvoleného denního výkonu v mapě i tabulce.</p><p><img src="id-059-rozsireni-filtru-na-obrazovce-monitoringu-realizace-dennich-vykonu-103287252_images/image2021-12-22 16-6-19.png" data-attachment="true"></p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Výběr požadovaného denního výkonu</h2><ol><li>Uživatel klikne na filtr pro nastavení požadovaného denního výkonu.</li><li>Systém zobrazí nabídku dostupných denních výkonů.</li><li>Uživatel vybere požadovaný denní výkon.</li><li>Systém aktualizuje zobrazené informace v mapě i tabulce (zobrazí pouze zvolený denní výkon).</li></ol><h2>TC02: Zrušení vybraného denního výkonu</h2><ol><li>Uživatel klikne na filtr pro nastavení požadovaného denního výkonu.</li><li>Systém zobrazí nabídku dostupných denních výkonů.</li><li>Uživatel vybere možnost Nevybráno.</li><li>Systém aktualizuje zobrazené informace v mapě i tabulce (zobrazí všechny denní výkony).</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

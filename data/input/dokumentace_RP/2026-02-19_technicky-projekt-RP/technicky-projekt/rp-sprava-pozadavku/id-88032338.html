@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-008: Prodleva při načítání dat pro monitoring realizace</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Na obrazovce monitoringu realizace denních výkonů dochází, pokud den realizace odpovídá dnešnímu datu, k pravidelné aktualizaci zobrazených dat. Obnovení pak probíhá v zadaném intervalu. Je však požadována revize tohoto chování, na produkčním prostředí (na konkrétních provozovnách) totiž dochází k určité prodlevě, která se projevuje tak, že uživatel nevidí aktuální stav realizace – na obrazovce se pouze točí kolečko, viz obrázek. Toto „zamrznutí“ pak trvá v rozmezí 1 až 3 sekund.</p><p><img src="id-008-prodleva-pri-nacitani-dat-pro-monitoring-realizace-88032338_images/image2020-5-19 10-42-19.png" data-attachment="true"></p><h1>Aktuální stav</h1><p>Při aktualizaci zobrazených dat je zobrazena animace představující načítání dat.</p><p>Poznámka: Aktualizace je spouštěna systémem, a to v zadaném intervalu.</p><h1>Návrh řešení</h1><p>Při aktualizaci zobrazených dat nebude zobrazována animace představující načítání dat.</p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Načítání aktuálních dat</h2><ol><li>Systém pří načítání aktuálních dat nezobrazí animaci představující tuto činnost.</li></ol><h1>Poznámka</h1><p>Jedná se o dříve řešený požadavek, je tedy uveden pouze zákazníkem zvolený návrh řešení.</p>
+</div>
+</body>
+</html>

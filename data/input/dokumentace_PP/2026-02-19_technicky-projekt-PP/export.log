@@ -1,0 +1,1044 @@
+[21:00:40] INFO - Log soubor: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/export.log
+[21:00:40] INFO - === Faze 1: Crawl ===
+[21:07:02] INFO - Faze 1 dokoncena: 380 stranek za 383s
+[21:07:02] INFO - Ukladam checkpoint (380 stranek)...
+[21:07:02] INFO - Checkpoint ulozen.
+[21:07:02] INFO - === Faze 2: Zapis HTML (380 stranek, 380 zbyvajicich) ===
+[21:07:02] INFO - [1/380] Technický projekt (88032885)
+[21:07:02] INFO -   OK (0.0s)
+[21:07:03] INFO - [2/380] Datové modely (88033010)
+[21:07:03] INFO -   OK (0.0s)
+[21:07:03] INFO - [3/380] Datový slovník (88033012)
+[21:07:03] INFO -   OK (0.1s)
+[21:07:03] INFO - [4/380] Persistence dat v dynamických entitách (88033014)
+[21:07:03] INFO -   OK (0.0s)
+[21:07:03] INFO - [5/380] Funkcionální specifikace (88032916)
+[21:07:03] INFO -   OK (0.0s)
+[21:07:03] INFO - [6/380] Ovládací prvky (88035152)
+[21:07:03] INFO -   OK (0.0s)
+[21:07:03] INFO - [7/380] Mapa (91750475)
+[21:07:03] INFO -   OK (0.0s)
+[21:07:03] INFO - [8/380] Nástrojová lišta (88035191)
+[21:07:03] INFO -   Obrazky: [1/1] image2021-4-30 15:17:43.png
+[21:07:04] INFO -   OK (0.7s)
+[21:07:04] INFO - [9/380] Ovládací prvky pro zadání hodnot (88040830)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [10/380] Ovládací prvky třetích stran (118197697)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [11/380] Používané formáty zobrazení údajů (88036959)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [12/380] Tabulka (88035154)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [13/380] Persistence stavu UI (88033402)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [14/380] URL parametry (88033404)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [15/380] Uživatelská nastavení (88033406)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [16/380] Případy užití (88032918)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [17/380] 100UCxx: Spuštění aplikace (88032922)
+[21:07:04] INFO -   OK (0.0s)
+[21:07:04] INFO - [18/380] 100UC01: Spustit aplikaci (88033382)
+[21:07:04] INFO -   Obrazky: [1/1] image2020-5-29 14:17:19.png
+[21:07:05] INFO -   OK (0.7s)
+[21:07:05] INFO - [19/380] 100UC02: Přihlásit uživatele (88032967)
+[21:07:05] INFO -   Obrazky: [1/4] image2020-6-11 8:17:27.png
+[21:07:06] INFO -   Obrazky: [2/4] image2020-5-31 11:52:46.png
+[21:07:07] INFO -   Obrazky: [3/4] image2020-6-11 9:38:43.png
+[21:07:07] INFO -   Obrazky: [4/4] image2020-5-31 11:45:4.png
+[21:07:08] INFO -   OK (2.8s)
+[21:07:08] INFO - [20/380] 100UC03: Odhlásit uživatele (88032968)
+[21:07:08] INFO -   OK (0.0s)
+[21:07:08] INFO - [21/380] 100UC04: Otevřít aplikaci FLWW2 (88032977)
+[21:07:08] INFO -   OK (0.0s)
+[21:07:08] INFO - [22/380] 101UCxx: Společné prvky uživatelského rozhraní (88032986)
+[21:07:08] INFO -   OK (0.0s)
+[21:07:08] INFO - [23/380] 101UC01: Zobrazit hlavní menu (88032989)
+[21:07:08] INFO -   Obrazky: [1/2] image2020-6-2 8:50:47.png
+[21:07:09] INFO -   Obrazky: [2/2] image2020-6-2 8:51:14.png
+[21:07:09] INFO -   OK (1.3s)
+[21:07:10] INFO - [24/380] 101UC02: Zobrazit hlavičku aplikace (88032991)
+[21:07:10] INFO -   Obrazky: [1/3] image2020-6-2 9:59:28.png
+[21:07:10] INFO -   Obrazky: [2/3] image2020-6-2 10:0:53.png
+[21:07:11] INFO -   Obrazky: [3/3] image2020-6-2 9:51:40.png
+[21:07:11] INFO -   OK (2.0s)
+[21:07:12] INFO - [25/380] 101UC03: Zobrazit stránku O aplikaci (88032974)
+[21:07:12] INFO -   Obrazky: [1/1] image2020-6-2 10:30:59.png
+[21:07:12] INFO -   OK (0.6s)
+[21:07:12] INFO - [26/380] 101UC04: Zobrazit modální okno (88034336)
+[21:07:12] INFO -   Obrazky: [1/1] image2020-6-8 14:1:50.png
+[21:07:13] INFO -   OK (0.7s)
+[21:07:13] INFO - [27/380] 101UC05: Zobrazit systémové hlášení (88034337)
+[21:07:13] INFO -   Obrazky: [1/4] image2020-6-9 9:51:51.png
+[21:07:14] INFO -   Obrazky: [2/4] image2020-6-9 10:32:8.png
+[21:07:14] INFO -   Obrazky: [3/4] image2020-6-9 7:37:57.png
+[21:07:15] INFO -   Obrazky: [4/4] image2020-6-9 7:41:19.png
+[21:07:16] INFO -   OK (2.7s)
+[21:07:16] INFO - [28/380] 101UC06: Zobrazit výběrový dialog (88036490)
+[21:07:16] INFO -   OK (0.0s)
+[21:07:16] INFO - [29/380] 101UC07: Zobrazit fotografii (88036901)
+[21:07:16] INFO -   Obrazky: [1/2] image2020-9-11 14:29:39.png
+[21:07:17] INFO -   Obrazky: [2/2] image2020-9-11 14:31:15.png
+[21:07:17] INFO -   OK (1.4s)
+[21:07:17] INFO - [30/380] 101UC08: Zobrazit dialog pro výběr souboru (88036986)
+[21:07:17] INFO -   OK (0.0s)
+[21:07:17] INFO - [31/380] 101UC09: Zobrazit kontextové menu (93587624)
+[21:07:17] INFO -   Obrazky: [1/2] image2021-1-29 10:52:49.png
+[21:07:18] INFO -   Obrazky: [2/2] image2021-1-29 10:54:28.png
+[21:07:19] INFO -   OK (1.4s)
+[21:07:19] INFO - [32/380] 101UC10: Zobrazit formulář pokročilého filtru (93589426)
+[21:07:19] INFO -   Obrazky: [1/5] image2024-4-20 12:49:52.png
+[21:07:19] INFO -   Obrazky: [2/5] image2024-4-20 13:0:33.png
+[21:07:20] INFO -   Obrazky: [3/5] image2024-4-20 13:2:0.png
+[21:07:21] INFO -   Obrazky: [4/5] image2023-3-8 11:55:31.png
+[21:07:21] INFO -   Obrazky: [5/5] image2023-3-7 14:42:24.png
+[21:07:22] INFO -   OK (3.4s)
+[21:07:22] INFO - [33/380] 101UC11: Zobrazit chybovou obrazovku (97651902)
+[21:07:22] INFO -   Obrazky: [1/1] image2021-8-19 11:8:50.png
+[21:07:23] INFO -   OK (0.7s)
+[21:07:23] INFO - [34/380] 101UC12: Zobrazit dialog pro nastavení období po dnech (97652355)
+[21:07:23] INFO -   Obrazky: [1/4] image2021-8-27 8:14:22.png
+[21:07:24] INFO -   Obrazky: [2/4] image2021-8-27 8:36:58.png
+[21:07:24] INFO -   Obrazky: [3/4] image2021-8-27 9:16:43.png
+[21:07:25] INFO -   Obrazky: [4/4] image2021-8-24 14:31:28.png
+[21:07:26] INFO -   OK (2.7s)
+[21:07:26] INFO - [35/380] 101UC13: Zobrazit panel s nádobami dle skupin odpadu (104956013)
+[21:07:26] INFO -   Obrazky: [1/5] image2022-2-8 8:40:48.png
+[21:07:26] INFO -   Obrazky: [2/5] image2022-2-8 12:17:10.png
+[21:07:27] INFO -   Obrazky: [3/5] image2022-2-8 12:16:45.png
+[21:07:28] INFO -   Obrazky: [4/5] image2022-2-7 15:39:52.png
+[21:07:28] INFO -   Obrazky: [5/5] image2022-2-7 13:57:23.png
+[21:07:29] INFO -   OK (3.3s)
+[21:07:29] INFO - [36/380] 101UC14: Zobrazit výběrový dialog pro vícenásobný výběr (106463625)
+[21:07:29] INFO -   Obrazky: [1/1] image2022-5-13 10:35:24.png
+[21:07:30] INFO -   OK (0.7s)
+[21:07:30] INFO - [37/380] 101UC15: Zobrazit kontextovou nápovědu (114459546)
+[21:07:30] INFO -   Obrazky: [1/2] image2023-3-6 12:8:55.png
+[21:07:31] INFO -   Obrazky: [2/2] image2023-3-6 12:3:41.png
+[21:07:31] INFO -   OK (1.4s)
+[21:07:31] INFO - [38/380] 101UC16: Zobrazit Toast notifikaci (122204484)
+[21:07:31] INFO -   Obrazky: [1/3] image2026-1-28 13:46:10.png
+[21:07:32] INFO -   Obrazky: [2/3] image2026-1-28 13:57:36.png
+[21:07:34] INFO -   Obrazky: [3/3] image2026-2-9 16:6:57.png
+[21:07:34] INFO -   OK (3.1s)
+[21:07:35] INFO - [39/380] 102UCxx: Mapové služby (91488429)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [40/380] 102UC01: Získat souřadnice dle adresy (91488431)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [41/380] 102UC02: Získat adresu dle souřadnic (92766235)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [42/380] 102UC03: Získat hromadně souřadnice dle adres (94538697)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [43/380] 102UC04: Získat hromadně adresy dle souřadnic (94538699)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [44/380] 200UCxx: Obecná synchronizační komponenta (94208436)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [45/380] 200UC01: Synchronizovat nádobu (94208468)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [46/380] 200UC02: Synchronizovat vzor nádoby (94208469)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [47/380] 200UC03: Synchronizovat kategorii nádoby (94208471)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [48/380] 200UC04: Synchronizovat barvu nádoby (94208472)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [49/380] 200UC05: Synchronizovat materiál nádoby (94208473)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [50/380] 200UC06: Synchronizovat fotografii nádoby (94208474)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [51/380] 200UC07: Synchronizovat stanoviště (94208475)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [52/380] 200UC08: Synchronizovat fotografii stanoviště (94208476)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [53/380] 200UC09: Synchronizovat objednávku (94208477)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [54/380] 200UC10: Synchronizovat položku objednávky (94208478)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:35] INFO - [55/380] 200UC11: Synchronizovat frekvenci vývozu (94208480)
+[21:07:35] INFO -   OK (0.0s)
+[21:07:36] INFO - [56/380] 200UC12: Synchronizovat základní dny svozu (94208483)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [57/380] 200UC13: Synchronizovat typ nádoby (94208484)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [58/380] 200UC14: Synchronizovat zákazníka (94208485)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [59/380] 200UC15: Synchronizovat přiřazení nádoby na stanoviště (94208486)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [60/380] 200UC16: Synchronizovat přiřazení nádoby k položce objednávky (94208487)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [61/380] 200UC17: Synchronizovat provozovnu (94208488)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [62/380] 200UC18: Synchronizovat zaměstnance (94208498)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [63/380] 200UC19: Synchronizovat pracovní pozici (94208499)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [64/380] 200UC20: Synchronizovat uživatele (94208500)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [65/380] 200UC21: Synchronizovat tenanta (94208501)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [66/380] 200UC22: Synchronizovat skupinu odpadu (94208502)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [67/380] 200UC23: Synchronizovat druh odpadu (94208503)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [68/380] 200UC24: Synchronizovat fotografii (94208504)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [69/380] 200UC25: Synchronizovat adresu (94208505)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:36] INFO - [70/380] 200UC26: Synchronizovat revizi položky objednávky (94536900)
+[21:07:36] INFO -   OK (0.0s)
+[21:07:37] INFO - [71/380] 200UC27: Synchronizovat přiřazení poplatníka k nádobě (94537574)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [72/380] 200UC28: Synchronizovat typ identifikátoru (97651856)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [73/380] 200UC29: Synchronizovat přiřazení identifikátoru k nádobě (97651894)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [74/380] 200UC30: Synchronizovat událost výsypu nádoby (97651949)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [75/380] 200UC31: Synchronizovat objekt (106463509)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [76/380] 200UC32: Synchronizovat přiřazení základních dní svozu k revizi položky objednávky (120750135)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [77/380] 201UCxx: Rozhraní pro FLW Picker (94208437)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [78/380] 201UC01: Přistavit nádobu (94208724)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [79/380] 201UC02: Stáhnout nádobu (94208726)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [80/380] 201UC03: Zkontrolovat nádobu (94208728)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [81/380] 202UCxx: Jednorázové importy dat (94537968)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [82/380] 202UC01: Nahrát importní soubor (93592944)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [83/380] 202UC02: Zpracovat položky importní dávky (94537517)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [84/380] 202UC03: Stáhnout soubor s výsledky validací a zpracování (94537524)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [85/380] 202UC04: Nahrát soubor mapování na číselníková data (NEREALIZOVAT) (94537522)
+[21:07:37] INFO -   OK (0.0s)
+[21:07:37] INFO - [86/380] 202UCxx: Synchronizace dat z Helios – MPG SK (108134784)
+[21:07:37] INFO -   Obrazky: [1/1] image2022-5-31 11:27:29.png
+[21:07:38] INFO -   OK (0.7s)
+[21:07:38] INFO - [87/380] 202UC01: Zahájit synchronizaci (108134796)
+[21:07:38] INFO -   OK (0.0s)
+[21:07:38] INFO - [88/380] 202UC02: Synchronizovat adresy (108396607)
+[21:07:38] INFO -   OK (0.0s)
+[21:07:38] INFO - [89/380] 202UC03: Synchronizovat zákazníky (108396608)
+[21:07:38] INFO -   OK (0.0s)
+[21:07:38] INFO - [90/380] 202UC04: Synchronizovat druhy odpadu (108396611)
+[21:07:38] INFO -   OK (0.0s)
+[21:07:38] INFO - [91/380] 202UC05: Synchronizovat typy nádob (108396612)
+[21:07:38] INFO -   OK (0.0s)
+[21:07:39] INFO - [92/380] 202UC06: Synchronizovat frekvence vývozu (108396613)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [93/380] 202UC07: Synchronizovat základní dny svozu (108396614)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [94/380] 202UC08: Synchronizovat objednávky (108396615)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [95/380] 202UC09: Synchronizovat položky objednávek (108396616)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [96/380] 202UC10: Synchronizovat revize položek objednávek (108396617)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [97/380] 202UC11: Synchronizovat přiřazení nádob k položkám objednávek (108396618)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [98/380] 202UC12: Synchronizovat přiřazení základních dní svozu k revizi položky objednávky (120750128)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [99/380] 300UCxx: Správa dat (93591952)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [100/380] 300UC01: Založit adresu (93591959)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [101/380] 300UC02: Upravit adresu (93591962)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [102/380] 300UC03: Odebrat adresu (93591964)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [103/380] 300UC04: Založit druh odpadu (93588779)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [104/380] 300UC05: Upravit druh odpadu (93588782)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [105/380] 300UC06: Odebrat druh odpadu (93588783)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [106/380] 300UCxx: Správa dat – původní umístění (88033997)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:39] INFO - [107/380] 300UC04: Založit vzor nádoby (88034010)
+[21:07:39] INFO -   OK (0.0s)
+[21:07:40] INFO - [108/380] 300UC05: Založit kopii vzoru nádoby (88034012)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [109/380] 300UC06: Upravit vzor nádoby (88034014)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [110/380] 300UC07: Odebrat vzor nádoby (88034016)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [111/380] 300UC07: Založit fotografii (88036166)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [112/380] 300UC08: Upravit fotografii (88036167)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [113/380] 300UC08: Založit kategorii nádoby (88034019)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [114/380] 300UC09: Odebrat fotografii (88036168)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [115/380] 300UC09: Upravit kategorii nádoby (88034021)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [116/380] 300UC10: Odebrat kategorii nádoby (88034024)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [117/380] 300UC11: Založit barvu nádoby (88034026)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [118/380] 300UC12: Upravit barvu nádoby (88034028)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [119/380] 300UC13: Odebrat barvu nádoby (88034030)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [120/380] 300UC14: Založit materiál nádoby (88034032)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [121/380] 300UC15: Upravit materiál nádoby (88034034)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [122/380] 300UC16: Odebrat materiál nádoby (88034036)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [123/380] 300UC17: Založit množstevní jednotku objemu nádoby (88034038)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:40] INFO - [124/380] 300UC18: Upravit množstevní jednotku objemu nádoby (88034040)
+[21:07:40] INFO -   OK (0.0s)
+[21:07:41] INFO - [125/380] 300UC19: Odebrat množstevní jednotku objemu nádoby (88034043)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [126/380] 300UC20: Založit uživatele (88034135)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [127/380] 300UC21: Upravit uživatele (88034163)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [128/380] 300UC22: Odebrat uživatele (88034164)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [129/380] 300UC23: Založit zaměstnance (88034136)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [130/380] 300UC24: Upravit zaměstnance (88034165)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [131/380] 300UC25: Odebrat zaměstnance (88034166)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [132/380] 300UC26: Založit pracovní pozici (88034137)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [133/380] 300UC27: Upravit pracovní pozici (88034167)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [134/380] 300UC28: Odebrat pracovní pozici (88034168)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [135/380] 300UC29: Založit skupinu odpadu (88035814)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [136/380] 300UC30: Upravit skupinu odpadu (88035815)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [137/380] 300UC31: Odebrat skupinu odpadu (88035816)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [138/380] 300UC38: Založit provozovnu (88036602)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [139/380] 300UC39: Upravit provozovnu (88036603)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:41] INFO - [140/380] 300UC40: Odebrat provozovnu (88036604)
+[21:07:41] INFO -   OK (0.0s)
+[21:07:42] INFO - [141/380] 301UCxx: Správa dat – nádoby (93591953)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [142/380] 301UC01: Založit nádobu (88036162)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [143/380] 301UC02: Upravit nádobu (88036163)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [144/380] 301UC03: Odebrat nádobu (88036164)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [145/380] 301UC04: Založit fotografii nádoby (88037359)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [146/380] 301UC05: Upravit fotografii nádoby (88037360)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [147/380] 301UC06: Odebrat fotografii nádoby (88037362)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [148/380] 301UC07: Založit událost výsypu nádoby (97651951)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [149/380] 301UC08: Upravit událost výsypu nádoby (97651954)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [150/380] 301UC09: Odebrat událost výsypu nádoby (97651955)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [151/380] 301UC10: Založit rozšíření nádoby (112558606)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [152/380] 301UC11: Upravit rozšíření nádoby (112558607)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [153/380] 301UC12: Odebrat rozšíření nádoby (112558608)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [154/380] 301UC13: Noční job aktualizace rozšíření nádoby (122204724)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [155/380] 302UCxx: Správa dat – stanoviště (93591954)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:42] INFO - [156/380] 302UC01: Založit stanoviště (89067021)
+[21:07:42] INFO -   OK (0.0s)
+[21:07:43] INFO - [157/380] 302UC02: Upravit stanoviště (89067028)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [158/380] 302UC03: Odebrat stanoviště (89067030)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [159/380] 302UC04: Založit fotografii stanoviště (89067031)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [160/380] 302UC05: Upravit fotografii stanoviště (89067032)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [161/380] 302UC06: Odebrat fotografii stanoviště (89067033)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [162/380] 302UC07: Sloučit stanoviště (93585961)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [163/380] 302UC08: Stáhnout nádobu ze stanoviště (93586368)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [164/380] 302UC09: Založit typ stavby (104957333)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [165/380] 302UC10: Upravit typ stavby (104957334)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [166/380] 302UC11: Odebrat typ stavby (104957335)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [167/380] 303UCxx: Správa dat – objednávky (93591955)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [168/380] 303UC01: Založit zákazníka (93588793)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [169/380] 303UC02: Upravit zákazníka (93588794)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [170/380] 303UC03: Odebrat zákazníka (93588795)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [171/380] 303UC04: Založit objednávku (94536552)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:43] INFO - [172/380] 303UC05: Upravit objednávku (94536554)
+[21:07:43] INFO -   OK (0.0s)
+[21:07:44] INFO - [173/380] 303UC06: Odebrat objednávku (94536556)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [174/380] 303UC07: Založit položku objednávky (94536559)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [175/380] 303UC08: Upravit položku objednávky (94536560)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [176/380] 303UC09: Odebrat položku objednávky (94536562)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [177/380] 303UC10: Založit revizi položky objednávky (94536564)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [178/380] 303UC11: Upravit revizi položky objednávky (94536567)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [179/380] 303UC12: Odebrat revizi položky objednávky (94536568)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [180/380] 303UC13: Založit frekvenci vývozu (94536570)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [181/380] 303UC14: Upravit frekvenci vývozu (94536572)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [182/380] 303UC15: Odebrat frekvenci vývozu (94536574)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [183/380] 303UC16: Založit základní dny svozu (94536576)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [184/380] 303UC17: Upravit základní dny svozu (94536577)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [185/380] 303UC18: Odebrat základní dny svozu (94536579)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [186/380] 303UC19: Založit typ nádoby (88034003)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [187/380] 303UC20: Upravit typ nádoby (88034006)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:44] INFO - [188/380] 303UC21: Odebrat typ nádoby (88034008)
+[21:07:44] INFO -   OK (0.0s)
+[21:07:45] INFO - [189/380] 303UC22: Ukončit platnost přiřazení nádoby k položce objednávky (94539281)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [190/380] 304UCxx: Správa dat – vazby (93591956)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [191/380] 304UC01: Založit přiřazení nádoby ke stanovišti (93586360)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [192/380] 304UC02: Upravit přiřazení nádoby ke stanovišti (93586363)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [193/380] 304UC03: Odebrat přiřazení nádoby ke stanovišti (93586364)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [194/380] 304UC04: Založit přiřazení nádoby k položce objednávky (94536587)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [195/380] 304UC05: Upravit přiřazení nádoby k položce objednávky (94536588)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [196/380] 304UC06: Odebrat přiřazení nádoby k položce objednávky (94536589)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [197/380] 304UC07: Založit přiřazení poplatníka k nádobě (94537576)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [198/380] 304UC08: Upravit přiřazení poplatníka k nádobě (94537579)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [199/380] 304UC09: Odebrat přiřazení poplatníka k nádobě (94537580)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [200/380] 304UC10: Založit přiřazení identifikátoru k nádobě (97651574)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [201/380] 304UC11: Upravit přiřazení identifikátoru k nádobě (97651577)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [202/380] 304UC12: Odebrat přiřazení identifikátoru k nádobě (97651579)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [203/380] 304UC13: Založit typ identifikátoru (97651819)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:45] INFO - [204/380] 304UC14: Upravit typ identifikátoru (97651820)
+[21:07:45] INFO -   OK (0.0s)
+[21:07:46] INFO - [205/380] 304UC15: Odebrat typ identifikátoru (97651822)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [206/380] 304UC16: Založit přiřazení dočasných parametrů svozu k nádobě (104956296)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [207/380] 304UC17: Upravit přiřazení dočasných parametrů svozu k nádobě (104956297)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [208/380] 304UC18: Odebrat přiřazení dočasných parametrů svozu k nádobě (104956298)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [209/380] 304UC19: Založit přiřazení typu stavby ke stanovišti (104957256)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [210/380] 304UC20: Upravit přiřazení typu stavby ke stanovišti (104957257)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [211/380] 304UC21: Odebrat přiřazení typu stavby ke stanovišti (104957258)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [212/380] 304UC22: Přiřadit nádobu na stanoviště (115214236)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [213/380] 304UC23: Založit přiřazení základních dní svozu k revizi položky objednávky (120750097)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [214/380] 304UC24: Upravit přiřazení základních dní svozu k revizi položky objednávky (120750099)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [215/380] 304UC25: Odebrat přiřazení základních dní svozu k revizi položky objednávky (120750100)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [216/380] 305UCxx: Správa dat – schvalování dat (93592158)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [217/380] 305UC01: Založit záznam o pasportizaci nádoby (93592160)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [218/380] 305UC02: Upravit záznam o pasportizaci nádoby (93592162)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [219/380] 305UC03: Založit záznam o modifikaci instance (93592166)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:46] INFO - [220/380] 305UC04: Založit záznam o modifikaci instance při pasportizaci nádoby (93592167)
+[21:07:46] INFO -   OK (0.0s)
+[21:07:47] INFO - [221/380] 306UCxx: Správa dat – objekty (106463485)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [222/380] 306UC01: Založit objekt (106463487)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [223/380] 306UC02: Upravit objekt (106463490)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [224/380] 306UC03: Odebrat objekt (106463491)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [225/380] 307UCxx: Správa dat – zákaznické validace (120751859)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [226/380] 307UC01: Provést validaci nádoby bez ohledu na provozovnu (120751861)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [227/380] 400UCxx: Správa nádob (88033999)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [228/380] 400UC01: Zobrazit přehled typů nádob (88036378)
+[21:07:47] INFO -   OK (0.0s)
+[21:07:47] INFO - [229/380] 400UC02: Zobrazit přehled vzorů nádob (88034047)
+[21:07:47] INFO -   Obrazky: [1/1] image2020-6-14 20:49:38.png
+[21:07:48] INFO -   OK (0.7s)
+[21:07:48] INFO - [230/380] 400UC03: Zobrazit formulář vzoru nádoby (88034049)
+[21:07:48] INFO -   Obrazky: [1/1] image2020-6-25 13:32:50.png
+[21:07:49] INFO -   OK (0.8s)
+[21:07:49] INFO - [231/380] 400UC04: Zobrazit přehled kategorií nádob (88034051)
+[21:07:49] INFO -   Obrazky: [1/1] image2020-6-14 22:32:11.png
+[21:07:49] INFO -   OK (0.7s)
+[21:07:49] INFO - [232/380] 400UC05: Zobrazit formulář kategorie nádoby (88034053)
+[21:07:49] INFO -   Obrazky: [1/1] image2020-6-25 13:27:7.png
+[21:07:50] INFO -   OK (0.8s)
+[21:07:50] INFO - [233/380] 400UC06: Zobrazit přehled nádob (88036373)
+[21:07:50] INFO -   Obrazky: [1/5] image2024-4-16 9:49:42.png
+[21:07:51] INFO -   Obrazky: [2/5] image2021-3-23 11:38:49.png
+[21:07:51] INFO -   Obrazky: [3/5] image2020-6-29 15:30:49.png
+[21:07:52] INFO -   Obrazky: [4/5] image2021-4-1 14:24:39.png
+[21:07:53] INFO -   Obrazky: [5/5] image2021-3-23 16:41:40.png
+[21:07:54] INFO -   OK (3.6s)
+[21:07:54] INFO - [234/380] 400UC07: Zobrazit detail nádoby (88036374)
+[21:07:54] INFO -   Obrazky: [1/8] image2025-6-27 7:47:30.png
+[21:07:54] INFO -   Obrazky: [2/8] image2020-7-21 9:42:44.png
+[21:07:55] INFO -   Obrazky: [3/8] image2020-7-1 10:2:53.png
+[21:07:56] INFO -   Obrazky: [4/8] image2025-6-27 7:37:10.png
+[21:07:57] INFO -   Obrazky: [5/8] image2021-4-1 13:6:43.png
+[21:07:57] INFO -   Obrazky: [6/8] image2020-6-30 12:57:44.png
+[21:07:58] INFO -   Obrazky: [7/8] image2020-6-30 16:0:16.png
+[21:07:59] INFO -   Obrazky: [8/8] image2020-7-1 9:45:30.png
+[21:07:59] INFO -   OK (5.6s)
+[21:07:59] INFO - [235/380] 400UC08: Zobrazit formulář nádoby (88036375)
+[21:07:59] INFO -   Obrazky: [1/1] image2025-3-11 14:31:45.png
+[21:08:00] INFO -   OK (0.8s)
+[21:08:00] INFO - [236/380] 400UC09: Zobrazit formulář fotografie nádoby (88036985)
+[21:08:00] INFO -   Obrazky: [1/1] image2020-7-29 10:23:10.png
+[21:08:01] INFO -   OK (0.8s)
+[21:08:01] INFO - [237/380] 400UC10: Zobrazit přiřazení nádoby (89067036)
+[21:08:01] INFO -   Obrazky: [1/14] image2024-8-29 8:41:48.png
+[21:08:02] INFO -   Obrazky: [2/14] image2021-4-30 8:30:51.png
+[21:08:03] INFO -   Obrazky: [3/14] image2021-5-24 15:14:15.png
+[21:08:03] INFO -   Obrazky: [4/14] image2021-5-21 11:17:44.png
+[21:08:04] INFO -   Obrazky: [5/14] image2021-5-21 11:32:25.png
+[21:08:05] INFO -   Obrazky: [6/14] image2021-5-21 12:59:18.png
+[21:08:05] INFO -   Obrazky: [7/14] image2021-5-22 14:27:41.png
+[21:08:06] INFO -   Obrazky: [8/14] image2021-5-22 21:18:29.png
+[21:08:07] INFO -   Obrazky: [9/14] image2022-2-9 20:20:52.png
+[21:08:07] INFO -   Obrazky: [10/14] image2021-4-30 11:2:50.png
+[21:08:08] INFO -   Obrazky: [11/14] image2021-4-30 11:49:36.png
+[21:08:09] INFO -   Obrazky: [12/14] image2021-8-19 15:14:19.png
+[21:08:09] INFO -   Obrazky: [13/14] image2021-8-19 15:15:0.png
+[21:08:10] INFO -   Obrazky: [14/14] image2021-4-30 9:8:38.png
+[21:08:11] INFO -   OK (9.6s)
+[21:08:11] INFO - [238/380] 400UC11: Zobrazit mapu nádob (93593024)
+[21:08:11] INFO -   Obrazky: [1/8] image2021-3-24 10:17:27.png
+[21:08:12] INFO -   Obrazky: [2/8] image2026-2-8 18:6:59.png
+[21:08:12] INFO -   Obrazky: [3/8] image2022-2-7 11:28:49.png
+[21:08:13] INFO -   Obrazky: [4/8] image2022-2-7 10:53:49.png
+[21:08:14] INFO -   Obrazky: [5/8] image2022-2-7 10:53:36.png
+[21:08:14] INFO -   Obrazky: [6/8] image2021-3-23 16:54:11.png
+[21:08:15] INFO -   Obrazky: [7/8] image2021-3-23 16:44:30.png
+[21:08:16] INFO -   Obrazky: [8/8] image2026-2-10+13%3A37%3A28.png
+[21:08:17] INFO -   OK (5.9s)
+[21:08:17] INFO - [239/380] 400UC12: Zobrazit fotografie nádoby (94208605)
+[21:08:17] INFO -   Obrazky: [1/4] image2024-8-29 8:43:2.png
+[21:08:17] INFO -   Obrazky: [2/4] image2021-5-4 10:25:54.png
+[21:08:18] INFO -   Obrazky: [3/4] image2022-2-8 14:48:12.png
+[21:08:19] INFO -   Obrazky: [4/4] image2021-4-1 12:0:2.png
+[21:08:20] INFO -   OK (2.8s)
+[21:08:20] INFO - [240/380] 400UC13: Zobrazit formulář vyřazení nádoby (94540559)
+[21:08:20] INFO -   Obrazky: [1/1] image2021-5-23 14:12:42.png
+[21:08:20] INFO -   OK (0.7s)
+[21:08:20] INFO - [241/380] 400UC14: Zobrazit přehled nádob pro externí zákazníky (97652013)
+[21:08:20] INFO -   Obrazky: [1/4] image2021-8-24 9:27:28.png
+[21:08:21] INFO -   Obrazky: [2/4] image2021-8-24 9:31:35.png
+[21:08:22] INFO -   Obrazky: [3/4] image2021-8-24 9:38:52.png
+[21:08:22] INFO -   Obrazky: [4/4] image2021-8-24 9:51:25.png
+[21:08:23] INFO -   OK (2.9s)
+[21:08:23] INFO - [242/380] 400UC15: Zobrazit mapu nádob pro externí zákazníky (97652014)
+[21:08:23] INFO -   Obrazky: [1/6] image2021-8-23 12:14:14.png
+[21:08:25] INFO -   Obrazky: [2/6] image2026-2-8 18:16:5.png
+[21:08:26] INFO -   Obrazky: [3/6] image2022-2-7 11:28:40.png
+[21:08:26] INFO -   Obrazky: [4/6] image2021-8-23 14:18:23.png
+[21:08:27] INFO -   Obrazky: [5/6] image2021-8-23 11:58:6.png
+[21:08:28] INFO -   Obrazky: [6/6] image2026-2-10+13%3A37%3A28.png
+[21:08:29] INFO -   OK (5.4s)
+[21:08:29] INFO - [243/380] 400UC16: Zobrazit detail nádoby pro externí zákazníky (97652015)
+[21:08:29] INFO -   Obrazky: [1/4] image2025-3-11 14:39:0.png
+[21:08:29] INFO -   Obrazky: [2/4] image2021-8-23 7:23:25.png
+[21:08:30] INFO -   Obrazky: [3/4] image2022-7-26 8:43:10.png
+[21:08:31] INFO -   Obrazky: [4/4] image2021-8-23 7:30:46.png
+[21:08:32] INFO -   OK (3.0s)
+[21:08:32] INFO - [244/380] 400UC17: Zobrazit výsypy nádoby pro externí zákazníky (97652016)
+[21:08:32] INFO -   Obrazky: [1/4] image2024-8-29 8:46:17.png
+[21:08:33] INFO -   Obrazky: [2/4] image2021-8-23 9:45:54.png
+[21:08:34] INFO -   Obrazky: [3/4] image2021-9-3 13:19:6.png
+[21:08:35] INFO -   Obrazky: [4/4] image2021-8-23 9:46:44.png
+[21:08:35] INFO -   OK (3.8s)
+[21:08:36] INFO - [245/380] 400UC18: Získat přiřazení nádob k položkám objednávek pro externí zákazníky (97652690)
+[21:08:36] INFO -   OK (0.0s)
+[21:08:36] INFO - [246/380] 400UC19: Získat výsypy nádoby pro externí zákazníky (98238501)
+[21:08:36] INFO -   Obrazky: [1/5] image2021-9-1 8:54:48.png
+[21:08:36] INFO -   Obrazky: [2/5] image2021-9-1 8:55:10.png
+[21:08:37] INFO -   Obrazky: [3/5] image2021-9-1 8:55:32.png
+[21:08:38] INFO -   Obrazky: [4/5] image2021-9-1 8:56:4.png
+[21:08:38] INFO -   Obrazky: [5/5] image2021-9-1 9:0:1.png
+[21:08:39] INFO -   OK (3.5s)
+[21:08:39] INFO - [247/380] 400UC20: Získat poslední výsyp nádoby pro externí zákazníky (98238503)
+[21:08:39] INFO -   Obrazky: [1/5] image2021-9-1 10:46:16.png
+[21:08:40] INFO -   Obrazky: [2/5] image2021-9-1 10:46:33.png
+[21:08:40] INFO -   Obrazky: [3/5] image2021-9-1 10:46:55.png
+[21:08:41] INFO -   Obrazky: [4/5] image2021-9-1 10:47:11.png
+[21:08:42] INFO -   Obrazky: [5/5] image2021-9-1 10:47:30.png
+[21:08:42] INFO -   OK (3.3s)
+[21:08:42] INFO - [248/380] 400UC21: Nastavit poslední výsyp nádoby dle výsypu (112558657)
+[21:08:42] INFO -   OK (0.0s)
+[21:08:43] INFO - [249/380] 400UC22: Nastavit poslední výsyp nádoby dle nádoby (112558923)
+[21:08:43] INFO -   OK (0.0s)
+[21:08:43] INFO - [250/380] 400UC23: Vyhodnotit dostupnost hmotnosti u výsypu nádoby (114463467)
+[21:08:43] INFO -   OK (0.0s)
+[21:08:43] INFO - [251/380] 400UC24: Zobrazit výsypy nádoby (118197015)
+[21:08:43] INFO -   Obrazky: [1/4] image2024-8-29 8:44:4.png
+[21:08:43] INFO -   Obrazky: [2/4] image2024-4-16 10:6:57.png
+[21:08:44] INFO -   Obrazky: [3/4] image2024-4-16 10:54:9.png
+[21:08:45] INFO -   Obrazky: [4/4] image2024-4-16 11:0:12.png
+[21:08:45] INFO -   OK (2.7s)
+[21:08:45] INFO - [252/380] 400UC25: Omezit dostupné výsypy nádob (121341290)
+[21:08:45] INFO -   OK (0.0s)
+[21:08:45] INFO - [253/380] 401UCxx: Správa stanovišť (88035803)
+[21:08:45] INFO -   OK (0.0s)
+[21:08:46] INFO - [254/380] 401UC01: Zobrazit přehled stanovišť (89067038)
+[21:08:46] INFO -   Obrazky: [1/4] image2021-6-1 8:57:28.png
+[21:08:46] INFO -   Obrazky: [2/4] image2021-1-11 17:23:20.png
+[21:08:47] INFO -   Obrazky: [3/4] image2021-1-11 17:37:40.png
+[21:08:48] INFO -   Obrazky: [4/4] image2021-1-26 17:43:47.png
+[21:08:48] INFO -   OK (2.9s)
+[21:08:49] INFO - [255/380] 401UC02: Zobrazit mapu stanovišť (89067040)
+[21:08:49] INFO -   Obrazky: [1/5] image2021-1-26 16:4:28.png
+[21:08:49] INFO -   Obrazky: [2/5] image2022-2-7 11:37:31.png
+[21:08:50] INFO -   Obrazky: [3/5] image2022-2-7 12:39:26.png
+[21:08:51] INFO -   Obrazky: [4/5] image2022-2-7 12:39:14.png
+[21:08:51] INFO -   Obrazky: [5/5] image2022-2-7 12:56:38.png
+[21:08:52] INFO -   OK (3.6s)
+[21:08:52] INFO - [256/380] 401UC03: Zobrazit detail stanoviště (89067041)
+[21:08:52] INFO -   Obrazky: [1/4] image2024-8-29 8:30:46.png
+[21:08:53] INFO -   Obrazky: [2/4] image2021-1-5 13:47:4.png
+[21:08:54] INFO -   Obrazky: [3/4] image2022-2-8 13:5:16.png
+[21:08:54] INFO -   Obrazky: [4/4] image2021-1-5 14:34:39.png
+[21:08:55] INFO -   OK (2.8s)
+[21:08:55] INFO - [257/380] 401UC04: Zobrazit přiřazení stanoviště (89067042)
+[21:08:55] INFO -   Obrazky: [1/7] image2024-8-29 8:35:7.png
+[21:08:56] INFO -   Obrazky: [2/7] image2021-1-6 11:31:18.png
+[21:08:56] INFO -   Obrazky: [3/7] image2021-1-24 10:51:8.png
+[21:08:57] INFO -   Obrazky: [4/7] image2021-1-24 12:2:25.png
+[21:08:58] INFO -   Obrazky: [5/7] image2021-1-28 13:44:55.png
+[21:08:59] INFO -   Obrazky: [6/7] image2022-2-24 14:41:5.png
+[21:08:59] INFO -   Obrazky: [7/7] image2021-1-23 15:28:49.png
+[21:09:00] INFO -   OK (5.0s)
+[21:09:00] INFO - [258/380] 401UC05: Zobrazit formulář stanoviště (91062332)
+[21:09:00] INFO -   Obrazky: [1/3] image2023-6-20 15:6:13.png
+[21:09:01] INFO -   Obrazky: [2/3] image2021-1-4 9:54:2.png
+[21:09:02] INFO -   Obrazky: [3/3] image2022-2-8 13:6:34.png
+[21:09:02] INFO -   OK (2.2s)
+[21:09:02] INFO - [259/380] 401UC06: Zobrazit formulář fotografie stanoviště (91062333)
+[21:09:02] INFO -   Obrazky: [1/1] image2020-12-11 15:52:22.png
+[21:09:03] INFO -   OK (0.8s)
+[21:09:03] INFO - [260/380] 401UC07: Zobrazit formulář sloučení stanoviště (93257976)
+[21:09:03] INFO -   Obrazky: [1/2] image2021-1-18 15:43:44.png
+[21:09:04] INFO -   Obrazky: [2/2] image2022-2-8 13:6:24.png
+[21:09:05] INFO -   OK (1.4s)
+[21:09:05] INFO - [261/380] 401UC08: Zobrazit fotografie stanoviště (94538453)
+[21:09:05] INFO -   Obrazky: [1/4] image2024-8-29 8:36:49.png
+[21:09:05] INFO -   Obrazky: [2/4] image2021-5-4 10:23:38.png
+[21:09:06] INFO -   Obrazky: [3/4] image2022-2-8 14:51:59.png
+[21:09:07] INFO -   Obrazky: [4/4] image2021-5-4 12:28:15.png
+[21:09:07] INFO -   OK (2.7s)
+[21:09:07] INFO - [262/380] 402UCxx: Správa objednávek (88035805)
+[21:09:07] INFO -   OK (0.0s)
+[21:09:07] INFO - [263/380] 402UC01: Zobrazit přehled typů nádob (88034045)
+[21:09:07] INFO -   Obrazky: [1/1] image2020-6-14 13:39:51.png
+[21:09:08] INFO -   OK (0.6s)
+[21:09:08] INFO - [264/380] 402UC02: Zobrazit přehled revizí položek objednávek (94538788)
+[21:09:08] INFO -   Obrazky: [1/4] image2021-5-6 10:20:1.png
+[21:09:09] INFO -   Obrazky: [2/4] image2021-5-6 10:29:17.png
+[21:09:09] INFO -   Obrazky: [3/4] image2021-5-6 12:52:13.png
+[21:09:10] INFO -   Obrazky: [4/4] image2021-5-10 14:27:41.png
+[21:09:11] INFO -   OK (2.8s)
+[21:09:11] INFO - [265/380] 402UC03: Zobrazit detail revize položky objednávky (94538789)
+[21:09:11] INFO -   Obrazky: [1/3] image2021-5-10 15:28:42.png
+[21:09:12] INFO -   Obrazky: [2/3] image2021-5-10 15:1:14.png
+[21:09:12] INFO -   Obrazky: [3/3] image2021-5-10 16:8:53.png
+[21:09:13] INFO -   OK (2.1s)
+[21:09:13] INFO - [266/380] 402UC04: Zobrazit přiřazení revize položky objednávky (94538790)
+[21:09:13] INFO -   Obrazky: [1/10] image2021-5-11 10:45:12.png
+[21:09:14] INFO -   Obrazky: [2/10] image2021-5-11 10:34:16.png
+[21:09:14] INFO -   Obrazky: [3/10] image2021-5-13 8:46:44.png
+[21:09:15] INFO -   Obrazky: [4/10] image2021-5-11 12:43:57.png
+[21:09:16] INFO -   Obrazky: [5/10] image2021-5-11 12:49:52.png
+[21:09:16] INFO -   Obrazky: [6/10] image2021-5-11 13:12:23.png
+[21:09:17] INFO -   Obrazky: [7/10] image2021-5-17 14:56:14.png
+[21:09:18] INFO -   Obrazky: [8/10] image2021-5-17 16:10:30.png
+[21:09:18] INFO -   Obrazky: [9/10] image2021-5-17 14:56:39.png
+[21:09:19] INFO -   Obrazky: [10/10] image2021-5-17 16:11:30.png
+[21:09:20] INFO -   OK (6.7s)
+[21:09:20] INFO - [267/380] 403UCxx: Správa vazeb (93257972)
+[21:09:20] INFO -   OK (0.0s)
+[21:09:20] INFO - [268/380] 403UC01: Zobrazit formulář přiřazení nádoby ke stanovišti (93257974)
+[21:09:20] INFO -   Obrazky: [1/5] image2023-6-20 15:35:51.png
+[21:09:21] INFO -   Obrazky: [2/5] image2021-1-25 19:46:31.png
+[21:09:21] INFO -   Obrazky: [3/5] image2023-12-14 9:3:11.png
+[21:09:22] INFO -   Obrazky: [4/5] image2023-6-20 15:37:35.png
+[21:09:23] INFO -   Obrazky: [5/5] image2022-2-8 13:6:15.png
+[21:09:23] INFO -   OK (3.5s)
+[21:09:23] INFO - [269/380] 403UC02: Získat informaci o existenci aktuálního či budoucího přiřazení nádoby ke stanovišti (93585929)
+[21:09:23] INFO -   Obrazky: [1/1] image2023-7-4 8:32:38.png
+[21:09:24] INFO -   OK (0.7s)
+[21:09:24] INFO - [270/380] 403UC03: Získat informaci o existenci duplicitního přiřazení nádoby ke stanovišti (93586376)
+[21:09:24] INFO -   Obrazky: [1/1] image2023-7-4 8:32:46.png
+[21:09:25] INFO -   OK (0.7s)
+[21:09:25] INFO - [271/380] 403UC04: Získat aktuálně platná přiřazení (93586551)
+[21:09:25] INFO -   OK (0.0s)
+[21:09:25] INFO - [272/380] 403UC05: Získat v budoucnosti platná přiřazení (93586552)
+[21:09:25] INFO -   OK (0.0s)
+[21:09:25] INFO - [273/380] 403UC06: Získat informaci o existenci duplicitního přiřazení nádoby k položce objednávky (94537101)
+[21:09:25] INFO -   Obrazky: [1/1] image2023-7-4 8:32:55.png
+[21:09:26] INFO -   OK (0.6s)
+[21:09:26] INFO - [274/380] 403UC07: Zobrazit formulář přiřazení poplatníka k nádobě (94537582)
+[21:09:26] INFO -   Obrazky: [1/2] image2022-3-3 10:42:57.png
+[21:09:26] INFO -   Obrazky: [2/2] image2021-4-29 11:9:38.png
+[21:09:27] INFO -   OK (1.4s)
+[21:09:27] INFO - [275/380] 403UC08: Získat informaci o existenci duplicitního přiřazení poplatníka k nádobě (94537877)
+[21:09:27] INFO -   Obrazky: [1/1] image2023-7-4 8:33:1.png
+[21:09:28] INFO -   OK (0.6s)
+[21:09:28] INFO - [276/380] 403UC09: Zobrazit formulář přiřazení nádoby k položce objednávky (94538797)
+[21:09:28] INFO -   Obrazky: [1/3] image2021-5-19 8:6:28.png
+[21:09:29] INFO -   Obrazky: [2/3] image2021-5-18 15:36:53.png
+[21:09:29] INFO -   Obrazky: [3/3] image2021-5-19 8:5:43.png
+[21:09:30] INFO -   OK (2.3s)
+[21:09:30] INFO - [277/380] 403UC10: Zobrazit formulář hromadného přiřazení nádob k položce objednávky (94538798)
+[21:09:30] INFO -   Obrazky: [1/2] image2021-5-19 12:38:20.png
+[21:09:31] INFO -   Obrazky: [2/2] image2021-5-19 12:38:57.png
+[21:09:32] INFO -   OK (1.3s)
+[21:09:32] INFO - [278/380] 403UC11: Získat informaci o existenci duplicitního přiřazení identifikátoru k nádobě (97651586)
+[21:09:32] INFO -   Obrazky: [1/1] image2023-7-4 8:33:7.png
+[21:09:32] INFO -   OK (0.7s)
+[21:09:32] INFO - [279/380] 403UC12: Zobrazit formulář přiřazení identifikátoru k nádobě (97651593)
+[21:09:32] INFO -   Obrazky: [1/2] image2021-8-17 16:50:50.png
+[21:09:33] INFO -   Obrazky: [2/2] image2021-8-17 17:3:35.png
+[21:09:34] INFO -   OK (1.4s)
+[21:09:34] INFO - [280/380] 403UC13: Zobrazit formulář přiřazení dočasných parametrů svozu k nádobě (104956347)
+[21:09:34] INFO -   Obrazky: [1/1] image2022-2-10 10:48:50.png
+[21:09:35] INFO -   OK (0.7s)
+[21:09:35] INFO - [281/380] 403UC14: Zobrazit formulář hromadného přiřazení dočasných parametrů svozu k nádobám (104956349)
+[21:09:35] INFO -   Obrazky: [1/1] image2022-2-10 11:57:13.png
+[21:09:35] INFO -   OK (0.8s)
+[21:09:36] INFO - [282/380] 403UC15: Zobrazit formulář přiřazení typu stavby ke stanovišti (104957239)
+[21:09:36] INFO -   Obrazky: [1/1] image2022-2-23 10:44:15.png
+[21:09:36] INFO -   OK (0.7s)
+[21:09:36] INFO - [283/380] 403UC16: Zobrazit formulář hromadného přiřazení typu stavby ke stanovištím (104957240)
+[21:09:36] INFO -   Obrazky: [1/1] image2022-2-23 13:25:27.png
+[21:09:37] INFO -   OK (0.7s)
+[21:09:37] INFO - [284/380] 404UCxx: Tiskové výstupy (97652590)
+[21:09:37] INFO -   OK (0.0s)
+[21:09:37] INFO - [285/380] 404UC01: Zobrazit formulář pro nastavení sestavy Výsypy nádob za zvolené období (97652745)
+[21:09:37] INFO -   Obrazky: [1/2] image2022-7-13 12:22:30.png
+[21:09:38] INFO -   Obrazky: [2/2] image2022-7-13 12:23:32.png
+[21:09:38] INFO -   OK (1.4s)
+[21:09:38] INFO - [286/380] 404UC02: Vytisknout sestavu Výsypy nádob za zvolené období (97652592)
+[21:09:38] INFO -   Obrazky: [1/4] image2021-9-20 14:40:3.png
+[21:09:39] INFO -   Obrazky: [2/4] image2021-9-20 13:13:23.png
+[21:09:40] INFO -   Obrazky: [3/4] image2021-9-20 14:40:3.png
+[21:09:41] INFO -   Obrazky: [4/4] image2021-9-20 13:13:39.png
+[21:09:41] INFO -   OK (2.8s)
+[21:09:41] INFO - [287/380] 404UC03: Zobrazit formulář pro nastavení sestavy Výsypy nádob za zvolené období pro externí zákazníky (97652746)
+[21:09:41] INFO -   Obrazky: [1/1] image2021-8-30 18:55:59.png
+[21:09:42] INFO -   OK (0.6s)
+[21:09:42] INFO - [288/380] 404UC04: Vytisknout sestavu Výsypy nádob za zvolené období pro externí zákazníky (97652594)
+[21:09:42] INFO -   Obrazky: [1/4] image2021-9-17 10:35:9.png
+[21:09:43] INFO -   Obrazky: [2/4] image2021-9-18 13:26:43.png
+[21:09:43] INFO -   Obrazky: [3/4] image2021-9-17 10:35:9.png
+[21:09:44] INFO -   Obrazky: [4/4] image2021-9-17 10:44:47.png
+[21:09:45] INFO -   OK (2.7s)
+[21:09:45] INFO - [289/380] 404UC05: Zobrazit formulář pro nastavení sestavy Výsypy nádob za zvolené období z mobilní čtečky (111280773)
+[21:09:45] INFO -   Obrazky: [1/1] image2022-9-20 8:0:21.png
+[21:09:46] INFO -   OK (0.7s)
+[21:09:46] INFO - [290/380] 404UC06: Vytisknout sestavu Výsypy nádob za zvolené období z mobilní čtečky (111280775)
+[21:09:46] INFO -   Obrazky: [1/4] image2022-9-20 8:35:42.png
+[21:09:46] INFO -   Obrazky: [2/4] image2022-9-20 9:25:52.png
+[21:09:47] INFO -   Obrazky: [3/4] image2022-9-20 9:27:3.png
+[21:09:48] INFO -   Obrazky: [4/4] image2022-9-20 9:27:20.png
+[21:09:48] INFO -   OK (2.7s)
+[21:09:48] INFO - [291/380] 404UC07: Zobrazit formulář pro nastavení sestavy Historie přiřazení identifikátorů k nádobám (115213992)
+[21:09:48] INFO -   Obrazky: [1/2] image2023-8-24 14:36:47.png
+[21:09:49] INFO -   Obrazky: [2/2] image2023-6-19 8:59:39.png
+[21:09:50] INFO -   OK (1.4s)
+[21:09:50] INFO - [292/380] 404UC08: Vytisknout sestavu Historie přiřazení identifikátorů k nádobám (115213994)
+[21:09:50] INFO -   Obrazky: [1/5] image2023-6-20 13:3:18.png
+[21:09:51] INFO -   Obrazky: [2/5] image2023-6-19 18:11:48.png
+[21:09:51] INFO -   Obrazky: [3/5] image2023-6-19 18:13:40.png
+[21:09:52] INFO -   Obrazky: [4/5] image2023-6-19 18:15:3.png
+[21:09:53] INFO -   Obrazky: [5/5] image2023-7-4 15:43:6.png
+[21:09:53] INFO -   OK (3.5s)
+[21:09:53] INFO - [293/380] 405UCxx: Schvalování dat (104956720)
+[21:09:53] INFO -   OK (0.0s)
+[21:09:53] INFO - [294/380] 405UC01: Zobrazit formulář pro založení záznamu o pasportizaci nádoby (104956723)
+[21:09:53] INFO -   Obrazky: [1/1] image2023-6-21 10:6:3.png
+[21:09:54] INFO -   OK (0.7s)
+[21:09:54] INFO - [295/380] 405UC02: Zobrazit formulář pro hromadné založení záznamů o pasportizaci nádob (104956725)
+[21:09:54] INFO -   Obrazky: [1/1] image2023-6-21 10:21:14.png
+[21:09:55] INFO -   OK (0.7s)
+[21:09:55] INFO - [296/380] 406UCxx:Asynchronní  Export záznamů (105840807)
+[21:09:55] INFO -   OK (0.0s)
+[21:09:55] INFO - [297/380] 406UC01: Exportovat do CSV (105840781)
+[21:09:55] INFO -   Obrazky: [1/1] image2022-4-6 11:23:55.png
+[21:09:56] INFO -   OK (0.7s)
+[21:09:56] INFO - [298/380] 406UC02: Exportovat do XLSX (105840782)
+[21:09:56] INFO -   Obrazky: [1/1] image2022-4-6 10:8:32.png
+[21:09:56] INFO -   OK (0.7s)
+[21:09:56] INFO - [299/380] 406UC03: Asynchronní zpracování exportů (122204476)
+[21:09:57] INFO -   OK (0.0s)
+[21:09:57] INFO - [300/380] 407UCxx: Import záznamů (111280898)
+[21:09:57] INFO -   OK (0.0s)
+[21:09:57] INFO - [301/380] 407UC01: Zobrazit formulář pro import událostí výsypů nádob z mobilní čtečky (111280900)
+[21:09:57] INFO -   Obrazky: [1/1] image2022-9-21 12:11:33.png
+[21:09:57] INFO -   OK (0.7s)
+[21:09:57] INFO - [302/380] 407UC02: Importovat události výsypů nádob z mobilní čtečky (111280902)
+[21:09:57] INFO -   Obrazky: [1/1] image2022-9-22 13:7:45.png
+[21:09:58] INFO -   OK (0.7s)
+[21:09:58] INFO - [303/380] 407UC03:  Zobrazit formulář pro Import nádob UI (122197240)
+[21:09:58] INFO -   Obrazky: [1/3] image2025-9-17 9:51:57.png
+[21:09:59] INFO -   Obrazky: [2/3] image2025-9-19 14:49:2.png
+[21:09:59] INFO -   Obrazky: [3/3] image2025-9-19 14:33:56.png
+[21:10:00] INFO -   OK (2.1s)
+[21:10:00] INFO - [304/380] 407UC04: Zobrazit formulář pro záměnu  evidenčního a interního čísla- uživatelské rozhraní (122197269)
+[21:10:00] INFO -   Obrazky: [1/3] image2025-9-17 13:51:16.png
+[21:10:01] INFO -   Obrazky: [2/3] image2025-9-18 10:36:32.png
+[21:10:02] INFO -   Obrazky: [3/3] image2025-9-18 10:55:42.png
+[21:10:03] INFO -   OK (2.4s)
+[21:10:03] INFO - [305/380] 407UC05: Zobrazit formulář pro překopírování interního čísla do evidenčního čísla- uživatelské rozhraní (122198898)
+[21:10:03] INFO -   Obrazky: [1/3] image2025-11-21 10:18:43.png
+[21:10:03] INFO -   Obrazky: [2/3] image2025-10-16 12:50:42.png
+[21:10:04] INFO -   Obrazky: [3/3] image2025-11-21 10:12:51.png
+[21:10:05] INFO -   OK (2.1s)
+[21:10:05] INFO - [306/380] 407UC06: Importovat události výsypů nádob z mobilní čtečky v JSON (122202239)
+[21:10:05] INFO -   OK (0.0s)
+[21:10:05] INFO - [307/380] 407UC07: Odebrat nádoby dle importního souboru (122202263)
+[21:10:05] INFO -   OK (0.0s)
+[21:10:05] INFO - [308/380] 500UCxx: Výsledky exportů (122204488)
+[21:10:05] INFO -   OK (0.0s)
+[21:10:05] INFO - [309/380] 500UC01: Zobrazit Výsledky exportů (122204490)
+[21:10:05] INFO -   Obrazky: [1/3] image2026-1-30 9:23:31.png
+[21:10:06] INFO -   Obrazky: [2/3] image2026-1-30 9:42:9.png
+[21:10:06] INFO -   Obrazky: [3/3] image2026-2-10 15:16:19.png
+[21:10:07] INFO -   OK (2.1s)
+[21:10:07] INFO - [310/380] 500UC02: Stažení vygenerovaného exportu (122204492)
+[21:10:07] INFO -   OK (0.0s)
+[21:10:07] INFO - [311/380] 2023UCxx: Synchronizace dat z FLWW2 (112558453)
+[21:10:07] INFO -   OK (0.0s)
+[21:10:07] INFO - [312/380] 203UC01: Synchronizovat záznam (112558461)
+[21:10:07] INFO -   OK (0.0s)
+[21:10:07] INFO - [313/380] 203UC02: Synchronizovat objekt (112558462)
+[21:10:07] INFO -   OK (0.0s)
+[21:10:07] INFO - [314/380] 203UC03: Synchronizovat objekty (112558463)
+[21:10:07] INFO -   OK (0.0s)
+[21:10:08] INFO - [315/380] 203UC04: Synchronizovat provozovnu (112558465)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [316/380] 203UC05: Synchronizovat uživatele (112558466)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [317/380] 203UC06: Synchronizovat zaměstnance (112558467)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [318/380] 203UC07: Synchronizovat pracovní pozici (112558525)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [319/380] xxxUCxx: Šablona pro popis UC (88033364)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [320/380] High Level Concept (88032898)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [321/380] Přehled aktérů (88033007)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [322/380] Přehled případů užití (88032905)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [323/380] Slovník pojmů a zkratek (88032903)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [324/380] Integrace (93257924)
+[21:10:08] INFO -   OK (0.0s)
+[21:10:08] INFO - [325/380] Iniciální importy (93593223)
+[21:10:08] INFO -   Obrazky: [1/3] image2021-4-29 8:12:27.png
+[21:10:09] INFO -   Obrazky: [2/3] image2021-4-29 8:24:41.png
+[21:10:10] INFO -   Obrazky: [3/3] check.png
+[21:10:10] INFO -   OK (2.0s)
+[21:10:10] INFO - [326/380] Synchronizace dat Fleetware (98239118)
+[21:10:10] INFO -   OK (0.0s)
+[21:10:10] INFO - [327/380] FlwUC01: Synchronizovat události výsypu nádob (98239120)
+[21:10:10] INFO -   OK (0.0s)
+[21:10:10] INFO - [328/380] FlwUC02: Synchronizovat objekt (106463884)
+[21:10:10] INFO -   OK (0.0s)
+[21:10:10] INFO - [329/380] FlwUC03: Synchronizovat objekty (106464293)
+[21:10:10] INFO -   OK (0.0s)
+[21:10:10] INFO - [330/380] FlwUC04: Synchronizovat událost výsypu nádoby (110428247)
+[21:10:10] INFO -   OK (0.0s)
+[21:10:11] INFO - [331/380] Synchronizace dat z WinyX (MPG SK) (93257926)
+[21:10:11] INFO -   Obrazky: [1/3] image2021-3-19 14:6:57.png
+[21:10:11] INFO -   Obrazky: [2/3] image2020-12-30 10:40:53.png
+[21:10:12] INFO -   Obrazky: [3/3] image2021-4-13 6:45:36.png
+[21:10:13] INFO -   OK (2.0s)
+[21:10:13] INFO - [332/380] WinyxUC01: Zahájit synchronizaci (93592913)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [333/380] WinyxUC02: Synchronizovat adresy (93592918)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [334/380] WinyxUC03: Synchronizovat zákazníky (93592916)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [335/380] WinyxUC04: Synchronizovat druhy odpadu (93592928)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [336/380] WinyxUC05: Synchronizovat typy nádob (93592930)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [337/380] WinyxUC06: Synchronizovat frekvence vývozu (93592934)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [338/380] WinyxUC07: Synchronizovat základní dny svozu (93592936)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [339/380] WinyxUC08: Synchronizovat smlouvy (93592938)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [340/380] WinyxUC09: Synchronizovat řádky smluv (93592940)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [341/380] WinyxUC10: Synchronizovat pořadí řádků smluv (94536965)
+[21:10:13] INFO -   OK (0.0s)
+[21:10:13] INFO - [342/380] WinyxUC11: Synchronizovat nádoby pod řádkem smlouvy (93592942)
+[21:10:13] INFO -   Obrazky: [1/1] image2023-7-4 8:52:43.png
+[21:10:14] INFO -   OK (0.7s)
+[21:10:14] INFO - [343/380] Konfigurační hodnoty (88033340)
+[21:10:14] INFO -   OK (0.0s)
+[21:10:14] INFO - [344/380] Konfigurační parametry (88033346)
+[21:10:14] INFO -   OK (0.0s)
+[21:10:14] INFO - [345/380] Použité barvy (88033348)
+[21:10:14] INFO -   OK (0.0s)
+[21:10:14] INFO - [346/380] Monitoring a Logovanie (106136327)
+[21:10:14] INFO -   OK (0.0s)
+[21:10:14] INFO - [347/380] Logovanie (106136331)
+[21:10:14] INFO -   Obrazky: [1/2] image2022-4-28 13:28:47.png
+[21:10:15] INFO -   Obrazky: [2/2] log storage concept.drawio.png
+[21:10:16] INFO -   OK (1.4s)
+[21:10:16] INFO - [348/380] Monitoring (106136329)
+[21:10:16] INFO -   Obrazky: [1/4] monitoring sangis architecture.drawio.png
+[21:10:16] INFO -   Obrazky: [2/4] image-20220225-150510.png
+[21:10:17] INFO -   Obrazky: [3/4] image-20220228-091344.png
+[21:10:18] INFO -   Obrazky: [4/4] image-20220228-091744.png
+[21:10:19] INFO -   OK (2.9s)
+[21:10:19] INFO - [349/380] Nefunkcionální specifikace (88034876)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [350/380] Správa revizí (88033331)
+[21:10:19] INFO -   OK (0.1s)
+[21:10:19] INFO - [351/380] Správa revizí (archiv) (106463495)
+[21:10:19] INFO -   OK (0.1s)
+[21:10:19] INFO - [352/380] TEMP: Průběh testování (mpg-pptest) (97650269)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [353/380] Systémová hlášení (88033342)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [354/380] Technická dokumentácia (98241874)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [355/380] Administrátorská príručka (98241881)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [356/380] Postup inštalácie (98241883)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [357/380] Build Docker Images (98241896)
+[21:10:19] INFO -   OK (0.0s)
+[21:10:19] INFO - [358/380] Deployment (98241898)
+[21:10:19] INFO -   Obrazky: [1/1] warning.svg
+[21:10:20] WARNING -   Nelze stahnout warning.svg: HTTP Error 404: Not Found
+[21:10:20] INFO -   OK (0.2s)
+[21:10:20] INFO - [359/380] Konfiguračné parametre nasadenia (98241887)
+[21:10:20] INFO -   OK (0.0s)
+[21:10:20] INFO - [360/380] Release 1.2.0 (98241891)
+[21:10:20] INFO -   Obrazky: [1/1] 2705.png
+[21:10:21] INFO -   OK (0.9s)
+[21:10:21] INFO - [361/380] Postup postinštalačnej konfigurácie (98241885)
+[21:10:21] INFO -   Obrazky: [1/1] warning_32.png
+[21:10:21] INFO -   OK (0.6s)
+[21:10:21] INFO - [362/380] Aplikačné nastavenia (98241877)
+[21:10:21] INFO -   OK (0.0s)
+[21:10:21] INFO - [363/380] release 1.2.x (98241879)
+[21:10:21] INFO -   Obrazky: [1/4] favicon.ico
+[21:10:22] INFO -   Obrazky: [2/4] 2705.png
+[21:10:23] INFO -   Obrazky: [3/4] 2705.png
+[21:10:23] INFO -   Obrazky: [4/4] 2705.png
+[21:10:24] INFO -   OK (2.6s)
+[21:10:24] INFO - [364/380] Technický popis riešenia (98241903)
+[21:10:24] INFO -   OK (0.0s)
+[21:10:24] INFO - [365/380] Autentifikácia (98241912)
+[21:10:24] INFO -   Obrazky: [1/1] flww pasport - login flow.drawio.png
+[21:10:25] INFO -   OK (0.7s)
+[21:10:25] INFO - [366/380] Dátové úložisko (98241916)
+[21:10:25] INFO -   Obrazky: [1/1] image2021-6-25_10-0-26.png
+[21:10:27] INFO -   OK (2.0s)
+[21:10:27] INFO - [367/380] Integrácia - FLWW služby (98241925)
+[21:10:27] INFO -   OK (0.0s)
+[21:10:27] INFO - [368/380] Synchronizácia udalostí výsypov nádoby z FLWW (98241931)
+[21:10:27] INFO -   Obrazky: [1/1] flww pasport - sync object events architecture.drawio.png
+[21:10:28] INFO -   OK (0.7s)
+[21:10:28] INFO - [369/380] Synchronizácia základných entít z FLWW (98241927)
+[21:10:28] INFO -   OK (0.0s)
+[21:10:28] INFO - [370/380] Jazyková lokalizácia (98241920)
+[21:10:28] INFO -   OK (0.0s)
+[21:10:28] INFO - [371/380] Konceptuálna architektúra (99123430)
+[21:10:28] INFO -   Obrazky: [1/1] Flww Pasport - konceptualna architektura.drawio.png
+[21:10:29] INFO -   OK (0.8s)
+[21:10:29] INFO - [372/380] Multi-tenant režim (98241907)
+[21:10:29] INFO -   OK (0.0s)
+[21:10:29] INFO - [373/380] Aplikačné nastavenia pre tenanta (98241909)
+[21:10:29] INFO -   OK (0.0s)
+[21:10:29] INFO - [374/380] Nádoby - Externí zákazníci (98241941)
+[21:10:29] INFO -   Obrazky: [1/1] image2025-4-4 8:12:33.png
+[21:10:29] INFO -   OK (0.7s)
+[21:10:30] INFO - [375/380] Výsypy nádoby pre externého zákazníka (98241945)
+[21:10:30] INFO -   Obrazky: [1/2] image-20210915-140706.png
+[21:10:30] INFO -   Obrazky: [2/2] pasport - empty container event model.drawio.png
+[21:10:31] INFO -   OK (1.5s)
+[21:10:31] INFO - [376/380] Použítaveľské nastavenia (98241923)
+[21:10:31] INFO -   Obrazky: [1/1] pasport user settings ui architecture.drawio.png
+[21:10:32] INFO -   OK (0.7s)
+[21:10:32] INFO - [377/380] Synchronizácia dát z externých systémov (98241937)
+[21:10:32] INFO -   Obrazky: [1/1] passport_sync_schema.drawio.png
+[21:10:32] INFO -   OK (0.7s)
+[21:10:33] INFO - [378/380] WinyX Sync Service (98241939)
+[21:10:33] INFO -   Obrazky: [1/4] pasport winyx  sync service architektura.drawio.png
+[21:10:33] INFO -   Obrazky: [2/4] image2021-6-28_11-15-40.png
+[21:10:35] INFO -   Obrazky: [3/4] image2021-6-28_11-23-46.png
+[21:10:37] INFO -   Obrazky: [4/4] image2021-6-28_11-24-27.png
+[21:10:38] INFO -   OK (5.4s)
+[21:10:38] INFO - [379/380] Zákaznícke validačné kritéria (120753498)
+[21:10:38] INFO -   OK (0.0s)
+[21:10:38] INFO - [380/380] Uživatelská oprávnění a role (88033399)
+[21:10:38] INFO -   OK (0.0s)
+[21:10:38] INFO - Faze 2 dokoncena za 216s
+[21:10:38] INFO - Index vygenerovan: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/index.html
+[21:10:38] INFO - Export dokoncen do slozky: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt
+[21:10:38] INFO -   Celkem stranek: 380
+[21:10:38] INFO -   Zapsano: 380
+[21:10:38] INFO -   Chyby (obrazky): 1
+[21:10:38] INFO -   Report: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/export_report.txt
+[21:14:11] INFO - Log soubor: /Users/miroslavslivone/Projects/ConfluenceExporter/src/../exports/2026-02-19_technicky-projekt/export.log
+[21:14:11] INFO - === Faze 1: Crawl ===
+[21:25:14] INFO - Faze 1 dokoncena: 655 stranek za 663s
+[21:25:14] INFO - Ukladam checkpoint (655 stranek)...

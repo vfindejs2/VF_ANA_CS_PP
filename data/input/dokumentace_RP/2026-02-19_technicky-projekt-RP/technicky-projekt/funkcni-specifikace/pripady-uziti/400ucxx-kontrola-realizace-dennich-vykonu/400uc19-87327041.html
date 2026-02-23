@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>400UC19: Zrušení neschválených denních výkonů</title>
+</head>
+<body>
+<div class="wiki-content">
+<p><strong>Nahrazeno (viz <a href="#" data-page-title="202UC09: Odebrat neschválené denní výkony">202UC09: Odebrat neschválené denní výkony</a>)!</strong></p><p></p><h1>Stručný popis, cíl UC</h1><p>Případ užití zajišťuje zrušení Denních výkonů z minulosti, které nebyly schváleny a zůstaly ve stavu Plánovaný. Přepnutí stavu zajišťuje systém automaticky.</p><h1>Seznam aktérů</h1><table><tbody><tr><th>Aktér</th><th>Popis</th><th colspan="1">Typická role</th></tr><tr><td colspan="1">Čas</td><td colspan="1">Komponenta systému RoadPlan, která dle nastavených parametrů spouští v požadovaném čase danou úlohu.</td><td colspan="1">–</td></tr></tbody></table><h1>Spuštění případu užití</h1><ul><li>Plánované spuštění - konec aktuálního dne.</li></ul><h1>Vstupní podmínky</h1><p>Ve vstupní frontě existuje alespoň jedna instance <a href="../../../datove-modely/datovy-78681044.html">Denního výkonu</a>, která zároveň splňuje tyto podmínky:</p><ul><li>je ve stavu Plánovaný,</li><li>jeho Datum realizace ≤ aktuální den (tedy Denní výkony pro právě končící den a všechny starší).</li></ul><h1>Základní tok událostí</h1><p>Pro každou instanci <a href="../../../datove-modely/datovy-78681044.html">Denního výkonu</a> ze vstupní fronty systém:</p><ol><li>Odebere všechny <a href="../../../datove-modely/datovy-78681044.html">Objednané služby</a> zařazené na tento denní výkon - viz <a href="#" data-page-title="200UC08: Odebrat objednanou službu z denního výkonu"></a>.</li><li>Změní stav příslušného <a href="../../../datove-modely/datovy-78681044.html">Denního výkonu</a> na "Zrušený".</li></ol><h1>Alternativní toky událostí</h1><p>Nejsou.</p><h1>Výjimkové toky událostí</h1><p>Nejsou.</p><h1>Výstupní podmínky</h1><p>Všechny Denní výkony splňující vstupní podmínky byly zrušené.</p><h1>Validace</h1><p>Nejsou.</p><h1>Algoritmy</h1><p>Nejsou.</p><h1>Uživatelské rozhraní</h1><p>UC není vizuální.</p><h1>Revize</h1><h3>5.8.2019: Miroslav Slivoně</h3><table><tbody><tr><th>Odkaz</div></div></th><th>Stručný popis změny/doplnění</div></div></th></tr><tr><td colspan="1">Základní tok</td><td colspan="1">Odebrání objednaných služeb</td></tr></tbody></table>
+</div>
+</body>
+</html>

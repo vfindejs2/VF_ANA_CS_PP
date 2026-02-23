@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-087 / 138: Kopírování obsahu buňky v tabulce do systémové schránky</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Zákazník požaduje doplnění možnosti kopírovat obsah buňky v tabulce do systémové schránky (kontextová nabídka buňky, viz chování ve FLWW2).</p><p>Cílem je pak sjednocení komponent mezi našimi aplikacemi (RoadPlan, Pasport…).</p><h1>Aktuální stav</h1><p>Aktuálně není možné přímo kopírovat obsah konkrétní buňky tabulky do systémové schránky. Akci je možné provést pouze na úrovní celého řádku, a to pro právě označené řádky tabulky (kombinace kláves <strong>Ctrl+C</strong> a <strong>Ctrl+V</strong>).</p><h1>Návrh řešení</h1><p>Cílem požadavku je sjednocení chování napříč aplikacemi rodiny FLW, v rámci tabulky bude tedy doplněna možnost vložit obsah buňky do systémové schránky.</p><ol><li>Uživatel klikne pravým tlačítkem myši na buňku tabulky.<br><ul><li>Jedná se pouze o buňky s hodnotami, nikoliv hlavičku tabulky.</li><li>Jedná se pouze o běžné přehledové tabulky (typicky mají stránkování).</li></ul></li><li>Systém zobrazí kontextovou nabídku pro odpovídající buňku tabulky.<br><ul><li>Kontextová nabídka obsahuje tlačítko <strong>Kopírovat obsah buňky</strong>.</li><li>Pokud bude v kontextové nabídce obsaženo i jiné tlačítko, je kopírování do schránky vždy umístěno jako v pořadí první.</li></ul></li><li>Uživatel stiskne tlačítko <strong>Kopírovat obsah buňky</strong>.</li><li>Systém vloží v buňce obsažený text do systémové schránky.<br><ul><li>Do schránky vložený text odpovídá tomu, který je zobrazen v tabulce.</li><li>Je tedy použit stejný formát jako pro vykreslení tabulky.</li></ul></li></ol><p>Poznámka: Uvedené chování by mělo být doplněno jako nativní funkčnosti tabulek běžného typu (přehledové tabulky). Je pak společné pro aplikace RoadPlan a Pasport.</p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Xxx</h2><ol><li>Systém…</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

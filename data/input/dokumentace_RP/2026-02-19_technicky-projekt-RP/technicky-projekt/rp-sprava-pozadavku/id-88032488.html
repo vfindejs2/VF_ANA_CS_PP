@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-012: Získání informace o trase po výpadku GPS</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Pokud dojde k výpadku online ukládání pozičních dat do FLWW2, mohou být dočasně nedostupná aktuální data. Ta jsou po odstranění výpadku do FLWW2 doručena zpětně. To může nějakou dobu trvat, je využíván volný prostor v rámci běžné komunikace. Modul RoadPlan v rámci vyhodnocení realizace Denních výkonů nemá v tuto chvíli jak rozeznat, zda jsou poziční data vozidla kompletní.</p><p>Poznámka: Jedná se o stejný problém, jako v rámci požadavku <a href="#" data-page-title="ID-013: Výpadky – nedostupné pozice">ID-013: Výpadky – nedostupné pozice</a>.</p><h1>Aktuální stav</h1><p>Vyhodnocení realizace je složeno ze dvou kroků – průběžné (opakované) vyhodnocení dat během dne realizace a závěrečné vyhodnocení při ukončení realizace.</p><p>Došlo k opravě algoritmu pro vyhodnocení realizace, která probíhá na konci dne realizace. Zde jsou pro jednotlivá vozidla získávány následující informace:</p><ul><li>celkem ujetá vzdálenost,</li><li>čas konce poslední jízdy (pokud jízda přesahuje do dalšího dne, je nastaven čas 23:59:59),</li><li>průběh trajektorie (zde došlo k opravě),</li><li>události odpovídající aktivaci sledovaného vstupu.</li></ul><p>Navíc bylo rozšířeno chování, které se stará o vyhodnocení realizace během dne. Řekněme, že poslední získaná pozice byla vygenerována v 16:25. Systém pak vezme uvedené časové razítko a vyhodnotí časové rozmezí (odečte 15 minut), pro které budou načteny pozice. Výsledkem je tedy interval, který vypadá následovně: <strong>16:10-Teď</strong>. Pro toto časové rozmezí jsou získávány pozice. To znamená, že pokud některá z pozic přišla se zpožděním, bude sice vyhodnocena až dodatečně, ale nepřijdeme o ni.</p><h1>Návrh řešení</h1><p>–</p><h1>Akceptační testy</h1><p> Není zvolen požadovaný návrh řešení.</p><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

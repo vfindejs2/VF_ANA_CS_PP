@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>700UI10: Modální okno</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Stručný popis</h1><p>Jedná se o obecný popis modálních oken, která mohou být použita různě:</p><ul><li>výběrový dialog,</li><li>formulář pro založení či editaci instance některé z entit,</li><li>chybová hlášení,</li><li>…</li></ul><p>Společným prvkem modálních oken je to, že jsou zobrazena „nad“ zbytkem aplikace. Dokud nedojde k jejich potvrzení či uzavření, není možné pokračovat v další práci. Z toho důvodu dojde i ke „ztmavení“ právě zobrazené obrazovky, modální okno je zobrazeno nad ní.  </p><h1>Uživatelské rozhraní</h1><h2>Rozložení</h2><h3>Drátový diagram</h3><p><img src="700ui10-modalni-okno-88033317_images/image2020-5-29 10-1-36.png" data-attachment="true"></p><h3>Přehled UI komponent</h3><table><tbody><tr><th>Callout</th><th>Skupina</th><th colspan="1">Poznámka</th></tr><tr><td colspan="1">1</td><td colspan="1">Nadpis okna</td><td colspan="1">Nadpis je dán konkrétním UC.</td></tr><tr><td colspan="1">2</td><td colspan="1">Zavření okna</td><td colspan="1">Odpovídá tlačítku ze skupiny potvrzení okna, které ruší provedené změny, případně potvrzuje hlášení.</td></tr><tr><td colspan="1">3</td><td colspan="1">Obsah okna</td><td colspan="1">Obsah je dán konkrétním UC. Může dojít i k zobrazení posuvníku.</td></tr><tr><td colspan="1">4</td><td colspan="1">Další funkce okna</td><td colspan="1">Další funkce dostupné v rámci okna, např. vymazání obsahu formuláře.</td></tr><tr><td colspan="1">5</td><td colspan="1">Potvrzení okna</td><td colspan="1">Tlačítka pro potvrzení okna, např. uložení či zrušení provedených změn, potvrzení zobrazeného hlášení a podobně (je dáno konkrétním UC).</td></tr></tbody></table><h3>Chování</h3><h4>Zobrazení okna</h4><p>Výchozí pozice, na které dojde k zobrazení modálního okna, je definována následovně:</p><ul><li>horizontálně na střed,</li><li>vertikálně nahoru.</li></ul><h4>Změna pozice</h4><p>Uživatel může dočasně změnit pozici modálního okna. Toho docílí tak, že „chytne“ hlavičku okna (klikne levým tlačítkem, které drží dále stisknuté) a provede přesun na požadovanou pozici. Následně uvolní levé tlačítko myši a systém umístí formulář na požadované místo.</p><p>Poznámka: Změna pozice okna není nijak zapamatována. Při následném zobrazení modálního okna dojde k jeho umístění na výchozí pozici.</p><h1>Grafický návrh</h1>
+</div>
+</body>
+</html>

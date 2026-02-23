@@ -1,0 +1,3543 @@
+-- DROP SCHEMA dbo;
+
+CREATE SCHEMA dbo;
+-- PasPort_MPGSK.dbo.MSchange_tracking_history definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.MSchange_tracking_history;
+
+CREATE TABLE PasPort_MPGSK.dbo.MSchange_tracking_history (
+	internal_table_name sysname COLLATE Czech_100_CI_AS NOT NULL,
+	table_name sysname COLLATE Czech_100_CI_AS NOT NULL,
+	start_time datetime NOT NULL,
+	end_time datetime NOT NULL,
+	rows_cleaned_up bigint NOT NULL,
+	cleanup_version bigint NOT NULL,
+	comments nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL
+);
+ CREATE NONCLUSTERED INDEX IX_MSchange_tracking_history_start_time ON PasPort_MPGSK.dbo.MSchange_tracking_history (  start_time ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.NowUtc definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.NowUtc;
+
+CREATE TABLE PasPort_MPGSK.dbo.NowUtc (
+	d datetime2(0) NOT NULL,
+	CONSTRAINT PK__NowUtc__3BD01989684FE5AD PRIMARY KEY (d)
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250805 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250805;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250805 (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250825_IsActive0 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250825_IsActive0;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250825_IsActive0 (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250909 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250909;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20250909 (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_20251023 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20251023;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20251023 (
+	ID int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	external_id_source bit NOT NULL,
+	is_active bit NOT NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_20251121 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20251121;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_20251121 (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_650_20250811 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_650_20250811;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_650_20250811 (
+	ev_cislo varchar(50) COLLATE Czech_CI_AS NULL,
+	intern_cislo varchar(50) COLLATE Czech_CI_AS NULL,
+	prevadzka varchar(60) COLLATE Czech_CI_AS NULL,
+	id int NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_InterEvidence_20250704 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_InterEvidence_20250704;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_InterEvidence_20250704 (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.TMP_BCKUP_Container_PublicNote_20250516 definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_PublicNote_20250516;
+
+CREATE TABLE PasPort_MPGSK.dbo.TMP_BCKUP_Container_PublicNote_20250516 (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit NOT NULL,
+	created_at datetimeoffset NOT NULL,
+	updated_at datetimeoffset NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL
+);
+
+
+-- PasPort_MPGSK.dbo.application_settings definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.application_settings;
+
+CREATE TABLE PasPort_MPGSK.dbo.application_settings (
+	param nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	value nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT application_settings_pk PRIMARY KEY (param)
+);
+
+
+-- PasPort_MPGSK.dbo.code_container_ownership definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_container_ownership;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_container_ownership (
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT code_container_ownership_pk PRIMARY KEY (name)
+);
+
+
+-- PasPort_MPGSK.dbo.code_container_pasport_action definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_container_pasport_action;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_container_pasport_action (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT cpa__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_container_pasport_state definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_container_pasport_state;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_container_pasport_state (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT cps__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_container_status definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_container_status;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_container_status (
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT code_container_status_pk PRIMARY KEY (name)
+);
+
+
+-- PasPort_MPGSK.dbo.code_entity_modification_action definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_entity_modification_action;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_entity_modification_action (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT cema__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_entity_type definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_entity_type;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_entity_type (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT cet__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_geocoding_state definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_geocoding_state;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_geocoding_state (
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset NULL,
+	id int NOT NULL,
+	CONSTRAINT code_geocoding_state_name__PK PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_import_processing_status definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_import_processing_status;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_import_processing_status (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT cips__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_modification_source definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_modification_source;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_modification_source (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT cms__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_object_empty_container_event_source_device definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_object_empty_container_event_source_device;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_object_empty_container_event_source_device (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT coecesd_id__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_object_events_sync_cycle_status definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_object_events_sync_cycle_status;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_object_events_sync_cycle_status (
+	id int NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT coescs__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.code_payer_type definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_payer_type;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_payer_type (
+	id int NOT NULL,
+	description nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT cpt_id__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.database_version definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.database_version;
+
+CREATE TABLE PasPort_MPGSK.dbo.database_version (
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	version nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	CONSTRAINT database_version_pk PRIMARY KEY (name)
+);
+
+
+-- PasPort_MPGSK.dbo.knex_migrations definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.knex_migrations;
+
+CREATE TABLE PasPort_MPGSK.dbo.knex_migrations (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	batch int NULL,
+	migration_time datetime2 NULL,
+	CONSTRAINT PK__knex_mig__3213E83FDCE54327 PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.knex_migrations_lock definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.knex_migrations_lock;
+
+CREATE TABLE PasPort_MPGSK.dbo.knex_migrations_lock (
+	[index] int IDENTITY(1,1) NOT NULL,
+	is_locked int NULL,
+	CONSTRAINT PK__knex_mig__1D0A3348B51B54ED PRIMARY KEY ([index])
+);
+
+
+-- PasPort_MPGSK.dbo.tenant definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.tenant;
+
+CREATE TABLE PasPort_MPGSK.dbo.tenant (
+	id int NOT NULL,
+	name nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	code nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT tenant_pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.tenant_settings definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.tenant_settings;
+
+CREATE TABLE PasPort_MPGSK.dbo.tenant_settings (
+	tenant_id int NOT NULL,
+	param nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	value nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT tenant_settings_pk PRIMARY KEY (tenant_id,param)
+);
+
+
+-- PasPort_MPGSK.dbo.code_identifier_type definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.code_identifier_type;
+
+CREATE TABLE PasPort_MPGSK.dbo.code_identifier_type (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT it_id__pk PRIMARY KEY (id),
+	CONSTRAINT it_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+
+
+-- PasPort_MPGSK.dbo.object_events_sync_cyle_log definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.object_events_sync_cyle_log;
+
+CREATE TABLE PasPort_MPGSK.dbo.object_events_sync_cyle_log (
+	id int IDENTITY(1,1) NOT NULL,
+	sync_cycle_start datetimeoffset NOT NULL,
+	sync_cycle_end datetimeoffset NOT NULL,
+	sync_window_from datetimeoffset NOT NULL,
+	sync_window_to datetimeoffset NOT NULL,
+	status int NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset NULL,
+	retry_count int NULL,
+	CONSTRAINT coescl_id__pk PRIMARY KEY (id),
+	CONSTRAINT coescl_status__fk FOREIGN KEY (status) REFERENCES PasPort_MPGSK.dbo.code_object_events_sync_cycle_status(id),
+	CONSTRAINT coescl_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+
+
+-- PasPort_MPGSK.dbo.organization_unit definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.organization_unit;
+
+CREATE TABLE PasPort_MPGSK.dbo.organization_unit (
+	id int NOT NULL,
+	prefix nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	name nvarchar(150) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	superior_organization_unit int NULL,
+	[level] int NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT organization_unit_pk PRIMARY KEY (id),
+	CONSTRAINT organization_unit_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT ou_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT ou_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id)
+);
+ CREATE NONCLUSTERED INDEX ou_external_id__idx ON PasPort_MPGSK.dbo.organization_unit (  external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ALTER TABLE PasPort_MPGSK.dbo.organization_unit WITH NOCHECK ADD CONSTRAINT superior_unit_id_check CHECK (([superior_organization_unit]<>[id]));
+
+
+-- PasPort_MPGSK.dbo.tenant_system_user definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.tenant_system_user;
+
+CREATE TABLE PasPort_MPGSK.dbo.tenant_system_user (
+	tenant_id int NOT NULL,
+	username nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	password nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	user_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT tenant_system_user_pk PRIMARY KEY (tenant_id),
+	CONSTRAINT tenant_system_user_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+
+
+-- PasPort_MPGSK.dbo.employee definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.employee;
+
+CREATE TABLE PasPort_MPGSK.dbo.employee (
+	id int NOT NULL,
+	firstname nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	surname nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	personal_number nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	email nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	phone nvarchar(30) COLLATE Czech_100_CI_AS NULL,
+	valid_from datetimeoffset NULL,
+	valid_to datetimeoffset NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	job_title int DEFAULT 0 NOT NULL,
+	organization_unit_id int NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	full_name nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT employee_pk PRIMARY KEY (id),
+	CONSTRAINT e_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT e_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT employee_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT employee_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+ CREATE NONCLUSTERED INDEX employee_fullname__idx ON PasPort_MPGSK.dbo.employee (  full_name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.[user] definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.[user];
+
+CREATE TABLE PasPort_MPGSK.dbo.[user] (
+	id int NOT NULL,
+	name nvarchar(150) COLLATE Czech_100_CI_AS NOT NULL,
+	valid_from datetimeoffset NULL,
+	valid_to datetimeoffset NULL,
+	employee_id int NULL,
+	employee_name nvarchar(250) COLLATE Czech_100_CI_AS NULL,
+	role_id int NULL,
+	role_name nvarchar(150) COLLATE Czech_100_CI_AS NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT user_pk PRIMARY KEY (id),
+	CONSTRAINT u_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT u_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT user_employee_id_fk FOREIGN KEY (employee_id) REFERENCES PasPort_MPGSK.dbo.employee(id),
+	CONSTRAINT user_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+ CREATE NONCLUSTERED INDEX user_employee_id__idx ON PasPort_MPGSK.dbo.user (  employee_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.user_settings definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.user_settings;
+
+CREATE TABLE PasPort_MPGSK.dbo.user_settings (
+	id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	[key] nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	value nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset NULL,
+	CONSTRAINT us_id__PK PRIMARY KEY (id),
+	CONSTRAINT us_tenant_id__FK FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT us_user_id__FK FOREIGN KEY (user_id) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX us_user_id__idx ON PasPort_MPGSK.dbo.user_settings (  user_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.waste_disposal_day definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.waste_disposal_day;
+
+CREATE TABLE PasPort_MPGSK.dbo.waste_disposal_day (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	disposal_day nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	number_of_disposals_per_month int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	external_organization_unit_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT wdd_id__pk PRIMARY KEY (id),
+	CONSTRAINT wdd_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT wdd_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT wdd_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT wdd_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT wdd_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX wdd_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.waste_disposal_day (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.waste_disposal_frequency definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.waste_disposal_frequency;
+
+CREATE TABLE PasPort_MPGSK.dbo.waste_disposal_frequency (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	name nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(80) COLLATE Czech_100_CI_AS NULL,
+	[group] nvarchar(80) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	external_organization_unit_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT wdf_id__pk PRIMARY KEY (id),
+	CONSTRAINT wdf_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT wdf_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT wdf_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT wdf_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT wdf_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX wdf_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.waste_disposal_frequency (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.address definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.address;
+
+CREATE TABLE PasPort_MPGSK.dbo.address (
+	id int IDENTITY(1,1) NOT NULL,
+	street nvarchar(80) COLLATE Czech_100_CI_AS NULL,
+	registry_number nvarchar(15) COLLATE Czech_100_CI_AS NULL,
+	orientation_number nvarchar(15) COLLATE Czech_100_CI_AS NULL,
+	city nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	postal_code nvarchar(15) COLLATE Czech_100_CI_AS NULL,
+	country nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	tenant_id int NOT NULL,
+	created_by int NOT NULL,
+	updated_by bit NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	full_address nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	address_register_external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT address_id__PK PRIMARY KEY (id),
+	CONSTRAINT a_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT a_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT address_created_by__FK FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT address_tenant_id__FK FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+ CREATE NONCLUSTERED INDEX address_external_id_tenant__idx ON PasPort_MPGSK.dbo.address (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX address_full_address__idx ON PasPort_MPGSK.dbo.address (  full_address ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX address_multi_attributes__idx ON PasPort_MPGSK.dbo.address (  city ASC  , postal_code ASC  , country ASC  , street ASC  , registry_number ASC  , orientation_number ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.building_type definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.building_type;
+
+CREATE TABLE PasPort_MPGSK.dbo.building_type (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT bt_id__pk PRIMARY KEY (id),
+	CONSTRAINT bt_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT bt_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT bt_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT bt_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT bt_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+
+
+-- PasPort_MPGSK.dbo.container_category definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_category;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_category (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	parent_id int NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	short_name nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT container_category_pk PRIMARY KEY (id),
+	CONSTRAINT cc_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cc_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT container_category_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT container_category_parent_id_fk FOREIGN KEY (parent_id) REFERENCES PasPort_MPGSK.dbo.container_category(id),
+	CONSTRAINT container_category_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT container_category_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX cc_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.container_category (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ALTER TABLE PasPort_MPGSK.dbo.container_category WITH NOCHECK ADD CONSTRAINT parent_id_check CHECK (([parent_id]<>[id]));
+
+
+-- PasPort_MPGSK.dbo.container_color definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_color;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_color (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT container_color_pk PRIMARY KEY (id),
+	CONSTRAINT cco_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cco_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT container_color_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT container_color_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT container_color_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX cco_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.container_color (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container_material definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_material;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_material (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT container_material_pk PRIMARY KEY (id),
+	CONSTRAINT cm_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cm_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT container_material_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT container_material_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT container_material_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX cm_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.container_material (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container_pattern definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_pattern;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_pattern (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	container_color_id int NOT NULL,
+	container_material_id int NOT NULL,
+	container_quantity_unit_id int NOT NULL,
+	volume float NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	short_name nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT container_pattern_pk PRIMARY KEY (id),
+	CONSTRAINT container_pattern_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT container_pattern_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT container_pattern_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT cpat_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cpat_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id)
+);
+ CREATE NONCLUSTERED INDEX cp_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.container_pattern (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container_quantity_unit definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_quantity_unit;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_quantity_unit (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	unit nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT container_quantity_unit_pk PRIMARY KEY (id),
+	CONSTRAINT container_quantity_unit_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT container_quantity_unit_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT container_quantity_unit_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT cqu_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cqu_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id)
+);
+ CREATE NONCLUSTERED INDEX cqu_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.container_quantity_unit (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container_type definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_type;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_type (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT container_type_pk PRIMARY KEY (id),
+	CONSTRAINT container_type_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT container_type_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT container_type_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT ct_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT ct_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id)
+);
+ CREATE NONCLUSTERED INDEX ct_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.container_type (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.customer definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.customer;
+
+CREATE TABLE PasPort_MPGSK.dbo.customer (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	legal_id nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	tax_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	vat_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	is_vat_payer bit NOT NULL,
+	headquarters_address_id int NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NOT NULL,
+	CONSTRAINT cu_id__pk PRIMARY KEY (id),
+	CONSTRAINT cu_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT cu_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cu_headquarters_address_id__fk FOREIGN KEY (headquarters_address_id) REFERENCES PasPort_MPGSK.dbo.address(id),
+	CONSTRAINT cu_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT cu_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT cu_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX customer_external_id_tenant__idx ON PasPort_MPGSK.dbo.customer (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_headquarters_address_id__idx ON PasPort_MPGSK.dbo.customer (  headquarters_address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX customer_name__idx ON PasPort_MPGSK.dbo.customer (  name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.customer_validation_criterion definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.customer_validation_criterion;
+
+CREATE TABLE PasPort_MPGSK.dbo.customer_validation_criterion (
+	id int IDENTITY(1,1) NOT NULL,
+	entity nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	function_name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	validation_criterion nvarchar(MAX) COLLATE Czech_100_CI_AS NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT cvc_id__pk PRIMARY KEY (id),
+	CONSTRAINT customer_validation_criterion_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT customer_validation_criterion_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT customer_validation_criterion_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT customer_validation_criterion_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT customer_validation_criterion_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+
+
+-- PasPort_MPGSK.dbo.entity_modification_record definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.entity_modification_record;
+
+CREATE TABLE PasPort_MPGSK.dbo.entity_modification_record (
+	id int IDENTITY(1,1) NOT NULL,
+	entity_type_id int NOT NULL,
+	entity_id int NOT NULL,
+	entity_modification_action_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	tenant_id int NOT NULL,
+	CONSTRAINT emr__pk PRIMARY KEY (id),
+	CONSTRAINT emp_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT emp_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT emp_entity_modification_action_id__fk FOREIGN KEY (entity_modification_action_id) REFERENCES PasPort_MPGSK.dbo.code_entity_modification_action(id),
+	CONSTRAINT emp_entity_type_id__fk FOREIGN KEY (entity_type_id) REFERENCES PasPort_MPGSK.dbo.code_entity_type(id),
+	CONSTRAINT emp_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+
+
+-- PasPort_MPGSK.dbo.external_customers_settings definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.external_customers_settings;
+
+CREATE TABLE PasPort_MPGSK.dbo.external_customers_settings (
+	id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	container_order_item_assignment_filter nvarchar(MAX) COLLATE Czech_100_CI_AS NULL,
+	object_empty_container_event_filter nvarchar(MAX) COLLATE Czech_100_CI_AS NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset NULL,
+	object_empty_container_event_weight_availability_filter nvarchar(MAX) COLLATE Czech_100_CI_AS NULL,
+	object_empty_container_event_availability_filter nvarchar(MAX) COLLATE Czech_100_CI_AS NULL,
+	is_object_empty_container_event_weight_visible bit DEFAULT 1 NOT NULL,
+	CONSTRAINT ecs_id__pk PRIMARY KEY (id),
+	CONSTRAINT ecs_user_id__fk FOREIGN KEY (user_id) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+
+
+-- PasPort_MPGSK.dbo.garbage_group_color definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.garbage_group_color;
+
+CREATE TABLE PasPort_MPGSK.dbo.garbage_group_color (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	name nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	color_code nvarchar(7) COLLATE Czech_100_CI_AS NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	CONSTRAINT ggc__PK PRIMARY KEY (id),
+	CONSTRAINT ggc_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT ggc_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT ggc_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT ggc_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT ggc_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+
+
+-- PasPort_MPGSK.dbo.garbage_type definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.garbage_type;
+
+CREATE TABLE PasPort_MPGSK.dbo.garbage_type (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	code nvarchar(15) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category nvarchar(4) COLLATE Czech_100_CI_AS NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NOT NULL,
+	CONSTRAINT gt_id__pk PRIMARY KEY (id),
+	CONSTRAINT gt_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT gt_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT gt_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT gt_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT gt_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX gt_tenant_id__idx ON PasPort_MPGSK.dbo.garbage_type (  tenant_id ASC  , is_active ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX gt_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.garbage_type (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.import_batch definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.import_batch;
+
+CREATE TABLE PasPort_MPGSK.dbo.import_batch (
+	id int IDENTITY(1,1) NOT NULL,
+	import_schema_id int NOT NULL,
+	organization_unit_id int NOT NULL,
+	filename nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	tenant_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	CONSTRAINT import_batch_pk PRIMARY KEY (id),
+	CONSTRAINT import_batch_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT import_batch_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT import_batch_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT import_batch_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id)
+);
+
+
+-- PasPort_MPGSK.dbo.import_batch_item definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.import_batch_item;
+
+CREATE TABLE PasPort_MPGSK.dbo.import_batch_item (
+	import_batch_id int NOT NULL,
+	[row_number] int NOT NULL,
+	row_data nvarchar(4000) COLLATE Czech_100_CI_AS NOT NULL,
+	is_valid bit NULL,
+	validation_error nvarchar(1000) COLLATE Czech_100_CI_AS NULL,
+	import_processing_status int NOT NULL,
+	import_processing_error nvarchar(1000) COLLATE Czech_100_CI_AS NULL,
+	creation_source_id int NOT NULL,
+	created_by int NOT NULL,
+	updated_by int NULL,
+	modification_source_id int NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT import_batch_item__pk PRIMARY KEY (import_batch_id,[row_number]),
+	CONSTRAINT import_batch_item_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT import_batch_item_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT import_batch_item_import_batch_id_fk FOREIGN KEY (import_batch_id) REFERENCES PasPort_MPGSK.dbo.import_batch(id),
+	CONSTRAINT import_batch_item_modification_source_id__fk FOREIGN KEY (modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT import_batch_item_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT import_batch_itemt_code_import_processing_status_id__fk FOREIGN KEY (import_processing_status) REFERENCES PasPort_MPGSK.dbo.code_import_processing_status(id)
+);
+ CREATE NONCLUSTERED INDEX import_batch_item_import_batch_id_index ON PasPort_MPGSK.dbo.import_batch_item (  import_batch_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.[object] definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.[object];
+
+CREATE TABLE PasPort_MPGSK.dbo.[object] (
+	id int NOT NULL,
+	registration_plate nvarchar(50) COLLATE Czech_100_CI_AS NULL,
+	organization_unit_id int NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	parent_name nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	vehicle_full_path nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT object__pk PRIMARY KEY (id),
+	CONSTRAINT object_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT object_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT object_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT object_org_unit_id__fk FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT object_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT object_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX object_name__idx ON PasPort_MPGSK.dbo.object (  name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX object_org_unit_id__idx ON PasPort_MPGSK.dbo.object (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX object_reg_plate__idx ON PasPort_MPGSK.dbo.object (  registration_plate ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.object_empty_container_event definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.object_empty_container_event;
+
+CREATE TABLE PasPort_MPGSK.dbo.object_empty_container_event (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	[timestamp] datetimeoffset NOT NULL,
+	code nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	lat float NULL,
+	lng float NULL,
+	object_id int NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	weight int NULL,
+	loader_arm_code int NULL,
+	organization_unit_id int NULL,
+	source_device_id int DEFAULT 1 NULL,
+	location nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	location_street nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	location_city nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	location_country nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT oece_id__pk PRIMARY KEY (id),
+	CONSTRAINT oece_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT oece_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT oece_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT oece_org_unit_id__fk FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT oece_source_device_id__fk FOREIGN KEY (source_device_id) REFERENCES PasPort_MPGSK.dbo.code_object_empty_container_event_source_device(id),
+	CONSTRAINT oece_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT oece_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE UNIQUE NONCLUSTERED INDEX external_idx_external_id_tenant_id_notnull ON PasPort_MPGSK.dbo.object_empty_container_event (  external_id ASC  , tenant_id ASC  )  
+	 WHERE  ([external_id] IS NOT NULL AND [tenant_id] IS NOT NULL)
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX loader_arm_code__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  loader_arm_code ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX location_city__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  location_city ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX object_id__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  object_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oecv_code__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  code ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oecv_is_active_timestamp__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  is_active ASC  , timestamp ASC  )  
+	 INCLUDE ( code , lat , lng , object_id , tenant_id ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX org_unit_id__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX source_device_id__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  source_device_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX weight__idx ON PasPort_MPGSK.dbo.object_empty_container_event (  weight ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.[order] definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.[order];
+
+CREATE TABLE PasPort_MPGSK.dbo.[order] (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	number nvarchar(30) COLLATE Czech_100_CI_AS NOT NULL,
+	customer_id int NOT NULL,
+	end_customer_id int NULL,
+	valid_from date NULL,
+	valid_to date NULL,
+	organization_unit_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT o_id__pk PRIMARY KEY (id),
+	CONSTRAINT o_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT o_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT o_customer_id__fk FOREIGN KEY (customer_id) REFERENCES PasPort_MPGSK.dbo.customer(id),
+	CONSTRAINT o_end_customer_id__fk FOREIGN KEY (end_customer_id) REFERENCES PasPort_MPGSK.dbo.customer(id),
+	CONSTRAINT o_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT o_organization_unit_id__fk FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT o_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT o_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX order_customer_id__idx ON PasPort_MPGSK.dbo.order (  customer_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_end_customer_id__idx ON PasPort_MPGSK.dbo.order (  end_customer_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_external_id_tenant__idx ON PasPort_MPGSK.dbo.order (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_number__idx ON PasPort_MPGSK.dbo.order (  number ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX order_organization_unit_id_tenant__idx ON PasPort_MPGSK.dbo.order (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.photos definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.photos;
+
+CREATE TABLE PasPort_MPGSK.dbo.photos (
+	id int IDENTITY(1,1) NOT NULL,
+	original_key nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	original_bucket nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	thumbnail_key nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	thumbnail_bucket nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	thumbnail_medium_key nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	thumbnail_medium_bucket nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT photos_pk PRIMARY KEY (id),
+	CONSTRAINT p_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT p_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT photos_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT photos_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT photos_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+
+
+-- PasPort_MPGSK.dbo.site definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.site;
+
+CREATE TABLE PasPort_MPGSK.dbo.site (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	address_id int NOT NULL,
+	lat float NULL,
+	lng float NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	geom geography NULL,
+	geocoding_state int NOT NULL,
+	default_photo_id int NULL,
+	name_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	is_container_warehouse bit DEFAULT 0 NOT NULL,
+	CONSTRAINT site_id__PK PRIMARY KEY (id),
+	CONSTRAINT s_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT s_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT site_address_id__FK FOREIGN KEY (address_id) REFERENCES PasPort_MPGSK.dbo.address(id),
+	CONSTRAINT site_created_by__FK FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT site_default_photo_id__FK FOREIGN KEY (default_photo_id) REFERENCES PasPort_MPGSK.dbo.photos(id),
+	CONSTRAINT site_geocoding_state__FK FOREIGN KEY (geocoding_state) REFERENCES PasPort_MPGSK.dbo.code_geocoding_state(id),
+	CONSTRAINT site_organization_unit_id__FK FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id),
+	CONSTRAINT site_tenant_id__FK FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT site_updated_by__FK FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX site_address_id__idx ON PasPort_MPGSK.dbo.site (  address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX site_external_id_tenant__idx ON PasPort_MPGSK.dbo.site (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX site_geocoding_state__idx ON PasPort_MPGSK.dbo.site (  geocoding_state ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+CREATE INDEX site_geom_index ON PasPort_MPGSK.dbo.site (geom);
+ CREATE NONCLUSTERED INDEX site_name__idx ON PasPort_MPGSK.dbo.site (  name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX site_name_search__idx ON PasPort_MPGSK.dbo.site (  name_search ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX site_organization_unit_id_index ON PasPort_MPGSK.dbo.site (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.site_photo definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.site_photo;
+
+CREATE TABLE PasPort_MPGSK.dbo.site_photo (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(50) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	site_id int NOT NULL,
+	photo_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	CONSTRAINT site_photo_id__PK PRIMARY KEY (id),
+	CONSTRAINT site_photo_created_by__FK FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT site_photo_photo_id__FK FOREIGN KEY (photo_id) REFERENCES PasPort_MPGSK.dbo.photos(id),
+	CONSTRAINT site_photo_site_id__FK FOREIGN KEY (site_id) REFERENCES PasPort_MPGSK.dbo.site(id),
+	CONSTRAINT site_photo_tenant_id__FK FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT site_photo_updated_by__FK FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT sp_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT sp_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id)
+);
+ CREATE NONCLUSTERED INDEX site_photo_site_id_photo_id__idx ON PasPort_MPGSK.dbo.site_photo (  site_id ASC  , photo_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.building_type_site_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.building_type_site_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.building_type_site_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	site_id int NOT NULL,
+	building_type_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT btsa_id__pk PRIMARY KEY (id),
+	CONSTRAINT btsa_building_type_id__fk FOREIGN KEY (building_type_id) REFERENCES PasPort_MPGSK.dbo.building_type(id),
+	CONSTRAINT btsa_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT btsa_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT btsa_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT btsa_site_id__fk FOREIGN KEY (site_id) REFERENCES PasPort_MPGSK.dbo.site(id),
+	CONSTRAINT btsa_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT btsa_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id)
+);
+ CREATE NONCLUSTERED INDEX btsa_building_type_id__idx ON PasPort_MPGSK.dbo.building_type_site_assignment (  building_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX btsa_external_id_tenant__idx ON PasPort_MPGSK.dbo.building_type_site_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX btsa_site_id_valid__idx ON PasPort_MPGSK.dbo.building_type_site_assignment (  site_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.garbage_group definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.garbage_group;
+
+CREATE TABLE PasPort_MPGSK.dbo.garbage_group (
+	id int IDENTITY(1,1) NOT NULL,
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	short_name nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	creation_source_id int DEFAULT 1 NOT NULL,
+	last_modification_source_id int NULL,
+	garbage_group_color_id int NULL,
+	CONSTRAINT garbage_group_pk PRIMARY KEY (id),
+	CONSTRAINT garbage_group_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT garbage_group_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id),
+	CONSTRAINT garbage_group_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id),
+	CONSTRAINT gg_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id),
+	CONSTRAINT gg_garbage_group_color_id__fk FOREIGN KEY (garbage_group_color_id) REFERENCES PasPort_MPGSK.dbo.garbage_group_color(id),
+	CONSTRAINT gg_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id)
+);
+ CREATE NONCLUSTERED INDEX gg_tenant_id_external_id__idx ON PasPort_MPGSK.dbo.garbage_group (  tenant_id ASC  , external_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container;
+
+CREATE TABLE PasPort_MPGSK.dbo.container (
+	id int IDENTITY(1,1) NOT NULL,
+	evidence_number nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	organization_unit_id int NOT NULL,
+	ownership_status nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	status nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	category_id int NULL,
+	pattern_id int NULL,
+	default_photo_id int NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_group_id int NULL,
+	evidence_number_search nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	internal_number nvarchar(20) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	last_container_pasport_record_id int NULL,
+	discarded_at datetimeoffset NULL,
+	discard_to_date datetimeoffset NULL,
+	discarded_by int NULL,
+	discard_source_id int NULL,
+	year_production int NULL,
+	external_id_source bit DEFAULT 0 NOT NULL,
+	public_note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	CONSTRAINT container_pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX container_category_id__idx ON PasPort_MPGSK.dbo.container (  category_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_evidence_number_search_IDX ON PasPort_MPGSK.dbo.container (  evidence_number_search ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_external_id_tenant__idx ON PasPort_MPGSK.dbo.container (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_garb_group_id__idx ON PasPort_MPGSK.dbo.container (  garbage_group_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_internal_number__idx ON PasPort_MPGSK.dbo.container (  internal_number ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_organization_unit_id_index ON PasPort_MPGSK.dbo.container (  organization_unit_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_ownership_status__idx ON PasPort_MPGSK.dbo.container (  ownership_status ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_pattern_id__idx ON PasPort_MPGSK.dbo.container (  pattern_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_status__idx ON PasPort_MPGSK.dbo.container (  status ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_year_production__idx ON PasPort_MPGSK.dbo.container (  year_production ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ALTER TABLE PasPort_MPGSK.dbo.container WITH NOCHECK ADD CONSTRAINT checkContainerUniqueness CHECK ((NOT [dbo].[check_active_container_count]([evidence_number],[organization_unit_id],[tenant_id])>(1)));
+
+
+-- PasPort_MPGSK.dbo.container__photo definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container__photo;
+
+CREATE TABLE PasPort_MPGSK.dbo.container__photo (
+	name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	description nvarchar(MAX) COLLATE Czech_100_CI_AS NULL,
+	container_id int NOT NULL,
+	photo_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	id int IDENTITY(1,1) NOT NULL,
+	CONSTRAINT container__photo_pk PRIMARY KEY (container_id,photo_id)
+);
+
+
+-- PasPort_MPGSK.dbo.container_extended definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_extended;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_extended (
+	id int IDENTITY(1,1) NOT NULL,
+	container_id int NOT NULL,
+	object_empty_container_event_id int NULL,
+	object_empty_container_event_timestamp datetimeoffset NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	object_empty_container_event_weight int NULL,
+	CONSTRAINT ce_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX container_extended_con_id__idx ON PasPort_MPGSK.dbo.container_extended (  container_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX container_extended_oece_id__idx ON PasPort_MPGSK.dbo.container_extended (  object_empty_container_event_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container_order_item_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_order_item_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_order_item_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	container_id int NOT NULL,
+	order_item_id int NOT NULL,
+	valid_from datetimeoffset NOT NULL,
+	valid_to datetimeoffset NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT coia_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX coia_container_id_valid__idx ON PasPort_MPGSK.dbo.container_order_item_assignment (  container_id ASC  , valid_from ASC  , valid_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX coia_external_id_tenant__idx ON PasPort_MPGSK.dbo.container_order_item_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX coia_order_item_id_container_id__idx ON PasPort_MPGSK.dbo.container_order_item_assignment (  order_item_id ASC  , container_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container_pasport_record definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.container_pasport_record;
+
+CREATE TABLE PasPort_MPGSK.dbo.container_pasport_record (
+	id int IDENTITY(1,1) NOT NULL,
+	container_id int NOT NULL,
+	performed_action_id int NOT NULL,
+	lng float NULL,
+	lat float NULL,
+	pasport_state_id int NOT NULL,
+	pasport_confirmed_at datetimeoffset NULL,
+	pasport_confirmed_by int NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset DEFAULT getutcdate() NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	tenant_id int NOT NULL,
+	CONSTRAINT cpr__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX cont_pasp_record_container_id__idx ON PasPort_MPGSK.dbo.container_pasport_record (  container_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.identifier_container_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.identifier_container_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.identifier_container_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	container_id int NOT NULL,
+	code nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	identifier_type_id int NULL,
+	valid_from datetimeoffset NOT NULL,
+	valid_to datetimeoffset NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT ica_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX ica_container_code_index ON PasPort_MPGSK.dbo.identifier_container_assignment (  code ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ica_container_id_valid__idx ON PasPort_MPGSK.dbo.identifier_container_assignment (  container_id ASC  , valid_from ASC  , valid_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX ica_external_id_tenant__idx ON PasPort_MPGSK.dbo.identifier_container_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.order_item definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.order_item;
+
+CREATE TABLE PasPort_MPGSK.dbo.order_item (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	number nvarchar(30) COLLATE Czech_100_CI_AS NOT NULL,
+	order_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	latest_order_item_revision_id int NULL,
+	CONSTRAINT oi_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX latest_order_item_revision_id__idx ON PasPort_MPGSK.dbo.order_item (  latest_order_item_revision_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oi_external_id_tenant__idx ON PasPort_MPGSK.dbo.order_item (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oi_number__idx ON PasPort_MPGSK.dbo.order_item (  number ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oi_order_id__idx ON PasPort_MPGSK.dbo.order_item (  order_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.order_item_revision definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.order_item_revision;
+
+CREATE TABLE PasPort_MPGSK.dbo.order_item_revision (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	revision nvarchar(15) COLLATE Czech_100_CI_AS NOT NULL,
+	order_item_id int NOT NULL,
+	valid_from date NOT NULL,
+	valid_to date NULL,
+	realization_address_id int NULL,
+	payer nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	container_count float NOT NULL,
+	container_type_id int NULL,
+	container_ownership nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	garbage_type_id int NOT NULL,
+	waste_disposal_frequency_id int NULL,
+	waste_disposal_day_id int NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	note2 nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	note3 nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT oir_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX oir_container_ownership_id__idx ON PasPort_MPGSK.dbo.order_item_revision (  container_ownership ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_container_type_id__idx ON PasPort_MPGSK.dbo.order_item_revision (  container_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_external_id_tenant__idx ON PasPort_MPGSK.dbo.order_item_revision (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_garb_type_id__idx ON PasPort_MPGSK.dbo.order_item_revision (  garbage_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_is_valid__idx ON PasPort_MPGSK.dbo.order_item_revision (  is_active ASC  )  
+	 INCLUDE ( order_item_id , valid_from , valid_to ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_order_item_id_valid__idx ON PasPort_MPGSK.dbo.order_item_revision (  order_item_id ASC  , valid_from ASC  , valid_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_realization_address_id__idx ON PasPort_MPGSK.dbo.order_item_revision (  realization_address_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_revision__idx ON PasPort_MPGSK.dbo.order_item_revision (  revision ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_waste_disposal_day_id__idx ON PasPort_MPGSK.dbo.order_item_revision (  waste_disposal_day_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX oir_waste_disposal_freq_id__idx ON PasPort_MPGSK.dbo.order_item_revision (  waste_disposal_frequency_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.pasport_entity_modification_record definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.pasport_entity_modification_record;
+
+CREATE TABLE PasPort_MPGSK.dbo.pasport_entity_modification_record (
+	id int IDENTITY(1,1) NOT NULL,
+	container_pasport_record_id int NOT NULL,
+	entity_modification_record_id int NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	CONSTRAINT pemr__pk PRIMARY KEY (id)
+);
+
+
+-- PasPort_MPGSK.dbo.payer_container_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.payer_container_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.payer_container_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	container_id int NOT NULL,
+	payer_name nvarchar(255) COLLATE Czech_100_CI_AS NOT NULL,
+	payer_type_id int NULL,
+	valid_from datetimeoffset NOT NULL,
+	valid_to datetimeoffset NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT pca_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX pca_container_id_valid__idx ON PasPort_MPGSK.dbo.payer_container_assignment (  container_id ASC  , valid_from ASC  , valid_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX pca_external_id_tenant__idx ON PasPort_MPGSK.dbo.payer_container_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX pca_payer_name__idx ON PasPort_MPGSK.dbo.payer_container_assignment (  payer_name ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX pca_payer_type__idx ON PasPort_MPGSK.dbo.payer_container_assignment (  payer_type_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.site_container_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.site_container_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.site_container_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	container_id int NOT NULL,
+	site_id int NOT NULL,
+	valid_from datetimeoffset NOT NULL,
+	valid_to datetimeoffset NULL,
+	note nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	tenant_id int NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	last_modification_source_id int NULL,
+	creation_source_id int NOT NULL,
+	CONSTRAINT site_container_order_assignment_id__PK PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX sca_container_id_valid__idx ON PasPort_MPGSK.dbo.site_container_assignment (  container_id ASC  , valid_from ASC  , valid_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX sca_external_id_tenant__idx ON PasPort_MPGSK.dbo.site_container_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX sca_is_active_valid__idx ON PasPort_MPGSK.dbo.site_container_assignment (  is_active ASC  , valid_from ASC  , valid_to ASC  )  
+	 INCLUDE ( container_id , site_id ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX sca_site_id_valid__idx ON PasPort_MPGSK.dbo.site_container_assignment (  site_id ASC  , valid_from ASC  , valid_to ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	container_id int NOT NULL,
+	waste_disposal_day_id int NOT NULL,
+	waste_disposal_frequency_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT tdpc_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX tdpc_container_id_valid__idx ON PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment (  container_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX tdpc_external_id_tenant__idx ON PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX tdpc_waste_disposal_day_id__idx ON PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment (  waste_disposal_day_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX tdpc_waste_disposal_frequency_id__idx ON PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment (  waste_disposal_frequency_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment definition
+
+-- Drop table
+
+-- DROP TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment;
+
+CREATE TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment (
+	id int IDENTITY(1,1) NOT NULL,
+	external_id nvarchar(255) COLLATE Czech_100_CI_AS NULL,
+	order_item_revision_id int NOT NULL,
+	waste_disposal_day_id int NOT NULL,
+	is_active bit DEFAULT 1 NOT NULL,
+	tenant_id int NOT NULL,
+	created_at datetimeoffset DEFAULT getutcdate() NOT NULL,
+	created_by int NOT NULL,
+	creation_source_id int NOT NULL,
+	updated_at datetimeoffset NULL,
+	updated_by int NULL,
+	last_modification_source_id int NULL,
+	CONSTRAINT wddoira_id__pk PRIMARY KEY (id)
+);
+ CREATE NONCLUSTERED INDEX wddoira_external_id_tenant__idx ON PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment (  external_id ASC  , tenant_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX wddoira_order_item_revision_id_valid__idx ON PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment (  order_item_revision_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX wddoira_waste_disposal_day_id__idx ON PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment (  waste_disposal_day_id ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 95   ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+
+
+-- PasPort_MPGSK.dbo.container foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT c_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT c_discard_source_idd__fk FOREIGN KEY (discard_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT c_discarted_by__FK FOREIGN KEY (discarded_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT c_last_container_pasport_record_id__fk FOREIGN KEY (last_container_pasport_record_id) REFERENCES PasPort_MPGSK.dbo.container_pasport_record(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT c_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_category_id_fk FOREIGN KEY (category_id) REFERENCES PasPort_MPGSK.dbo.container_category(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_garbage_group_id_fk FOREIGN KEY (garbage_group_id) REFERENCES PasPort_MPGSK.dbo.garbage_group(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_organization_unit_id_fk FOREIGN KEY (organization_unit_id) REFERENCES PasPort_MPGSK.dbo.organization_unit(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_ownership_status_fk FOREIGN KEY (ownership_status) REFERENCES PasPort_MPGSK.dbo.code_container_ownership(name);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_pattern_id_fk FOREIGN KEY (pattern_id) REFERENCES PasPort_MPGSK.dbo.container_pattern(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_status_fk FOREIGN KEY (status) REFERENCES PasPort_MPGSK.dbo.code_container_status(name);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.container ADD CONSTRAINT container_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.container__photo foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT container__photo_container_id_fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT container__photo_created_by__user_id_fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT container__photo_photos_id_fk FOREIGN KEY (photo_id) REFERENCES PasPort_MPGSK.dbo.photos(id);
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT container__photo_tenant_id_fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT container__photo_updated_by__user_id_fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT cp_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container__photo ADD CONSTRAINT cp_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+
+
+-- PasPort_MPGSK.dbo.container_extended foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT container_extended_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT container_extended_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT container_extended_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT container_extended_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT container_extended_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT container_id__fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_extended ADD CONSTRAINT oece_id__fk FOREIGN KEY (object_empty_container_event_id) REFERENCES PasPort_MPGSK.dbo.object_empty_container_event(id);
+
+
+-- PasPort_MPGSK.dbo.container_order_item_assignment foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_container_id__fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_order_item_id__fk FOREIGN KEY (order_item_id) REFERENCES PasPort_MPGSK.dbo.order_item(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_order_item_assignment ADD CONSTRAINT coia_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.container_pasport_record foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_container_id__fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_created_by FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_pasport_confirmed_by_user_id__fk FOREIGN KEY (pasport_confirmed_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_pasport_state_id FOREIGN KEY (pasport_state_id) REFERENCES PasPort_MPGSK.dbo.code_container_pasport_state(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_performed_action_id__fk FOREIGN KEY (performed_action_id) REFERENCES PasPort_MPGSK.dbo.code_container_pasport_action(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.container_pasport_record ADD CONSTRAINT cpr_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.identifier_container_assignment foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_container_id__fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_indetifier_type_id__fk FOREIGN KEY (identifier_type_id) REFERENCES PasPort_MPGSK.dbo.code_identifier_type(id);
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.identifier_container_assignment ADD CONSTRAINT ica_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.order_item foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT latest_order_item_revision_id_fk FOREIGN KEY (latest_order_item_revision_id) REFERENCES PasPort_MPGSK.dbo.order_item_revision(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT oi_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT oi_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT oi_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT oi_order_id__fk FOREIGN KEY (order_id) REFERENCES PasPort_MPGSK.dbo.[order](id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT oi_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item ADD CONSTRAINT oi_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.order_item_revision foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_container_ownership__fk FOREIGN KEY (container_ownership) REFERENCES PasPort_MPGSK.dbo.code_container_ownership(name);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_container_type__fk FOREIGN KEY (container_type_id) REFERENCES PasPort_MPGSK.dbo.container_type(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_garbage_type_id__fk FOREIGN KEY (garbage_type_id) REFERENCES PasPort_MPGSK.dbo.garbage_type(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_order_item_id__fk FOREIGN KEY (order_item_id) REFERENCES PasPort_MPGSK.dbo.order_item(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_realization_address_id FOREIGN KEY (realization_address_id) REFERENCES PasPort_MPGSK.dbo.address(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_waste_disposal_dat_id__fk FOREIGN KEY (waste_disposal_day_id) REFERENCES PasPort_MPGSK.dbo.waste_disposal_day(id);
+ALTER TABLE PasPort_MPGSK.dbo.order_item_revision ADD CONSTRAINT oir_waste_disposal_frequency_id__fk FOREIGN KEY (waste_disposal_frequency_id) REFERENCES PasPort_MPGSK.dbo.waste_disposal_frequency(id);
+
+
+-- PasPort_MPGSK.dbo.pasport_entity_modification_record foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.pasport_entity_modification_record ADD CONSTRAINT pemr_container_pasport_record_id__fk FOREIGN KEY (container_pasport_record_id) REFERENCES PasPort_MPGSK.dbo.container_pasport_record(id);
+ALTER TABLE PasPort_MPGSK.dbo.pasport_entity_modification_record ADD CONSTRAINT pemr_entity_modification_record_id__fk FOREIGN KEY (entity_modification_record_id) REFERENCES PasPort_MPGSK.dbo.entity_modification_record(id);
+ALTER TABLE PasPort_MPGSK.dbo.pasport_entity_modification_record ADD CONSTRAINT pemr_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+
+
+-- PasPort_MPGSK.dbo.payer_container_assignment foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_container_id__fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_payer_type_id__fk FOREIGN KEY (payer_type_id) REFERENCES PasPort_MPGSK.dbo.code_payer_type(id);
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.payer_container_assignment ADD CONSTRAINT pca_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.site_container_assignment foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT sca_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT sca_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT site_container_order_assignment_container_id__FK FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT site_container_order_assignment_created_by__FK FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT site_container_order_assignment_site_id__FK FOREIGN KEY (site_id) REFERENCES PasPort_MPGSK.dbo.site(id);
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT site_container_order_assignment_tenant_id__FK FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.site_container_assignment ADD CONSTRAINT site_container_order_assignment_updated_by__FK FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+
+
+-- PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_container_id__fk FOREIGN KEY (container_id) REFERENCES PasPort_MPGSK.dbo.container(id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_waste_disposal_day_id__fk FOREIGN KEY (waste_disposal_day_id) REFERENCES PasPort_MPGSK.dbo.waste_disposal_day(id);
+ALTER TABLE PasPort_MPGSK.dbo.temporary_disposal_parameters_container_assignment ADD CONSTRAINT tdpc_waste_disposal_frequency_id__fk FOREIGN KEY (waste_disposal_frequency_id) REFERENCES PasPort_MPGSK.dbo.waste_disposal_frequency(id);
+
+
+-- PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment foreign keys
+
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_created_by__fk FOREIGN KEY (created_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_creation_source_id__fk FOREIGN KEY (creation_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_last_modification_source_id__fk FOREIGN KEY (last_modification_source_id) REFERENCES PasPort_MPGSK.dbo.code_modification_source(id);
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_order_item_revision_id__fk FOREIGN KEY (order_item_revision_id) REFERENCES PasPort_MPGSK.dbo.order_item_revision(id);
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_tenant_id__fk FOREIGN KEY (tenant_id) REFERENCES PasPort_MPGSK.dbo.tenant(id);
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_updated_by__fk FOREIGN KEY (updated_by) REFERENCES PasPort_MPGSK.dbo.[user](id);
+ALTER TABLE PasPort_MPGSK.dbo.waste_disposal_day_order_item_revision_assignment ADD CONSTRAINT wddoira_waste_disposal_day_id__fk FOREIGN KEY (waste_disposal_day_id) REFERENCES PasPort_MPGSK.dbo.waste_disposal_day(id);
+
+
+-- dbo.container_category_view source
+
+ALTER VIEW [dbo].[container_category_view] AS
+select cc.id,
+       cc.short_name,
+       cc.name,
+       cc.description,
+       cc.parent_id,
+       cc.tenant_id,
+       cc.is_active,
+       cc.created_at,
+       cc.updated_at,
+       cc_parent.name        as parent_category_name,
+       cc_parent.description as parent_category_description
+from container_category cc
+         left join container_category cc_parent on cc_parent.id = cc.parent_id;
+
+
+-- dbo.container_external_customers_view source
+
+ALTER VIEW [dbo].[container_external_customers_view] AS
+select c.id,
+       c.internal_number,
+       c.evidence_number,
+       c.evidence_number_search,
+       c.organization_unit_id,
+       c.ownership_status,
+       c.status,
+       c.garbage_group_id,
+       c.category_id,
+       c.pattern_id,
+       c.default_photo_id,
+       c.is_active,
+       c.created_at,
+       c.updated_at,
+       c.created_by,
+       c.updated_by,
+       c.tenant_id,
+       c.external_id,
+       c.discarded_at,
+       c.discarded_by,
+       c.discard_to_date,
+       c.discard_source_id,
+       c.public_note,
+       ou.name as organization_unit_name,
+       ou.prefix as organization_unit_code,
+       ou.is_active as organization_unit_is_active,
+       cc.name as container_category_name,
+       cc.short_name as container_category_short_name,
+       cp.name as container_pattern_name,
+       cp.short_name as container_pattern_short_name,
+       cp.volume as container_pattern_volume,
+       cp.container_quantity_unit_id as container_pattern_quantity_unit_id,
+       cm.id as container_material_id,
+       cm.name as container_material_name,
+       gg.name as garbage_group_name,
+       oir.realization_address_id, 
+       adr_oir.full_address as realization_address,
+       adr_oir.street as realization_address_street,
+       adr_oir.registry_number as realization_address_registry_number,
+       adr_oir.orientation_number as realization_address_orientation_number,
+       adr_oir.city as realization_address_city,
+       adr_oir.postal_code as realization_address_postal_code,
+       adr_oir.country as realization_address_country,
+       a.full_address as address,
+       a.id as address_id,
+       a.street as address_street,
+       a.registry_number as address_registry_number,
+       a.orientation_number as address_orientation_number,
+       a.city as address_city,
+       a.postal_code as address_postal_code,
+       a.country as address_country,
+       c.last_modification_source_id,
+       s.id                                       as site_id,
+       s.name                                     as site_name,
+       s.lat                                      as site_lat,
+       s.lng                                      as site_lng,
+       pca.payer_name,
+       pca.payer_type_id,
+       ica.id as identifier_container_assignment_id,
+       ica.code as identifier_code,
+       wdf.name as waste_disposal_frequency_name,
+    --    wdd.disposal_day as waste_disposal_day,
+       STUFF((
+              SELECT ', ' + wdd1.disposal_day
+              FROM waste_disposal_day_order_item_revision_assignment wddira
+              LEFT JOIN waste_disposal_day wdd1 ON wddira.waste_disposal_day_id = wdd1.id
+              WHERE wddira.order_item_revision_id = oir.id AND wddira.is_active = 1
+              FOR XML PATH(''), TYPE
+              ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS waste_disposal_day,
+       btsa.building_type_id,
+       bt.name as building_type_name,
+       coia.order_number,
+       cu1.name as customer_name,
+       cu2.name as end_customer_name
+from container c
+        join organization_unit ou on c.organization_unit_id = ou.id and c.tenant_id = ou.tenant_id
+         left join garbage_group gg on c.garbage_group_id = gg.id and c.tenant_id = gg.tenant_id
+         left join container_category cc on c.category_id = cc.id and c.tenant_id = cc.tenant_id
+         left join container_pattern cp on c.pattern_id = cp.id and c.tenant_id = cp.tenant_id
+         left join container_material cm on cp.container_material_id = cm.id
+         left join site_container_assignment sca on
+             c.id = sca.container_id and
+             sca.is_active = 1 and
+             sca.valid_from <= getutcdate() and
+             (sca.valid_to is null or sca.valid_to > getutcdate())
+         left join site s on sca.site_id = s.id
+         left join address a on s.address_id = a.id
+         left join building_type_site_assignment btsa on
+            s.id = btsa.site_id and
+            btsa.is_active = 1
+         left join building_type bt on 
+            btsa.building_type_id = bt.id
+         left join payer_container_assignment pca on
+             c.id = pca.container_id and
+             pca.is_active = 1 and
+             pca.valid_from <= getutcdate() and
+             (pca.valid_to is null or pca.valid_to > getutcdate())
+         left join identifier_container_assignment ica on
+             c.id = ica.container_id and
+             ica.is_active = 1 and
+             ica.valid_from <= getutcdate() and
+             (ica.valid_to is null or ica.valid_to > getutcdate())
+         outer apply (
+             select top 1 coia.order_item_id, coia.order_id, coia.order_number, coia.latest_order_item_revision_id, customer_id, end_customer_id
+             from container_order_item_assignment_view coia
+             where c.id = coia.container_id and
+                   c.organization_unit_id = coia.organization_unit_id and
+                   coia.is_active = 1 and
+                   coia.valid_from <= getutcdate() and
+                   (coia.valid_to is null or coia.valid_to > getutcdate())
+             order by id
+             ) coia
+        --  join order_item oi on coia.order_item_id = oi.id
+        --  join [order] o on oi.order_id = o.id
+
+         outer apply (
+			select top 1 oir.id, oir.valid_from, oir.valid_to, oir.realization_address_id, oir.waste_disposal_frequency_id, oir.waste_disposal_day_id
+			from order_item_revision oir
+			where oir.order_item_id = coia.order_item_id 
+				and oir.is_active = 1
+			order by 
+				case when  
+						oir.valid_from <= getutcdate() and
+						(oir.valid_to is null or oir.valid_to > getutcdate() )
+					then 0
+				when oir.id = coia.latest_order_item_revision_id 
+					then 1
+				else 2
+				end asc
+		
+		) oir
+        left join address adr_oir ON adr_oir.id = oir.realization_address_id
+
+         left join customer cu1 on coia.customer_id = cu1.id
+         left join customer cu2 on coia.end_customer_id = cu2.id
+
+         left join waste_disposal_frequency wdf on oir.waste_disposal_frequency_id = wdf.id
+        --  left join waste_disposal_day wdd on oir.waste_disposal_day_id = wdd.id;
+
+        where coia.order_id is not null;
+
+
+-- dbo.container_external_customers_view2 source
+
+ALTER VIEW [dbo].[container_external_customers_view2] AS
+select c.id,
+       c.internal_number,
+       c.evidence_number,
+       c.evidence_number_search,
+       c.organization_unit_id,
+       c.ownership_status,
+       c.status,
+       c.garbage_group_id,
+       c.category_id,
+       c.pattern_id,
+       c.default_photo_id,
+       c.is_active,
+       c.created_at,
+       c.updated_at,
+       c.created_by,
+       c.updated_by,
+       c.tenant_id,
+       c.external_id,
+       c.discarded_at,
+       c.discarded_by,
+       c.discard_to_date,
+       c.discard_source_id,
+       ou.name as organization_unit_name,
+       ou.prefix as organization_unit_code,
+       ou.is_active as organization_unit_is_active,
+       cc.name as container_category_name,
+       cc.short_name as container_category_short_name,
+       cp.name as container_pattern_name,
+       cp.short_name as container_pattern_short_name,
+       cp.volume as container_pattern_volume,
+       cp.container_quantity_unit_id as container_pattern_quantity_unit_id,
+       cm.id as container_material_id,
+       cm.name as container_material_name,
+       gg.name as garbage_group_name,
+       oir.realization_address_id, 
+       adr_oir.full_address as realization_address,
+       adr_oir.street as realization_address_street,
+       adr_oir.registry_number as realization_address_registry_number,
+       adr_oir.orientation_number as realization_address_orientation_number,
+       adr_oir.city as realization_address_city,
+       adr_oir.postal_code as realization_address_postal_code,
+       adr_oir.country as realization_address_country,
+       a.full_address as address,
+       a.id as address_id,
+       a.street as address_street,
+       a.registry_number as address_registry_number,
+       a.orientation_number as address_orientation_number,
+       a.city as address_city,
+       a.postal_code as address_postal_code,
+       a.country as address_country,
+       c.last_modification_source_id,
+       s.id                                       as site_id,
+       s.name                                     as site_name,
+       s.lat                                      as site_lat,
+       s.lng                                      as site_lng,
+       pca.payer_name,
+       pca.payer_type_id,
+       ica.id as identifier_container_assignment_id,
+       ica.code as identifier_code,
+       wdf.name as waste_disposal_frequency_name,
+       wdd.disposal_day as waste_disposal_day,
+       btsa.building_type_id,
+       bt.name as building_type_name,
+       o.number as order_number,
+       cu1.name as customer_name,
+       cu2.name as end_customer_name
+from container c
+        join organization_unit ou on c.organization_unit_id = ou.id and c.tenant_id = ou.tenant_id
+         left join garbage_group gg on c.garbage_group_id = gg.id and c.tenant_id = gg.tenant_id
+         left join container_category cc on c.category_id = cc.id and c.tenant_id = cc.tenant_id
+         left join container_pattern cp on c.pattern_id = cp.id and c.tenant_id = cp.tenant_id
+         left join container_material cm on cp.container_material_id = cm.id
+         left join site_container_assignment sca on
+             c.id = sca.container_id and
+             sca.is_active = 1 and
+             sca.valid_from <= getutcdate() and
+             (sca.valid_to is null or sca.valid_to >= getutcdate())
+         left join site s on sca.site_id = s.id
+         left join address a on s.address_id = a.id
+         left join building_type_site_assignment btsa on
+            s.id = btsa.site_id and
+            btsa.is_active = 1
+         left join building_type bt on 
+            btsa.building_type_id = bt.id
+         left join payer_container_assignment pca on
+             c.id = pca.container_id and
+             pca.is_active = 1 and
+             pca.valid_from <= getutcdate() and
+             (pca.valid_to is null or pca.valid_to >= getutcdate())
+         left join identifier_container_assignment ica on
+             c.id = ica.container_id and
+             ica.is_active = 1 and
+             ica.valid_from <= getutcdate() and
+             (ica.valid_to is null or ica.valid_to >= getutcdate())
+         outer apply (
+             select top 1 order_item_id
+             from container_order_item_assignment coia
+             where c.id = coia.container_id and
+                   coia.is_active = 1 and
+                   coia.valid_from <= getutcdate() and
+                   (coia.valid_to is null or coia.valid_to >= getutcdate())
+             order by id
+             ) coia
+         join order_item oi on coia.order_item_id = oi.id
+         join [order] o on oi.order_id = o.id
+
+         join order_item_revision oir on 
+            oir.order_item_id = oi.id and
+            oir.is_active = 1 and 
+            ( 
+                (oir.valid_from <= getutcdate() and
+                (oir.valid_to is null or oir.valid_to >= getutcdate()))
+                or
+                (
+                    not (
+                        oir.valid_from <= getutcdate() and
+                        (oir.valid_to is null or oir.valid_to >= getutcdate())
+                    )
+                    and oir.id = oi.latest_order_item_revision_id
+                )
+            )
+        left join address adr_oir ON adr_oir.id = oir.realization_address_id
+
+         left join customer cu1 on o.customer_id = cu1.id
+         left join customer cu2 on o.end_customer_id = cu2.id
+
+         left join waste_disposal_frequency wdf on oir.waste_disposal_frequency_id = wdf.id
+         left join waste_disposal_day wdd on oir.waste_disposal_day_id = wdd.id;
+
+
+-- dbo.container_order_item_assignment_view source
+
+ALTER VIEW [dbo].[container_order_item_assignment_view] AS
+select 
+	coia.*,
+	oi.latest_order_item_revision_id,
+	oi.number as order_item_number,
+	o.id as order_id,
+	o.number as order_number,
+	o.organization_unit_id,
+	o.customer_id,
+	o.end_customer_id
+  from container_order_item_assignment coia
+  left join order_item oi on oi.id = coia.order_item_id
+  left join [order] o on oi.order_id = o.id;
+
+
+-- dbo.container_pattern_view source
+
+ALTER VIEW [dbo].[container_pattern_view] AS
+select cp.id,
+       cp.short_name,
+       cp.name,
+       cp.description,
+       cp.container_color_id,
+       cp.container_material_id,
+       cp.container_quantity_unit_id,
+       cp.volume,
+       cp.tenant_id,
+       cp.is_active,
+       cp.created_at,
+       cp.updated_at,
+       cc.name  as container_color_name,
+       cm.name  as container_material_name,
+       cqu.name as container_quantity_name,
+       cqu.unit as container_quantity_unit
+from container_pattern cp
+         join container_color cc on cp.container_color_id = cc.id and cp.tenant_id = cc.tenant_id
+         join container_material cm on cp.container_material_id = cm.id and cp.tenant_id = cc.tenant_id
+         join container_quantity_unit cqu on cp.container_quantity_unit_id = cqu.id and cp.tenant_id = cc.tenant_id;
+
+
+-- dbo.container_view source
+
+ALTER VIEW [dbo].[container_view] AS
+select c.id,
+       c.evidence_number,
+       c.evidence_number_search,
+       c.internal_number,
+       c.organization_unit_id,
+       c.ownership_status,
+       c.status,
+       c.note,
+       c.garbage_group_id,
+       c.category_id,
+       c.pattern_id,
+       c.default_photo_id,
+       c.year_production,
+       c.is_active,
+       c.created_at,
+       c.updated_at,
+       c.created_by,
+       c.updated_by,
+       c.tenant_id,
+       c.external_id,
+       c.discarded_at,
+       c.discarded_by,
+       c.discard_to_date,
+       c.discard_source_id,
+       c.public_note,
+       cc.name as container_category_name,
+       cc.short_name as container_category_short_name,
+       cp.name as container_pattern_name,
+       cp.short_name as container_pattern_short_name,
+       cp.volume as container_pattern_volume,
+       cp.container_quantity_unit_id as container_pattern_quantity_unit_id,
+       gg.name as garbage_group_name,
+       ou.name as organization_unit_name,
+       ou.prefix as organization_unit_code,
+       COALESCE(cpr.pasport_state_id, 0) as pasport_state_id,
+       a.id as address_id,
+       a.full_address as address,
+       a.street as address_street,
+       a.registry_number as address_registry_number,
+       a.orientation_number as address_orientation_number,
+       a.city as address_city,
+       a.postal_code as address_postal_code,
+       a.country as address_country,
+       ce.object_empty_container_event_id,
+       ce.object_empty_container_event_timestamp,
+       ce.object_empty_container_event_weight,
+       cpr.created_at as pasport_created_at,
+       cpr.performed_action_id as pasport_performed_action_id,
+       cpr.pasport_confirmed_at,
+       cpr.creation_source_id as pasport_creation_source_id,
+       e1.full_name as pasport_confirmed_by_fullname,
+       e4.full_name as pasport_updated_by_fullname,
+       c.last_modification_source_id,
+       c.creation_source_id,
+       e2.full_name as updated_by_fullname,
+       e3.full_name as created_by_fullname,
+       s.id                                       as site_id,
+       s.name                                     as site_name,
+       s.lat                                      as lat,
+       s.lng                                      as lng,
+       s.is_container_warehouse                   as site_is_container_warehouse,
+       ou.is_active as organization_unit_is_active,
+       pca.payer_name,
+       pca.payer_type_id,
+       ica.id as identifier_container_assignment_id,
+       ica.code as identifier_code,
+       ica.identifier_type_id,
+       tdpca.id as temp_disp_params_container_assignment_id,
+       sca.id as site_container_assignment_id,
+       sca.valid_from as site_container_assignment_valid_from,
+       sca.valid_to as site_container_assignment_valid_to,
+       sca.note as site_container_assignment_note,
+       coia.order_number,
+       cu1.name as customer_name,
+       cu2.name as end_customer_name,
+       oir.realization_address_id, 
+       adr_oir.full_address as realization_address,
+       adr_oir.street as realization_address_street,
+       adr_oir.registry_number as realization_address_registry_number,
+       adr_oir.orientation_number as realization_address_orientation_number,
+       adr_oir.city as realization_address_city,
+       adr_oir.postal_code as realization_address_postal_code,
+       adr_oir.country as realization_address_country,
+       wdf1.name as waste_disposal_frequency_name,
+    --    wdd1.disposal_day as waste_disposal_day,
+        STUFF((
+            SELECT ', ' + wdd1.disposal_day
+            FROM waste_disposal_day_order_item_revision_assignment wddira
+            LEFT JOIN waste_disposal_day wdd1 ON wddira.waste_disposal_day_id = wdd1.id
+            WHERE wddira.order_item_revision_id = oir.id AND wddira.is_active = 1
+            FOR XML PATH(''), TYPE
+        ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS waste_disposal_day,
+       wdf2.name as temp_waste_disposal_frequency_name,
+       wdd2.disposal_day as temp_waste_disposal_day,
+       btsa.id as building_type_site_assignment_id,
+       btsa.building_type_id,
+       bt.name as building_type_name,
+       case when ica2.id is null
+               then cast(0 as bit)
+               else cast(1 as bit) END as has_identifier_assignment
+from container c
+         join organization_unit ou on c.organization_unit_id = ou.id and c.tenant_id = ou.tenant_id
+         left join garbage_group gg on c.garbage_group_id = gg.id and c.tenant_id = gg.tenant_id
+         left join container_category cc on c.category_id = cc.id and c.tenant_id = cc.tenant_id
+         left join container_pattern cp on c.pattern_id = cp.id and c.tenant_id = cp.tenant_id
+         left join container_pasport_record cpr on c.last_container_pasport_record_id = cpr.id
+         left join container_extended ce on c.id = ce.container_id
+         left join site_container_assignment sca on
+             c.id = sca.container_id and
+             sca.is_active = 1 and
+             sca.valid_from <= getutcdate() and
+             (sca.valid_to is null or sca.valid_to > getutcdate())
+         left join site s on sca.site_id = s.id
+         left join building_type_site_assignment btsa on
+            s.id = btsa.site_id and
+            btsa.is_active = 1
+         left join building_type bt on 
+            btsa.building_type_id = bt.id
+         left join address a on s.address_id = a.id
+         left join [user] u1 on cpr.pasport_confirmed_by = u1.id
+         left join employee e1 on u1.employee_id = e1.id
+         left join [user] u2 on c.updated_by = u2.id
+         left join employee e2 on u2.employee_id = e2.id
+         left join [user] u3 on c.created_by = u3.id
+         left join employee e3 on u3.employee_id = e3.id
+         left join [user] u4 on cpr.created_by = u4.id
+         left join employee e4 on u4.employee_id = e4.id
+         left join payer_container_assignment pca on
+             c.id = pca.container_id and
+             pca.is_active = 1 and
+             pca.valid_from <= getutcdate() and
+             (pca.valid_to is null or pca.valid_to > getutcdate())
+         left join identifier_container_assignment ica on
+             c.id = ica.container_id and
+             ica.is_active = 1 and
+             ica.valid_from <= getutcdate() and
+             (ica.valid_to is null or ica.valid_to > getutcdate())
+
+        outer apply (
+             select top 1 id
+             from identifier_container_assignment ica
+             where c.id = ica.container_id and
+                    ica.is_active = 1 and
+                    ica.valid_from <= getutcdate()
+             order by id
+            ) ica2
+
+        left join temporary_disposal_parameters_container_assignment tdpca on 
+			c.id = tdpca.container_id and
+			tdpca.is_active = 1
+         outer apply (
+             select top 1 coia.order_item_id, coia.order_id, coia.order_number, coia.latest_order_item_revision_id, customer_id, end_customer_id
+             from container_order_item_assignment_view coia
+             where c.id = coia.container_id and
+                   c.organization_unit_id = coia.organization_unit_id and
+                   coia.is_active = 1 and
+                   coia.valid_from <= getutcdate() and
+                   (coia.valid_to is null or coia.valid_to > getutcdate())
+             order by id
+             ) coia
+        --  left join order_item oi on coia.order_item_id = oi.id
+        --  left join [order] o on oi.order_id = o.id
+         outer apply (
+			select top 1 oir.id, oir.valid_from, oir.valid_to, oir.realization_address_id, oir.waste_disposal_frequency_id, oir.waste_disposal_day_id
+			from order_item_revision oir
+			where oir.order_item_id = coia.order_item_id 
+				and oir.is_active = 1
+			order by 
+				case when  
+						oir.valid_from <= getutcdate() and
+						(oir.valid_to is null or oir.valid_to > getutcdate() )
+					then 0
+				when oir.id = coia.latest_order_item_revision_id 
+					then 1
+				else 2
+				end asc
+		
+		) oir
+
+		 left join address adr_oir ON adr_oir.id = oir.realization_address_id
+         left join customer cu1 on coia.customer_id = cu1.id
+         left join customer cu2 on coia.end_customer_id = cu2.id
+         
+         left join waste_disposal_frequency wdf1 on oir.waste_disposal_frequency_id = wdf1.id
+        --  left join waste_disposal_day_order_item_revision_assignment wddira on oir.id = wddira.order_item_revision_id
+
+         left join waste_disposal_frequency wdf2 on tdpca.waste_disposal_frequency_id = wdf2.id
+         left join waste_disposal_day wdd2 on tdpca.waste_disposal_day_id = wdd2.id;
+
+
+-- dbo.container_view2 source
+
+ALTER VIEW [dbo].[container_view2] AS
+select c.id,
+       c.evidence_number,
+       c.evidence_number_search,
+       c.internal_number,
+       c.organization_unit_id,
+       c.ownership_status,
+       c.status,
+       c.note,
+       c.garbage_group_id,
+       c.category_id,
+       c.pattern_id,
+       c.default_photo_id,
+       c.year_production,
+       c.is_active,
+       c.created_at,
+       c.updated_at,
+       c.created_by,
+       c.updated_by,
+       c.tenant_id,
+       c.external_id,
+       c.discarded_at,
+       c.discarded_by,
+       c.discard_to_date,
+       c.discard_source_id,
+       c.public_note,
+       cc.name as container_category_name,
+       cc.short_name as container_category_short_name,
+       cp.name as container_pattern_name,
+       cp.short_name as container_pattern_short_name,
+       cp.volume as container_pattern_volume,
+       cp.container_quantity_unit_id as container_pattern_quantity_unit_id,
+       gg.name as garbage_group_name,
+       ou.name as organization_unit_name,
+       ou.prefix as organization_unit_code,
+       COALESCE(cpr.pasport_state_id, 0) as pasport_state_id,
+       a.id as address_id,
+       a.full_address as address,
+       a.street as address_street,
+       a.registry_number as address_registry_number,
+       a.orientation_number as address_orientation_number,
+       a.city as address_city,
+       a.postal_code as address_postal_code,
+       a.country as address_country,
+       ce.object_empty_container_event_timestamp,
+       cpr.created_at as pasport_created_at,
+       cpr.performed_action_id as pasport_performed_action_id,
+       cpr.pasport_confirmed_at,
+       cpr.creation_source_id as pasport_creation_source_id,
+       e1.full_name as pasport_confirmed_by_fullname,
+       e4.full_name as pasport_updated_by_fullname,
+       c.last_modification_source_id,
+       c.creation_source_id,
+       e2.full_name as updated_by_fullname,
+       e3.full_name as created_by_fullname,
+       s.id                                       as site_id,
+       s.name                                     as site_name,
+       s.lat                                      as lat,
+       s.lng                                      as lng,
+       s.is_container_warehouse                   as site_is_container_warehouse,
+       ou.is_active as organization_unit_is_active,
+       pca.payer_name,
+       pca.payer_type_id,
+       ica.id as identifier_container_assignment_id,
+       ica.code as identifier_code,
+       ica.identifier_type_id,
+       tdpca.id as temp_disp_params_container_assignment_id,
+       sca.id as site_container_assignment_id,
+       sca.valid_from as site_container_assignment_valid_from,
+       sca.valid_to as site_container_assignment_valid_to,
+       sca.note as site_container_assignment_note,
+       coia.order_number,
+       cu1.name as customer_name,
+       cu2.name as end_customer_name,
+       oir.realization_address_id, 
+       adr_oir.full_address as realization_address,
+       adr_oir.street as realization_address_street,
+       adr_oir.registry_number as realization_address_registry_number,
+       adr_oir.orientation_number as realization_address_orientation_number,
+       adr_oir.city as realization_address_city,
+       adr_oir.postal_code as realization_address_postal_code,
+       adr_oir.country as realization_address_country,
+       wdf1.name as waste_disposal_frequency_name,
+    --    wdd1.disposal_day as waste_disposal_day,
+        STUFF((
+            SELECT ', ' + wdd1.disposal_day
+            FROM waste_disposal_day_order_item_revision_assignment wddira
+            LEFT JOIN waste_disposal_day wdd1 ON wddira.waste_disposal_day_id = wdd1.id
+            WHERE wddira.order_item_revision_id = oir.id AND wddira.is_active = 1
+            FOR XML PATH(''), TYPE
+        ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS waste_disposal_day,
+       wdf2.name as temp_waste_disposal_frequency_name,
+       wdd2.disposal_day as temp_waste_disposal_day,
+       btsa.id as building_type_site_assignment_id,
+       btsa.building_type_id,
+       bt.name as building_type_name,
+       case when ica2.id is null
+               then cast(0 as bit)
+               else cast(1 as bit) END as has_identifier_assignment
+from container c
+         CROSS JOIN dbo.NowUtc n
+         join organization_unit ou on c.organization_unit_id = ou.id and c.tenant_id = ou.tenant_id
+         left join garbage_group gg on c.garbage_group_id = gg.id and c.tenant_id = gg.tenant_id
+         left join container_category cc on c.category_id = cc.id and c.tenant_id = cc.tenant_id
+         left join container_pattern cp on c.pattern_id = cp.id and c.tenant_id = cp.tenant_id
+         left join container_pasport_record cpr on c.last_container_pasport_record_id = cpr.id
+         left join container_extended ce on c.id = ce.container_id
+         left join site_container_assignment sca on
+             c.id = sca.container_id and
+             sca.is_active = 1 and
+             sca.valid_from <= n.d and
+             (sca.valid_to is null or sca.valid_to > n.d)
+         left join site s on sca.site_id = s.id
+         left join building_type_site_assignment btsa on
+            s.id = btsa.site_id and
+            btsa.is_active = 1
+         left join building_type bt on 
+            btsa.building_type_id = bt.id
+         left join address a on s.address_id = a.id
+         left join [user] u1 on cpr.pasport_confirmed_by = u1.id
+         left join employee e1 on u1.employee_id = e1.id
+         left join [user] u2 on c.updated_by = u2.id
+         left join employee e2 on u2.employee_id = e2.id
+         left join [user] u3 on c.created_by = u3.id
+         left join employee e3 on u3.employee_id = e3.id
+         left join [user] u4 on cpr.created_by = u4.id
+         left join employee e4 on u4.employee_id = e4.id
+         left join payer_container_assignment pca on
+             c.id = pca.container_id and
+             pca.is_active = 1 and
+             pca.valid_from <= n.d and
+             (pca.valid_to is null or pca.valid_to > n.d)
+         left join identifier_container_assignment ica on
+             c.id = ica.container_id and
+             ica.is_active = 1 and
+             ica.valid_from <= n.d and
+             (ica.valid_to is null or ica.valid_to > n.d)
+
+        outer apply (
+             select top 1 id
+             from identifier_container_assignment ica
+             where c.id = ica.container_id and
+                    ica.is_active = 1 and
+                    ica.valid_from <= n.d
+             order by id
+            ) ica2
+
+        left join temporary_disposal_parameters_container_assignment tdpca on 
+			c.id = tdpca.container_id and
+			tdpca.is_active = 1
+         outer apply (
+             select top 1 coia.order_item_id, coia.order_id, coia.order_number, coia.latest_order_item_revision_id, customer_id, end_customer_id
+             from container_order_item_assignment_view coia
+             where c.id = coia.container_id and
+                   c.organization_unit_id = coia.organization_unit_id and
+                   coia.is_active = 1 and
+                   coia.valid_from <= n.d and
+                   (coia.valid_to is null or coia.valid_to > n.d)
+             order by id
+             ) coia
+        --  left join order_item oi on coia.order_item_id = oi.id
+        --  left join [order] o on oi.order_id = o.id
+         outer apply (
+			select top 1 oir.id, oir.valid_from, oir.valid_to, oir.realization_address_id, oir.waste_disposal_frequency_id, oir.waste_disposal_day_id
+			from order_item_revision oir
+			where oir.order_item_id = coia.order_item_id 
+				and oir.is_active = 1
+			order by 
+				case when  
+						oir.valid_from <= n.d and
+						(oir.valid_to is null or oir.valid_to > n.d )
+					then 0
+				when oir.id = coia.latest_order_item_revision_id 
+					then 1
+				else 2
+				end asc
+		
+		) oir
+
+		 left join address adr_oir ON adr_oir.id = oir.realization_address_id
+         left join customer cu1 on coia.customer_id = cu1.id
+         left join customer cu2 on coia.end_customer_id = cu2.id
+         
+         left join waste_disposal_frequency wdf1 on oir.waste_disposal_frequency_id = wdf1.id
+        --  left join waste_disposal_day_order_item_revision_assignment wddira on oir.id = wddira.order_item_revision_id
+
+         left join waste_disposal_frequency wdf2 on tdpca.waste_disposal_frequency_id = wdf2.id
+         left join waste_disposal_day wdd2 on tdpca.waste_disposal_day_id = wdd2.id;
+
+
+-- dbo.empty_container_event_base_view source
+
+-- View zabezpecujuci Use Case: https://confluence.radium.cz/pages/viewpage.action@p0pageId=118197015#id-400UC24:Zobrazitv%C3%BDsypyn%C3%A1doby-Z%C3%ADsk%C3%A1n%C3%ADud%C3%A1lost%C3%ADv%C3%BDsypun%C3%A1doby
+
+ 
+ALTER VIEW [dbo].[empty_container_event_base_view] AS
+
+    SELECT oece.id,
+        oece.code,
+        oece.timestamp,
+        oece.external_id,
+        oece.lat,
+        oece.lng,
+        oece.weight,
+        oece.loader_arm_code,
+        oece.location,
+        oece.location_street,
+        oece.location_city,
+        oece.location_country,
+        oece.object_id,
+        oece.tenant_id,
+        oece.is_active,
+        oece.updated_at,
+        oece.created_at,
+        ica.container_id
+
+    FROM object_empty_container_event oece
+    JOIN identifier_container_assignment ica ON ica.code = oece.code 
+        AND ica.tenant_id = oece.tenant_id
+        AND ica.is_active = 1
+    WHERE
+    ica.valid_from <= oece.timestamp AND 
+    (ica.valid_to IS NULL OR ica.valid_to > oece.timestamp);
+
+
+-- dbo.empty_container_event_export_xlsx_ext_customers_view source
+
+ALTER VIEW [dbo].[empty_container_event_export_xlsx_ext_customers_view] AS
+
+
+SELECT 
+    ecev.id,
+	ecev.code,
+    ecev.timestamp,
+	ecev.tenant_id,
+	ecev.container_id,
+	ecev.container_order_item_assignment_id,
+  ecev.location,
+  ecev.location_street,
+  ecev.location_city,
+  ecev.location_country,
+  ecev.lat,
+  ecev.lng,
+  ecev.weight,
+	c.pattern_id,
+	c.garbage_group_id,
+	c.evidence_number,
+  c.public_note,
+	adr_s.full_address as site_address,
+	wdf.name as waste_disposal_frequency_name,
+	-- wdd.disposal_day as waste_disposal_day,
+  STUFF((
+              SELECT ', ' + wdd1.disposal_day
+              FROM waste_disposal_day_order_item_revision_assignment wddira
+              LEFT JOIN waste_disposal_day wdd1 ON wddira.waste_disposal_day_id = wdd1.id
+              WHERE wddira.order_item_revision_id = oir.id AND wddira.is_active = 1
+              FOR XML PATH(''), TYPE
+              ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS waste_disposal_day,
+	pca.payer_name,
+	pca.payer_type_id,
+  ecev.is_active,
+  adr_oir.full_address as realization_address
+
+FROM [empty_container_event_view] ecev
+LEFT JOIN container_order_item_assignment coia ON coia.id = ecev.container_order_item_assignment_id
+
+JOIN order_item oi on coia.order_item_id = oi.id
+
+outer apply (
+        select top 1 id
+        from order_item_revision oir
+        where oir.order_item_id = coia.order_item_id and
+              oir.tenant_id = ecev.tenant_id and
+              oir.is_active = 1 and
+              (
+                (oir.valid_from <= ecev.timestamp and (oir.valid_to is null or oir.valid_to > ecev.timestamp))
+                  or
+                oir.id = oi.latest_order_item_revision_id
+              )
+        order by IIF((oir.valid_from <= ecev.timestamp and (oir.valid_to is null or oir.valid_to > ecev.timestamp)),1,2)
+    ) oirid
+
+LEFT JOIN order_item_revision oir on
+			oir.id = oirid.id
+LEFT JOIN address adr_oir ON adr_oir.id = oir.realization_address_id
+
+
+LEFT JOIN site_container_assignment sca ON sca.container_id = ecev.container_id AND
+	 sca.is_active = 1 and
+     sca.valid_from <= ecev.timestamp and
+     (sca.valid_to is null or sca.valid_to > ecev.timestamp)
+
+
+LEFT JOIN payer_container_assignment pca ON pca.container_id = ecev.container_id AND
+	 pca.is_active = 1 and
+     pca.valid_from <= ecev.timestamp and
+     (pca.valid_to is null or pca.valid_to > ecev.timestamp)
+
+LEFT JOIN container c ON c.id = ecev.container_id
+LEFT JOIN site s ON s.id = sca.site_id
+LEFT JOIN address adr_s ON adr_s.id = s.address_id
+LEFT JOIN waste_disposal_frequency wdf on oir.waste_disposal_frequency_id = wdf.id
+-- LEFT JOIN waste_disposal_day wdd on oir.waste_disposal_day_id = wdd.id;
+
+
+-- dbo.empty_container_event_export_xlsx_view source
+
+ALTER VIEW [dbo].[empty_container_event_export_xlsx_view] AS
+
+select * from (
+SELECT 
+    oece.id,
+	oece.code,
+    oece.timestamp,
+	oece.tenant_id,
+    oece.lat,
+    oece.lng,
+	oece.weight,
+	oece.loader_arm_code,
+	oece.object_id,
+	oece.organization_unit_id,
+	oece.source_device_id,
+	oece.location,
+	oece.location_street,
+	oece.location_city,
+	oece.location_country,
+	obj.name as object_name,
+	obj.registration_plate as object_registration_plate,
+	ica.container_id,
+	s.lat as site_lat,
+	s.lng as site_lng,
+	s.id as site_id,
+	c.pattern_id,
+	c.garbage_group_id,
+	c.public_note,
+	obj.organization_unit_id as object_organization_unit_id,
+	c.evidence_number,
+	coia.order_id,
+	coia.order_number,
+	adr_s.full_address as site_address,
+	adr_oir.full_address as realization_address,
+	wdf.name as waste_disposal_frequency_name,
+	-- wdd.disposal_day as waste_disposal_day,
+	STUFF((
+              SELECT ', ' + wdd1.disposal_day
+              FROM waste_disposal_day_order_item_revision_assignment wddira
+              LEFT JOIN waste_disposal_day wdd1 ON wddira.waste_disposal_day_id = wdd1.id
+              WHERE wddira.order_item_revision_id = oir.id AND wddira.is_active = 1
+              FOR XML PATH(''), TYPE
+              ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS waste_disposal_day,
+	pca.payer_name,
+	pca.payer_type_id,
+    oece.is_active,
+
+	-- mozu vzniknut duplikaty vzhladom na container_order_item_assignment odkial zoberieme len tie s najmensim ID
+	row_number() over (partition by oece.id order by coia.id asc) as rn
+
+FROM object_empty_container_event oece
+LEFT JOIN identifier_container_assignment ica ON ica.code = oece.code 
+	AND ica.tenant_id = oece.tenant_id
+    AND ica.is_active = 1
+	AND ica.valid_from <= oece.timestamp 
+	AND (ica.valid_to IS NULL OR ica.valid_to > oece.timestamp)
+
+LEFT JOIN object obj ON oece.object_id = obj.id
+LEFT JOIN container c ON c.id = ica.container_id
+
+LEFT JOIN container_order_item_assignment_view coia ON coia.container_id = ica.container_id
+    AND coia.is_active = 1
+	AND coia.organization_unit_id = c.organization_unit_id
+	AND coia.tenant_id = oece.tenant_id
+	AND coia.valid_from <= oece.timestamp 
+	AND (coia.valid_to IS NULL OR coia.valid_to > oece.timestamp)
+
+outer apply (
+        select top 1 id
+        from order_item_revision oir
+        where oir.order_item_id = coia.order_item_id and
+              oir.tenant_id = oece.tenant_id and
+              oir.is_active = 1 and
+              (
+                (oir.valid_from <= oece.timestamp and (oir.valid_to is null or oir.valid_to > oece.timestamp))
+                  or
+                oir.id = coia.latest_order_item_revision_id
+              )
+        order by IIF((oir.valid_from <= oece.timestamp and (oir.valid_to is null or oir.valid_to > oece.timestamp)) ,1,2)
+    ) oirid
+
+LEFT JOIN order_item_revision oir on
+			oir.id = oirid.id
+
+
+
+LEFT JOIN site_container_assignment sca ON sca.container_id = ica.container_id AND
+	 sca.is_active = 1 and
+     sca.valid_from <= oece.timestamp and
+     (sca.valid_to is null or sca.valid_to > oece.timestamp)
+
+
+LEFT JOIN payer_container_assignment pca ON pca.container_id = ica.container_id AND
+	 pca.is_active = 1 and
+     pca.valid_from <= oece.timestamp and
+     (pca.valid_to is null or pca.valid_to > oece.timestamp)
+
+
+LEFT JOIN site s ON s.id = sca.site_id
+LEFT JOIN address adr_s ON adr_s.id = s.address_id
+LEFT JOIN address adr_oir ON adr_oir.id = oir.realization_address_id
+LEFT JOIN waste_disposal_frequency wdf on oir.waste_disposal_frequency_id = wdf.id
+-- LEFT JOIN waste_disposal_day wdd on oir.waste_disposal_day_id = wdd.id
+) t
+where rn = 1;
+
+
+-- dbo.empty_container_event_view source
+
+-- View zabezpecujuci Use Case: https://confluence.radium.cz/pages/viewpage.action@p0pageId=98238501
+-- view ktory riesi prepojenie medzi Vysypmi nadob a priradeniami identifikatormi nadob (prepojenie na zaklade 'code')
+-- a nasledne ich prepojenie na priradenia poloziek objednavok na nadoby,
+-- pricom potrebujeme zabezpecit prekrytie oboch tychto priradeni vzhladom na ich platnosti
+-- a nasledne jednotlive casy vysypov musia byt v ramci tychto casovych okien
+
+-- v ramci aplikacneho kodu na BE potom riesime custom podmienku ake nadoby sa maju brat do uvahy vzhladom na konkretneho externeho zakaznika
+ALTER VIEW [dbo].[empty_container_event_view] AS
+
+    SELECT oece.id,
+        oece.code,
+        oece.timestamp,
+        oece.external_id,
+        oece.lat,
+        oece.lng,
+        oece.weight,
+        oece.loader_arm_code,
+        oece.location,
+        oece.location_street,
+        oece.location_city,
+        oece.location_country,
+        oece.object_id,
+        oece.tenant_id,
+        oece.is_active,
+        oece.updated_at,
+        oece.created_at,
+        coia.container_id,
+        coia.id as container_order_item_assignment_id,
+        c.garbage_group_id
+    FROM object_empty_container_event oece
+    JOIN identifier_container_assignment ica ON ica.code = oece.code 
+        AND ica.tenant_id = oece.tenant_id
+        AND ica.is_active = 1
+    JOIN container_order_item_assignment coia ON coia.container_id = ica.container_id 
+        AND coia.is_active = 1
+        AND coia.tenant_id = oece.tenant_id
+        AND (coia.valid_to IS NULL OR coia.valid_to >= ica.valid_from)
+        AND (ica.valid_to IS NULL OR coia.valid_from <= ica.valid_to)
+    JOIN container c ON c.id = ica.container_id
+    WHERE
+    ica.valid_from <= oece.timestamp AND (ica.valid_to IS NULL OR ica.valid_to > oece.timestamp) AND
+    coia.valid_from <= oece.timestamp AND (coia.valid_to IS NULL OR coia.valid_to > oece.timestamp);
+
+
+-- dbo.identifier_container_assignment_view source
+
+ALTER view dbo.identifier_container_assignment_view as
+    select 
+        ica.*,
+        c.organization_unit_id,
+        c.garbage_group_id,
+        c.evidence_number,
+        gg.name as garbage_group_name,
+        c.pattern_id,
+        cp.name as container_pattern_name,
+        cp.container_material_id,
+        cp.container_quantity_unit_id,
+        cp.volume as container_volume,
+        cp.container_color_id,
+        cc.name as container_color_name 
+    from identifier_container_assignment ica
+    left join container c on c.id = ica.container_id
+    left join garbage_group gg on c.garbage_group_id = gg.id
+    left join container_pattern cp on c.pattern_id = cp.id
+    left join container_color cc on cp.container_color_id = cc.id;
+
+
+-- dbo.order_item_last_revision_view source
+
+ALTER VIEW [dbo].[order_item_last_revision_view] AS
+with order_item_with_last_revision as (
+    select oi.id as order_item_id,
+           oir.id as order_item_revision_id_latest,
+           row_number() over (partition by oi.id order by oir.valid_from desc) as rn
+    from order_item oi
+    join order_item_revision oir on oi.id = oir.order_item_id
+    where oir.is_active = 1
+)
+
+select oiwlr.order_item_id,
+       oiwlr.order_item_revision_id_latest,
+       oir.id as order_item_revision_id_valid
+from order_item_with_last_revision oiwlr
+left join order_item_revision oir on oiwlr.order_item_id = oir.order_item_id and
+    oir.is_active = 1 and
+    oir.valid_from <= getutcdate() and
+    (oir.valid_to is null or oir.valid_to > getutcdate())
+where oiwlr.rn = 1;
+
+
+-- dbo.order_item_revision_view source
+
+ALTER view dbo.order_item_revision_view as
+    select oir.id,
+           oir.external_id,
+           oir.order_item_id,
+           o.organization_unit_id,
+           o.number as order_number,
+           o.id as order_id,
+           oi.number as order_item_number,
+           oir.revision,
+           c1.id as customer_id,
+           c1.name as customer_name,
+           c2.id as end_customer_id,
+           c2.name as end_customer_name,
+           oir.payer,
+           oir.realization_address_id,
+           a.street as realization_address_street,
+           a.registry_number as realization_address_registry_number,
+           a.orientation_number as realization_address_orientation_number,
+           a.city as realization_address_city,
+           a.postal_code realization_address_postal_code,
+           a.country as realization_address_country,
+           a.full_address as realization_address_search,
+           oir.valid_from,
+           oir.valid_to,
+           oir.container_count,
+           oir.container_type_id,
+           ct.name as container_type_name,
+           oir.container_ownership,
+           oir.garbage_type_id,
+           gt.code as garbage_type_code,
+           oir.waste_disposal_frequency_id,
+           wdf.name as waste_disposal_frequency_name,
+           oir.waste_disposal_day_id,
+       --     wdd.disposal_day as waste_disposal_day,
+           STUFF((
+              SELECT ', ' + wdd1.disposal_day
+              FROM waste_disposal_day_order_item_revision_assignment wddira
+              LEFT JOIN waste_disposal_day wdd1 ON wddira.waste_disposal_day_id = wdd1.id
+              WHERE wddira.order_item_revision_id = oir.id AND wddira.is_active = 1
+              FOR XML PATH(''), TYPE
+              ).value('.', 'NVARCHAR(MAX)'), 1, 2, '') AS waste_disposal_day,
+           oir.note,
+           oir.note2,
+           oir.note3,
+           oir.is_active,
+           oir.tenant_id,
+           oir.created_at,
+           oir.created_by,
+           oir.creation_source_id,
+           oir.updated_at,
+           oir.updated_by,
+           oir.last_modification_source_id,
+           o.number + N' | ' + oi.number + N'-' + oir.revision as order_full_number_search
+    from order_item_revision oir
+    join order_item oi on oir.order_item_id = oi.id
+    join [order] o on oi.order_id = o.id
+    left join customer c1 on o.customer_id = c1.id
+    left join customer c2 on o.end_customer_id = c2.id
+    left join address a on oir.realization_address_id = a.id
+    left join container_type ct on oir.container_type_id = ct.id
+    left join garbage_type gt on oir.garbage_type_id = gt.id
+    left join waste_disposal_frequency wdf on oir.waste_disposal_frequency_id = wdf.id
+--     left join waste_disposal_day wdd on oir.waste_disposal_day_id = wdd.id;
+
+
+-- dbo.order_view source
+
+ALTER view dbo.order_view as
+    select o.id,
+        o.external_id,
+        o.number,
+        o.customer_id,
+        o.end_customer_id,
+        c1.name as customer_name,
+        c2.name as end_customer_name,
+        o.valid_from,
+        o.valid_to,
+        o.organization_unit_id,
+        o.is_active,
+        o.tenant_id,
+        o.created_at,
+        o.created_by,
+        o.creation_source_id,
+        o.updated_at,
+        o.updated_by,
+        o.last_modification_source_id   
+    from "order" o
+    left join customer c1 on o.customer_id = c1.id
+    left join customer c2 on o.end_customer_id = c2.id;
+
+
+-- dbo.site_view source
+
+ALTER VIEW [dbo].[site_view] AS
+    select s.id,
+           s.name,
+           s.name_search,
+           s.organization_unit_id,
+           s.address_id,
+           s.lat,
+           s.lng,
+           case when s.lat is null or s.lng is null
+               then cast(1 as bit)
+               else cast(0 as bit) END as has_missing_coordinates,
+           s.geocoding_state,
+           s.note,
+           s.default_photo_id,
+           s.is_active,
+           s.created_at,
+           s.created_by,
+           s.updated_at,
+           s.updated_by,
+           s.tenant_id,
+           s.external_id,
+           s.geom,
+           s.is_container_warehouse,
+           a.street as address_street,
+           a.registry_number as address_registry_number,
+           a.orientation_number as address_orientation_number,
+           a.city as address_city,
+           a.postal_code as address_postal_code,
+           a.country as address_country,
+           a.full_address as address_search,
+           s.last_modification_source_id,
+           s.creation_source_id, 
+           e1.full_name as updated_by_fullname,
+           e2.full_name as created_by_fullname,
+           t.cnt as sca_count,
+           btsa.id as building_type_site_assignment_id,
+           btsa.building_type_id,
+           bt.name as building_type_name
+    from site as s
+        left join address a on s.address_id = a.id
+        
+        left join [user] u1 on s.updated_by = u1.id
+        left join employee e1 on u1.employee_id = e1.id
+
+        left join [user] u2 on s.created_by = u2.id
+        left join employee e2 on u2.employee_id = e2.id
+
+        left join building_type_site_assignment btsa on
+            s.id = btsa.site_id and
+            btsa.is_active = 1
+
+        left join building_type bt on 
+            btsa.building_type_id = bt.id
+
+        left join (
+            select site_id,
+                   count(*) as cnt
+            from site_container_assignment  
+            where
+             is_active = 1 and
+             valid_from <= getutcdate() and
+             (valid_to is null or valid_to > getutcdate())
+            group by site_id
+            
+        ) t on t.site_id = s.id;

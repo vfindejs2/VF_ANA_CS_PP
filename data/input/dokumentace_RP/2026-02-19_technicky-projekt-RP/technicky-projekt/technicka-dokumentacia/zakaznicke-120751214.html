@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Zákaznícke špecifiká</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Popis</h1><p>System Roadplan sa nasadzuje pre roznych zakaznikov, pricom pre kazdeho su urcite specifika ktore sa odlisuju na viacerych urovniach</p><ul><li><p>architektura systemu - su nasadene specificke komponenty (pre ucely synchronizacie udajov z FLWW systemu alebo synchronizacie udajov z externeho systemu ktory pouziva zakaznik)</p></li><li><p>parametre nasadenia - na urovni nasadenia komponent su definovane parametre ktore sa pre zakaznika mozu lisit</p><ul><li><p>pre komponent “backend” ide o parametre:</p><ul><li><p>MODULE_ENABLE_FOB</p></li><li><p>MODULE_ENABLE_FINSTAT</p></li><li><p>MODULE_ENABLE_WINYX</p></li><li><p>MODULE_ENABLE_IBAN</p></li><li><p>ROUTING_PROVIDER</p></li></ul></li></ul></li><li><p>tzv “aplikacna konfiguracia” kde su parametre definovane v DB roadplan v tabulke “default_settings”.</p><ul><li><p>Zoznam parametrov je uvedeny tu <a href="../konfiguracni-81592468.html">https://confluence.radium.cz/pages/viewpage.action?pageId=81592468</a></p></li></ul></li><li><p>konfiguracia synchronizacie udajov z externych systemov je definovana v DB roadplan v tabulke “sync_settings”</p></li></ul><p> </p><h1>Zakaznici</h1><p>V ramci jednotlivych podstranok su uvedeny jednotlivy zakaznici.</p>
+</div>
+</body>
+</html>

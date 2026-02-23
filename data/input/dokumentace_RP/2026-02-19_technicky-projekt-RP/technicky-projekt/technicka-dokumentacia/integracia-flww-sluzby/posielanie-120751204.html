@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Posielanie emailov prostrednictvom FLWW Rabbit</title>
+</head>
+<body>
+<div class="wiki-content">
+<h1>Popis</h1><p>System Roadplan odosiela emaily prostrednictvom FLWW sluzby, pricom udaje su tam odoslane cez FLWW Rabbit.</p><p>Komponent “Backend” ma pre tento ucel nastavenu konfiguraciu nasledovne:</p><p> </p><pre><br></pre><pre>Pre korektne fungovanie odosielania musia byt na urovni aplikacnych nastaveni nastevene parametre:</pre><ul><li><p>fobSenderGroup</p></li><li><p>fobCompanyAlias</p></li><li><p>fobCompanyId</p></li></ul><h1>Logovanie</h1><p>V pripade ak odoslanie emailu do FLWW rabbit zlyha, je tato udalost logovana. Vyhladanie logu je mozne v logoch podla parametra “<strong>message</strong>” kde sa zada hodnota “Sending Email Failed”.</p><p>Log sa nachadza v ramci “aplikacnych logov” - vid blizsi popis v <a href="#" data-page-title="Logovanie">Logovanie</a></p>
+</div>
+</body>
+</html>

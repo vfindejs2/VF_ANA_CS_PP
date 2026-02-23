@@ -1,0 +1,6 @@
+Pocet stazenych stranek: 380
+Pocet chyb (stranky): 0
+Pocet chyb (obrazky): 1
+
+Chyby obrazku:
+- Page 98241898: http://confluence.ai-maps.com/s/en_US/8100/b0984b7297905b7c7bd946458f753ce0130bfc8c/_/images/icons/emoticons/warning.svg — HTTP Error 404: Not Found

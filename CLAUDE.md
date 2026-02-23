@@ -1,7 +1,7 @@
-# Projekt: CS-MPG Analýza
+# Projekt: CS-MPG-ANALYZY-E1
 
 ## Cíl
-Business analýza a konzultační podpora projektu Cyklické svozy MP SK. Zahrnuje tři hlavní oblasti:
+Business analýza a konzultační podpora projektu Cyklické svozy MP SK (Etapa 1). Zahrnuje tři hlavní oblasti:
 1. **Integrace** — analýza požadavků, návrh architektury a business zadání pro integrační toky mezi systémy
 2. **Datové modely** — návrh a review datových modelů pro jednotlivé systémy
 3. **Konzultace** — podpora zbytku týmu při návrhu dílčích funkčností
@@ -63,3 +63,8 @@ V aplikaci RoadPlan existují (budou existovat) dva paralelní a oddělené dom�
 - Při komplikaci navrhni řešení, nerob změnu tiše
 - Při analýze datových modelů: entity zpracovávej po jedné, ukazuj ke schválení, než pokračuješ dál
 - Při entitní analýze: u každé entity se aktivně ptej na nejasnosti a business rozhodnutí, než finalizuješ návrh
+- **Postup entitní analýzy — nejdřív vstupy a otázky, pak návrh:**
+  1. Předlož strukturovaný souhrn vstupů z podkladů (CK, HEN guide, DS, DDL) — co víme
+  2. Polož sadu otázek na nejasnosti a business rozhodnutí — co potřebuji vědět
+  3. Teprve po zodpovězení otázek vytvoř finální návrh entity do datovy-model-PP/RP.md
+  - Nedělej návrh atributů/asociací předem — nejdřív diskuze, pak návrh

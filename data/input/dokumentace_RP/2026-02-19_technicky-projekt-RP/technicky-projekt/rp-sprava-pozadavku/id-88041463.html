@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-022: Nastavení počtu záznamů na stránce tabulky</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V rámci tabulek používaných systémem RP je obecně používáno stránkování, počet záznamů na stránce je pak nastaven pevně pro konkrétní tabulku. Požadována pak je možnost uživatelského nastavení počtu záznamů na stránce.</p><h1>Aktuální stav</h1><p>Počet záznamů na stránce tabulky je u každé tabulky pevně daný.</p><h1>Návrh řešení</h1><p>V rámci patičky tabulky bude k dispozici ovládací prvek pro nastavení počtu záznamů na stránce. Zde bude na výběr z následujících možnosti: 20; 50; 100; 200; 500. Jakmile uživatel nastavenou hodnotu změní, budou provedeny následující kroky:</p><ul><li>V rámci tabulky dojde k načtení záznamů dle zvoleného počtu záznamů, aktuálně nastaveného řazení a filtrů (vždy bude proveden přechod na první stranu).</li><li>Dojde k uložení počtu záznamů do uživatelského nastavení pro konkrétní tabulku (pokud je pro tabulku ukládáno uživatelské nastavení). Tato hodnota bude ve výchozím stavu nastavena na 50, a to pro všechny tabulky.</li></ul><p>Poznámka: Uvedené chování bude dostupné u „běžných“ tabulek, nebude tedy k dispozici např. pro přehled DV na obrazovce jejich plánování (M4).</p><p><img src="id-022-nastaveni-poctu-zaznamu-na-strance-tabulky-88041463_images/image2020-9-11 9-41-25.png" data-attachment="true"></p><h1>Akceptační testy</h1><h2>TC01: Nastavení počtu záznamů na stránce</h2><ol><li>Uživatel zadá požadavek na změnu počtu záznamů na stránce konkrétní tabulky a vybere jednu z dostupných možností.</li><li>Systém načte data pro tabulku, kdy budou zahrnuta následující kritéria (je zobrazena první strana):<br><ul><li><strong>počet záznamů na stránce</strong>,</li><li>nastavené filtry a řazení,</li><li>další kritéria daná konkrétním případem užití.</li></ul></li><li>Pokud je pro tabulku ukládáno uživatelské nastavení, systém u konkrétní tabulky aktualizuje zvolený počet záznamů na stránce.</li></ol><p>Poznámka: Zvýšení počtu právě zobrazených záznamů na stránce může způsobit prodloužení času potřebného pro načtení dat.</p><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

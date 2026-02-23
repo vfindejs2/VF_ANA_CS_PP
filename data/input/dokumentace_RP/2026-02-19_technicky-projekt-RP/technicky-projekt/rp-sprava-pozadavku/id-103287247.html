@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-060: Pokročilé filtrování denních výkonů v přehledu dle typu dopravy</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V přehledu denních výkonu je požadováno doplnění možnosti jednoduše filtrovat denní výkony dle odpovídajícího typu dopravy tak, aby bylo možné zvolit více jak jeden typ dopravy zároveň.</p><h1>Aktuální stav</h1><p>Aktuálně je možné v přehledu denních výkonů filtrovat dle typu dopravy hned několika způsoby:</p><ul><li>Filtr v nástrojové liště tabulky – je možné zvolit buď jeden konkrétní typ dopravy, nebo zrušit nastavení tohoto filtru (možnost Nevybráno)</li><li>Sloupcový filtr tabulky – je možné zvolit požadované typy dopravy, a to v libovolné kombinaci (tedy i více zároveň).</li></ul><h1>Návrh řešení</h1><p>Vzhledem k aktuálnímu stavu navrhujeme 2 návrhy řešení, jejich popis je uveden v tabulce.</p><table><tbody><tr><th>Varianta</th><th>Popis</th><th>Náhled</th><th>Poznámka</th></tr><tr><td>1</td><td>Bude zachováno stávající chování – aktuální stav aplikace splňuje požadavky zákazníka, je možné použít sloupcový filtr tabulky.</td><td>–</td><td>–</td></tr><tr><td>2</td><td>Bude provedena revize filtru na typ dopravy, který je umístěn v nástrojové liště tabulky. V rámci filtru bude možné nastavit libovolnou kombinaci požadovaných typů dopravy.</td><td><img src="id-060-pokrocile-filtrovani-dennich-vykonu-v-prehledu-dle-typu-dopravy-103287247_images/image2021-12-22 15-28-35.png" data-attachment="true"></td><td>Ovládací prvek je použit na obrazovce monitoringu realizace denních výkonů.</td></tr></tbody></table><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Filtrování denních výkonů dle typu dopravy</h2><p>Poznámka: Testovací scénář je platný pouze pro variantu 2.</p><ol><li>Uživatel zadá požadavek na nastavení rychlého filtru pro typ dopravy.</li><li>Systém zobrazí nabídku pro nastavení filtru.</li><li>Uživatel označí typy dopravy, pro které chce zobrazit denní výkony, a výběr potvrdí.</li><li>Systém aktualizuje množinu zobrazených denních výkonů.</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

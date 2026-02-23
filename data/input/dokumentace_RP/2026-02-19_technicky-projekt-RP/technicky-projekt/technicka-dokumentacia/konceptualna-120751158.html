@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Konceptuálna architektúra riešenia</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Diagram</h1><p>Diagram znazornuje prehlad vsetkych komponentov Roadplan. Pre konkretne nasadenie RP pre zakaznika sa ale nenasadzuju vsetky komponenty, tam sa vyberaju podla integracie s externym systemom (vid <a href="#" data-page-title="Zákaznícke špecifiká">Zákaznícke špecifiká</a>)</p><p><img src="konceptualna-architektura-riesenia-120751158_images/image2024-12-11 8-1-3.png" data-attachment="true"></p><p> </p><p> </p><h1>Prehlad komponentov</h1><table><tbody><tr><th><p><strong>Komponent</strong></p></th><th><p><strong>Popis</strong></p></th><th><p><strong>Poznamka</strong></p></th></tr><tr><td><p>frontend</p></td><td><p>Web aplikacia frontendovej casti systemu</p></td><td><p> </p></td></tr><tr><td><p>backend</p></td><td><p>poskytuje REST API pre Frontend a predstavuje jadro systemu</p></td><td><p> </p></td></tr><tr><td><p>database</p></td><td><p>MS SQL Server na ukladanie udajov</p></td><td><p> </p></td></tr><tr><td><p>sync service</p></td><td><p>Vseobecna synchronizacna sluzba na ukladanie udajov z externych systemov, pricom s touto sluzbou komunikuju specificke synchronizacne sluzby</p></td><td><p> </p></td></tr><tr><td><p>OSRM</p></td><td><p>Open Street Routing Machine - open source sluzba pre routing</p></td><td><p> </p></td></tr><tr><td><p>browserless</p></td><td><p>komponent sluziaciaci na vygenerovanie PDF z HTML obsahu</p></td><td><p> </p></td></tr><tr><td><p>mpg-flww-sync-service</p></td><td><p>sync sluzba na ukladanie udajov z FLWW. Je specificka pre zakaznika MPG</p></td><td><p> </p></td></tr><tr><td><p>recovera-flww-sync-service</p></td><td><p>sync sluzba na ukladanie udajov z FLWW. Je specificka pre zakaznika Recovera</p></td><td><p> </p></td></tr><tr><td><p>mpg-sync-service</p></td><td><p>specificka sync sluzba na ziskanie udajov z Winyx DB pre zakaznika MPG</p></td><td><p> </p></td></tr><tr><td><p>mpg-helios-sync-service</p></td><td><p>specificka sync sluzba na ziskanie udajov z Helios DB pre zakaznika MPG</p></td><td><p> </p></td></tr><tr><td><p>recovera-sync-service</p></td><td><p>specificka sync sluzba na ziskanie udajov z Winyx API pre zakaznika Recovera</p></td><td><p> </p></td></tr><tr><td><p> </p></td><td><p> </p></td><td><p> </p></td></tr></tbody></table>
+</div>
+</body>
+</html>

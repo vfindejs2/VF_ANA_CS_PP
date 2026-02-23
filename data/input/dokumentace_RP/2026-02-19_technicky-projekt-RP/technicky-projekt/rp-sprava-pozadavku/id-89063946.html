@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-047: Ruční spuštění synchronizace informací o realizaci denních výkonů</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Může nastat situace, kdy dojde k výpadku GPRS spojení mezi vozidlem a aplikací FLWW2 (výpadek na straně operátora). V takovém případě aplikace FLWW2 nemá k dispozici aktuální informace o jízdě vozidla (nejsou odesílány jednotlivé pozice). Jakmile dojde k obnovení přerušeného spojení, je obnovena i komunikace mezi vozidlem a aplikací FLWW2. Přednostně jsou posílány aktuální informace o jízdě vozidla, volný prostor v rámci komunikace je využit pro odeslání starších informací, které nemohly být předány z důvodu výpadku.</p><p>Důsledkem této skutečnosti je absence aktuálních informací v aplikaci RoadPlan. Dispečer nevidí skutečnou trajektorii vozidla, ale pouze její část. To má vliv i na ukončení realizace denních výkonů, která probíhá na konci každého dne.</p><ul><li>Pokud jsou informace o realizaci dodány v rámci stejného dne, systém RoadPlan je využije pro vyhodnocení realizace denních výkonů.</li><li>Jinak nejsou informace o realizaci brány v potaz.</li></ul><p>Požadováno pak je, aby mohl uživatel před potvrzením realizace denního výkonu provést ruční synchronizaci informací o jeho realizaci (stažení informací o realizaci, které byly získány mimo dne realizace). </p><p>Poznámka: Uvedená situace, kdy nejsou informace o realizaci k dispozici ani na konci dne realizace, je výjimečná. Aktuálně neevidujeme žádný její výskyt.</p><h1>Aktuální stav</h1><p>Není možné provést ruční synchronizaci informací o realizaci denních výkonů. Pokud nejsou potřebné informace v rámci FLWW2 k dispozici ve chvíli, kdy je ukončována realizace denních výkonů, není možné informace o realizaci dodatečně zahnout.</p><h1>Návrh řešení</h1><p><strong>Vzhledem k tomu, že se jedná o výjimečné situace, není zatím požadováno doplnění návrhu řešení.</strong></p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Xxx</h2><ol><li>Uživatel…</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

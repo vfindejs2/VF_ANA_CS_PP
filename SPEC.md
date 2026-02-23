@@ -1,4 +1,4 @@
-# Specifikace: CS-MPG Analýza
+# Specifikace: CS-MPG-ANALYZY-E1
 
 ## Kontext
 Projekt Cyklické svozy MP SK zavádí plánování a realizaci cyklických svozů malých nádob od smluvních zákazníků. Zahrnuje rozšíření systémů Pasport (PP), RoadPlan (RP), FleetwareOnBoard (FOB) a napojení na Helios Nephrite (HEN).

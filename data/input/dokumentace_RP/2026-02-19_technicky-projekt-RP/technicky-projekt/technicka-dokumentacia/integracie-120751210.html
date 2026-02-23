@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Integrácie - služby 3.strán</title>
+</head>
+<body>
+<div class="wiki-content">
+<p>Systém Roadplan komunikuje aj s webovými službami 3.strán.</p><h1>Prehľad služieb</h1><table><tbody><tr><th><p><strong>Služba</strong></p></th><th><p><strong>Popis</strong></p></th><th><p><strong>Parametre</strong></p></th></tr><tr><td><p>Finstat</p></td><td><p>Služba sa používa na vyhladavanie firiem a ziskanie detailu</p><p>Komunikacie je cez REST API</p></td><td><p>Na urovni backend komponentu definujeme:</p><ul><li><p>AUTOCOMPLETE_URL: <a href="http://www.finstat.sk/api/autocomplete.json">http://www.finstat.sk/api/autocomplete.json</a></p></li><li><p>DETAIL_URL: <a href="http://www.finstat.sk/api/detail.json">http://www.finstat.sk/api/detail.json</a></p></li><li><p>API_KEY</p></li><li><p>PRIVATE_KEY</p></li></ul></td></tr><tr><td><p>CEDA</p></td><td><p>routing sluzba</p></td><td><p>parametre definovane v tabulke “default_settings” v ramci parametra “routingSettings”</p><p>Na urovni backend komponentu definujeme este:</p><ul><li><p>ROUTING_API_TOKEN</p></li><li><p>ROUTING_API_URL</p></li><li><p>ROUTING_API_COUNTRY</p></li></ul></td></tr><tr><td><p>Open Street Map</p></td><td><p>Mapova sluzba rastrovych dlazdic OSM</p></td><td><p>system ju moze ziskat z FLWW API ako zoznam podkladovych map</p></td></tr></tbody></table><p> </p><p> </p>
+</div>
+</body>
+</html>

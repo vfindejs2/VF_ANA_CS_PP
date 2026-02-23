@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-041: Zobrazení časového využití v přehledu denních výkonů</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V přehledu denních výkonů je k dispozici sloupec s hodnotou časového využití. Uvedená číselná hodnota je pak i graficky znázorněna pomocí jednoduchého grafu. Požadovány jsou pak následující změny.</p><ul><li>Zobrazení délky pracovní doby, oproti které je prováděn výpočet časového využití denního výkonu.</li><li>Zvýraznění zobrazené pracovní doby v rámci jednoduchého grafu.</li></ul><h1>Aktuální stav</h1><p>Aktuálně je délka pracovní doby, oproti které je prováděn výpočet časového využití denního výkonu, zobrazena pouze graficky, a to formou svislé přerušované čáry v rámci jednoduchého grafu. Vykreslena je pak světle šedou barvou.</p><p><img src="id-041-zobrazeni-casoveho-vyuziti-v-prehledu-dennich-vykonu-89065120_images/image2020-11-10 9-27-54.png" data-attachment="true"></p><h1>Návrh řešení</h1><p>Jak vyplývá z dříve uvedeného, jedná se o 2 samostatné požadavky:</p><ul><li>zobrazení délky pracovní doby jako číselné hodnoty,</li><li>zvýraznění zobrazené délky pracovní doby v diagramu.</li></ul><p>Uveďme si tedy konkrétní návrhy řešení:</p><ul><li>Nad buňkami sloupce s časovým využitím bude k dispozici bublinková nápověda, ve které bude mimo jiné obsažena i délka provozní doby. Její formát bude následující <strong>Doba jízdy celkem/Délka pracovní doby</strong> (např. 8:56/8:30).</li><li>Pro vykreslení délky pracovní doby v diagramu bude použita výraznější barva (#fac900).</li></ul><p>Uvedené návrhy jsou pak naznačeny na obrázku.</p><p><img src="id-041-zobrazeni-casoveho-vyuziti-v-prehledu-dennich-vykonu-89065120_images/image2020-11-10 9-53-39.png" data-attachment="true"></p><p>Poznámka: Obdobné diagramy jsou použity i v rámci obrazovky časového využití vozidel za období. Předpokládáme tedy, že ke změně chování dojde i na této obrazovce. </p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Zobrazení délky pracovní doby</h2><ol><li>Uživatel najede myší na buňku s časovým využitím.</li><li>Systém zobrazí bublinkovou nápovědu s celkovou dobou jízdy a délkou provozní doby (např. 8:56/8:30).</li></ol><p>Poznámka: Celková doba jízdy odpovídá stavu denního výkonu (plánovaná/skutečná).</p><h2>TC02: Zvýraznění délky pracovní doby v diagramu</h2><p>Zobrazení odpovídá návrhu řešení.</p><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-019: Jednorázové smazání zrušených denních výkonů</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V rámci aplikace jsou generovány denní výkony (DV), na které ale uživatelé zatím neplánují (aplikace stále „běží“ na některých provozovnách v pilotním provozu). Takové DV jsou pak označeny jako zrušené. Vzhledem k jejich vysokému počtu je požadováno jejich úplné smazání. Mělo by se pak jednat o jednorázovou akci.</p><h1>Aktuální stav</h1><p>Pokud není DV schválen, je na konci dne jeho realizace označen jako zrušený.</p><h1>Návrh řešení</h1><p>Takové DV, které splňují všechny dále uvedené podmínky zároveň, budou smazány:</p><ul><li>Atribut Stav nabývá hodnoty <strong>Zrušený</strong>.</li><li>Atribut Datum realizace nabývá hodnoty menší než <strong>xx. xx. 2020</strong> (tedy <strong>kromě</strong> uvedeného data; jedná se o datum skutečné realizace požadavku).</li></ul><p>Poznámka: Smazání DV se projeví i v rámci jiných obrazovek (např. časové využití vozidel).</p><p>Doporučujeme pak provést akci nejdříve na testovacím prostředí, až následně na produkčním.</p><h1>Akceptační testy</h1><h2>TC01: Jednorázové smazání odpovídajících DV</h2><p>V rámci aplikace nebudou k dispozici takové DV, které splňují všechny dále uvedené podmínky zároveň:</p><ul><li>Atribut Stav nabývá hodnoty <strong>Zrušený</strong>.</li><li>Atribut Datum realizace nabývá hodnoty menší než <strong>xx. xx. 2020</strong> (tedy <strong>kromě</strong> uvedeného data; jedná se o datum skutečné realizace požadavku).</li></ul><h1>Poznámka</h1><p>Jedná se o jednorázovou akci.</p>
+</div>
+</body>
+</html>

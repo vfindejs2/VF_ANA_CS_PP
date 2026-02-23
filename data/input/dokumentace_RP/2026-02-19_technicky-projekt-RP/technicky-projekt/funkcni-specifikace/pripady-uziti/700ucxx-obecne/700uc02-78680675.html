@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>700UC02: Odhlásit uživatele</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Stručný popis, cíl UC</h1><p>UC slouží pro explicitní odhlášení uživatele z aplikace. </p><h1>Seznam aktérů</h1><table><tbody><tr><th>Aktér</th><th>Popis</th><th colspan="1">Typická role</th></tr><tr><td>Uživatel</td><td><p>Jedná se o uživatele aplikace RoadPlan.</p></td><td colspan="1"><p>Všechny role.</p></td></tr><tr><td colspan="1">Systém FleetwareWeb2</td><td colspan="1"><p>Externí aplikace FleetwareWeb2, která komunikuje s aplikací RoadPlan na systémové úrovni.</p><p>Jedná se o konkrétní instanci FleetwareWeb2, se kterou je RoadPlan integrován.</p></td><td colspan="1">-</td></tr></tbody></table><h1>Spuštění případu užití</h1><p>Uživatel zadá požadavek na odhlášení z aplikace.</p><h1>Vstupní podmínky</h1><ul><li>Uživatel je přihlášený do aplikace RoadPlan.</li></ul><h1>Základní tok událostí</h1><ol><li>Systém uživatele odhlásí.</li><li>Systém zobrazí přihlašovací obrazovku (viz <a href="#" data-page-title="700UI04: Přihlašovací obrazovka"></a>) s předvyplněnými údaji uživatele, který byl naposledy úspěšně přihlášený.</li></ol><h1>Alternativní toky událostí</h1><p>Nejsou.</p><h1>Výjimkové toky událostí</h1><p>Nejsou.</p><h1>Výstupní podmínky</h1><ul><li>Uživatel je odhlášený z aplikace RoadPlan.</li><li>Uživatel nemůže přistupovat k funkcím systému:<ul><li>Po zadání URL adresy odkazující na určitý UC dojde k zobrazení přihlašovací obrazovky.</li><li>Při pokusu spustit nějaký UC ze stránky aplikace RoadPlan, která zůstala otevřená v jiné záložce prohlížeče, dojde k zobrazení přihlašovací obrazovky.</li></ul></li></ul><h1>Validace</h1><p>Nejsou.</p><h1>Algoritmy</h1><p>Nejsou.</p><h1>Uživatelské rozhraní</h1><p>Viz <a href="#" data-page-title="700UI04: Přihlašovací obrazovka"></a></p>
+</div>
+</body>
+</html>

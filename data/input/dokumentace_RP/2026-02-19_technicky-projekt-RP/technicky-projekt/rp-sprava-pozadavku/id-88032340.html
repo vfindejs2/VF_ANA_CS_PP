@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-010: Změna provozní doby</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Pokud uživatel změní provozní dobu provozovny, projeví se tato změna pouze u konkrétní provozovny. Pokud by pak uživatel chtěl změnit provozní dobu i u odpovídajících denních výkonů, které již existují, musí tak učinit ručně.</p><p>Je tedy požadováno, aby se změna projevila i v rámci odpovídajících denních výkonů.</p><h1>Aktuální stav</h1><p>Při změně provozní doby provozovny dojde k aktualizaci hodnoty pouze u samotné provozovny. Právě nastavená provozní doba se použije až pro nově vytvářené denní výkony.</p><h1>Návrh řešení</h1><p>Po potvrzení provedené změny provozní doby provozovny dojde navíc k aktualizaci takových denních výkonů, které patří k odpovídající provozovně a jsou zároveň ve stavu Plánovaný. Dojde k aktualizaci provozní doby a přepočtu trasy.</p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Změna provozní doby</h2><ol><li>Uživatel změní provozní dobu provozovny a uloží provedenou změnu.</li><li>Systém změní provozní dobu u odpovídající provozovny.</li><li>Systém nalezne všechny denní výkony této provozovny, které jsou ve stavu Plánovaný, a provede následující akce:<br><ol><li>Změna provozní doby.</li><li>Přepočet trasy denního výkonu.</li></ol></li></ol><p>Poznámka: Vzhledem k tomu, že v rámci denních výkonů nedochází ke změně pozice jednotlivých lokací, není uživatel dotazován, zda si přeje změnu opravdu provést. Dochází pak k „posunu“ celého plánu, může se tedy měnit stav splnění případných časových oken. </p><h2>TC02: Zrušení změny provozní doby</h2><ol><li>Uživatel změní provozní dobu provozovny a zruší provedenou změnu.</li><li>Systém neprovede žádné změny.</li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

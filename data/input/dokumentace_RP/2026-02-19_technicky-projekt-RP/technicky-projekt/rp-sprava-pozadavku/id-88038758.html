@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-018: Odesílání informací o zákazníkovi do systému WinyX</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>Při vytváření zákazníka, po nastavení jeho typu na hodnotu Nepodnikatel, můžeme specifikovat číslo občanského průkazu. S touto hodnotou však nedokáže systém WinyX pracovat tak, jak je na straně MPG SK požadováno. Proto vznikla potřeba tuto hodnotu v rámci synchronizace nepředávat.</p><h1>Aktuální stav</h1><p>Při synchronizaci nových zákazníků mezi aplikacemi RoadPlan a WinyX (směr RP-WinyX) dochází k odesílání čísla občanského průkazu.</p><h1>Návrh řešení</h1><p>Při vytváření či editaci zákazníka v systému RoadPlan bude možnost zadat číslo občanského průkazu zachována (pro zákazníky typu Nepodnikatel). Tato informace však nebude v rámci synchronizace předávána – případné nastavení hodnoty bude v rámci synchronizace ignorováno.</p><h1>Akceptační testy</h1><p>Pro splnění požadavku musí být splněny následující testovací scénáře.</p><h2>TC01: Odeslání zákazníka na rozhraní systému WinyX</h2><ol><li>Uživatel uloží objednávku, která obsahuje zákazníka vytvořeného v rámci aplikace RoadPlan, k realizaci.</li><li>Systém uloží objednávku a provede další potřebné akce (detail není podstatný pro tento TC).</li><li>Systém odešla zákazníka na rozhraní se systémem WinyX, je pak dodržen následující formát pro uvedené atributy:<br><ul><li>Atribut Číslo OP – není předána žádná hodnota.</li></ul></li></ol><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>

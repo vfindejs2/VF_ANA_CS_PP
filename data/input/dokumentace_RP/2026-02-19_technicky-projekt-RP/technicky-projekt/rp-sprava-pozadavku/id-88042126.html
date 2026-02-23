@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>ID-024: Export záznamů zobrazených v přehledu objednávek „do Excelu“</title>
+</head>
+<body>
+<div class="wiki-content">
+<p></p><h1>Požadavek</h1><p>V rámci aplikace je k dispozici přehled objednávek, kde je v jednu chvíli zobrazena určitá množina záznamů (omezeno maximálním počtem záznamů – stránkováním). Požadována pak je možnost exportu aktuálně zobrazených objednávek – načtených záznamů na právě zobrazené stránce – ve formě Excel souboru.</p><h1>Aktuální stav</h1><p>Není možné provést export množiny objednávek ve formě Excel souboru.</p><h1>Návrh řešení</h1><p>Dále je pak uveden návrh řešení, který by měl pro potřeby splnění požadavku postačovat. Ten je rozdělen na dvě části – způsob získání výsledného souboru a jeho struktura.</p><table><tbody><tr><th>Část</div></th><th>Chování</div></th><th>Poznámka</div></th></tr><tr><td>Získání souboru</td><td><ol><li>Stisknutím kombinace kláves Ctrl+C v tabulce dojde k vložení právě označených záznamů do systémové schránky.</li><li>Stisknutím kombinace kláves Ctrl+V v aplikaci Excel jsou vloženy záznamy do právě zobrazeného pracovního listu.</li></ol></td><td>Již implementováno v rámci FLWW2.</td></tr><tr><td>Struktura souboru</td><td>Struktura odpovídá aktuálnímu rozložení tabulky.</td><td>Není přenesena hlavička.</td></tr></tbody></table><p> Zahrnuje úpravu chování napříč tabulkami systému – doplnění podpory pro možnost označit více řádků zároveň (funkce spouštěné nad právě jedním záznamem budou brát v potaz poslední označený záznam).</p><p> Jedná se o obecné chování běžné tabulky, které pak bude dostupné napříč systémem (pokud nebude v konkrétním případě uvedeno jinak).</p><p> Není přenesena hlavička tabulky.</p><h1>Akceptační testy</h1><h2>TC01: Vložení informací do schránky</h2><ol><li>Uživatel označí požadované záznamy v tabulce a stiskne kombinaci kláves Ctrl+C.</li><li>Systém vloží označené záznamy do systémové schránky v požadované struktuře.</li></ol><p>Poznámka: Vložení dat do listu v aplikaci Excel již není v kompetenci aplikace RoadPlan.</p><h1>Poznámka</h1><p>–</p>
+</div>
+</body>
+</html>
