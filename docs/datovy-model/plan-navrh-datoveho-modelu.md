@@ -44,3 +44,17 @@
 - **PP se zpracovává první** — je datovým zdrojem pro RP
 - **Postup:** entita po entitě s review před pokračováním na další
 - **Výstup:** `docs/datovy-model/datovy-model-PP.md` a `docs/datovy-model/datovy-model-RP.md`
+
+## Doplňkové vstupy z HEN ZVOZ Guide
+
+Výtah z Helios Nephrite ZVOZ (`docs/vytah-helios-nephrite-zvoz.md`) doplňuje CK o atributové detaily zdrojových entit v HEN. Referovat od PP-3:
+
+| Entita | Co HEN guide přidává |
+|---|---|
+| **PP-3: Zóna** | Atributy (reference, název, stav, útvar, región), položky = adresní struktura (okres→ulica), pravidlo auto-přiřazení dle adresy |
+| **PP-4: Rozvrh** | Kompletní parametrizace (frekvence denně/týdně/vlastní, párný/nepárný, distribuce po měsících), položky = dni vývozu |
+| **PP-5: Kalendář** | Dny vývozu = položky rozvrhu v HEN (generované, stav Áno/Nie, invertování přes Prepnúť vývoz) |
+| **PP-6: Okruh** | Odvozené atributy (celk. počet nádob, celk. objem, dni zvozu, typ týždňa), M:N vazba na PZ |
+| **PP-8: RPO** | Detail záložek PZ (Zmluva/Finance, Odpad/Nádoba, UDA), verzování, dynamické vs. statické vztahy |
+| **PP-9: Nádoba** | 3 stavy ID nádob, atributy (RFID, evid. číslo, virtuální, v používání), pohyby nádob |
+| **RP-8: Denní výkon** | Trasa dňa v HEN = ekvivalent DV v RP, stavový automat položek (Nespracované→Obslúžené/Neobslúžené) |

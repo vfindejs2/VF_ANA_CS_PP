@@ -62,3 +62,4 @@ V aplikaci RoadPlan existují (budou existovat) dva paralelní a oddělené dom�
 - Výstupy analýzy ukládej do `docs/`, zápisy z meetingů do `meetings/`
 - Při komplikaci navrhni řešení, nerob změnu tiše
 - Při analýze datových modelů: entity zpracovávej po jedné, ukazuj ke schválení, než pokračuješ dál
+- Při entitní analýze: u každé entity se aktivně ptej na nejasnosti a business rozhodnutí, než finalizuješ návrh

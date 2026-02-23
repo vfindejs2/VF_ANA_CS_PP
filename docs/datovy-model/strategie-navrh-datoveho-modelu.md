@@ -14,6 +14,7 @@ Navrhnout rozšíření datových modelů PP a RP pro podporu Cyklických svozů
 2. **Datové slovníky (DS)** — stávající konceptuální model (entity, atributy, asociace, pravidla)
 3. **DDL** — stávající fyzický model (orientačně, pro ověření existence entit)
 4. **Technické projekty PP/RP** — use cases, UI specifikace, integrační dokumentace
+5. **Helios Nephrite ZVOZ Guide** — datový model a business logika zdrojového systému HEN; detailní atributy entit Rozvrh, Zóna, Okruh, PZ, Nádoba (viz `docs/vytah-helios-nephrite-zvoz.md`)
 
 ## Principy
 
@@ -48,3 +49,4 @@ Konkrétní pořadí: `docs/datovy-model/plan-navrh-datoveho-modelu.md`
 | `docs/datovy-model/inventar-entit-RP.md` | Stávající entity RP (DS + DDL) |
 | `docs/datovy-model/sablona-entitni-analyza.md` | Šablona pro zpracování entity |
 | `docs/datovy-model/plan-navrh-datoveho-modelu.md` | Checklist entit s pořadím |
+| `docs/vytah-helios-nephrite-zvoz.md` | Datový model a business logika HEN (Rozvrh, Zóna, Okruh, PZ, Nádoba) |

@@ -1,9 +1,9 @@
 # Progress: CS-MPG Analýza
 
 ## Aktuální stav
-Fáze: Návrh datového modelu — strategie, šablona a plán hotové, připraveno na entitní analýzu
-Poslední session: 2026-02-23 (session 10)
-Další krok: Zahájit entitní analýzu PP-1 (Skupina odpadu) dle docs/datovy-model/plan-navrh-datoveho-modelu.md
+Fáze: Návrh datového modelu — entitní analýza PP zahájena, 3 z 10 entit hotové
+Poslední session: 2026-02-23 (session 11)
+Další krok: Pokračovat entitní analýzou PP-4 (Rozvrh) dle docs/datovy-model/plan-navrh-datoveho-modelu.md
 
 ## TODO
 ### Integrace
@@ -38,7 +38,7 @@ Další krok: Zahájit entitní analýzu PP-1 (Skupina odpadu) dle docs/datovy-m
 - [x] Strategie návrhu DM (docs/datovy-model/strategie-navrh-datoveho-modelu.md)
 - [x] Šablona entitní analýzy (docs/datovy-model/sablona-entitni-analyza.md)
 - [x] Plán — 19 entit s pořadím (docs/datovy-model/plan-navrh-datoveho-modelu.md)
-- [ ] Entitní analýza PP (10 entit) → docs/datovy-model/datovy-model-PP.md ← PRÁVĚ TADY
+- [ ] Entitní analýza PP (10 entit) → docs/datovy-model/datovy-model-PP.md — **3/10 hotovo (PP-1, PP-2, PP-3)** ← PRÁVĚ TADY
 - [ ] Entitní analýza RP (9 entit) → docs/datovy-model/datovy-model-RP.md
 - [ ] Review datových modelů se stakeholdery
 - [ ] Návrh cílových datových modelů pro dotčené systémy
@@ -61,6 +61,11 @@ Další krok: Zahájit entitní analýzu PP-1 (Skupina odpadu) dle docs/datovy-m
 - **KR-05: Výtah CK je nutný, ale ne dostatečný podklad** — Pro datový model a integrace slouží jako business reference. Chybí atributové detaily entit, přesné integrační zprávy a obsah diagramů. Doplňuje se z DS a DDL při entitní analýze.
 - **KR-06: Struktura projektu** — `docs/` rozdělen na `docs/datovy-model/` a `docs/integrace/`. Meetingy přesunuty do `meetings/`. Archiv smazán.
 - **KR-07: DM first** — Nejdřív návrh datového modelu (19 entit), pak integrační specifikace. PLAN.md smazán (byl o integraci), nahrazen `docs/datovy-model/plan-navrh-datoveho-modelu.md`.
+- **KR-08: Mapování Druh→Skupina per provozovna** — Vazba Druh odpadu → Skupina odpadu se liší per provozovna. Realizace přes novou vazební entitu „Mapování druh–skupina" (Druh odpadu + Skupina odpadu + Provozovna), s UNIQUE constraintem na (Druh, Provozovna). Skupina odpadu zůstává globální číselník (bez Provozovny).
+- **KR-09: Skupina MIX = datový záznam** — Speciální skupina „MIX" (Kombinovaný svoz) je běžný záznam v číselníku Skupina odpadu. Speciální chování (auto-plnění z HEN, nenahrazování standardním mapováním) řešeno aplikační logikou, bez změny DS.
+- **KR-10: Sdílení číselníků PP↔RP přes integraci** — Sdílené číselníky (Skupina odpadu) se synchronizují přes integrační tok, RP má vlastní kopii. Není sdílená DB tabulka.
+- **KR-11: Zóna = jednoduchá entita** — V PP se Zóna modeluje jako jednoduchá entita (název, provozovna, ext. ID). Bez replikace adresní struktury z HEN. V E1 se do RP nepřenáší.
+- **KR-12: HEN ZVOZ Guide jako doplňkový vstup** — Výtah z Helios Nephrite ZVOZ guide (`docs/vytah-helios-nephrite-zvoz.md`) přidán jako vstup #5 do strategie DM. Referovat od PP-3 (Zóna) — doplňuje CK o atributové detaily zdrojových entit v HEN.
 
 ## Otevřené otázky
 - OQ-01: Seznam entit MDB vs. REST API v Etapě 1 — **částečně** (DDL znám, rozřazení per entita TBD)
@@ -219,3 +224,17 @@ Další krok: Zahájit entitní analýzu PP-1 (Skupina odpadu) dle docs/datovy-m
   - Aktualizovány křížové reference ve všech souborech
 - Rozhodnutí: KR-06 (struktura projektu), KR-07 (DM first, integrace po DM)
 - Další krok: zahájit entitní analýzu PP-1 (Skupina odpadu)
+
+### 2026-02-23, session 11
+- **Zahájena entitní analýza PP** — zpracovány první 3 entity do `docs/datovy-model/datovy-model-PP.md`
+  - **PP-1: Skupina odpadu** — existující entita, beze změn DS. Nová vazební entita „Mapování druh–skupina" (Druh + Skupina + Provozovna) s UNIQUE constraintem. MIX = běžný záznam.
+  - **PP-2: Druh odpadu** — existující entita, beze změn DS. Nová funkcionalita celá na vazební entitě z PP-1. Dokumentace business kontextu a role v přiřazení skupiny.
+  - **PP-3: Zóna** — nová entita. Jednoduchá struktura: Název, Externí ID, Provozovna, Poznámka, Je aktivní. Bez replikace adresní struktury z HEN. V E1 se nepřenáší do RP.
+- **Zapracován nový vstupní materiál: HEN ZVOZ Guide**
+  - Výtah: `docs/vytah-helios-nephrite-zvoz.md` (existoval z předchozí session)
+  - Aktualizována strategie DM — přidán jako vstup #5
+  - Aktualizován plán DM — nová sekce mapující HEN guide na konkrétní entity (PP-3 až PP-9, RP-8)
+  - `data/input-analysis.md` již byl aktuální (dokument #9)
+- **Doplněno pravidlo do CLAUDE.md** — při entitní analýze se aktivně ptát na nejasnosti a business rozhodnutí
+- Rozhodnutí: KR-08 (mapování per provozovna), KR-09 (MIX = záznam), KR-10 (sdílení přes integraci), KR-11 (Zóna jednoduchá), KR-12 (HEN guide jako vstup)
+- Další krok: pokračovat PP-4 (Rozvrh) — bohatá parametrizace z HEN guide
