@@ -1,9 +1,9 @@
 # Progress: CS-MPG Analýza
 
 ## Aktuální stav
-Fáze: Analýza datových modelů — příprava referenčních podkladů dokončena, připraveno na entitní analýzu
-Poslední session: 2026-02-23 (session 9)
-Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
+Fáze: Návrh datového modelu — strategie, šablona a plán hotové, připraveno na entitní analýzu
+Poslední session: 2026-02-23 (session 10)
+Další krok: Zahájit entitní analýzu PP-1 (Skupina odpadu) dle docs/datovy-model/plan-navrh-datoveho-modelu.md
 
 ## TODO
 ### Integrace
@@ -22,28 +22,24 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
 - [x] Analýza Cílový koncept vs. DDL — první průchod (docs/analyza-cilovy-koncept-vs-ddl.md)
   - PP: 11 požadavků, 6 nových tabulek + 6 nových sloupců
   - RP: 13 požadavků, ~8 nových tabulek + 11+ nových sloupců
-- [x] Doplnit analýzu o datové slovníky (entitní model) — v1 (archivováno do docs/archive/v1/)
-  - Plán: docs/PLAN-doplneni-analyzy-datovy-model.md
-  - v1 výstupy archivovány — nedostatečný doménový kontext (DS vs DDL rozdíly, separátní CS model v RP)
-  - **PRAVIDLO: z docs/archive/ nepřebírat** — DS↔DDL mapování vzniklo před doplněním doménového kontextu, hlásí implementační odchylky jako problémy
-- [x] Strukturovaný výtah z Cílového konceptu (docs/vytah-cilovy-koncept.md, 1 165 řádků)
+- [x] ~~Analýza v1 (DS↔DDL mapování)~~ — smazáno, překonáno novou strategií
+- [x] Strukturovaný výtah z Cílového konceptu (docs/datovy-model/vytah-cilovy-koncept.md, 1 165 řádků)
   - Zaměření: datový model a integrace
   - Zpracováno 4 paralelními agenty, konsolidováno do jednoho dokumentu
   - Všechny sekce CK: business procesy, doménový model, etapizace, PP, RP, FOB, integrace, SO, architektura, přílohy
 - [x] Inventář entit DS + DDL (čistý, bez hodnocení)
-  - `docs/inventar-entit-PP.md` (~1 180 řádků, 22 entit + 4 nové pro CS)
-  - `docs/inventar-entit-RP.md` (~2 020 řádků, 31+9 entit + 5 nových pro CS)
+  - `docs/datovy-model/inventar-entit-PP.md` (~1 180 řádků, 22 entit + 4 nové pro CS)
+  - `docs/datovy-model/inventar-entit-RP.md` (~2 020 řádků, 31+9 entit + 5 nových pro CS)
   - Pravidlo: žádné DS↔DDL mapování, žádné hodnocení odchylek
 - [x] Doplnění popisů entit a referencí z tech. projektů do inventářů
   - Ke každé entitě doplněn popis (z DS/slovníku pojmů) a reference na konkrétní UC/UI stránky tech. projektu
   - PP: 22 entit s popisy + referencemi (UC 200–500, integrace, synchronizace)
   - RP: 41 entit s popisy + referencemi (UC 100–800, UI spec, integrace FOB/FLWW2)
-- [ ] Přepracovat podklady pro datové modely — v2 ← PRÁVĚ TADY
-  - Postup: po entitách s review
-  - Výstup: docs/datovy-model-PP.md a docs/datovy-model-RP.md
-  - Nový kontext: DS je konceptuální (analytik), DDL je implementační (vývojář) — vědomé rozdíly jsou OK
-  - Nový kontext: RP má dva paralelní světy (kontejnery vs. CS s vlastním UI a datovým modelem)
-  - Referenční vstupy: inventáře entit (docs/inventar-entit-PP.md, docs/inventar-entit-RP.md) + výtah CK (docs/vytah-cilovy-koncept.md)
+- [x] Strategie návrhu DM (docs/datovy-model/strategie-navrh-datoveho-modelu.md)
+- [x] Šablona entitní analýzy (docs/datovy-model/sablona-entitni-analyza.md)
+- [x] Plán — 19 entit s pořadím (docs/datovy-model/plan-navrh-datoveho-modelu.md)
+- [ ] Entitní analýza PP (10 entit) → docs/datovy-model/datovy-model-PP.md ← PRÁVĚ TADY
+- [ ] Entitní analýza RP (9 entit) → docs/datovy-model/datovy-model-RP.md
 - [ ] Review datových modelů se stakeholdery
 - [ ] Návrh cílových datových modelů pro dotčené systémy
 - [ ] Mapování entit mezi systémy
@@ -61,8 +57,10 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
 - **KR-01: Rozšíření scope projektu** — Projekt přejmenován z "CS-MPG Integrace" na "CS-MPG Analýza". Scope rozšířen o dvě nové oblasti: návrh datových modelů a konzultační podpora pro tým. Promítnuto do CLAUDE.md, SPEC.md, PLAN.md.
 - **KR-02: Dvouvrstvý přístup k analýze datových modelů** — Analýza dopadů na datový model bude důsledně rozlišovat entitní model (datový slovník — business atributy, asociace, pravidla) a fyzický model (DDL — tabulky, sloupce, FK, indexy). Datové slovníky z technických projektů PP a RP jsou primárním zdrojem pro logickou vrstvu.
 - **KR-03: Nalezené bugy v DDL** — Identifikovány 4 potenciální chyby v produkčních DDL, které je třeba vyřešit před implementací CS: `address.updated_by` je `bit` místo `int FK` (PP), `address.city` je `nvarchar(50)` vs. DS specifikace 80 znaků (PP), `liquidation_garbage_types` uložen jako JSON místo proper FK (RP), `time_from/time_to` je `varchar(150)` na OS (RP).
-- **KR-04: Archiv = nepřebírat** — Materiály v docs/archive/ byly archivovány cíleně (DS↔DDL mapování vzniklo před doplněním doménového kontextu). Entitní analýzu zahájit od nuly s čistými vstupy (výtah CK + DS přímo + DDL přímo).
+- **KR-04: v1 analýza smazána** — DS↔DDL mapování z v1 vzniklo před doplněním doménového kontextu. Smazáno v session 10. Entitní analýza zahájena od nuly s čistými vstupy (výtah CK + DS přímo + DDL přímo).
 - **KR-05: Výtah CK je nutný, ale ne dostatečný podklad** — Pro datový model a integrace slouží jako business reference. Chybí atributové detaily entit, přesné integrační zprávy a obsah diagramů. Doplňuje se z DS a DDL při entitní analýze.
+- **KR-06: Struktura projektu** — `docs/` rozdělen na `docs/datovy-model/` a `docs/integrace/`. Meetingy přesunuty do `meetings/`. Archiv smazán.
+- **KR-07: DM first** — Nejdřív návrh datového modelu (19 entit), pak integrační specifikace. PLAN.md smazán (byl o integraci), nahrazen `docs/datovy-model/plan-navrh-datoveho-modelu.md`.
 
 ## Otevřené otázky
 - OQ-01: Seznam entit MDB vs. REST API v Etapě 1 — **částečně** (DDL znám, rozřazení per entita TBD)
@@ -168,7 +166,7 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
 - Další krok: review datových modelů se stakeholdery, zahájení detailní specifikace integračních toků
 
 ### 2026-02-23, session 8
-- **Vytvořen strukturovaný výtah z Cílového konceptu** (`docs/vytah-cilovy-koncept.md`, 1 165 řádků)
+- **Vytvořen strukturovaný výtah z Cílového konceptu** (`docs/datovy-model/vytah-cilovy-koncept.md`, 1 165 řádků)
   - Extrahován .docx do MD (Python, 1 377 řádků surového textu)
   - Rozděleno do 4 sekcí, zpracováno 4 paralelními agenty se sdíleným zadáním
   - Konsolidováno do jednoho konzistentního dokumentu se zaměřením na datový model a integraci
@@ -181,10 +179,10 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
   - Generování OS: 4 scénáře dle vazeb RPO (Rozvrh je nutná podmínka)
   - SoT okruhy: Etapa 1 = HEN, Etapa 2 = PP
   - 16 otevřených bodů z CK s odpověďmi od zákazníka
-- Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
+- Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model/datovy-model-PP.md
 
 ### 2026-02-23, session 9
-- **Review výtahu z Cílového konceptu** (`docs/vytah-cilovy-koncept.md`)
+- **Review výtahu z Cílového konceptu** (`docs/datovy-model/vytah-cilovy-koncept.md`)
   - Posouzeno, že výtah splňuje účel jako business reference pro datový model a integrace
   - Identifikováno 6 mezer: chybí atributové detaily entit, integrační zprávy bez atributové úrovně, diagramy jen referované, lifecycle/stavy ne všech entit, validační pravidla mimo scope CK, datové typy nespecifikovány
   - Mezery se budou řešit při entitní analýze z DS a DDL
@@ -192,11 +190,32 @@ Další krok: Zahájit entitní analýzu PP — první entita (RPO) s review, v�
   - DS↔DDL mapování v archivu vzniklo před doménovým kontextem o vztahu DS vs DDL
   - Entitní analýzu zahájit od nuly s čistými vstupy
 - **Vytvořeny inventáře entit DS + DDL** (čistý inventář bez hodnocení)
-  - `docs/inventar-entit-PP.md` — 22 existujících entit + 4 nové pro CS (Okruh, Rozvrh, Kalendář, Zóna)
-  - `docs/inventar-entit-RP.md` — 31 hlavních entit + 9 enumerací + 5 nových pro CS (Okruh, Rozvrh, Okruh dne, Skupina odpadu, RPO)
+  - `docs/datovy-model/inventar-entit-PP.md` — 22 existujících entit + 4 nové pro CS (Okruh, Rozvrh, Kalendář, Zóna)
+  - `docs/datovy-model/inventar-entit-RP.md` — 31 hlavních entit + 9 enumerací + 5 nových pro CS (Okruh, Rozvrh, Okruh dne, Skupina odpadu, RPO)
   - Ke každé entitě: atributy z DS, sloupce z DDL, asociace z DS (oddělené, bez mapování)
 - **Doplněny popisy a reference z tech. projektů** do obou inventářů
   - Popis entity (z DS/slovníku pojmů) jako blockquote
   - Reference na konkrétní UC/UI stránky technického projektu (PP: UC 200–500; RP: UC 100–800)
 - Klíčová rozhodnutí: KR-04 (archiv nepřebírat), KR-05 (výtah CK nutný ale ne dostatečný)
-- Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model-PP.md
+- Další krok: zahájit entitní analýzu PP — první entita (RPO) s review, výstup do docs/datovy-model/datovy-model-PP.md
+
+### 2026-02-23, session 10
+- **Vytvořena šablona entitní analýzy** (`docs/datovy-model/sablona-entitni-analyza.md`)
+  - Struktura per entita: business kontext, návrh DS rozšíření (atributy, asociace), DDL doporučení, integrace, OQ, stav schválení
+  - Zásady: nové entity = kompletní DS, rozšíření = jen delta, DS primární výstup
+- **Vytvořen plán návrhu DM** (`docs/datovy-model/plan-navrh-datoveho-modelu.md`)
+  - 19 entit celkem: 10 PP + 9 RP
+  - Řazení dle závislostí, PP první (datový zdroj pro RP)
+  - PP: Skupina odpadu → Druh odpadu → Zóna → Rozvrh → Kalendář → Okruh → Typ nádoby → RPO → Nádoba → Stanoviště
+  - RP: Skupina odpadu → Okruh → Rozvrh → RPO → Okruh dne → OS → Typ pol. DV → DV → Realizace DV
+- **Zapsána strategie návrhu DM** (`docs/datovy-model/strategie-navrh-datoveho-modelu.md`)
+  - Návrhový přístup (ne auditorský): cílem je navrhnout rozšíření DS, ne hledat nesrovnalosti
+- **Reorganizace struktury projektu**
+  - `docs/datovy-model/` — analytické výstupy DM (6 souborů)
+  - `docs/integrace/` — připraveno pro integrační specifikace
+  - `meetings/` — agendy a zápisy (přesunuto z docs/)
+  - Smazán `docs/archive/` (v1 materiály — překonané)
+  - Smazán `PLAN.md` (překonán DM plánem, integrace se řeší až po DM)
+  - Aktualizovány křížové reference ve všech souborech
+- Rozhodnutí: KR-06 (struktura projektu), KR-07 (DM first, integrace po DM)
+- Další krok: zahájit entitní analýzu PP-1 (Skupina odpadu)

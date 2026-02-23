@@ -18,8 +18,13 @@ Primární: business-analysis, product-requirements
 - `SPEC.md` — zadání, požadavky, scope
 - `PROGRESS.md` — aktuální stav, TODO, rozhodnutí
 
+## Struktura projektu
+- `docs/datovy-model/` — návrh datového modelu CS (strategie, inventáře, entitní analýzy)
+- `docs/integrace/` — specifikace integračních toků
+- `meetings/` — agendy a zápisy z jednání
+- `data/input/` — původní vstupní dokumenty
+
 ## Data
-- `data/input/` — původní vstupní dokumenty (Word, PDF, Excel)
 - `data/input-analysis.md` — strukturovaný výtah ze vstupních dokumentů (generovaný přes /analyze-inputs)
 
 ## Reference z knowledge base
@@ -29,8 +34,31 @@ Primární: business-analysis, product-requirements
 - Šablona: ~/second-brain/01-knowledge/templates/spec-template.md
 - Glossář: ~/second-brain/01-knowledge/glossary/company-glossary.md
 
+## Doménový kontext pro analýzu datových modelů
+
+### Vztah datový slovník (DS) vs. fyzický model (DDL)
+- **Datový slovník** je konceptuální model, vlastníkem je analytik aplikace. Definuje business entity, asociace a pravidla.
+- **Fyzický model (DDL)** navrhuje vývojář při respektování business logiky. Má právo odlišit se v:
+  - Pojmenování sloupců a tabulek
+  - Datových typech (DS "Celé číslo" → DDL `float` může být záměr)
+  - Přidání technických sloupců (`*_search`, `geom`, `winyx_id`, audit sloupce)
+  - Vynechání DS atributů řešených na aplikační úrovni
+- **Co je problém k nahlášení**: chybějící business entita nebo asociace v DS, která by tam být měla (DS není aktuální). Neaktuálnost DS z pohledu business logiky.
+- **Co NENÍ problém**: implementační odchylky mezi DS a DDL (typ, pojmenování, technické sloupce).
+
+### Architektura RoadPlan — dva paralelní světy
+V aplikaci RoadPlan existují (budou existovat) dva paralelní a oddělené domény:
+1. **Kontejnerová doprava** — stávající objednávky, objednané služby, denní výkony, plánování. Stávající UI a datový model.
+2. **Cyklické svozy (CS)** — separátní UI i datové modely v rámci stejné aplikace. Pro CS:
+   - Se z PP importují **položky objednávek a jejich revize (RPO)**, nádoby, stanoviště, okruhy, rozvrhy, skupiny odpadu
+   - Vzniknou **vlastní objednané služby** (separátní od kontejnerových)
+   - Vznikne **vlastní sestava plánu / denní výkon** (přes okruhy dne)
+   - UI bude separátní (nové obrazovky, nový FOB modul)
+- Důvod separace: malé nádoby (CS) a kontejnery mají zásadně odlišný způsob práce.
+- Opora v CK: "datový model RP pro OS CS bude postaven tak, aby v nezbytné míře podporoval potřebnou funkčnost" + celý koncept okruhů dne jako samostatná struktura.
+
 ## Pravidla pro tuto session
 - Před /clear vždy spusť /save-session
-- PLAN.md neměň bez mého souhlasu
-- Výstupy ukládej do `docs/`
+- Výstupy analýzy ukládej do `docs/`, zápisy z meetingů do `meetings/`
 - Při komplikaci navrhni řešení, nerob změnu tiše
+- Při analýze datových modelů: entity zpracovávej po jedné, ukazuj ke schválení, než pokračuješ dál
