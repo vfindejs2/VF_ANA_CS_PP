@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER Diagram — RoadPlan (RP) — Cyklicke svozy CS</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a2e;
+            padding: 24px;
+        }
+        h1 { font-size: 1.5rem; margin-bottom: 4px; }
+        .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+        .legend {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            border: 1px solid rgba(0,0,0,0.15);
+        }
+        .diagram-container {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+        .note {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .note + .note { margin-top: 8px; }
+        .note.info {
+            background: #cff4fc;
+            border-left-color: #0dcaf0;
+        }
+    </style>
+</head>
+<body>
+    <h1>ER Diagram: RoadPlan (RP) — Zmeny pro Cyklicke svozy</h1>
+    <p class="subtitle">Projekt CS-MPG | 2026-02-23 | Nove entity a jejich navaznosti na stavajici model</p>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background: #dbeafe;"></div>
+            <span>Stavajici entita (beze zmen)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #fed7aa;"></div>
+            <span>Stavajici entita (modifikovana)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #bbf7d0;"></div>
+            <span>Nova entita (Etapa 1)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #e9d5ff;"></div>
+            <span>Nova entita (Etapa 2)</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #e0f2fe;"></div>
+            <span>Sync z PP (Etapa 1)</span>
+        </div>
+    </div>
+
+    <div class="diagram-container">
+        <pre class="mermaid">
+erDiagram
+    %% ============================================
+    %% STAVAJICI ENTITY (beze zmen)
+    %% ============================================
+
+    organization_unit {
+        int id PK
+        string name
+    }
+
+    liquidation_site {
+        int id PK
+        string name
+        int address_id FK
+        float lat
+        float lng
+        int organization_unit_id FK
+    }
+
+    ls_accepted_garbage_type {
+        int id PK
+        int liquidation_site_id FK
+        int garbage_type_id FK
+    }
+
+    ordered_service_status {
+        int id PK
+        string name
+    }
+
+    execution_site {
+        int id PK
+        string name
+        float lat
+        float lng
+    }
+
+    default_settings {
+        string name PK
+        string val
+    }
+
+    %% ============================================
+    %% STAVAJICI ENTITY (modifikovane)
+    %% ============================================
+
+    day_performance {
+        int id PK
+        int status
+        int organization_unit_id FK
+        int transport_type FK
+        int vehicle_id FK
+        date realization_date
+        string start_time
+        int route_duration
+    }
+
+    day_performance_item {
+        int id PK
+        int order_val
+        int day_performance_id FK
+        int day_performance_item_type FK
+        int ordered_service_id FK
+        int ordered_service_location_id FK
+        int day_circuit_id FK "NOVY"
+    }
+
+    day_performance_item_type {
+        int id PK
+        string code
+        string _nova_hodnota "CIRCUIT_OF_DAY"
+    }
+
+    ordered_service {
+        int id PK
+        int status FK
+        int type
+        date date_from
+        date date_to
+        int order_item_revision_id "NOVY"
+        int day_circuit_id FK "NOVY"
+        int circuit_id FK "NOVY"
+        int schedule_id FK "NOVY"
+        int garbage_group_id FK "NOVY"
+        int garbage_type_id FK "NOVY"
+        int container_type_id FK "NOVY"
+        int container_count "NOVY"
+    }
+
+    ordered_service_location {
+        int id PK
+        int ordered_service_id FK
+        float lat
+        float lng
+        int liquidation_site_id FK
+        int execution_site_id FK
+        int site_id "NOVY"
+        int container_type_id FK "NOVY"
+        int garbage_group_id FK "NOVY"
+        int container_count "NOVY"
+        int cs_status "NOVY"
+    }
+
+    vehicle {
+        int id PK
+        string name
+        string registration_plate
+        int organization_unit_id FK
+        float body_volume "NOVY Etapa2"
+        float load_capacity "NOVY Etapa2"
+        string working_hours_from "NOVY Etapa2"
+        string working_hours_to "NOVY Etapa2"
+        bit use_for_strategic_planning "NOVY Etapa2"
+    }
+
+    transport_type {
+        int id PK
+        string name
+        bit is_available
+        string _nova_hodnota "Cyklicke svozy"
+    }
+
+    garbage_type {
+        int id PK
+        string code
+        string name
+        int garbage_group_id FK "NOVY"
+    }
+
+    container_type {
+        int id PK
+        string name
+        int transport_type_id FK
+        int service_time_seconds "NOVY"
+    }
+
+    %% ============================================
+    %% SYNC Z PP (Etapa 1)
+    %% ============================================
+
+    circuit {
+        int id PK
+        string external_id
+        string name
+        int organization_unit_id FK
+        int vehicle_id FK
+    }
+
+    schedule {
+        int id PK
+        string external_id
+        string name
+        int organization_unit_id FK
+        date valid_from
+        date valid_to
+    }
+
+    schedule_calendar_day {
+        int id PK
+        int schedule_id FK
+        date calendar_date
+    }
+
+    garbage_group {
+        int id PK
+        string external_id
+        string name
+        string short_name
+        int organization_unit_id FK
+    }
+
+    %% ============================================
+    %% NOVE ENTITY (Etapa 1)
+    %% ============================================
+
+    day_circuit {
+        int id PK
+        string name
+        date date_val
+        int circuit_id FK
+        int garbage_group_id FK
+        int organization_unit_id FK
+        int status
+        int vehicle_id FK
+        int day_performance_id FK
+        string note
+    }
+
+    day_circuit_liquidation_site {
+        int id PK
+        int day_circuit_id FK
+        int liquidation_site_id FK
+        int order_val
+        bit is_included_in_dv
+    }
+
+    cs_generation_config {
+        int id PK
+        int organization_unit_id FK
+        string run_frequency_cron
+        int generation_period_days
+        bit create_fictive_circuit
+    }
+
+    %% ============================================
+    %% NOVE ENTITY (Etapa 2)
+    %% ============================================
+
+    day_circuit_weight_record {
+        int id PK
+        int day_circuit_id FK
+        float weight_kg
+        float volume_utilization
+        datetime recorded_at
+        string source
+    }
+
+    strategic_planning_version {
+        int id PK
+        int organization_unit_id FK
+        string name
+        int status
+    }
+
+    strategic_planning_config {
+        int id PK
+        int sp_version_id FK
+        int max_route_duration_min
+        float max_route_weight_kg
+        float max_route_volume_l
+        string optimization_criterion
+    }
+
+    %% ============================================
+    %% VZTAHY — stavajici
+    %% ============================================
+
+    day_performance ||--o{ day_performance_item : "polozky"
+    day_performance_item }o--|| day_performance_item_type : "typ"
+    day_performance }o--|| transport_type : "typ dopravy"
+    day_performance }o--o| vehicle : "vozidlo"
+    day_performance }o--|| organization_unit : "provozovna"
+    ordered_service ||--o{ ordered_service_location : "lokace"
+    ordered_service }o--|| ordered_service_status : "stav"
+    ordered_service_location }o--o| liquidation_site : "likvidacni misto"
+    ordered_service_location }o--o| execution_site : "misto realizace"
+    liquidation_site ||--o{ ls_accepted_garbage_type : "druhy odpadu"
+    liquidation_site }o--|| organization_unit : "provozovna"
+
+    %% ============================================
+    %% VZTAHY — nove (Etapa 1) — Okruh dne (centralni nova entita)
+    %% ============================================
+
+    day_circuit }o--o| circuit : "B1: zdrojovy okruh (z PP)"
+    day_circuit }o--|| garbage_group : "B1: skupina odpadu"
+    day_circuit }o--|| organization_unit : "B1: provozovna"
+    day_circuit }o--o| vehicle : "B1: vozidlo"
+    day_circuit }o--o| day_performance : "B1: prirazeni do DV"
+    day_circuit ||--o{ day_circuit_liquidation_site : "B1: likvidacni mista"
+    day_circuit_liquidation_site }o--|| liquidation_site : "B1: LM"
+
+    %% Polozka DV -> Okruh dne
+    day_performance_item }o--o| day_circuit : "B1: okruh dne"
+    day_performance_item }o--o| ordered_service : "stavajici"
+    day_performance_item }o--o| ordered_service_location : "stavajici"
+
+    %% OS rozsireni pro CS
+    ordered_service }o--o| day_circuit : "B3: okruh dne"
+    ordered_service }o--o| circuit : "B3: okruh (z PP)"
+    ordered_service }o--o| schedule : "B3: rozvrh (z PP)"
+    ordered_service }o--o| garbage_group : "B3: skupina odpadu"
+    ordered_service }o--o| garbage_type : "B3: druh odpadu"
+    ordered_service }o--o| container_type : "B3: typ nadoby"
+
+    %% Lokace OS rozsireni pro CS
+    ordered_service_location }o--o| garbage_group : "B4: skupina odpadu"
+    ordered_service_location }o--o| container_type : "B4: typ nadoby"
+
+    %% Sync entity z PP
+    schedule ||--o{ schedule_calendar_day : "B11: kalendar"
+    circuit }o--|| organization_unit : "sync z PP"
+    schedule }o--|| organization_unit : "sync z PP"
+    garbage_group }o--|| organization_unit : "sync z PP"
+
+    %% Druh odpadu -> Skupina
+    garbage_type }o--o| garbage_group : "B9: druh->skupina"
+    ls_accepted_garbage_type }o--|| garbage_type : "stavajici"
+
+    %% Generovani config
+    cs_generation_config }o--|| organization_unit : "B7: provozovna"
+
+    %% ============================================
+    %% VZTAHY — nove (Etapa 2)
+    %% ============================================
+
+    day_circuit_weight_record }o--|| day_circuit : "B12: vahy"
+    strategic_planning_config }o--|| strategic_planning_version : "B8: konfigurace"
+    strategic_planning_version }o--|| organization_unit : "B8: provozovna"
+        </pre>
+    </div>
+
+    <div class="note">
+        <strong>Poznamka:</strong> Diagram zobrazuje pouze entity relevantni pro projekt Cyklicke svozy.
+        Kompletni datovy model RP obsahuje dalsi entity (ridici, zarizeni, adresy, GeoJSON trasy atd.),
+        ktere nejsou projektem CS primo dotceny. Zkratky: OS = Objednana sluzba, DV = Denni vykon,
+        RPO = Revize polozky objednavky, LM = Likvidacni misto, SP = Strategicke planovani.
+    </div>
+
+    <div class="note info">
+        <strong>Architektonicke rozhodnuti (B3):</strong> Diagram zobrazuje variantu A (rozsireni stavajici tabulky
+        <code>ordered_service</code>). Alternativne muze byt vytvorena nova separatni tabulka <code>cs_ordered_service</code>
+        (varianta B). Toto rozhodnuti je klicove a bude reseno v ramci detailni analyzy.
+    </div>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontSize: '14px',
+                entityPadding: 8
+            },
+            er: {
+                layoutDirection: 'TB',
+                entityPadding: 12,
+                useMaxWidth: false,
+                minEntityWidth: 180
+            }
+        });
+    </script>
+</body>
+</html>

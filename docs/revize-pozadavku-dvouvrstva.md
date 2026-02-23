@@ -1,74 +1,22 @@
-# Analyza: Cilovy koncept CS vs. datove modely PP a RP
+# Revize pozadavku: Cilovy koncept CS -- dvouvrstvovy format
 
 **Datum:** 2026-02-23
-**Autor:** Miroslav Slivone (business analyza)
-**Projekt:** Cyklicke svozy MP SK (CS-MPG)
+**Zdroje:**
+- Priloha c. 3 -- Cilovy koncept Cyklicke svozy MP SK (08/2025)
+- DDL_PP_DB.txt -- aktualni DDL databaze PasPort_MPGSK
+- DDL_RP_DB.txt -- aktualni DDL databaze RoadPlan_MPGSK
+- DS-PP: datovy slovnik PasPortu (technicky-projekt-PP/datove-modely)
+- DS-RP: datovy slovnik RoadPlanu (technicky-projekt-RP/datove-modely)
+- Extrakce PP entit a mapovani DS-PP na DDL-PP
+- Extrakce RP entit a mapovani DS-RP na DDL-RP
 
 ---
 
-## 0. Metodika a zdroje
-
-### Zdrojove dokumenty
-
-| Zkratka | Nazev | Popis |
-|---------|-------|-------|
-| **CK** | Priloha c. 3 -- Cilovy koncept Cyklicke svozy MP SK (08/2025) | Hlavni pozadavkovy dokument definujici cilovs funkcnost CS |
-| **DS-PP** | Datovy slovnik PasPortu | Entitni (logicky) model systemu PasPort (`technicky-projekt-PP/datove-modely`) |
-| **DS-RP** | Datovy slovnik RoadPlanu | Entitni (logicky) model systemu RoadPlan (`technicky-projekt-RP/datove-modely`) |
-| **DDL-PP** | DDL_PP_DB.txt | Fyzicky model (SQL DDL) databaze `PasPort_MPGSK` |
-| **DDL-RP** | DDL_RP_DB.txt | Fyzicky model (SQL DDL) databaze `RoadPlan_MPGSK` |
-
-### Detailni referencni dokumenty (prilohy)
-
-- `docs/extrakce-PP-entity-a-mapovani.md` -- Kompletni extrakce 13 entit z DS-PP s plnym atributovym profilem, DDL mapovanim a identifikovanymi deltami. Slouzi jako detailni reference pro PP entity.
-- `docs/extrakce-RP-entity-a-mapovani.md` -- Kompletni extrakce 11 entit z DS-RP s plnym atributovym profilem, DDL mapovanim a identifikovanymi deltami. Slouzi jako detailni reference pro RP entity.
-
-### Dvouvrstvovy pristup
-
-Analyza pracuje se dvema vrstvami datoveho modelu:
-
-1. **Entitni model (datovy slovnik / DS)** -- Logicka uroven. Definuje entity, jejich atributy, asociace a business pravidla. Jazykove neutralni (nezavisly na konkretni DB technologii). Popisuje "co" systemu eviduje.
-
-2. **Fyzicky model (DDL)** -- Implementacni uroven. Konkretni SQL tabulky, sloupce, datove typy, FK constrainty a indexy. Popisuje "jak" jsou data ulozena v MS SQL Server.
-
-Pro kazdy pozadavek z Ciloveho konceptu je analyzovan dopad na obe vrstvy a identifikovany delty mezi soucasnym stavem DS, soucasnym stavem DDL a pozadovanym cilovym stavem.
+## A) PASPORT (PP) -- Pozadavky A1-A11
 
 ---
 
-## 1. PASPORT (PP)
-
-### 1.1 Soucasny stav -- klicove entity (z DS-PP + DDL-PP)
-
-Nasledujici prehled shrnuje 13 analyzovanych entit PP relevantnich pro projekt CS. Kompletni atributove profily a mapovaci tabulky jsou v priloze `docs/extrakce-PP-entity-a-mapovani.md`.
-
-| # | Entita (DS-PP) | Tabulka (DDL-PP) | Atributu DS | Sloupcu DDL | Shoda | Klicove pozorovani |
-|---|----------------|------------------|-------------|-------------|-------|--------------------|
-| 1 | Revize polozky objednavky (RPO) | `order_item_revision` | 18 | 21 | Excellent | Centralni entita. DDL navic: `waste_disposal_day_id` (redundantni 1:1 vedle M:N). Typova delta: `container_count` je float misto decimal. |
-| 2 | Polozka objednavky | `order_item` | 11 | 12 | Excellent | Rodicovska entita RPO. Plna shoda. |
-| 3 | Objednavka | `[order]` | 14 | 15 | Excellent | Kontejner pro polozky. Plna shoda. |
-| 4 | Stanoviste | `site` | 17 | 19 | Excellent | Souradnice (lat/lng/geom) funkcni. DDL navic: `name_search`, `geom`. Pripravene pro CS. |
-| 5 | Nadoba | `container` | 22 | 28 | Good | `garbage_group_id` jiz existuje. DDL navic: `evidence_number_search`. Typova delta: `evidence_number` (20 vs 255), `discard_to_date` (datum vs datetimeoffset). |
-| 6 | Skupina odpadu | `garbage_group` | 13 | 14 | Good | **CHYBI** `organization_unit_id` (per provozovna). Typove delty: `name` (50 vs 255), `short_name` (20 vs 255). |
-| 7 | Druh odpadu | `garbage_type` | 12 | 13 | Good | **CHYBI** vazba na skupinu odpadu (`garbage_group_id`). V DS ani DDL neni. `last_modification_source_id` je NOT NULL (nekonzistence). |
-| 8 | Typ nadoby | `container_type` | 12 | 12 | Fair | **CHYBI** `organization_unit_id` (Provozovna) a `Oblast pouziti` -- oba definovane v DS, ale v DDL nepritomne. Typova delta: `name` (50 vs 255). |
-| 9 | Frekvence vyvozu | `waste_disposal_frequency` | 13 | 14 | Good | Provozovna resena pres `external_organization_unit_id` (textovy ext. ID misto FK int). |
-| 10 | Adresa | `address` | 14 | 17 | Fair | **BUG:** `updated_by` je typ `bit` misto `int FK`. **DDL uzsi nez DS:** `city` nvarchar(50) vs DS 80. DDL navic: `full_address`. |
-| 11 | Prirazeni nadoby ke stanovisti | `site_container_assignment` | 13 | 15 | Excellent | Plna shoda. Klicova vazba pro lokalizaci nadob. |
-| 12 | Prirazeni nadoby k polozce obj. | `order_item_container_assignment` | 14 | 16 | Excellent | Plna shoda. Vazba nadoba <-> polozka objednavky. |
-| 13 | Prirazeni dnu svozu k RPO | `waste_disposal_day_order_item_revision_assignment` | 8 | 10 | Excellent | M:N vazba RPO <-> dny svozu. Plna shoda. |
-
-**Legenda shody:**
-- **Excellent** -- Vsechny DS atributy maji odpovidajici DDL sloupec, zadne vyznamne typove delty
-- **Good** -- Drobne typove odchylky nebo chybejici 1-2 atributy nizssiho vyznamu
-- **Fair** -- Chybi atributy definovane v DS, nebo existuji potencialni bugy v DDL
-
----
-
-### 1.2 Pozadavky z CK s dopadem na PP model (A1--A11)
-
----
-
-#### A1. Okruh (Circuit) -- NOVA entita
+### A1. Okruh (Circuit) -- NOVA entita
 
 **Pozadavek:**
 Okruh sdruzuje polozky objednavek (RPO), ktere jsou obsluhovany spolecne. Nepovinna vazba z RPO na okruh. V Etape 1 je zdrojem HEN, v Etape 2 bude PP zdrojem pravdy. Okruh bude mit vazbu na Provozovnu. V UI se uzivatel bude moci priradit konkretni vozidlo obsluhujici dany okruh.
@@ -119,7 +67,7 @@ Okruh sdruzuje polozky objednavek (RPO), ktere jsou obsluhovany spolecne. Nepovi
 
 ---
 
-#### A2. Rozvrh (Schedule) -- NOVA entita
+### A2. Rozvrh (Schedule) -- NOVA entita
 
 **Pozadavek:**
 Rozvrh predpisuje konkretni kalendarni dny obsluhy. Zdrojem pravdy je HEN (i do budoucna). PP bude rozvrhy zobrazovat pro kontrolu. RPO bude mit nepovinnou vazbu na rozvrh (M:N -- jedna RPO muze mit vice vazeb na rozvrhy). Rozvrh ma platnost (typicky na kalendarni rok). Kazda provozovna muze mit svou sadu rozvrhu.
@@ -143,7 +91,7 @@ Rozvrh predpisuje konkretni kalendarni dny obsluhy. Zdrojem pravdy je HEN (i do 
   - `Platnost od` / `Platnost do` -- Datum, nepovinna
   - Systemove atributy
 - Souvislost s existujicimi entitami:
-  - DS-PP dnes definuje entity **Zakladni dny svozu** (waste_disposal_day) a **Frekvence vyvozu** (waste_disposal_frequency). Tyto entity resi frekvenci a dny svozu, ale NE kalendarni rozvrh. Rozvrh je nova, vyssi uroven planovani.
+  - DS-PP dnes definuje entity **Zakladni dny svozu** (waste_disposal_day) a **Frekvence vyvozu** (waste_disposal_frequency) -- viz extrakce #9 a #13. Tyto entity resi frekvenci a dny svozu, ale NE kalendarni rozvrh. Rozvrh je nova, vyssi uroven planovani.
   - Vazebni entita **Prirazeni zakladnich dnu svozu k RPO** (#13) je existujici M:N mechanismus pro dny svozu. Novy rozvrh jej doplnuje (nenahrazuje).
 
 **Dopad na fyzicky model (DDL):**
@@ -181,7 +129,7 @@ Rozvrh predpisuje konkretni kalendarni dny obsluhy. Zdrojem pravdy je HEN (i do 
 
 ---
 
-#### A3. Zona (Zone) -- NOVA entita
+### A3. Zona (Zone) -- NOVA entita
 
 **Pozadavek:**
 Zona reprezentuje geografickou oblast. Nepovinna vazba z RPO na zonu je 1:1 (na rozdil od okruhu a rozvrhu, kde je M:N). Zdrojem v Etape 1 je HEN. Zona ma vazbu na provozovnu.
@@ -212,12 +160,12 @@ Zona reprezentuje geografickou oblast. Nepovinna vazba z RPO na zonu je 1:1 (na 
 
 **Soucasny stav:**
 - Entitni model (DS): Entita "Zona" v DS-PP **neexistuje**. RPO (extrakce #1, 18 atributu) nema zadnou asociaci na zonu.
-- Fyzicky model (DDL): Tabulka `zone` **neexistuje**. Sloupec `zone_id` na `order_item_revision` **neexistuje**. Aktualne `order_item_revision` ma 21 sloupcu -- zadny z nich neodkazuje na zonu.
+- Fyzicky model (DDL): Tabulka `zone` **neexistuje**. Sloupec `zone_id` na `order_item_revision` **neexistuje**. Aktualne `order_item_revision` ma 21 sloupcu (viz extrakce #1 DDL) -- zadny z nich neodkazuje na zonu.
 - Delta: Nova tabulka + novy sloupec (FK) na existujici tabulce. Migrace: `zone_id` bude NULL pro vsechna existujici data.
 
 ---
 
-#### A4. Skupina odpadu (Garbage Group) na RPO
+### A4. Skupina odpadu (Garbage Group) na RPO
 
 **Pozadavek:**
 Nova vazba mezi druhem odpadu (`garbage_type`) a skupinou odpadu (`garbage_group`). Skupina odpadu bude na RPO urcena procedurou PP dle mapovani druh -> skupina. Specialni skupina "MIX" pro kombinovany svoz. Skupina je per provozovna. Ciselnik bude spolecny pro RP a PP.
@@ -225,7 +173,7 @@ Nova vazba mezi druhem odpadu (`garbage_type`) a skupinou odpadu (`garbage_group
 **Dopad na entitni model (datovy slovnik):**
 - Zmena entity **Druh odpadu** (extrakce #7): novy atribut
   - `Skupina odpadu` -- Reference na Skupinu odpadu, nepovinna; mapovani druh -> skupina
-  - Dnes DS-PP Druh odpadu ma atributy: ext. ID, Kod(15), Popis(255), Kategorie(4), systemove. **Nema vazbu na skupinu odpadu.**
+  - Dnes DS-PP Druh odpadu ma atributy: ext. ID, Kod(15), Popis(255), Kategorie(4), systemove. **Nema vazbu na skupinu odpadu.** (Poznamka z extrakce #7: "DS nema explicitni vazbu druh odpadu na skupinu odpadu.")
 - Zmena entity **Revize polozky objednavky (RPO)** (extrakce #1): novy atribut
   - `Skupina odpadu` -- Reference na Skupinu odpadu, nepovinna; odvozena z druhu odpadu procedurou
   - Dnes RPO nema atribut skupiny odpadu
@@ -262,7 +210,7 @@ Nova vazba mezi druhem odpadu (`garbage_type`) a skupinou odpadu (`garbage_group
 
 ---
 
-#### A5. Cas obsluhy typu nadoby
+### A5. Cas obsluhy typu nadoby
 
 **Pozadavek:**
 Rozsirit ciselnik `container_type` o atribut "cas obsluhy typu nadoby" -- ciselna hodnota casu ve vterinych (prumerna doba obsluhy jedne nadoby). Pouziti pro vypocet doby trvani okruhu dne v RP.
@@ -284,7 +232,7 @@ Rozsirit ciselnik `container_type` o atribut "cas obsluhy typu nadoby" -- ciseln
 
 ---
 
-#### A6. Souradnice mista realizace RPO (geokodovani)
+### A6. Souradnice mista realizace RPO (geokodovani)
 
 **Pozadavek:**
 Pro zobrazeni RPO v mape je treba geokodovat mista realizace. Souradnice MR budou pouzity jako fallback, pokud RPO nema vazbu na nadobu se stanovistem. Geokodovani probehne automaticky pri zmene adresy MR. V mape se vizualne odlisi bod MR vs. bod stanoviste.
@@ -294,7 +242,7 @@ Pro zobrazeni RPO v mape je treba geokodovat mista realizace. Souradnice MR budo
   - `Souradnice` -- Point (lat/lng), nepovinna; geokodovane souradnice adresy
   - `Stav geokodovani` -- Enumerace (Stav geokodovani), povinna; stav procesu geokodovani
   - Dnes DS-PP Adresa ma: ext. ID, Ext. ID v registru adres(10), Ulice(80), Cislo popisne(15), Cislo orientacni(15), Mesto(80), PSC(15), Stat(50), systemove. **NEMA** atribut Souradnice ani Stav geokodovani.
-  - Pro srovnani: DS-PP **Stanoviste** (extrakce #4) **MA** atributy `Souradnice` (Point) a `Stav geokodovani` (Enumerace) -- vzor pro implementaci.
+  - Pro srovnani: DS-PP **Stanoviste** (extrakce #4) **MA** atributy `Souradnice` (Point) a `Stav geokodovani` (Enumerace).
 - Pripadne: zmena entity **RPO** o cachovane souradnice (pokud se rozhodne o cache)
   - `Souradnice MR` -- Point, nepovinna; cachovane souradnice mista realizace
 
@@ -311,7 +259,7 @@ Pro zobrazeni RPO v mape je treba geokodovat mista realizace. Souradnice MR budo
   - **Adresa** (extrakce #10): ma 14 atributu. **NEMA** souradnice ani stav geokodovani. (Poznamka: DS definuje mesto s rozsahem 80, ale DDL ma jen 50 -- existujici delta.)
   - **Stanoviste** (extrakce #4): **MA** atributy Souradnice (Point) a Stav geokodovani (Enumerace) -- to je vzor pro implementaci na adrese.
 - Fyzicky model (DDL):
-  - `address`: existuje s 17 sloupci. **NEMA** sloupce `lat`, `lng`, `geocoding_state`.
+  - `address`: existuje s 17 sloupci (id, street(80), registry_number(15), orientation_number(15), city(50), postal_code(15), country(50), full_address(255), address_register_external_id(255), audit). **NEMA** sloupce `lat`, `lng`, `geocoding_state`.
   - `site`: **MA** sloupce `lat`(float), `lng`(float), `geom`(geography), `geocoding_state`(int FK) -- stanoviste souradnice funguje spravne.
   - `code_geocoding_state`: ciselnik v PP **existuje** -- lze vyuzit.
   - Poznamka: `address.updated_by` je typ `bit` (misto `int` FK) -- existujici bug identifikovany v extrakci #10.
@@ -319,7 +267,7 @@ Pro zobrazeni RPO v mape je treba geokodovat mista realizace. Souradnice MR budo
 
 ---
 
-#### A7. Stanoviste (Site) -- existujici entita, bez zmen
+### A7. Stanoviste (Site) -- existujici entita, bez zmen
 
 **Pozadavek:**
 Stanoviste je klicova existujici entita. Souradnice stanoviste se pouziji pro zobrazeni v mape a pro lokalizaci objednanych sluzeb v RP.
@@ -334,11 +282,11 @@ Stanoviste je klicova existujici entita. Souradnice stanoviste se pouziji pro zo
 **Soucasny stav:**
 - Entitni model (DS): **Stanoviste** (extrakce #4) ma 17 atributu: Interni ID, Externi ID(255), Nazev(255), Provozovna, Adresa, Souradnice (Point), Stav geokodovani, Je sklad nadob, Poznamka(255), Vychozi fotografie, systemove.
 - Fyzicky model (DDL): `site` existuje s 19 sloupci: id, name(255), organization_unit_id(FK), address_id(FK), lat(float), lng(float), note(255), is_active, audit, external_id, geom(geography), geocoding_state(FK), default_photo_id(FK), name_search, creation_source_id, last_modification_source_id, is_container_warehouse. **Plne odpovida** pozadavkum.
-- Delta: Zadna. Stanoviste je pripravene pro CS.
+- Delta: Zadna. Stanoviste je pripravene pro CS. Mapovani DS <> DDL je kompletni (jedine navic v DDL: `name_search` a `geom` -- technicke sloupce).
 
 ---
 
-#### A8. Kontejner (Container) -- zmena rizeni skupiny odpadu
+### A8. Kontejner (Container) -- zmena rizeni skupiny odpadu
 
 **Pozadavek:**
 Skupina odpadu na nadobe bude nove rizena z RPO. Pokud nadoba ma vazbu na RPO a RPO ma definovanou skupinu odpadu, skupina na nadobe se prepise. Skupinu odpadu na nadobe pujde zadat pouze pokud nadoba nema vazbu na RPO nebo RPO nema skupinu definovanu.
@@ -362,7 +310,7 @@ Skupina odpadu na nadobe bude nove rizena z RPO. Pokud nadoba ma vazbu na RPO a 
 
 ---
 
-#### A9. Vazba RPO na okruhy, rozvrhy, zony -- panel "Prirazeni okruhu"
+### A9. Vazba RPO na okruhy, rozvrhy, zony -- panel "Prirazeni okruhu"
 
 **Pozadavek:**
 Novy panel na obrazovce RPO zobrazujici zarazeni do okruhu, rozvrhu a zon. V Etape 1 jen zobrazeni (read-only), v Etape 2 editace. Platnost zarazeni (valid_from/valid_to) bude nepovinna.
@@ -384,7 +332,7 @@ Novy panel na obrazovce RPO zobrazujici zarazeni do okruhu, rozvrhu a zon. V Eta
 
 ---
 
-#### A10. Rozsireni filtru na obrazovce RPO
+### A10. Rozsireni filtru na obrazovce RPO
 
 **Pozadavek:**
 Pokrocily filtr rozsiren o skupiny: Okruh, Rozvrh, Rozhodujici kalendarni den, Aktualne platne.
@@ -394,10 +342,10 @@ Pokrocily filtr rozsiren o skupiny: Okruh, Rozvrh, Rozhodujici kalendarni den, A
   - Okruh: pres vazebni entitu Prirazeni RPO k okruhu (A1)
   - Rozvrh: pres vazebni entitu Prirazeni RPO k rozvrhu (A2)
   - Kalendarni den: pres entitu Kalendarni den rozvrhu (A2)
-  - Platnost: pres atributy valid_from/valid_to na RPO a na vazebnich entitach
+  - Platnost: pres atributy valid_from/valid_to na RPO a na vazebních entitach
 
 **Dopad na fyzicky model (DDL):**
-- Zadne DDL zmeny. Filtry pracuji s daty z vazebnich tabulek a kalendare rozvrhu.
+- Zadne DDL zmeny. Filtry pracuji s daty z vazebních tabulek a kalendare rozvrhu.
 - Pripadne nove indexy pro vykon dotazu:
   - IX_schedule_calendar_day_calendar_date (pro filtr dle kalendarniho dne)
   - IX_oirca_valid_from_valid_to (pro filtr dle platnosti)
@@ -405,11 +353,11 @@ Pokrocily filtr rozsiren o skupiny: Okruh, Rozvrh, Rozhodujici kalendarni den, A
 **Soucasny stav:**
 - Entitni model (DS): Filtrovani je UI logika. DS nedefinuje filtry jako entity.
 - Fyzicky model (DDL): Aktualne nelze filtrovat dle okruhu, rozvrhu ani kalendarnich dnu -- tabulky neexistuji.
-- Delta: Zadne datove zmeny. Pozadavek je zavisly na A1, A2 a jejich datovych strukturach.
+- Delta: Zadne datove zmeny. Pozadavek je zavislý na A1, A2 a jejich datovych strukturach.
 
 ---
 
-#### A11. Vahove naplneni a objemove zaplneni per skupina odpadu (Etapa 2 / Strategicka optimalizace)
+### A11. Vahove naplneni a objemove zaplneni per skupina odpadu (Etapa 2 / Strategicka optimalizace)
 
 **Pozadavek:**
 Pro strategicke planovani je nutne znat:
@@ -449,7 +397,7 @@ Tyto hodnoty budou evidovany v PP pro potreby konfigurace optimalizace.
 
 ---
 
-### 1.3 Souhrnna tabulka zmen PP
+### Souhrn PP -- prehled zmen (entitni + fyzicky model)
 
 | Entita / Tabulka | DS dnes | DDL dnes | Typ zmeny | Etapa |
 |---|---|---|---|---|
@@ -467,39 +415,17 @@ Tyto hodnoty budou evidovany v PP pro potreby konfigurace optimalizace.
 | Adresa . `lat`, `lng`, `geocoding_state` | Neexistuji v DS | Neexistuji v DDL | NOVE atributy + sloupce | 1 |
 | **Parametry sk. odp. a typu nadoby** (`garbage_group_container_type_parameters`) | Neexistuje | Neexistuje | NOVA entita + tabulka | 2 |
 | Nadoba . `garbage_group_id` | Existuje v DS | Existuje v DDL | Bez zmen (zmena logiky) | 1 |
-| Stanoviste (`site`) | Existuje v DS | Existuje v DDL s lat/lng | Bez zmen | -- |
+| Stanoviste (`site`) | Existuje v DS | Existuje v DDL s lat/lng | Bez zmen | - |
 
 **Celkem PP:** 6 novych tabulek (Etapa 1) + 1 nova tabulka (Etapa 2), 6 novych sloupcu na existujicich tabulkach, 0 strukturalnich zmen (1x zmena business logiky).
 
 ---
 
-## 2. ROADPLAN (RP)
-
-### 2.1 Soucasny stav -- klicove entity (z DS-RP + DDL-RP)
-
-Nasledujici prehled shrnuje 11 analyzovanych entit RP relevantnich pro projekt CS. Kompletni atributove profily a mapovaci tabulky jsou v priloze `docs/extrakce-RP-entity-a-mapovani.md`.
-
-| # | Entita (DS-RP) | Tabulka (DDL-RP) | Atributu DS | Sloupcu DDL | Shoda | Klicove pozorovani |
-|---|----------------|------------------|-------------|-------------|-------|--------------------|
-| 1 | Objednana sluzba | `ordered_service` | 31 | 29 | Good | Primarni entita pro kontejnerovou dopravu. DDL navic: `container_id`, `temporary_storage_ordered_service_id`, `is_according_to_plan`, `confirmed_by`, `confirmation_datetime`. Typove: `time_from/to` varchar(150) neobvykle. |
-| 2 | Lokace objednane sluzby | `ordered_service_location` | 25 | 26 | Good | DDL navic: `valid`, `is_generated`. Typove delty: `next_location_distance/time` (int vs float), `liquidation_garbage_types` (Reference[] vs JSON nvarchar). |
-| 3 | Denni vykon | `day_performance` | 27 | 20 | Fair | **CHYBI** v DDL: Delka provozni doby, Zpusob ziskani trajektorie, Casove vyuziti, Podil km s privesem, Pocet OS. DDL navic: `route_geom`, `need_reroute`. |
-| 4 | Polozka denniho vykonu | `day_performance_item` | 6 | 8 | Excellent | DDL navic: `duration`, `note`. Shoda dobra. |
-| 5 | Vozidlo | `vehicle` | ~16 (Objekt+Vozidlo) | 31 | Good | DDL vyrazne bohatsi (legacy: winyx_id, device_type_id, color, cost_center, driver_id, has_gps, vin). Typova: `flww_id` int vs DS Retezec(50). |
-| 6 | Likvidacni misto | `liquidation_site` | 17 | 16 | Good | DDL navic: `winyx_id`, `winyx_id_old`. DS atribut `Zmena adresy` neimplementovan. |
-| 7 | Druh odpadu likv. mista | `liquidation_site_accepted_garbage_type` | 8 | 7 | Good | DDL chybi `created_at`, `updated_at` (systemove sloupce). DDL navic: `winyx_id`. |
-| 8 | Typ dopravy | `transport_type` | 3 | 4 | Fair | **CHYBI** `Technicka specifikace` (JSON) -- kriticky pro CS. DDL navic: `name_search`. |
-| 9 | Typ polozky DV | `day_performance_item_type` | 4 hodnoty | id + code | Good | Struktura OK. Konkretni kody nutno overit v datech. Pro CS: novy kod "CIRCUIT_OF_DAY". |
-| 10 | Stav objednane sluzby | `ordered_service_status` | 6 stavu | id + name | Good | Struktura OK. Pro CS: overit pokryti workflow. |
-| 11 | Misto realizace | `execution_site` | 16 | ~14 | Good | Chybi FK constraint na `organization_unit_id`. DDL navic: `winyx_id`, `winyx_id_old`. |
+## B) ROADPLAN (RP) -- Pozadavky B1-B13
 
 ---
 
-### 2.2 Pozadavky z CK s dopadem na RP model (B1--B13)
-
----
-
-#### B1. Okruh dne (Day Circuit / Circuit of the Day) -- NOVA entita
+### B1. Okruh dne (Day Circuit / Circuit of the Day) -- NOVA entita
 
 **Pozadavek:**
 Okruh dne je soubor objednanych sluzeb, ktere v ramci denniho vykonu vystupuji spolecne. Vznika pri generovani objednanych sluzeb. Je to zakladni stavebni prvek DV pro CS. Typ polozky denniho vykonu (`day_performance_item_type`) bude rozsiren o hodnotu "okruh dne". Okruh dne ma:
@@ -558,13 +484,19 @@ Okruh dne je soubor objednanych sluzeb, ktere v ramci denniho vykonu vystupuji s
   - `day_circuit_id` int NULL FK -> day_circuit(id)
 
 **Soucasny stav:**
-- Entitni model (DS): **Okruh dne** v DS-RP **neexistuje**. **Typ polozky DV** (extrakce RP #9): DS definuje 4 hodnoty. DDL ma tabulku `day_performance_item_type` (id, code) -- strukturalne OK, hodnota "okruh dne" chybi. **Polozka DV** (extrakce RP #4): DS ma 6 atributu, DDL ma 8 sloupcu (navic duration, note). **Nema** sloupec `day_circuit_id`.
-- Fyzicky model (DDL): `day_circuit` **neexistuje**. `day_performance_item_type`: existuje (id, code) -- pripravena na novy zaznam. `day_performance_item`: existuje. **CHYBI** `day_circuit_id`.
+- Entitni model (DS):
+  - **Okruh dne**: v DS-RP **neexistuje**.
+  - **Typ polozky DV** (extrakce RP #9): DS definuje 4 hodnoty (Objednana sluzba, Lokace OS, Casovy interval, Rozdeleni). DDL ma tabulku `day_performance_item_type` (id, code) -- strukturalne OK, hodnota "okruh dne" chybi.
+  - **Polozka DV** (extrakce RP #4): DS ma 6 atributu, DDL ma 8 sloupcu (navic duration, note). **Nema** sloupec `day_circuit_id`.
+- Fyzicky model (DDL):
+  - `day_circuit` **neexistuje**
+  - `day_performance_item_type`: existuje (id, code) -- pripravena na novy zaznam
+  - `day_performance_item`: existuje (id, order, day_performance_id, duration, has_trailer, ordered_service_id, ordered_service_location_id, day_performance_item_type, note). **CHYBI** `day_circuit_id`.
 - Delta: 2 nove tabulky, 1 novy sloupec na existujici tabulce, 1 novy zaznam v ciselniku.
 
 ---
 
-#### B2. Denni vykon (Day Performance) -- rozsireni
+### B2. Denni vykon (Day Performance) -- rozsireni
 
 **Pozadavek:**
 DV pro CS bude mit novy transport_type. DV bude pracovat s okruhy dne misto jednotlivych OS. Vypocet planovaneho casu: TDV = suma(TOD) + suma(TBP) + suma(TS), kde TOD = suma(TOS), TOS = TN * pocet nadob RPO. Nova zalozka v planovani DV, monitoring, casove vyuziti vozidel.
@@ -572,7 +504,7 @@ DV pro CS bude mit novy transport_type. DV bude pracovat s okruhy dne misto jedn
 **Dopad na entitni model (datovy slovnik):**
 - Zmena entity **Denni vykon** (extrakce RP #3):
   - Atribut `Typ dopravy` (existujici Reference na Typ dopravy) -- bude pouzit novy typ pro CS
-  - Zadne nove atributy na entite DV -- stavajici struktura pokryva potreby
+  - Zadne nove atributy na entite DV -- stávajici struktura pokryva potreby
   - Dnes DS-RP Denni vykon ma 27 atributu (viz extrakce RP #3)
 - Zmena entity **Typ dopravy** (extrakce RP #8): nova hodnota
   - Novy zaznam: "Cyklicke svozy" (nebo podobny nazev)
@@ -584,13 +516,13 @@ DV pro CS bude mit novy transport_type. DV bude pracovat s okruhy dne misto jedn
 - Zadne ALTER TABLE zmeny na `day_performance` -- stavajici struktura (20 sloupcu) je dostatecna.
 
 **Soucasny stav:**
-- Entitni model (DS): **Denni vykon** (extrakce RP #3) ma 27 atributu. Nektera z nich v DDL chybi (Delka provozni doby, Casove vyuziti, Podil km s privesem, Pocet OS). Atribut `Typ dopravy` existuje.
+- Entitni model (DS): **Denni vykon** (extrakce RP #3) ma 27 atributu. Nektera z nich v DDL chybi (Delka provozni doby, Casove vyuziti, Podil km s privesem, Pocet OS -- viz delta extrakce RP #3). Atribut `Typ dopravy` existuje a je Reference na entitu Typ dopravy.
 - Fyzicky model (DDL): `day_performance` existuje s 20 sloupci. Sloupec `transport_type` (int NOT NULL FK -> transport_type(id)) existuje. Tabulka `transport_type` existuje s (id, name(50), name_search(500), is_available). **Poznamka:** DS definuje i atribut `Technicka specifikace` (JSON), ktery v DDL `transport_type` **chybi** -- je treba vyresit pro CS.
-- Delta: 1 novy zaznam v ciselniku. Zadne strukturalni zmeny na tabulce DV.
+- Delta: 1 novy zaznam v ciselniku. Zadne strukturalni zmeny na tabulce DV. Existujici delty DS vs. DDL (viz extrakce RP #3) se CS netykaji primo, ale mohou ovlivnit business logiku.
 
 ---
 
-#### B3. Objednana sluzba (Ordered Service) -- rozsireni pro CS
+### B3. Objednana sluzba (Ordered Service) -- rozsireni pro CS
 
 **Pozadavek:**
 OS pro CS vznika generovanim z RPO. Pro CS eviduje minimalni sadu atributu: cislo RPO, konecny prijemce, adresa a souradnice MR, pocet nadob, typ nadoby, druh a skupina odpadu, okruh, rozvrh, kalendarni dny svozu. OS bude mit vazbu na okruh dne.
@@ -606,7 +538,7 @@ OS pro CS vznika generovanim z RPO. Pro CS eviduje minimalni sadu atributu: cisl
   - `Typ nadoby` -- Reference na Typ nadoby, nepovinna
   - `Pocet nadob` -- Cislo (kladne, cele), nepovinna
   - `Typ dopravy` -- Retezec, nepovinna; pro rozliseni CS vs. kontejnerova
-  - Dnes DS-RP Objednana sluzba ma 31 atributu. Vsechny jsou navrzene pro kontejnerovou dopravu.
+  - Dnes DS-RP Objednana sluzba ma 31 atributu (viz extrakce RP #1). Vsechny jsou navrzene pro kontejnerovou dopravu. Zadny z nich nepokryva atributy specificke pro CS.
 - **Architektonicke rozhodnuti:** Cilovy koncept naznacuje, ze datovy model pro OS CS "bude postaven tak, aby v nezbytne mire podporoval potrebnou funkcnost". Moznosti: (a) rozsireni stavajici tabulky o nullable sloupce, (b) nova separatni tabulka pro CS OS.
 
 **Dopad na fyzicky model (DDL):**
@@ -623,16 +555,21 @@ OS pro CS vznika generovanim z RPO. Pro CS eviduje minimalni sadu atributu: cisl
 - Varianta B (nova tabulka): NOVA tabulka `cs_ordered_service` s vlastni strukturou
 
 **Soucasny stav:**
-- Entitni model (DS): **Objednana sluzba** (extrakce RP #1) ma 31 atributu orientovanych na kontejnerovou dopravu. Vsechny vazby jsou na kontejnerovy model. **CHYBI** vsechny CS-specificke atributy.
-- Fyzicky model (DDL): `ordered_service` ma 29 sloupcu. **CHYBI:** order_item_revision_id, day_circuit_id, circuit_id, schedule_id, garbage_group_id, garbage_type_id, container_type_id, container_count.
+- Entitni model (DS): **Objednana sluzba** (extrakce RP #1) ma 31 atributu orientovanych na kontejnerovou dopravu:
+  - Klicove existujici: Stav (Enumerace), Objednany ukon (Reference), Konkretni objednana nadoba (cele cislo), Datum realizace od/do, Cas realizace od/do, Poznamka, Identifikator jizdy, Evidencni cislo vychoziho vozidla, atd.
+  - Vsechny vazby jsou na kontejnerovy model (Objednany ukon -> order_item_container_operation).
+  - **CHYBI** vsechny CS-specificke atributy.
+- Fyzicky model (DDL): `ordered_service` ma 29 sloupcu:
+  - Klicove: status(int FK), container_operation_id(FK), container_id(FK), container_number(int), date_from, date_to, note, time_from(varchar(150)), time_to(varchar(150)), parent/child_ordered_service_id, type(FK), day_performance_realization_id(FK), is_realized, realization_order, on_demand, ride_identifier, vehicle_evidence_number, default_realization_date, atd.
+  - **CHYBI:** order_item_revision_id, day_circuit_id, circuit_id, schedule_id, garbage_group_id, garbage_type_id, container_type_id, container_count
 - Delta: 8-9 novych sloupcu (varianta A) nebo cela nova tabulka (varianta B). Architektonicke rozhodnuti je kriticke.
 
 ---
 
-#### B4. Lokace objednane sluzby (Ordered Service Location) -- rozsireni pro CS
+### B4. Lokace objednane sluzby (Ordered Service Location) -- rozsireni pro CS
 
 **Pozadavek:**
-Lokace OS pro CS bude odpovidat stanovisti nadob nebo souradnicim MR. Kazda lokace bude mit min: prislusnost k OS, souradnice, typ nadoby, cetnost, skupina odpadu, pocet nadob.
+Lokace OS pro CS bude odpovídat stanovisti nadob nebo souradnicim MR. Kazda lokace bude mit min: prislusnost k OS, souradnice, typ nadoby, cetnost, skupina odpadu, pocet nadob.
 
 **Dopad na entitni model (datovy slovnik):**
 - Zmena entity **Lokace objednane sluzby** (extrakce RP #2): nove atributy pro CS
@@ -641,8 +578,8 @@ Lokace OS pro CS bude odpovidat stanovisti nadob nebo souradnicim MR. Kazda loka
   - `Skupina odpadu` -- Reference na Skupinu odpadu, nepovinna
   - `Pocet nadob` -- Cislo (kladne, cele), nepovinna
   - `Popis frekvence` -- Retezec(255), nepovinna
-  - `Stav odbaveni` -- Enumerace, nepovinna; neobslouzeno / FOB odbaveno / RP potvrzeno
-  - Dnes DS-RP Lokace OS ma 25 atributu. Zadny z nich nepokryva CS-specificke atributy.
+  - `Stav odbavenni` -- Enumerace, nepovinna; neobslouzeno / FOB odbaveno / RP potvrzeno
+  - Dnes DS-RP Lokace OS ma 25 atributu (viz extrakce RP #2). Zadny z nich nepokryva CS-specificke atributy (stanoviste, typ nadoby, skupina odpadu, pocet nadob, stav odbaveni).
 
 **Dopad na fyzicky model (DDL):**
 - ALTER TABLE `ordered_service_location`: nove sloupce
@@ -654,14 +591,18 @@ Lokace OS pro CS bude odpovidat stanovisti nadob nebo souradnicim MR. Kazda loka
   - `status` int NULL (stav odbaveni)
 
 **Soucasny stav:**
-- Entitni model (DS): **Lokace OS** (extrakce RP #2) ma 25 atributu. **CHYBI** stanoviste, typ nadoby, skupina odpadu, pocet nadob, stav odbaveni.
-- Fyzicky model (DDL): `ordered_service_location` ma 26 sloupcu. **CHYBI:** site_id, container_type_id, garbage_group_id, container_count, status, frequency_description.
-- Existujici delty (extrakce RP #2): next_location_distance/time jsou float (DS: cele cislo); liquidation_garbage_types je JSON (DS: Reference []).
+- Entitni model (DS): **Lokace OS** (extrakce RP #2) ma 25 atributu:
+  - Klicove existujici: Objednana sluzba, Poradi, Akce (Enumerace), Typ lokace (Enumerace), Adresa, Souradnice (Point), Likvidacni misto, Provozovna, Doba manipulace, Doba trvani, Provest, Casove okno (start/end), Vzdalenost/Cas do dalsi lokace, Poznamka, Monitoring, Fakturace, Druhy odpadu.
+  - **CHYBI** stanoviste, typ nadoby, skupina odpadu, pocet nadob, stav odbaveni.
+- Fyzicky model (DDL): `ordered_service_location` ma 26 sloupcu:
+  - Klicove: id, order, action(FK), type(FK), address_id(FK), lat(float), lng(float), liquidation_site_id(FK), execute(bit), organization_unit_id(FK), ordered_service_id(FK), note, time_window_start/end(nvarchar(5)), duration(int), manipulation_time_in_minutes(int), is_monitored, execution_site_id(FK), has_flat_rate, liquidation_garbage_types(nvarchar(MAX)), loading_code(nvarchar(15)).
+  - **CHYBI:** site_id, container_type_id, garbage_group_id, container_count, status (stav odbaveni), frequency_description.
+  - **Existujici delty** (extrakce RP #2): next_location_distance/time jsou float (DS: cele cislo); liquidation_garbage_types je JSON (DS: Reference []).
 - Delta: 6 novych sloupcu na existujici tabulce.
 
 ---
 
-#### B5. Likvidacni misto -- vazba na skupinu odpadu
+### B5. Likvidacni misto -- vazba na skupinu odpadu
 
 **Pozadavek:**
 Likvidacni misto bude mit vazbu na skupinu odpadu (pro okruh dne).
@@ -669,7 +610,7 @@ Likvidacni misto bude mit vazbu na skupinu odpadu (pro okruh dne).
 **Dopad na entitni model (datovy slovnik):**
 - Zmena entity **Likvidacni misto** (extrakce RP #6): novy atribut
   - `Skupina odpadu` -- Reference na Skupinu odpadu, nepovinna
-  - Dnes DS-RP Likvidacni misto ma 17 atributu. **Nema** vazbu na skupinu odpadu.
+  - Dnes DS-RP Likvidacni misto ma 17 atributu: ext. ID, Nazev, Adresa, Souradnice, Kontakt, Poznamka, Provozovna, Stav geokodovani, Zmena adresy, Druhy odpadu (kolekce), Vlastni LM, Kod nakladani, systemove. **Nema** vazbu na skupinu odpadu.
 - Alternativa: rozsireni existujici vazebni entity **Druh odpadu likvidacniho mista** (extrakce RP #7) o atribut `Skupina odpadu`
 
 **Dopad na fyzicky model (DDL):**
@@ -679,13 +620,15 @@ Likvidacni misto bude mit vazbu na skupinu odpadu (pro okruh dne).
   - `garbage_group_id` int NULL FK -> garbage_group(id)
 
 **Soucasny stav:**
-- Entitni model (DS): **Likvidacni misto** (extrakce RP #6) -- 17 atributu, **NEMA** skupinu odpadu. Kolekce druhu odpadu je resena asociacni entitou **Druh odpadu likvidacniho mista** (extrakce RP #7).
-- Fyzicky model (DDL): `liquidation_site`: 16 sloupcu. **NEMA** `garbage_group_id`. `liquidation_site_accepted_garbage_type`: 7 sloupcu. **NEMA** `garbage_group_id`.
+- Entitni model (DS): **Likvidacni misto** (extrakce RP #6) -- 17 atributu, **NEMA** skupinu odpadu. Kolekce druhu odpadu je resena asociacni entitou **Druh odpadu likvidacniho mista** (extrakce RP #7) s atributy: ext. ID, Likvidacni misto, Druh odpadu, Kod nakladani(15), Provozovna, systemove.
+- Fyzicky model (DDL):
+  - `liquidation_site`: 16 sloupcu (id, name, address_id(FK), lat, lng, contact, note, organization_unit_id(FK), active, geocoding_state, external_id, owned_liquidation_site, winyx_id/winyx_id_old, audit). **NEMA** `garbage_group_id`.
+  - `liquidation_site_accepted_garbage_type`: 7 sloupcu (id, liquidation_site_id(FK), garbage_type_id(FK), loading_code(15), organization_unit_id(FK), active, external_id, winyx_id). **NEMA** `garbage_group_id`.
 - Delta: 1 novy sloupec na jedne z existujicich tabulek.
 
 ---
 
-#### B6. Vozidlo -- nove atributy pro strategicke planovani
+### B6. Vozidlo -- nove atributy pro strategicke planovani
 
 **Pozadavek:**
 Pro strategickou optimalizaci jsou potreba nove atributy vozidla:
@@ -701,7 +644,7 @@ Pro strategickou optimalizaci jsou potreba nove atributy vozidla:
   - `Pracovni doba od` -- Cas, nepovinna
   - `Pracovni doba do` -- Cas, nepovinna
   - `Pouzit pro strategicke planovani` -- Boolean, nepovinna
-  - Dnes DS-RP Vozidlo nema zadne kapacitni atributy.
+  - Dnes DS-RP Vozidlo ma atributy z dvou DS sekci ("Vozidlo" + "Objekt"): ext. ID FLW, ext. ID ERP, Nazev(50), RZ(50), Skupina(50), Umisteni(255), Typ dopravy, Provozovna, Evidencni cislo(255), Druh vozidla, Datum zarazeni/vyrazeni, Zpusob vyhodnoceni realizace, Je aktivni, systemove. **NEMA** zadne kapacitni atributy.
 
 **Dopad na fyzicky model (DDL):**
 - ALTER TABLE `vehicle`: nove sloupce
@@ -712,13 +655,14 @@ Pro strategickou optimalizaci jsou potreba nove atributy vozidla:
   - `use_for_strategic_planning` bit NULL -- priznak pro SP
 
 **Soucasny stav:**
-- Entitni model (DS): **Vozidlo** (extrakce RP #5) -- DS kombinuje atributy z "Vozidlo" a "Objekt". **NEMA** zadne kapacitni atributy.
-- Fyzicky model (DDL): `vehicle` ma 31 sloupcu. **NEMA** zadny ze zminenych sloupcu.
+- Entitni model (DS): **Vozidlo** (extrakce RP #5) -- DS kombinuje atributy z "Vozidlo" (8 atributu) a "Objekt" (16 atributu). **NEMA** zadne kapacitni atributy.
+- Fyzicky model (DDL): `vehicle` ma 31 sloupcu (id, name(100), registration_plate(255), organization_unit_id(FK), flww_id(int), identification(255), object_type, device_type_id, color, cost_center_code, group_id, parent_name, vehicle_full_path, vehicle_type_id(FK), evidence_number, vin, sort_id, date_insertion, date_rejection, realization_type(FK), external_id, active, atd.). **NEMA** zadny ze zminenych sloupcu (body_volume, load_capacity, working_hours_*, use_for_strategic_planning).
+  - **Existujici delty DDL vs DS** (extrakce RP #5): DDL ma navic identification, winyx_id, device_type_id, color, color_inherited, cost_center_*, group_id, driver_id, has_gps, vin, sort_id. Typova: flww_id je int v DDL vs. Retezec(50) v DS.
 - Delta: 5 novych sloupcu na existujici tabulce. Etapa 2 (strategicke planovani).
 
 ---
 
-#### B7. Konfigurace generovani OS
+### B7. Konfigurace generovani OS
 
 **Pozadavek:**
 Konfigurace RP pro automaticke generovani OS:
@@ -752,7 +696,7 @@ Konfigurace RP pro automaticke generovani OS:
 
 ---
 
-#### B8. Konfigurace strategicke optimalizace (Etapa 2)
+### B8. Konfigurace strategicke optimalizace (Etapa 2)
 
 **Pozadavek:**
 Parametry pro optimalizacni algoritmus:
@@ -786,11 +730,11 @@ Parametry pro optimalizacni algoritmus:
 **Soucasny stav:**
 - Entitni model (DS): Zadna z techto entit v DS-RP **neexistuje**. Zcela nova domena.
 - Fyzicky model (DDL): Zadna z techto tabulek **neexistuje**.
-- Delta: 4+ novych tabulek. Etapa 2+. Zcela nova domena bez existujicich zakladu.
+- Delta: 4+ novych tabulek. Etapa 2+. Zcela nova domena bez existujicich zakladu v DS ani DDL.
 
 ---
 
-#### B9. Skupina odpadu v RP -- sdileny ciselnik
+### B9. Skupina odpadu v RP -- sdileny ciselnik
 
 **Pozadavek:**
 Ciselnik skupin odpadu bude spolecny pro RP a PP. V RP se bude pouzivat pro filtraci OS, okruhu dne. Nastaveni vazby druh -> skupina bude mozne jen na strane PP, RP bude cerpat.
@@ -806,7 +750,7 @@ Ciselnik skupin odpadu bude spolecny pro RP a PP. V RP se bude pouzivat pro filt
   - (Vzor: DS-PP Skupina odpadu, extrakce PP #6)
 - Zmena entity **Druh odpadu** v RP: novy atribut
   - `Skupina odpadu` -- Reference na Skupinu odpadu, nepovinna
-  - Dnes DS-RP nedefinuje explicitni entitu Druh odpadu jako plnohodnotnou entitu. V DDL-RP existuje tabulka `garbage_type` (code, name, description, id, active, category, external_id).
+  - Dnes DS-RP nedefinuje explicitni entitu Druh odpadu jako plnohodnotnou entitu s DS profilem (v extrakci RP je soucasti vazebni entity #7). V DDL-RP existuje tabulka `garbage_type` (code, name, description, id, active, category, external_id).
 
 **Dopad na fyzicky model (DDL):**
 - NOVA tabulka `garbage_group` v RP:
@@ -822,13 +766,15 @@ Ciselnik skupin odpadu bude spolecny pro RP a PP. V RP se bude pouzivat pro filt
   - `garbage_group_id` int NULL FK -> garbage_group(id)
 
 **Soucasny stav:**
-- Entitni model (DS): V DS-RP **neexistuje** entita Skupina odpadu.
-- Fyzicky model (DDL): `garbage_group` v RP DDL **neexistuje**. `garbage_type` v RP existuje (code(50), name(100), description(255), id, active, category(4), external_id(255)). **NEMA** sloupec `garbage_group_id`.
+- Entitni model (DS): V DS-RP **neexistuje** entita Skupina odpadu. DS-RP definuje Druh odpadu na urovni vazebni entity (Druh odpadu likvidacniho mista, extrakce RP #7).
+- Fyzicky model (DDL):
+  - `garbage_group` v RP DDL **neexistuje**.
+  - `garbage_type` v RP existuje (code(50), name(100), description(255), id, active, category(4), external_id(255)). **NEMA** sloupec `garbage_group_id`.
 - Delta: 1 nova tabulka + 1 novy sloupec na existujici tabulce. Synchronizacni mechanismus z PP.
 
 ---
 
-#### B10. Okruh (Circuit) v RP -- synchronizovany z PP
+### B10. Okruh (Circuit) v RP -- synchronizovany z PP
 
 **Pozadavek:**
 RP potrebuje pracovat s okruhy pro generovani objednanych sluzeb a okruhu dne.
@@ -860,7 +806,7 @@ RP potrebuje pracovat s okruhy pro generovani objednanych sluzeb a okruhu dne.
 
 ---
 
-#### B11. Rozvrh (Schedule) v RP -- synchronizovany z PP
+### B11. Rozvrh (Schedule) v RP -- synchronizovany z PP
 
 **Pozadavek:**
 RP potrebuje rozvrhy a jejich kalendare pro generovani OS.
@@ -886,7 +832,7 @@ RP potrebuje rozvrhy a jejich kalendare pro generovani OS.
 
 ---
 
-#### B12. Vahy a objemy na okruhu dne (pro strategicke planovani)
+### B12. Vahy a objemy na okruhu dne (pro strategicke planovani)
 
 **Pozadavek:**
 Ridic zadava pres FOB hmotnost navezenou na LM a objemove vyuziti. Hodnoty se ukladaji k okruhu dne v RP. Dispecer je muze editovat.
@@ -911,13 +857,13 @@ Ridic zadava pres FOB hmotnost navezenou na LM a objemove vyuziti. Hodnoty se uk
   - Audit sloupce
 
 **Soucasny stav:**
-- Entitni model (DS): V DS-RP **neexistuje** takova entita.
+- Entitni model (DS): V DS-RP **neexistuje** takova entita. Okruh dne jako celek neexistuje (viz B1).
 - Fyzicky model (DDL): Tabulka **neexistuje**.
 - Delta: Nova tabulka. Etapa 2. Zavisla na existenci tabulky `day_circuit` (B1).
 
 ---
 
-#### B13. Typ nadoby v RP -- rozsireni
+### B13. Typ nadoby v RP -- rozsireni
 
 **Pozadavek:**
 Cas obsluhy typu nadoby bude synchronizovan z PP do RP.
@@ -933,13 +879,13 @@ Cas obsluhy typu nadoby bude synchronizovan z PP do RP.
   - `service_time_seconds` int NULL
 
 **Soucasny stav:**
-- Entitni model (DS): DS-RP nedefinuje plnohodnotny profil entity Typ nadoby.
+- Entitni model (DS): DS-RP nedefinuje plnohodnotny profil entity Typ nadoby. V extrakci RP se tabulka `container_type` vyskytuje jen v kontextu jinych entit.
 - Fyzicky model (DDL): `container_type` v RP **existuje** (id, name, description, transport_type_id(FK), active, organization_unit_id(FK), external_id). Na rozdil od PP verze ma RP tabulka navic sloupce `transport_type_id` a `organization_unit_id`. Sloupec `service_time_seconds` **neexistuje**.
 - Delta: 1 novy sloupec. Synchronizace z PP.
 
 ---
 
-### 2.3 Souhrnna tabulka zmen RP
+### Souhrn RP -- prehled zmen (entitni + fyzicky model)
 
 | Entita / Tabulka | DS dnes | DDL dnes | Typ zmeny | Etapa |
 |---|---|---|---|---|
@@ -964,222 +910,5 @@ Cas obsluhy typu nadoby bude synchronizovan z PP do RP.
 | **Strat. okruh dne** (`strategic_day_circuit`) | Neexistuje | Neexistuje | NOVA entita + tabulka | 2 |
 | Typ dopravy -- novy zaznam CS | Existuje (6 hodnot) | Existuje (id, name, is_available) | NOVY zaznam | 1 |
 
-**Celkem RP Etapa 1:** 7 novych tabulek, ~14+ novych sloupcu na existujicich tabulkach, 2 nove zaznamy v ciselnicich.
+**Celkem RP Etapa 1:** 7 novych tabulek, ~14+ novych sloupcu na existujicich tabulkach, 2 nove zaznamy v ciselnících.
 **Celkem RP Etapa 2:** 5 novych tabulek, 5 novych sloupcu na existujici tabulce (vehicle).
-
----
-
-## 3. Meziaplikacni vazby (PP <-> RP)
-
-### 3.1 Nove integracni entity (PP -> RP)
-
-Nasledujici entity budou prenasen z PP do RP (synchronizace):
-
-| # | Entita | Smer | Ucel | PP tabulka | RP tabulka | Poznamka |
-|---|--------|------|------|-----------|-----------|----------|
-| 1 | **RPO** | PP -> RP | Elementarni udaje pro generovani OS | `order_item_revision` | (pres OS atributy) | Cislo RPO, konecny prijemce, adresa MR, souradnice, pocet nadob, typ nadoby, druh a skupina odpadu, okruh, rozvrh, kalendare |
-| 2 | **Nadoby a stanoviste** | PP -> RP | Lokalizace OS | `container`, `site`, `site_container_assignment` | (pres OS/lokace atributy) | Zakladni udaje pro lokalizaci |
-| 3 | **Okruhy** | PP -> RP | Ciselnik + vazby na RPO | `circuit` (nova) | `circuit` (nova, sync) | Vcetne preferovaneho vozidla |
-| 4 | **Rozvrhy** | PP -> RP | Ciselnik + kalendarni dny + vazby na RPO | `schedule`, `schedule_calendar_day` (nove) | `schedule`, `schedule_calendar_day` (nove, sync) | Kompletni kalendar pro generovani OS |
-| 5 | **Skupiny odpadu** | PP -> RP | Ciselnik + vazba druh -> skupina | `garbage_group` (existuje, rozsirena) | `garbage_group` (nova, sync) | PP je master, RP cte |
-| 6 | **Cas obsluhy na typu nadoby** | PP -> RP | Pro vypocet doby trvani okruhu dne | `container_type.service_time_seconds` (novy) | `container_type.service_time_seconds` (novy) | Jednoduchy atribut |
-
-### 3.2 Nove integracni entity (RP -> HEN)
-
-| # | Entita | Smer | Ucel |
-|---|--------|------|------|
-| 1 | **Hlavicka DV** (trasa dne) | RP -> HEN | Pro realizacni doklady |
-| 2 | **Seznam RPO v DV** (predmety smluv) | RP -> HEN | Pro realizacni doklady |
-
-### 3.3 Nove integracni entity (HEN -> PP)
-
-| # | Entita | Smer | Ucel | Etapa |
-|---|--------|------|------|-------|
-| 1 | **Okruhy** | HEN -> PP | Ciselnik | 1 |
-| 2 | **Rozvrhy** | HEN -> PP | Ciselnik + kalendare | 1 |
-| 3 | **Zony** | HEN -> PP | Ciselnik | 1 |
-| 4 | **Vazby predmet smlouvy -> okruh, rozvrh, zona** | HEN -> PP | Prirazeni RPO ke strukturam | 1 |
-
-### 3.4 Mapovani sdilenych entit mezi systemy
-
-| Entita | PP (master) | RP (replika) | Synchronizacni klic |
-|--------|------------|-------------|-------------------|
-| Skupina odpadu | `garbage_group` + `organization_unit_id` (nove) | `garbage_group` (nova) | `external_id` (PP id) |
-| Okruh | `circuit` (nova) | `circuit` (nova) | `external_id` (PP id) |
-| Rozvrh | `schedule` + `schedule_calendar_day` (nove) | `schedule` + `schedule_calendar_day` (nove) | `external_id` (PP id) |
-| Typ nadoby (cas obsluhy) | `container_type.service_time_seconds` | `container_type.service_time_seconds` | existujici sync mechanismus |
-| Druh odpadu (vazba na skupinu) | `garbage_type.garbage_group_id` (novy) | `garbage_type.garbage_group_id` (novy) | existujici sync mechanismus |
-
-### 3.5 Sdilene ciselniky a jejich synchronizace
-
-- **Skupina odpadu**: PP je master. RP cte pres sync. Nastaveni vazby druh -> skupina mozne pouze na strane PP.
-- **Okruh**: V Etape 1 HEN je master -> PP -> RP. V Etape 2 PP se stane masterem.
-- **Rozvrh**: HEN je master (i do budoucna) -> PP -> RP. PP zobrazuje pro kontrolu.
-- **Zona**: HEN je master -> PP. Vazba 1:1 na RPO (na rozdil od M:N u okruhu a rozvrhu).
-- **Typ nadoby (cas obsluhy)**: PP je master, synchronizace do RP.
-
----
-
-## 4. Nesrovnalosti DS vs. DDL
-
-### 4.1 Souhrnny prehled
-
-| Kategorie | PP pocet | RP pocet | Celkem |
-|-----------|----------|----------|--------|
-| Atributy v DS bez sloupce v DDL | 4 | 8 | 12 |
-| Sloupce v DDL bez popisu v DS | 8 | 20 | 28 |
-| Typove nesrovnalosti | 9 | 6 | 15 |
-| Potencialni bugy v DDL | 2 | 2 | 4 |
-
-### 4.2 PP -- Nesrovnalosti PasPort
-
-#### PP: Atributy v DS bez sloupce v DDL
-
-| Entita | Atribut (DS) | Zavaznost | Poznamka |
-|--------|-------------|-----------|----------|
-| Typ nadoby | Provozovna | Vysoka | DS definuje FK na organization_unit, DDL `container_type` ji nema. |
-| Typ nadoby | Oblast pouziti | Stredni | DS popisuje atribut pro rozliseni oblasti. V DDL chybi. |
-| Frekvence vyvozu | Provozovna (jako int FK) | Stredni | DS definuje referenci (FK int), DDL ma `external_organization_unit_id` jako nvarchar(255). |
-| Druh odpadu | Vazba na Skupinu odpadu | Nizka | Chybi v DS i DDL. Mapovani reseno na aplikacni urovni. |
-
-#### PP: Klicove typove nesrovnalosti
-
-| Entita/Tabulka | Atribut/Sloupec | Typ v DS | Typ v DDL | Zavaznost |
-|----------------|----------------|----------|----------|-----------|
-| RPO / order_item_revision | Pocet nadob / container_count | Cislo (2 des. mista) | float | Stredni |
-| Adresa / address | Mesto / city | Retezec(80) | nvarchar(50) | **Vysoka** |
-| Skupina odpadu / garbage_group | Nazev / name | Retezec(50) | nvarchar(255) | Nizka |
-| Skupina odpadu / garbage_group | Zkraceny nazev / short_name | Retezec(20) | nvarchar(255) | Nizka |
-| Typ nadoby / container_type | Nazev / name | Retezec(50) | nvarchar(255) | Nizka |
-| Nadoba / container | Evidencni cislo / evidence_number | Retezec(20) | nvarchar(255) | Nizka |
-| Nadoba / container | Vyrazena ke dni / discard_to_date | Datum | datetimeoffset | Nizka |
-| Adresa / address | Ext. ID v registru adres | Retezec(10) | nvarchar(255) | Nizka |
-| Stanoviste / site | Souradnice | Point (1 atribut) | lat + lng + geom (3 sloupce) | Nizka |
-
-#### PP: Potencialni bugy v DDL
-
-| Tabulka | Sloupec | Problem | Zavaznost | Doporuceni |
-|---------|---------|---------|-----------|------------|
-| **address** | **updated_by** | **Typ `bit` misto `int` FK na user(id)** | **Kriticka** | Vsechny ostatni entity pouzivaji `int FK -> user(id)`. Zde je `bit`, coz neumoznuje ukladat referenci na uzivatele. Pravdepodobny bug v DDL -- opravit na `int NULL FK -> user(id)`. |
-| **address** | **city** | **nvarchar(50) -- uzsi nez DS (80)** | **Vysoka** | DS pozaduje max 80 znaku. U slovenskych slozenych nazvu mest muze dojit k orezani. Rozsirit na nvarchar(80). |
-
-### 4.3 RP -- Nesrovnalosti RoadPlan
-
-#### RP: Atributy v DS bez sloupce v DDL
-
-| Entita | Atribut (DS) | Zavaznost | Poznamka |
-|--------|-------------|-----------|----------|
-| Denni vykon | Delka provozni doby | Vysoka | V DDL `day_performance` chybi sloupec. Pro CS planovani dulezite. |
-| Typ dopravy | Technicka specifikace (JSON) | Vysoka | V DDL `transport_type` CHYBI. Pro CS kriticky -- definuje generovane lokace. |
-| Denni vykon | Zpusob ziskani trajektorie | Stredni | V DDL nenalezeno. |
-| Denni vykon | Casove vyuziti | Stredni | Pravdepodobne na urovni `day_performance_realization`. |
-| Denni vykon | Podil km s privesem | Stredni | Pravdepodobne na urovni `day_performance_realization`. |
-| Denni vykon | Pocet objednanych sluzeb | Nizka | Odvozeno runtime (COUNT pres FK). |
-| Misto realizace | Vychozi (Boolean) | Nizka | V DDL reseno jako `df_execution_site_id` na tabulce `customer`. |
-| Druh odpadu likv. mista | Datum vytvoreni | Stredni | V DDL chybi `created_at`. |
-
-#### RP: Klicove typove nesrovnalosti
-
-| Entita/Tabulka | Atribut/Sloupec | Typ v DS | Typ v DDL | Zavaznost |
-|----------------|----------------|----------|----------|-----------|
-| Lokace OS / ordered_service_location | Druhy odpadu / liquidation_garbage_types | Reference [] | nvarchar(MAX) (JSON) | **Vysoka** |
-| Objednana sluzba / ordered_service | Cas realizace od/do | Cas | varchar(150) | Stredni |
-| Lokace OS / ordered_service_location | Vzdalenost do dalsi lokace | Kladne cele cislo | float | Stredni |
-| Lokace OS / ordered_service_location | Doba jizdy do dalsi lokace | Kladne cele cislo | float | Stredni |
-| Objednana sluzba / ordered_service | Zpusob rozdeleni | Enumerace | nvarchar(MAX) | Nizka |
-| Denni vykon / day_performance | Textova identifikace vozidla | Retezec(50) | nvarchar(MAX) | Nizka |
-
-#### RP: Potencialni bugy v DDL
-
-| Tabulka | Sloupec | Problem | Zavaznost | Doporuceni |
-|---------|---------|---------|-----------|------------|
-| **ordered_service** | **time_from / time_to** | **varchar(150) pro casovou hodnotu** | Stredni | Pokud uklada jednoduchy cas, staci nvarchar(5). Overit format a standardizovat. |
-| **execution_site** | **organization_unit_id** | **Chybi FK constraint** | Stredni | Sloupec existuje (int), ale nema FK na organization_unit(id). Na jinych tabulkach FK existuje. |
-
-### 4.4 Chybejici FK constrainty
-
-| System | Tabulka | Sloupec | Ocekavana FK |
-|--------|---------|---------|--------------|
-| RP | execution_site | organization_unit_id | organization_unit(id) |
-| RP | liquidation_site | geocoding_state | geocoding_state tabulka |
-| RP | vehicle | object_type | (nezname) |
-| RP | execution_site | geocoding_state | geocoding_state tabulka |
-
----
-
-## 5. Integracni dopady a rizika
-
-### 5.1 Klicova architektonicka rozhodnuti
-
-1. **Separatni vs. rozsirena tabulka `ordered_service` pro CS**
-   - Cilovy koncept naznacuje, ze datovy model RP pro OS CS "bude navrzen v ramci detailni analyzy".
-   - **Varianta A (rozsireni):** Pridani nullable sloupcu na existujici tabulku. Jednodussi implementace, ale tabulka bude mit sloupce pro 2 ruzne domeny (kontejnerova + CS).
-   - **Varianta B (nova tabulka):** Cista separace domen. Slozitejsi dotazy a reporty pres obe domeny.
-   - **Doporuceni:** Rozhodnout na zaklade objemu dat a dotazovych vzoru. Pro CS se ocekava az 600 OS / 1000 stanovist denne.
-
-2. **Likvidacni misto -- umisteni `garbage_group_id`**
-   - Varianta A: Primo na `liquidation_site` (jednoduche, ale omezujici -- LM prijima jen jednu skupinu).
-   - Varianta B: Na `liquidation_site_accepted_garbage_type` (flexibilnejsi -- LM muze prijimat vice skupin).
-   - **Doporuceni:** Varianta B je flexibilnejsi a odpovida existujicimu vzoru vazby LM -> druh odpadu.
-
-### 5.2 Synchronizace sdilenych ciselniku
-
-- `garbage_group`, `circuit`, `schedule` musi byt konzistentni mezi PP a RP.
-- **Master system:**
-  - Skupina odpadu: PP (nastaveni vazby druh -> skupina mozne pouze v PP)
-  - Okruh: HEN (Etapa 1) -> PP -> RP; PP (Etapa 2) -> RP
-  - Rozvrh: HEN (trvale) -> PP -> RP
-  - Zona: HEN -> PP (jen v PP, RP nepotrebuje)
-- **Synchronizacni klic:** `external_id` v RP odkazuje na `id` v PP.
-- **Riziko:** Casova prodleva synchronizace muze zpusobit docasne nekonzistence. Je treba definovat chovani pri chybejicim zaznamu v RP.
-
-### 5.3 Rizika z pohledu datoveho modelu
-
-1. **Objem dat a vykon**
-   - Denni vykon pro CS muze mit az 600 OS / 1000 stanovist.
-   - Dopad na indexy, vykon dotazu a velikost tabulek `ordered_service` a `ordered_service_location`.
-   - **Doporuceni:** Navrhnout indexovou strategii pred implementaci. Zvazit partitioning dle data.
-
-2. **Platnost zarazeni RPO do okruhu/rozvrhu**
-   - Nepovinna platnost (valid_from/valid_to) na vazebnych tabulkach komplikuje dotazy a synchronizaci.
-   - **Doporuceni:** Definovat vychozi chovani: pokud valid_from/valid_to jsou NULL, zarazeni plati neomezene. Pri generovani OS filtrovat dle platnosti.
-
-3. **Geokodovani adres v PP**
-   - Nutnost doplnit lat/lng na PP adresu -- PP adresy aktualne nemaji souradnice (na rozdil od RP).
-   - **Doporuceni:** Implementovat geokodovaci sluzbu (analogicky ke stanovistim, kde uz funguje). Ciselnik `code_geocoding_state` jiz existuje.
-
-4. **Chybejici Technicka specifikace na Typu dopravy**
-   - DS-RP definuje JSON atribut s technickymi parametry (generovane lokace, dostupne typy ukonu). V DDL chybi.
-   - **Doporuceni:** Pro novy typ dopravy CS bude nutne vyresit, kde bude tato specifikace ulozena. Rozsireni DDL o sloupec, nebo ulozeni v aplikacni konfiguraci.
-
-5. **Existujici bugy v DDL**
-   - `address.updated_by` jako `bit` misto `int FK` -- pravdepodobny bug. Opravit pred implementaci CS, protoze CS bude intenzivne pracovat s adresami (geokodovani).
-   - `address.city` nvarchar(50) vs DS pozadavek 80 -- rozsirit pred CS migraci.
-
-6. **Redundantni vazba `waste_disposal_day_id` na RPO**
-   - DDL ma primou FK na `waste_disposal_day` vedle M:N vazebni tabulky `waste_disposal_day_order_item_revision_assignment`.
-   - Muze vest k nekonzistenci dat.
-   - **Doporuceni:** Overit vyuziti a zvazit deprecaci primeho FK.
-
-### 5.4 Etapizace zmen
-
-#### Etapa 1 -- Zakladni funkcnost CS
-
-**PP (PasPort):**
-- 6 novych tabulek: `circuit`, `order_item_revision_circuit_assignment`, `schedule`, `schedule_calendar_day`, `order_item_revision_schedule_assignment`, `zone`
-- 6 novych sloupcu: `order_item_revision.zone_id`, `order_item_revision.garbage_group_id`, `garbage_type.garbage_group_id`, `garbage_group.organization_unit_id`, `container_type.service_time_seconds`, `address.lat/lng/geocoding_state`
-- 1 zmena business logiky: kaskadove rizeni `garbage_group_id` na nadobe z RPO
-
-**RP (RoadPlan):**
-- 7 novych tabulek: `day_circuit`, `day_circuit_liquidation_site`, `garbage_group`, `circuit`, `schedule`, `schedule_calendar_day`, `cs_generation_config`
-- ~14 novych sloupcu: rozsireni `ordered_service` (8+), `ordered_service_location` (6), `day_performance_item.day_circuit_id`, `garbage_type.garbage_group_id`, `container_type.service_time_seconds`, `liquidation_site.garbage_group_id`
-- 2 nove zaznamy v ciselnicich: `transport_type` (CS), `day_performance_item_type` (CIRCUIT_OF_DAY)
-
-#### Etapa 2 -- Strategicke planovani a optimalizace
-
-**PP:**
-- 1 nova tabulka: `garbage_group_container_type_parameters`
-
-**RP:**
-- 5 novych tabulek: `strategic_planning_version`, `strategic_planning_config`, `strategic_ordered_service`, `strategic_day_circuit`, `day_circuit_weight_record`
-- 5 novych sloupcu na `vehicle`: `body_volume`, `load_capacity`, `working_hours_from`, `working_hours_to`, `use_for_strategic_planning`

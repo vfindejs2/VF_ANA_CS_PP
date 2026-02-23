@@ -1,9 +1,9 @@
 # Progress: CS-MPG Analýza
 
 ## Aktuální stav
-Fáze: Analýza datových modelů — první průchod hotov, plán na doplnění z datových slovníků připraven
-Poslední session: 2026-02-23 (session 5)
-Další krok: Doplnit analýzu o datové slovníky dle plánu `docs/PLAN-doplneni-analyzy-datovy-model.md` (krok 1+2 → 3 → 5)
+Fáze: Analýza datových modelů — dvouvrstvá analýza kompletní, připraveno na review datových modelů
+Poslední session: 2026-02-23 (session 6)
+Další krok: Review datových modelů se stakeholdery, zahájení detailní specifikace integračních toků (Fáze 2)
 
 ## TODO
 ### Integrace
@@ -22,11 +22,13 @@ Další krok: Doplnit analýzu o datové slovníky dle plánu `docs/PLAN-doplnen
 - [x] Analýza Cílový koncept vs. DDL — první průchod (docs/analyza-cilovy-koncept-vs-ddl.md)
   - PP: 11 požadavků, 6 nových tabulek + 6 nových sloupců
   - RP: 13 požadavků, ~8 nových tabulek + 11+ nových sloupců
-- [ ] Doplnit analýzu o datové slovníky (entitní model) ← PRÁVĚ TADY
+- [x] Doplnit analýzu o datové slovníky (entitní model)
   - Plán: docs/PLAN-doplneni-analyzy-datovy-model.md
   - 5 kroků: extrakce entit → mapování DS↔DDL → revize požadavků → nesrovnalosti → konsolidace
-- [ ] Review/návrh datových modelů pro dotčené systémy
-- [ ] Mapování entit mezi systémy
+  - Výstupy: 5 dokumentů (4 352 řádků), 4 ER diagramy (2 detailní + 2 konceptuální)
+- [ ] Review datových modelů se stakeholdery ← PRÁVĚ TADY
+- [ ] Návrh cílových datových modelů pro dotčené systémy
+- [ ] Mapování entit mezi systémy (základ v sekci 3 analýzy)
 
 ### Konzultace
 - [x] Zmapovat dostupnou referenční bázi (Confluence PP 300+ stránek, RP 655 stránek, cílový koncept)
@@ -40,6 +42,7 @@ Další krok: Doplnit analýzu o datové slovníky dle plánu `docs/PLAN-doplnen
 ### 2026-02-23
 - **KR-01: Rozšíření scope projektu** — Projekt přejmenován z "CS-MPG Integrace" na "CS-MPG Analýza". Scope rozšířen o dvě nové oblasti: návrh datových modelů a konzultační podpora pro tým. Promítnuto do CLAUDE.md, SPEC.md, PLAN.md.
 - **KR-02: Dvouvrstvý přístup k analýze datových modelů** — Analýza dopadů na datový model bude důsledně rozlišovat entitní model (datový slovník — business atributy, asociace, pravidla) a fyzický model (DDL — tabulky, sloupce, FK, indexy). Datové slovníky z technických projektů PP a RP jsou primárním zdrojem pro logickou vrstvu.
+- **KR-03: Nalezené bugy v DDL** — Identifikovány 4 potenciální chyby v produkčních DDL, které je třeba vyřešit před implementací CS: `address.updated_by` je `bit` místo `int FK` (PP), `address.city` je `nvarchar(50)` vs. DS specifikace 80 znaků (PP), `liquidation_garbage_types` uložen jako JSON místo proper FK (RP), `time_from/time_to` je `varchar(150)` na OS (RP).
 
 ## Otevřené otázky
 - OQ-01: Seznam entit MDB vs. REST API v Etapě 1 — **částečně** (DDL znám, rozřazení per entita TBD)
@@ -116,3 +119,30 @@ Další krok: Doplnit analýzu o datové slovníky dle plánu `docs/PLAN-doplnen
   - Výstup: přepracovaná analýza rozlišující entitní model vs. fyzický model
 - Klíčové rozhodnutí: KR-02 (dvouvrstvý přístup — entitní + fyzický model)
 - Další krok: realizace plánu doplnění analýzy (navazující session)
+
+### 2026-02-23, session 6
+- **Realizován kompletní plán doplnění analýzy** (`docs/PLAN-doplneni-analyzy-datovy-model.md` — všech 5 kroků)
+  - Krok 1+2: Extrakce 13 PP entit a 11 RP entit z datových slovníků + mapování na DDL
+    - `docs/extrakce-PP-entity-a-mapovani.md` (1 100 řádků)
+    - `docs/extrakce-RP-entity-a-mapovani.md` (972 řádků)
+  - Krok 3: Revize všech 24 požadavků (A1–A11, B1–B13) do dvouvrstvého formátu
+    - `docs/revize-pozadavku-dvouvrstva.md` (914 řádků)
+  - Krok 4: Identifikace nesrovnalostí DS vs. DDL
+    - `docs/nesrovnalosti-DS-vs-DDL.md` (181 řádků)
+    - 12 atributů DS bez DDL, 28 DDL sloupců bez DS, 15 typových nesrovnalostí, 4 potenciální bugy
+  - Krok 5: Konsolidace do finální dvouvrstvé analýzy
+    - `docs/analyza-cilovy-koncept-vs-ddl.md` přepsán na 1 185 řádků (z původních 535)
+    - Nová struktura: 6 sekcí (metodika, PP entity+požadavky, RP entity+požadavky, meziaplikační vazby, nesrovnalosti, rizika)
+- **Vytvořeny 4 ER diagramy** (HTML/SVG):
+  - `docs/er-diagram-PP.html` — detailní ER s atributy (Mermaid)
+  - `docs/er-diagram-RP.html` — detailní ER s atributy (Mermaid)
+  - `docs/er-konceptualni-PP.html` — konceptuální ER bez atributů (SVG, pro BA)
+  - `docs/er-konceptualni-RP.html` — konceptuální ER bez atributů (SVG, pro BA)
+- **Klíčová zjištění:**
+  - PP: `address.updated_by` je `bit` místo `int FK` — téměř jistě bug
+  - PP: `container_type` chybí `organization_unit_id` a `Oblast použití` (DS je definuje, DDL ne)
+  - RP: `liquidation_garbage_types` uložen jako JSON místo proper entity referencí
+  - RP: `transport_type` chybí `Technická specifikace` (JSON) — kritické pro přidání nového typu CS
+  - RP: 20 DDL sloupců bez dokumentace v DS (legacy WinyX ID, konfirmační pole)
+- Rozhodnutí: KR-03 (nalezené DDL bugy)
+- Další krok: review datových modelů se stakeholdery, zahájení detailní specifikace integračních toků
