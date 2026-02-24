@@ -150,6 +150,11 @@
             fill: #4f46e5;
         }
 
+        .attr-new {
+            fill: #dc2626;
+            font-weight: 600;
+        }
+
         .attr-separator {
             stroke: rgba(0,0,0,0.1);
             stroke-width: 1;
@@ -349,7 +354,8 @@ const entities = [
         attrs: [
             { name: 'id', pk: true },
             { name: 'kod_polozky', note: 'z HEN' },
-            { name: 'misto_realizace' },
+            { name: 'misto_realizace_adresa_id', fk: true },
+            { name: 'rpo_okruh_rozvrh_id', fk: true, note: 'aktivni vazba' },
             { name: 'druh_odpadu_id', fk: true },
             { name: 'skupina_odpadu_id', fk: true },
             { name: 'zona_id', fk: true },
@@ -413,12 +419,31 @@ const entities = [
         type: 'new',
         color: '#6366f1',
         x: 940, y: 120,
-        description: 'Nová entita pro CS. Geograficky sdružuje Předměty smluv HEN. Kardinalita k RPO je 1:1. Pomáhá při filtraci pro plánování.',
+        description: 'Nová entita pro CS. Geograficky sdružuje Předměty smluv HEN. Kardinalita k RPO je N:1 (více RPO může spadat do jedné zóny). Pomáhá při filtraci pro plánování.',
         attrs: [
             { name: 'id', pk: true },
             { name: 'nazev' },
             { name: 'provozovna_id', fk: true },
             { name: 'geometrie' },
+        ]
+    },
+    {
+        id: 'adresy',
+        name: 'Adresy',
+        subtitle: 'address',
+        type: 'extended',
+        color: '#10b981',
+        x: 1180, y: 240,
+        description: 'Rozšířená existující entita pro správu adres místa realizace. RPO odkazuje na adresu referenčně.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'zeme' },
+            { name: 'mesto' },
+            { name: 'ulice' },
+            { name: 'cp' },
+            { name: 'co' },
+            { name: 'X', new: true, note: 'nový' },
+            { name: 'Y', new: true, note: 'nový' },
         ]
     },
     {
@@ -465,6 +490,7 @@ const entities = [
             { name: 'typ_nadoby_id', fk: true },
             { name: 'stanoviste_id', fk: true },
             { name: 'rpo_id', fk: true },
+            { name: 'skupina_odpadu_id', fk: true, note: 'vlastni bez RPO' },
             { name: 'objem_litry' },
         ]
     },
@@ -475,13 +501,12 @@ const entities = [
         type: 'extended',
         color: '#10b981',
         x: 300, y: 820,
-        description: 'Rozšířená existující entita. Dědí z RPO: okruh, rozvrh, zóna. Fyzické umístění nádob, lokalizace objednaných služeb v RP.',
+        description: 'Rozšířená existující entita. Fyzické umístění nádob, lokalizace objednaných služeb v RP. Vazba na RPO je nepřímá přes Nádobu.',
         attrs: [
             { name: 'id', pk: true },
             { name: 'adresa' },
             { name: 'gps_lat' },
             { name: 'gps_lon' },
-            { name: 'rpo_id', fk: true },
         ]
     },
     {
@@ -524,8 +549,11 @@ const relationships = [
     { from: 'okruh', to: 'rpo_okruh_rozvrh', type: 'mn', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
     { from: 'rozvrh', to: 'rpo_okruh_rozvrh', type: 'mn', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
 
-    // RPO → Zóna (1:1)
-    { from: 'rpo', to: 'zona', type: '1to1', label: '1:1', cardFrom: '1', cardTo: '1', color: '#d97706' },
+    // RPO → Zóna (N:1)
+    { from: 'rpo', to: 'zona', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+
+    // RPO → Adresy (N:1)
+    { from: 'rpo', to: 'adresy', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
 
     // RPO → Skupina odpadu (N:1)
     { from: 'rpo', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
@@ -542,16 +570,16 @@ const relationships = [
     // Nadoba → Stanoviste (N:1)
     { from: 'nadoba', to: 'stanoviste', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
 
+    // Nadoba → Skupina odpadu (N:1, volitelná / fallback bez RPO)
+    { from: 'nadoba', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669', dashed: true },
+
     // Nadoba → Typ nadoby (N:1)
     { from: 'nadoba', to: 'typ_nadoby', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
-
-    // Stanoviste → RPO (N:1)
-    { from: 'stanoviste', to: 'rpo', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
 ];
 
 // ===================== RENDERING =====================
 
-const ENTITY_WIDTH = 190;
+const ENTITY_MIN_WIDTH = 190;
 const HEADER_HEIGHT = 40;
 const ATTR_HEIGHT = 22;
 
@@ -571,6 +599,40 @@ let dragOffsetX, dragOffsetY;
 // Entity map for quick lookup
 const entityMap = {};
 entities.forEach(e => entityMap[e.id] = e);
+const entityWidthCache = {};
+
+const textMeasureCanvas = document.createElement('canvas');
+const textMeasureCtx = textMeasureCanvas.getContext('2d');
+
+function attrLabel(attr) {
+    let label = attr.name;
+    if (attr.note) label += `  (${attr.note})`;
+    return label;
+}
+
+function measureTextWidth(text, font) {
+    if (!textMeasureCtx) return text.length * 8;
+    textMeasureCtx.font = font;
+    return textMeasureCtx.measureText(text).width;
+}
+
+function entityWidth(e) {
+    if (entityWidthCache[e.id]) return entityWidthCache[e.id];
+
+    const headerWidth = Math.max(
+        measureTextWidth(e.name || '', "700 13px 'Segoe UI', sans-serif"),
+        measureTextWidth(e.subtitle || '', "italic 10px 'Segoe UI', sans-serif")
+    ) + 28;
+
+    const attrsWidth = (e.attrs || []).reduce((max, attr) => {
+        const labelWidth = measureTextWidth(attrLabel(attr), "11px Consolas, monospace");
+        return Math.max(max, 34 + labelWidth + 16);
+    }, 0);
+
+    const width = Math.ceil(Math.max(ENTITY_MIN_WIDTH, headerWidth, attrsWidth));
+    entityWidthCache[e.id] = width;
+    return width;
+}
 
 function entityHeight(e) {
     return HEADER_HEIGHT + 1 + e.attrs.length * ATTR_HEIGHT + 8;
@@ -578,19 +640,21 @@ function entityHeight(e) {
 
 function entityCenter(e) {
     const h = entityHeight(e);
-    return { x: e.x + ENTITY_WIDTH / 2, y: e.y + h / 2 };
+    return { x: e.x + entityWidth(e) / 2, y: e.y + h / 2 };
 }
 
 function entityPort(e, targetE) {
     // Find best connection point on entity border facing the target
-    const cx = e.x + ENTITY_WIDTH / 2;
+    const w = entityWidth(e);
+    const targetW = entityWidth(targetE);
+    const cx = e.x + w / 2;
     const cy = e.y + entityHeight(e) / 2;
-    const tx = targetE.x + ENTITY_WIDTH / 2;
+    const tx = targetE.x + targetW / 2;
     const ty = targetE.y + entityHeight(targetE) / 2;
 
     const dx = tx - cx;
     const dy = ty - cy;
-    const hw = ENTITY_WIDTH / 2 + 4;
+    const hw = w / 2 + 4;
     const hh = entityHeight(e) / 2 + 4;
 
     // Check which edge the line would cross
@@ -606,11 +670,12 @@ function entityPort(e, targetE) {
         // Top or bottom edge
         const side = dy > 0 ? 1 : -1;
         const x = cx + (dx / Math.abs(dy)) * hh;
-        return { x: Math.max(e.x, Math.min(e.x + ENTITY_WIDTH, x)), y: cy + side * hh };
+        return { x: Math.max(e.x, Math.min(e.x + w, x)), y: cy + side * hh };
     }
 }
 
 function renderEntity(e) {
+    const w = entityWidth(e);
     const h = entityHeight(e);
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     g.classList.add('entity');
@@ -627,7 +692,7 @@ function renderEntity(e) {
 
     // White base for entity card
     const whiteBg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    whiteBg.setAttribute('width', ENTITY_WIDTH);
+    whiteBg.setAttribute('width', w);
     whiteBg.setAttribute('height', h);
     whiteBg.setAttribute('rx', 8);
     whiteBg.setAttribute('ry', 8);
@@ -638,7 +703,7 @@ function renderEntity(e) {
 
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     rect.classList.add('entity-bg');
-    rect.setAttribute('width', ENTITY_WIDTH);
+    rect.setAttribute('width', w);
     rect.setAttribute('height', h);
     rect.setAttribute('fill', bgFill);
     rect.setAttribute('stroke', bgStroke);
@@ -646,7 +711,7 @@ function renderEntity(e) {
 
     // Header band
     const headerBand = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    headerBand.setAttribute('width', ENTITY_WIDTH);
+    headerBand.setAttribute('width', w);
     headerBand.setAttribute('height', HEADER_HEIGHT);
     headerBand.setAttribute('rx', 8);
     headerBand.setAttribute('ry', 8);
@@ -657,7 +722,7 @@ function renderEntity(e) {
     // Bottom corners of header (to make it flush)
     const headerFix = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     headerFix.setAttribute('y', HEADER_HEIGHT - 8);
-    headerFix.setAttribute('width', ENTITY_WIDTH);
+    headerFix.setAttribute('width', w);
     headerFix.setAttribute('height', 9);
     headerFix.setAttribute('fill', e.color);
     headerFix.setAttribute('opacity', '0.15');
@@ -666,7 +731,7 @@ function renderEntity(e) {
     // Entity name
     const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     nameText.classList.add('entity-header');
-    nameText.setAttribute('x', ENTITY_WIDTH / 2);
+    nameText.setAttribute('x', w / 2);
     nameText.setAttribute('y', 16);
     nameText.textContent = e.name;
     g.appendChild(nameText);
@@ -674,7 +739,7 @@ function renderEntity(e) {
     // Subtitle
     const subText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     subText.classList.add('entity-subtitle');
-    subText.setAttribute('x', ENTITY_WIDTH / 2);
+    subText.setAttribute('x', w / 2);
     subText.setAttribute('y', 32);
     subText.textContent = e.subtitle;
     g.appendChild(subText);
@@ -683,7 +748,7 @@ function renderEntity(e) {
     const sep = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     sep.classList.add('attr-separator');
     sep.setAttribute('x1', 0);
-    sep.setAttribute('x2', ENTITY_WIDTH);
+    sep.setAttribute('x2', w);
     sep.setAttribute('y1', HEADER_HEIGHT);
     sep.setAttribute('y2', HEADER_HEIGHT);
     g.appendChild(sep);
@@ -731,9 +796,8 @@ function renderEntity(e) {
         attrText.classList.add('attr-text');
         if (attr.pk) attrText.classList.add('attr-pk');
         if (attr.fk && !attr.pk) attrText.classList.add('attr-fk');
-        let label = attr.name;
-        if (attr.note) label += `  (${attr.note})`;
-        attrText.textContent = label;
+        if (attr.new) attrText.classList.add('attr-new');
+        attrText.textContent = attrLabel(attr);
         g.appendChild(attrText);
     });
 
@@ -774,6 +838,9 @@ function renderRelationship(rel) {
     path.classList.add('rel-line');
     path.setAttribute('d', `M ${p1.x} ${p1.y} Q ${cx} ${cy} ${p2.x} ${p2.y}`);
     path.setAttribute('stroke', rel.color);
+    if (rel.dashed) {
+        path.setAttribute('stroke-dasharray', '7 5');
+    }
     g.appendChild(path);
 
     // Cardinality labels
