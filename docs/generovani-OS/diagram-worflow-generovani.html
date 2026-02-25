@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow generování OS</title>
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #cbd5e1;
+      --card: #ffffff;
+      --auto: #0f766e;
+      --manual: #b45309;
+      --decision: #1d4ed8;
+      --warn: #b91c1c;
+      --ok: #166534;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(15,118,110,0.08), transparent 45%),
+        radial-gradient(circle at 90% 5%, rgba(180,83,9,0.08), transparent 45%),
+        var(--bg);
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #eef4f3);
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .section {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .section-header .sub {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .diagram-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(280px, 1fr);
+      gap: 0;
+    }
+
+    .flow {
+      padding: 18px 18px 20px;
+      border-right: 1px solid #e5e7eb;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,250,252,0.95));
+    }
+
+    .notes {
+      padding: 18px 16px 20px;
+      background: rgba(248, 250, 252, 0.8);
+    }
+
+    .flow-col {
+      display: grid;
+      justify-items: center;
+      row-gap: 10px;
+    }
+
+    .arrow {
+      color: #64748b;
+      font-size: 20px;
+      line-height: 1;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .node {
+      width: min(640px, 100%);
+      background: var(--card);
+      border: 1px solid #dbe2ea;
+      border-left: 6px solid #94a3b8;
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+    }
+
+    .node h3 {
+      margin: 0 0 4px;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .node p {
+      margin: 0;
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    .node ul {
+      margin: 6px 0 0 16px;
+      padding: 0;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    .node.auto { border-left-color: var(--auto); }
+    .node.manual { border-left-color: var(--manual); }
+    .node.output { border-left-color: var(--ok); }
+    .node.warn { border-left-color: var(--warn); background: #fff7f7; }
+
+    .decision-wrap {
+      width: min(640px, 100%);
+      display: grid;
+      justify-items: center;
+      gap: 10px;
+    }
+
+    .decision {
+      width: 280px;
+      min-height: 84px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 6px solid var(--decision);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.08);
+    }
+
+    .decision h3 {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: #1e3a8a;
+    }
+
+    .decision p {
+      margin: 0;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .branches {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      align-items: start;
+      position: relative;
+    }
+
+    .branches::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 1px;
+      height: 6px;
+      background: var(--line);
+      transform: translateX(-50%);
+    }
+
+    .branch-col {
+      display: grid;
+      row-gap: 8px;
+      justify-items: stretch;
+    }
+
+    .branch-label {
+      text-align: center;
+      font-size: 11px;
+      color: #475569;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .merge {
+      width: min(640px, 100%);
+      margin-top: 2px;
+      padding-top: 4px;
+      border-top: 1px dashed #cbd5e1;
+      text-align: center;
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .note-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .note-card h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+    }
+
+    .note-card ul {
+      margin: 0;
+      padding-left: 16px;
+      color: #475569;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .note-card li + li { margin-top: 5px; }
+
+    .rule {
+      border-left: 4px solid #f59e0b;
+      background: #fffbeb;
+    }
+
+    .risk {
+      border-left: 4px solid #ef4444;
+      background: #fef2f2;
+    }
+
+    .okbox {
+      border-left: 4px solid #10b981;
+      background: #ecfdf5;
+    }
+
+    .lane-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      width: 100%;
+      align-items: start;
+    }
+
+    .lane {
+      border: 1px dashed #d1d5db;
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,0.75);
+    }
+
+    .lane h3 {
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: #7c2d12;
+    }
+
+    .lane .flow-col .node {
+      width: 100%;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 2px;
+    }
+
+    @media (max-width: 980px) {
+      .diagram-layout {
+        grid-template-columns: 1fr;
+      }
+      .flow {
+        border-right: 0;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .branches,
+      .lane-grid {
+        grid-template-columns: 1fr;
+      }
+      .decision { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Workflow generování OS</h1>
+      <p>Grafické zpracování kap. 3 (`Navrhované workflow`) ze souboru <code>docs/generovani-OS/generovani_OS.md</code> se zohledněním pravidel a kontrol.</p>
+      <div class="legend">
+        <span class="chip"><span class="dot" style="background: var(--auto)"></span> systémový krok / automat</span>
+        <span class="chip"><span class="dot" style="background: var(--manual)"></span> manuální krok / dispečer</span>
+        <span class="chip"><span class="dot" style="background: var(--decision)"></span> rozhodovací bod</span>
+        <span class="chip"><span class="dot" style="background: var(--ok)"></span> výstup / připravený podklad</span>
+        <span class="chip"><span class="dot" style="background: var(--warn)"></span> výjimka / přegenerování</span>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Standardní (automatické) generování OS</h2>
+        <div class="sub">Kap. 3.1 + 3.2 + 3.4 + 3.5<br />Generování podkladu k finálnímu plánu</div>
+      </div>
+      <div class="diagram-layout">
+        <div class="flow">
+          <div class="flow-col">
+            <div class="node auto">
+              <h3>1. Spuštění automatu (scheduler)</h3>
+              <p>Spuštění dle konfigurace: frekvence, čas, období generování.</p>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="node auto">
+              <h3>2. Načtení vstupů a kontextu</h3>
+              <ul>
+                <li>RPO</li>
+                <li>vazby na Rozvrh / Okruh</li>
+                <li>Nádoby + lokace stanovišť</li>
+                <li>Zóna jako pomocný/filtrační kontext</li>
+              </ul>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>3. Má RPO účinný rozvrh s dnem v období?</h3>
+                <p>Nutná podmínka pro standardní automatické generování OS.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">ANO</div>
+                  <div class="node auto">
+                    <h3>4. Výběr kalendářních dnů a příprava generování</h3>
+                    <p>Průchod relevantních rozvrhů / kalendářních dnů pro vybraná RPO.</p>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">NE</div>
+                  <div class="node warn">
+                    <h3>Bez standardního vzniku OS</h3>
+                    <p>RPO nevstoupí do automatického generování (možná ruční větev „na výzvu“).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>5. Existuje už OS pro stejné RPO + den?</h3>
+                <p>Kontrola duplicity a přegenerování.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">NE</div>
+                  <div class="node auto">
+                    <h3>6A. Založení nové OS a lokací</h3>
+                    <p>Vznikne OS pro konkrétní den + lokace OS.</p>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">ANO</div>
+                  <div class="node warn">
+                    <h3>6B. Přegenerování</h3>
+                    <ul>
+                      <li>deaktivace původní OS</li>
+                      <li>označení „přegenerovaná“</li>
+                      <li>založení nové OS + lokací</li>
+                      <li>noční cleanup přegenerovaných vazeb</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="merge">sloučení větví → pokračování stejným tokem</div>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>7. Je dostupné stanoviště nádoby?</h3>
+                <p>Lokalizace OS preferuje stanoviště; jinak fallback.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">ANO</div>
+                  <div class="node auto">
+                    <h3>8A. Lokalizace OS dle stanoviště</h3>
+                    <p>Primární zdroj lokace pro plánování a mapu.</p>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">NE</div>
+                  <div class="node manual">
+                    <h3>8B. Fallback lokace z místa realizace RPO</h3>
+                    <p>OS vznikne i bez stanoviště; lokalizace z MR (adresa/souřadnice).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>9. Má RPO vazbu na Okruh?</h3>
+                <p>Vazba na okruh určuje míru automatizace zařazení do plánovací struktury.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">ANO</div>
+                  <div class="node auto">
+                    <h3>10A. Zařazení do Okruhu dne</h3>
+                    <ul>
+                      <li>použít existující Okruh dne, nebo</li>
+                      <li>založit nový Okruh dne</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">NE</div>
+                  <div class="node manual">
+                    <h3>10B. OS bez Okruhu dne</h3>
+                    <p>Připraveno pro ruční zařazení dispečerem do Okruhu dne.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>11. Má Okruh přiřazené vozidlo?</h3>
+                <p>Pouze pro větev s vazbou na okruh.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">ANO</div>
+                  <div class="node auto">
+                    <h3>12A. Automatické zařazení do DV</h3>
+                    <p>Okruh dne se zařadí do Denního výkonu vozidla.</p>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">NE / N/A</div>
+                  <div class="node manual">
+                    <h3>12B. Čeká na finální plánování</h3>
+                    <p>OS / Okruh dne je připraven pro dispečerské doplánování.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="node output">
+              <h3>13. Výstup generování (podklad pro plán)</h3>
+              <ul>
+                <li>OS + lokace OS</li>
+                <li>Okruhy dne (pokud lze)</li>
+                <li>Denní výkony (pokud lze)</li>
+                <li>stav/původ OS pro audit a operativu</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-note">
+            Diagram záměrně rozlišuje „vznik podkladu“ a „finální plán“. Finální sestavení DV zůstává v roli dispečera.
+          </div>
+        </div>
+
+        <aside class="notes">
+          <div class="note-card rule">
+            <h3>Klíčová pravidla (kap. 3.2)</h3>
+            <ul>
+              <li>Nutná podmínka: účinná vazba RPO na Rozvrh + den v období.</li>
+              <li>Pro stejný den nesmí vzniknout duplicitní OS pro stejné RPO.</li>
+              <li>Okruh dne obsahuje pouze OS jedné skupiny odpadu.</li>
+              <li>Zóna je pomocná; sama nevytváří nárok na vznik OS.</li>
+            </ul>
+          </div>
+
+          <div class="note-card okbox">
+            <h3>Lokalizace OS</h3>
+            <ul>
+              <li>Primárně ze stanoviště nádoby.</li>
+              <li>Fallback z místa realizace RPO, pokud stanoviště chybí.</li>
+              <li>Doporučeno auditovat zdroj lokace (stanoviště vs. MR).</li>
+            </ul>
+          </div>
+
+          <div class="note-card risk">
+            <h3>Kontroly a rizika</h3>
+            <ul>
+              <li>Přegenerování po změně vstupních dat (RPO/nádoby/vazby).</li>
+              <li>Značení „přegenerováno“ + noční cleanup starých vazeb.</li>
+              <li>Rozlišení OS dle původu: dle rozvrhu / mimo rozvrh / přeplánováno.</li>
+            </ul>
+          </div>
+
+          <div class="note-card">
+            <h3>Výsledné scénáře (kap. 3.4)</h3>
+            <ul>
+              <li>Rozvrh + Okruh + Vozidlo → OS → Okruh dne → DV.</li>
+              <li>Rozvrh + Okruh bez vozidla → OS → Okruh dne (čeká na DV).</li>
+              <li>Rozvrh bez Okruhu → OS + lokace (ruční zařazení).</li>
+              <li>Bez Rozvrhu → bez standardního generování.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Manuální generování OS</h2>
+        <div class="sub">Kap. 3.3 + 3.2 + 3.5<br />Dvě větve: z rozvrhů/okruhů a „na výzvu“</div>
+      </div>
+      <div class="diagram-layout">
+        <div class="flow">
+          <div class="flow-col">
+            <div class="node manual">
+              <h3>1. Oprávněný uživatel spustí manuální generování</h3>
+              <p>Synchronní proces, doporučeně omezený počet uživatelů na provozovnu.</p>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>2. Typ manuálního generování?</h3>
+                <p>Standardní (z rozvrhů/okruhů) vs. mimořádné „na výzvu“.</p>
+              </div>
+              <div class="lane-grid">
+                <div class="lane">
+                  <h3>Větev A: Z rozvrhů / okruhů</h3>
+                  <div class="flow-col">
+                    <div class="node manual">
+                      <h3>A1. Nastavení rozsahu</h3>
+                      <p>Uživatel omezí období a volitelně vybere konkrétní rozvrhy/okruhy.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="node auto">
+                      <h3>A2. Aplikace stejných podmínek jako automat</h3>
+                      <p>Nutná vazba na rozvrh + kalendářní den v období, kontrola duplicit, přegenerování.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="node auto">
+                      <h3>A3. Vznik OS / lokací / okruhů dne / případně DV</h3>
+                      <p>Stejný mechanismus jako automatická větev, jen v uživatelem omezeném rozsahu.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="node output">
+                      <h3>A4. Výstupní souhrn běhu</h3>
+                      <p>Počty vybraných RPO, OS, lokací OS a okruhů.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lane">
+                  <h3>Větev B: „Na výzvu“ z RPO (mimořádné svozy)</h3>
+                  <div class="flow-col">
+                    <div class="node manual">
+                      <h3>B1. Výběr konkrétního dne</h3>
+                      <p>Dispečer zadá datum mimořádného svozu / reklamace.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="node auto">
+                      <h3>B2. Nabídka kandidátních RPO</h3>
+                      <p>Systém nabídne jen RPO, pro která v daný den ještě neexistuje OS.</p>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="decision-wrap" style="width:100%;">
+                      <div class="decision" style="width:100%;">
+                        <h3>B3. Je RPO zařazeno v okruhu?</h3>
+                        <p>Ve větvi „na výzvu“ se vazba na okruh posuzuje jinak než u standardního generování.</p>
+                      </div>
+                      <div class="branches">
+                        <div class="branch-col">
+                          <div class="branch-label">ANO</div>
+                          <div class="node warn">
+                            <h3>B4A. Okruh se ignoruje</h3>
+                            <p>Vznikne OS bez zařazení do Okruhu dne.</p>
+                          </div>
+                        </div>
+                        <div class="branch-col">
+                          <div class="branch-label">NE</div>
+                          <div class="node manual">
+                            <h3>B4B. Standardní vznik OS bez okruhu</h3>
+                            <p>OS vzniká jako mimořádný podklad k ručnímu plánování.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="node output">
+                      <h3>B5. OS „mimo rozvrh“ připravená k doplánování</h3>
+                      <p>Doporučeno evidovat původ: výzva / reklamace / mimořádný svoz.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-note">
+            Manuální workflow má sloužit nejen k opravám, ale i k operativnímu doplnění podkladu (analogie položek „mimo rozvrh“ v HEN).
+          </div>
+        </div>
+
+        <aside class="notes">
+          <div class="note-card rule">
+            <h3>Společné kontroly (obě větve)</h3>
+            <ul>
+              <li>Prevence duplicit OS pro stejné RPO + den.</li>
+              <li>Lokalizace: stanoviště → fallback MR.</li>
+              <li>Audit původu vzniku OS (standard / manuál / výzva).</li>
+              <li>Logování spuštění manuálního běhu.</li>
+            </ul>
+          </div>
+
+          <div class="note-card">
+            <h3>Governance (kap. 4.4)</h3>
+            <ul>
+              <li>Role a oprávnění pro spuštění za provozovnu.</li>
+              <li>Limity rozsahu (období, počet rozvrhů/okruhů).</li>
+              <li>Volitelně schvalování / eskalační log při zásahu.</li>
+            </ul>
+          </div>
+
+          <div class="note-card okbox">
+            <h3>Doporučené výstupy UI</h3>
+            <ul>
+              <li>Souhrn běhu: vybraná RPO, OS, lokace, okruhy.</li>
+              <li>Zvláštní označení OS „mimo rozvrh“.</li>
+              <li>Zvláštní označení přegenerovaných OS.</li>
+            </ul>
+          </div>
+
+          <div class="note-card risk">
+            <h3>Provozní rizika</h3>
+            <ul>
+              <li>Kolize s paralelním plánováním HEN vs. RP.</li>
+              <li>Opakované spuštění ve stejném dni po ručních úpravách.</li>
+              <li>Nepřesná data vazeb RPO → Rozvrh / Okruh snižují míru automatizace.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Rozhodovací diagram scénářů (kap. 3.4)</h2>
+        <div class="sub">Výsledné scénáře podle vazeb RPO<br />RPO v rozvrhu / okruhu / vozidlo</div>
+      </div>
+      <div class="diagram-layout">
+        <div class="flow">
+          <div class="flow-col">
+            <div class="node auto">
+              <h3>Start: posouzení RPO pro konkrétní den</h3>
+              <p>Rozhodovací strom pro výsledek standardního generování OS dle dostupných vazeb.</p>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>1. Je RPO v rozvrhu?</h3>
+                <p>Nutná podmínka standardního generování OS.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">ANO</div>
+                  <div class="decision" style="width:100%;">
+                    <h3>2. Je RPO v okruhu?</h3>
+                    <p>Určuje míru automatizace zařazení do plánovací struktury.</p>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">NE</div>
+                  <div class="node warn">
+                    <h3>Scénář 4</h3>
+                    <p><strong>OS a lokace se nevygenerují</strong> (standardní automatická větev).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow">↓</div>
+
+            <div class="decision-wrap">
+              <div class="decision">
+                <h3>3. Pokud je RPO v okruhu: má okruh přiřazené vozidlo?</h3>
+                <p>Rozhoduje o automatickém zařazení do DV.</p>
+              </div>
+              <div class="branches">
+                <div class="branch-col">
+                  <div class="branch-label">RPO v okruhu = ANO + vozidlo = ANO</div>
+                  <div class="node output">
+                    <h3>Scénář 1</h3>
+                    <ul>
+                      <li>OS zařazeny do Okruhu dne</li>
+                      <li>Okruh dne zařazen do DV</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="branch-col">
+                  <div class="branch-label">RPO v okruhu = ANO + vozidlo = NE</div>
+                  <div class="node manual">
+                    <h3>Scénář 2</h3>
+                    <ul>
+                      <li>OS zařazeny do Okruhu dne</li>
+                      <li>Okruh dne připraven k zaplánování do DV</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arrow">↘</div>
+
+            <div class="node manual" style="width:min(640px,100%);">
+              <h3>Scénář 3 (RPO v rozvrhu = ANO, RPO v okruhu = NE)</h3>
+              <ul>
+                <li>Založeny OS a lokace</li>
+                <li>Dispečer musí zařadit OS do Okruhů dne</li>
+                <li>Následně rozhoduje o zařazení do DV</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-note">
+            Diagram je kompaktní vizualizace tabulky scénářů z kap. 3.4 a navazuje na standardní automatické workflow.
+          </div>
+        </div>
+
+        <aside class="notes">
+          <div class="note-card rule">
+            <h3>Klíčový princip</h3>
+            <ul>
+              <li>Vazba na <strong>Rozvrh</strong> je nutná podmínka pro standardní vznik OS.</li>
+              <li>Vazba na <strong>Okruh</strong> a <strong>vozidlo</strong> určuje míru automatizace zařazení do plánu.</li>
+            </ul>
+          </div>
+
+          <div class="note-card okbox">
+            <h3>Co je „úspěch“ generování</h3>
+            <ul>
+              <li>I scénář 2 a 3 jsou validní výsledky generování.</li>
+              <li>Nejde vždy o plně hotový DV; často jde o kvalitní podklad pro dispečera.</li>
+            </ul>
+          </div>
+
+          <div class="note-card risk">
+            <h3>Na co dát pozor</h3>
+            <ul>
+              <li>Nesprávné nebo chybějící vazby `RPO→Rozvrh/Okruh` snižují míru automatizace.</li>
+              <li>Scénář 4 může být business očekávaný stav, ale i datová chyba (nutno odlišit).</li>
+              <li>Doporučeno reportovat počty RPO ve scénářích 1–4 po každém běhu.</li>
+            </ul>
+          </div>
+
+          <div class="note-card">
+            <h3>Doporučené metriky běhu</h3>
+            <ul>
+              <li>Počet RPO posouzených pro den/období</li>
+              <li>Počet RPO ve scénářích 1–4</li>
+              <li>Počet nových vs. přegenerovaných OS</li>
+              <li>Počet OS s fallback lokalizací z MR</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
