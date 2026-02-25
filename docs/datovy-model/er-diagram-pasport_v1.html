@@ -355,8 +355,8 @@ const entities = [
             { name: 'id', pk: true },
             { name: 'kod_polozky', note: 'z HEN' },
             { name: 'misto_realizace_adresa_id', fk: true },
-            { name: 'rpo_okruh_rozvrh_id', fk: true, note: 'aktivni vazba' },
             { name: 'druh_odpadu_id', fk: true },
+            { name: 'typ_nadoby_id', fk: true },
             { name: 'skupina_odpadu_id', fk: true },
             { name: 'zona_id', fk: true },
             { name: 'provozovna_id', fk: true },
@@ -371,7 +371,7 @@ const entities = [
         subtitle: 'circuit',
         type: 'new',
         color: '#6366f1',
-        x: 140, y: 120,
+        x: 40, y: 100,
         description: 'Nová entita pro CS. Sdružuje RPO obsluhované společně. Stavební kámen pro tvorbu Okruhů dne v RP. V Etapě 1 zdroj z HEN, v Etapě 2 spravuje PP.',
         attrs: [
             { name: 'id', pk: true },
@@ -387,7 +387,7 @@ const entities = [
         subtitle: 'schedule',
         type: 'new',
         color: '#6366f1',
-        x: 140, y: 440,
+        x: 40, y: 420,
         description: 'Nová entita pro CS. Řídí kalendářní dny, na které se vytváří objednané služby z RPO. Zdroj pravdy: HEN. V PP read-only.',
         attrs: [
             { name: 'id', pk: true },
@@ -403,7 +403,7 @@ const entities = [
         subtitle: 'calendar day',
         type: 'new',
         color: '#6366f1',
-        x: 140, y: 640,
+        x: 40, y: 700,
         description: 'Nová entita pro CS. Konkrétní kalendářní den obsluhy přiřazený k Rozvrhu. Definuje, které dny se reálně sváží.',
         attrs: [
             { name: 'id', pk: true },
@@ -418,7 +418,7 @@ const entities = [
         subtitle: 'zone',
         type: 'new',
         color: '#6366f1',
-        x: 940, y: 120,
+        x: 900, y: 100,
         description: 'Nová entita pro CS. Geograficky sdružuje Předměty smluv HEN. Kardinalita k RPO je N:1 (více RPO může spadat do jedné zóny). Pomáhá při filtraci pro plánování.',
         attrs: [
             { name: 'id', pk: true },
@@ -433,7 +433,7 @@ const entities = [
         subtitle: 'address',
         type: 'extended',
         color: '#10b981',
-        x: 1180, y: 240,
+        x: 1320, y: 220,
         description: 'Rozšířená existující entita pro správu adres místa realizace. RPO odkazuje na adresu referenčně.',
         attrs: [
             { name: 'id', pk: true },
@@ -452,7 +452,7 @@ const entities = [
         subtitle: 'waste group',
         type: 'extended',
         color: '#10b981',
-        x: 940, y: 440,
+        x: 900, y: 420,
         description: 'Rozšířená existující entita. Seskupení druhů odpadu pro jednodušší výběr RPO při plánování. Klíč pro okruh dne (1 okruh dne = 1 skupina). Evidována per Provozovna.',
         attrs: [
             { name: 'id', pk: true },
@@ -467,13 +467,12 @@ const entities = [
         subtitle: 'waste type',
         type: 'extended',
         color: '#10b981',
-        x: 940, y: 640,
-        description: 'Rozšířená existující entita. Nová asociace → Skupina odpadu (mapování druh→skupina). Číselník slouží pro přehled druhů odpadu.',
+        x: 900, y: 700,
+        description: 'Rozšířená existující entita. Mapování na Skupinu odpadu je řešeno přes vazební entitu Skupina_Druh_odpadu. Číselník slouží pro přehled druhů odpadu.',
         attrs: [
             { name: 'id', pk: true },
             { name: 'kod' },
             { name: 'nazev' },
-            { name: 'skupina_odpadu_id', fk: true },
         ]
     },
     {
@@ -482,25 +481,39 @@ const entities = [
         subtitle: 'container',
         type: 'extended',
         color: '#10b981',
-        x: 540, y: 640,
+        x: 520, y: 700,
         description: 'Rozšířená existující entita. Dědí z RPO: okruh, rozvrh, zóna, skupina odpadu. Malá odpadová nádoba pro cyklické svozy.',
         attrs: [
             { name: 'id', pk: true },
             { name: 'rfid' },
-            { name: 'typ_nadoby_id', fk: true },
-            { name: 'stanoviste_id', fk: true },
             { name: 'rpo_id', fk: true },
             { name: 'skupina_odpadu_id', fk: true, note: 'vlastni bez RPO' },
             { name: 'objem_litry' },
         ]
     },
     {
+        id: 'nadoba_stanoviste',
+        name: 'Nadoba_Stanoviste',
+        subtitle: 'existující vazba (temporal)',
+        type: 'existing',
+        color: '#64748b',
+        x: 520, y: 900,
+        description: 'Existující vazební entita mezi Nádoba a Stanoviste s časovou platností přiřazení.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'nadoba_id', fk: true },
+            { name: 'stanoviste_id', fk: true },
+            { name: 'platnost_od' },
+            { name: 'platnost_do', note: 'NULL = aktivni' },
+        ]
+    },
+    {
         id: 'stanoviste',
         name: 'Stanoviste',
         subtitle: 'location / stand',
-        type: 'extended',
-        color: '#10b981',
-        x: 300, y: 820,
+        type: 'existing',
+        color: '#64748b',
+        x: 280, y: 940,
         description: 'Rozšířená existující entita. Fyzické umístění nádob, lokalizace objednaných služeb v RP. Vazba na RPO je nepřímá přes Nádobu.',
         attrs: [
             { name: 'id', pk: true },
@@ -515,7 +528,7 @@ const entities = [
         subtitle: 'container type',
         type: 'extended',
         color: '#10b981',
-        x: 740, y: 820,
+        x: 540, y: 100,
         description: 'Rozšířená existující entita. Nový atribut: čas obsluhy (sekundy). Zdroj: ERP HEN/WINX, read-only, s editovatelným čas_obsluhy.',
         attrs: [
             { name: 'id', pk: true },
@@ -530,13 +543,29 @@ const entities = [
         subtitle: 'vazba s historií (temporal)',
         type: 'new',
         color: '#6366f1',
-        x: 270, y: 300,
+        x: 280, y: 300,
         description: 'Vazební tabulka pro přiřazení RPO ↔ Okruh ↔ Rozvrh s historií změn. Změna Okruhu nebo Rozvrhu ukončí aktuální vazbu (platnost_do) a založí nový záznam. V jednom čase max. 1 aktivní vazba na RPO.',
         attrs: [
             { name: 'id', pk: true },
             { name: 'rpo_id', fk: true },
             { name: 'okruh_id', fk: true },
             { name: 'rozvrh_id', fk: true },
+            { name: 'platnost_od' },
+            { name: 'platnost_do', note: 'NULL = aktivni' },
+        ]
+    },
+    {
+        id: 'skupina_druh_odpadu',
+        name: 'Skupina_Druh_odpadu',
+        subtitle: 'vazba skupina ↔ druh (temporal)',
+        type: 'new',
+        color: '#6366f1',
+        x: 1320, y: 560,
+        description: 'Vazební entita mezi Skupina odpadu a Druh odpadu s časovou platností mapování.',
+        attrs: [
+            { name: 'id', pk: true },
+            { name: 'skupina_odpadu_id', fk: true },
+            { name: 'druh_odpadu_id', fk: true },
             { name: 'platnost_od' },
             { name: 'platnost_do', note: 'NULL = aktivni' },
         ]
@@ -558,8 +587,11 @@ const relationships = [
     // RPO → Skupina odpadu (N:1)
     { from: 'rpo', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
 
-    // Druh odpadu → Skupina odpadu (N:1)
-    { from: 'druh_odpadu', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+    // Skupina odpadu → Skupina_Druh_odpadu (1:N)
+    { from: 'skupina_odpadu', to: 'skupina_druh_odpadu', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+
+    // Druh odpadu → Skupina_Druh_odpadu (1:N)
+    { from: 'druh_odpadu', to: 'skupina_druh_odpadu', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
 
     // Rozvrh → Kalendar (1:N)
     { from: 'rozvrh', to: 'kalendar', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
@@ -567,14 +599,17 @@ const relationships = [
     // RPO → Nadoba (1:N)
     { from: 'rpo', to: 'nadoba', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
 
-    // Nadoba → Stanoviste (N:1)
-    { from: 'nadoba', to: 'stanoviste', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+    // Nadoba → Nadoba_Stanoviste (1:N)
+    { from: 'nadoba', to: 'nadoba_stanoviste', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
+
+    // Stanoviste → Nadoba_Stanoviste (1:N)
+    { from: 'stanoviste', to: 'nadoba_stanoviste', type: '1n', label: '1:N', cardFrom: '1', cardTo: 'N', color: '#059669' },
 
     // Nadoba → Skupina odpadu (N:1, volitelná / fallback bez RPO)
     { from: 'nadoba', to: 'skupina_odpadu', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669', dashed: true },
 
-    // Nadoba → Typ nadoby (N:1)
-    { from: 'nadoba', to: 'typ_nadoby', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
+    // RPO → Typ nadoby (N:1)
+    { from: 'rpo', to: 'typ_nadoby', type: '1n', label: 'N:1', cardFrom: 'N', cardTo: '1', color: '#059669' },
 ];
 
 // ===================== RENDERING =====================

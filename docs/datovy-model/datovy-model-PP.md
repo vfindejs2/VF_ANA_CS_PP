@@ -21,6 +21,8 @@
 10. [Stanoviště](#10-stanoviště)
 11. [Typ nádoby](#11-typ-nádoby)
 12. [RPO_Okruh_Rozvrh](#12-rpo_okruh_rozvrh)
+13. [Nadoba_Stanoviste](#13-nadoba_stanoviste)
+14. [Skupina_Druh_odpadu](#14-skupina_druh_odpadu)
 
 ---
 
@@ -50,9 +52,8 @@
 - `kod_polozky` (z HEN)
 - `misto_realizace_adresa_id` (FK → `Adresy`)  
   Pozn.: nahrazuje původní textové `misto_realizace`.
-- `rpo_okruh_rozvrh_id` (FK → `RPO_Okruh_Rozvrh`)  
-  Pozn.: reference na aktivní vazbu okruh/rozvrh.
 - `druh_odpadu_id` (FK → `Druh odpadu`)
+- `typ_nadoby_id` (FK → `Typ nádoby`)
 - `skupina_odpadu_id` (FK → `Skupina odpadu`)
 - `zona_id` (FK → `Zóna`)
 - `provozovna_id` (FK)
@@ -64,14 +65,15 @@
 - `RPO (N) → Zóna (1)`
 - `RPO (N) → Adresy (1)`
 - `RPO (N) → Skupina odpadu (1)`
+- `RPO (N) → Typ nádoby (1)`
 - `RPO (1) → Nádoba (N)`
 - `RPO (1) → RPO_Okruh_Rozvrh (N)` (historie přiřazení)
 
 ### Pravidla a poznámky
 
 - `RPO` je nositel obchodního kontextu pro obsluhu místa realizace.
-- Aktivní kombinace `Okruh + Rozvrh` je reprezentována odkazem na `RPO_Okruh_Rozvrh`.
-- Vazba na `Stanoviště` je **nepřímá přes Nádobu** (přímá vazba byla z návrhu odstraněna).
+- Historie přiřazení `Okruh + Rozvrh` je vedena v `RPO_Okruh_Rozvrh`; `RPO` v aktuálním ER nenese přímý FK na „aktivní“ záznam této vazby.
+- Vazba na `Stanoviště` je **nepřímá přes `Nádobu` a vazební entitu `Nadoba_Stanoviste`**.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
@@ -85,14 +87,29 @@
 
 **Tabulka:** `rpo`
 
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Revize položky objednávky / `order_item_revision`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `kod_polozky` | `order_item_id` + `revision` | částečně | v inventáři není samostatný sloupec `kod_polozky`; ER atribut je business zkratka |
+| `misto_realizace_adresa_id` | `realization_address_id` | nalezeno | přímá shoda významu |
+| `druh_odpadu_id` | `garbage_type_id` | nalezeno | přímá shoda významu |
+| `typ_nadoby_id` | `container_type_id` | nalezeno | přímá shoda významu |
+| `skupina_odpadu_id` | — | nenalezeno | CS rozšíření nad rámec inventáře RPO |
+| `zona_id` | — | nenalezeno | CS rozšíření nad rámec inventáře RPO |
+| `provozovna_id` | — | nenalezeno | v inventáři DDL `order_item_revision` není přímý sloupec provozovny |
+| `platnost_od` | `valid_from` | nalezeno | přímá shoda významu |
+| `platnost_do` | `valid_to` | nalezeno | přímá shoda významu |
+| `stav` | `is_active` | částečně | ER „stav“ je širší koncept než systémové `is_active` |
+
 **Sloupce (návrh):**
 | Položka | Popis |
 |---|---|
 | id bigint identity primary key | — |
 | kod_polozky nvarchar(100) not null | — |
 | misto_realizace_adresa_id bigint null | — |
-| rpo_okruh_rozvrh_id bigint null | — |
 | druh_odpadu_id bigint null | — |
+| typ_nadoby_id bigint null | — |
 | skupina_odpadu_id bigint null | — |
 | zona_id bigint null | — |
 | provozovna_id bigint not null | — |
@@ -105,8 +122,8 @@
 | FK sloupec | Reference / poznámka |
 |---|---|
 | misto_realizace_adresa_id | → `adresy(id)` |
-| rpo_okruh_rozvrh_id | → `rpo_okruh_rozvrh(id)` |
 | druh_odpadu_id | → `garbage_type(id)` / ekvivalent DS |
+| typ_nadoby_id | → `typ_nadoby(id)` / ekvivalent DS |
 | skupina_odpadu_id | → `garbage_group(id)` / ekvivalent DS |
 | zona_id | → `zone(id)` / ekvivalent DS |
 | provozovna_id | → `organization_unit(id)` |
@@ -119,8 +136,8 @@
 | IX_rpo_zona | (`zona_id`) |
 | IX_rpo_skupina_odpadu | (`skupina_odpadu_id`) |
 | IX_rpo_druh_odpadu | (`druh_odpadu_id`) |
+| IX_rpo_typ_nadoby | (`typ_nadoby_id`) |
 | IX_rpo_adresa | (`misto_realizace_adresa_id`) |
-| IX_rpo_aktivni_vazba | (`rpo_okruh_rozvrh_id`) |
 
 ---
 
@@ -157,6 +174,11 @@
 ### Návrh fyzického DDL (SQL)
 
 **Tabulka:** `okruh`
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md`:**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id`, `nazev`, `provozovna_id`, `vozidlo_id`, `aktivni` | — | nenalezeno | entita je v inventáři PP vedena jen jako nová CS entita bez DDL (sekce 23) |
 
 **Sloupce (návrh):**
 | Položka | Popis |
@@ -217,6 +239,11 @@
 
 **Tabulka:** `rozvrh`
 
+**Mapování atributů na DDL dle `inventar-entit-PP.md`:**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id`, `nazev`, `provozovna_id`, `platnost_od`, `platnost_do` | — | nenalezeno | entita je v inventáři PP vedena jen jako nová CS entita bez DDL (sekce 23) |
+
 **Sloupce (návrh):**
 | Položka | Popis |
 |---|---|
@@ -271,6 +298,11 @@
 ### Návrh fyzického DDL (SQL)
 
 **Tabulka:** `kalendar`
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md`:**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id`, `rozvrh_id`, `datum`, `typ_dne` | — | nenalezeno | entita je v inventáři PP vedena jen jako nová CS entita bez DDL (sekce 23) |
 
 **Sloupce (návrh):**
 | Položka | Popis |
@@ -327,6 +359,11 @@
 ### Návrh fyzického DDL (SQL)
 
 **Tabulka:** `zone` (nebo `area_zone`)
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md`:**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id`, `nazev`, `provozovna_id`, `geometrie` | — | nenalezeno | entita je v inventáři PP vedena jen jako nová CS entita bez DDL (sekce 23) |
 
 **Sloupce (návrh):**
 | Položka | Popis |
@@ -393,6 +430,18 @@
 
 **Tabulka:** `adresy` (název dle existujícího DS)
 
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Adresa / `address`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `zeme` | `country` | nalezeno | přímá shoda významu |
+| `mesto` | `city` | nalezeno | přímá shoda významu |
+| `ulice` | `street` | nalezeno | přímá shoda významu |
+| `cp` | `registry_number` | nalezeno | číslo popisné |
+| `co` | `orientation_number` | nalezeno | číslo orientační |
+| `X` | — | nenalezeno | CS rozšíření v ER, inventář `address` uvádí bez těchto sloupců |
+| `Y` | — | nenalezeno | CS rozšíření v ER, inventář `address` uvádí bez těchto sloupců |
+
 **Sloupce (návrh):**
 | Položka | Popis |
 |---|---|
@@ -436,19 +485,20 @@
 ### Vazby
 
 - `RPO (N) → Skupina odpadu (1)`
-- `Druh odpadu (N) → Skupina odpadu (1)`
+- `Skupina odpadu (1) → Skupina_Druh_odpadu (N)` (mapování druhů na skupiny přes vazební entitu)
 - `Nádoba (N) → Skupina odpadu (1)` (volitelná fallback vazba, přerušovaně v ER)
 
 ### Pravidla a poznámky
 
 - V aktuálním ER v1 je `Skupina odpadu` evidována **per provozovna** (`provozovna_id`).
+- Vazba na `Druh odpadu` není v ER vedena přímo; je modelována přes temporální vazební entitu `Skupina_Druh_odpadu`.
 - `Nádoba.skupina_odpadu_id` slouží jako fallback, pokud nádoba není navázána na `RPO`.
 - `je_mix` reprezentuje podporu kombinovaného svozu.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
 - Skupina odpadu slouží ke zjednodušení výběru RPO pro operativní i strategické plánování.
-- Vazba `Druh odpadu → Skupina odpadu` řídí automatické vyplnění skupiny odpadu na RPO.
+- Mapování `Druh odpadu ↔ Skupina odpadu` (v návrhu přes `Skupina_Druh_odpadu`) řídí automatické vyplnění skupiny odpadu na RPO.
 - Skupina odpadu je v CK evidována per provozovna.
 - Skupiny podporují mísitelnost druhů odpadů (sdružení kompatibilních druhů do jedné plánovací skupiny).
 - Business pravidlo v RP: jeden okruh dne obsahuje objednané služby pouze jedné skupiny odpadu.
@@ -460,6 +510,14 @@
 ### Návrh fyzického DDL (SQL)
 
 **Tabulka:** `garbage_group` (rozšíření existující)
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Skupina odpadu / `garbage_group`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `nazev` | `name` | nalezeno | přímá shoda významu |
+| `provozovna_id` | — | nenalezeno | ER CS rozšíření; inventář `garbage_group` neuvádí přímou vazbu na provozovnu |
+| `je_mix` | — | nenalezeno | ER CS rozšíření; inventář neuvádí explicitní příznak mixu |
 
 **Sloupce (návrh / delta):**
 | Položka | Popis |
@@ -492,21 +550,20 @@
 - `id` (PK)
 - `kod`
 - `nazev`
-- `skupina_odpadu_id` (FK → `Skupina odpadu`)
 
 ### Vazby
 
-- `Druh odpadu (N) → Skupina odpadu (1)`
+- `Druh odpadu (1) → Skupina_Druh_odpadu (N)` (mapování na skupiny přes vazební entitu)
 - `RPO (N) → Druh odpadu (1)` (přes atribut na RPO)
 
 ### Pravidla a poznámky
 
-- ER v1 modeluje vazbu na `Skupina odpadu` přímo přes FK `skupina_odpadu_id`.
+- ER v1 modeluje vazbu na `Skupina odpadu` nepřímo přes vazební entitu `Skupina_Druh_odpadu` (temporální mapování).
 - Entita slouží jako číselník pro přehled a klasifikaci odpadů.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
-- Číselník Druhy odpadu je místo, kde se v PP spravuje vazba `Druh odpadu → Skupina odpadu`.
+- Číselník Druhy odpadu je součást správy mapování `Druh odpadu ↔ Skupina odpadu` v PP.
 - Vazba slouží jako vstup pro automatické vyplnění skupiny odpadu na RPO při synchronizaci z HEN.
 - RP čerpá výsledek (skupinu odpadu na RPO / v plánování) read-only; správa mapování je v PP.
 - U skupiny `MIX` platí omezení nabídky a speciální chování dle pravidel kapitoly Skupina odpadu.
@@ -515,21 +572,28 @@
 
 **Tabulka:** `garbage_type` (rozšíření existující)
 
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Druh odpadu / `garbage_type`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `kod` | `code` | nalezeno | přímá shoda významu |
+| `nazev` | `description` | částečně | inventář používá spíše „Popis“ než samostatný `name` |
+| vazba přes `Skupina_Druh_odpadu` | — | nenalezeno | inventář `garbage_type` neobsahuje mapování na skupinu odpadu |
+
 **Sloupce (návrh / delta):**
 | Položka | Popis |
 |---|---|
 | stávající sloupce entity `garbage_type` | — |
-| garbage_group_id bigint null | (pokud bude vazba vedena přímo dle ER v1) |
+| bez přímého FK na `garbage_group` (mapování je vedeno přes `skupina_druh_odpadu`) | — |
 
 **FK (návrh):**
 | FK sloupec | Reference / poznámka |
 |---|---|
-| garbage_group_id | → `garbage_group(id)` |
+| bez nové přímé FK na `garbage_group` | — |
 
 **Indexy (návrh):**
 | Index | Definice / poznámka |
 |---|---|
-| IX_garbage_type_garbage_group | (`garbage_group_id`) |
 | UX_garbage_type_code | (`code`) [pokud již neexistuje] |
 
 ---
@@ -537,14 +601,12 @@
 ## 9. Nádoba
 
 **Stav:** Existující — rozšíření pro CS  
-**Role:** Malá odpadová nádoba pro cyklické svozy; provozní objekt navázaný na RPO / stanoviště / typ.
+**Role:** Malá odpadová nádoba pro cyklické svozy; provozní objekt navázaný na RPO, lokalizovaný přes vazbu na stanoviště.
 
 ### Klíčové atributy
 
 - `id` (PK)
 - `rfid`
-- `typ_nadoby_id` (FK → `Typ nádoby`)
-- `stanoviste_id` (FK → `Stanoviště`)
 - `rpo_id` (FK → `RPO`)
 - `skupina_odpadu_id` (FK → `Skupina odpadu`, vlastní fallback bez RPO)
 - `objem_litry`
@@ -552,13 +614,14 @@
 ### Vazby
 
 - `Nádoba (N) → RPO (1)`
-- `Nádoba (N) → Stanoviště (1)`
-- `Nádoba (N) → Typ nádoby (1)`
+- `Nádoba (1) → Nadoba_Stanoviste (N)` (časově platné přiřazení ke stanovištím)
 - `Nádoba (N) → Skupina odpadu (1)` (volitelná / fallback, přerušovaná vazba v ER)
 
 ### Pravidla a poznámky
 
 - Primární business kontext nádoba typicky dědí z RPO.
+- Typ nádoby je v aktuálním ER navázán na `RPO` (nikoli přímo na `Nádobu`).
+- Vazba na `Stanoviště` je v aktuálním ER vedena přes existující vazební entitu `Nadoba_Stanoviste`.
 - Současně je explicitně umožněno uložit vlastní `skupina_odpadu_id` pro případy bez vazby na RPO.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
@@ -583,13 +646,20 @@
 
 **Tabulka:** `nadoba` (rozšíření existující)
 
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Nádoba / `container`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `rfid` | — | nenalezeno | v inventáři DDL `container` není uveden samostatný sloupec RFID |
+| `rpo_id` | — | nenalezeno | ER CS rozšíření; inventář vazbu řeší přes jinou vazební entitu |
+| `skupina_odpadu_id` | `garbage_group_id` | nalezeno | přímá shoda významu |
+| `objem_litry` | — | nenalezeno | v inventáři DDL `container` není přímý sloupec objemu nádoby |
+
 **Sloupce (návrh / delta):**
 | Položka | Popis |
 |---|---|
 | stávající sloupce entity `nadoba` | — |
 | rpo_id bigint null | — |
-| stanoviste_id bigint null | — |
-| typ_nadoby_id bigint null | — |
 | skupina_odpadu_id bigint null | (nová fallback reference) |
 | rfid nvarchar(100) null | — |
 | objem_litry decimal(10,2) null | — |
@@ -598,16 +668,12 @@
 | FK sloupec | Reference / poznámka |
 |---|---|
 | rpo_id | → `rpo(id)` |
-| stanoviste_id | → `stanoviste(id)` |
-| typ_nadoby_id | → `typ_nadoby(id)` |
 | skupina_odpadu_id | → `garbage_group(id)` |
 
 **Indexy (návrh):**
 | Index | Definice / poznámka |
 |---|---|
 | IX_nadoba_rpo | (`rpo_id`) |
-| IX_nadoba_stanoviste | (`stanoviste_id`) |
-| IX_nadoba_typ | (`typ_nadoby_id`) |
 | IX_nadoba_skupina_odpadu | (`skupina_odpadu_id`) |
 | UX_nadoba_rfid | (`rfid`) [pokud je RFID unikátní] |
 
@@ -615,7 +681,7 @@
 
 ## 10. Stanoviště
 
-**Stav:** Existující — rozšíření pro CS  
+**Stav:** Existující entita (beze změn v rámci tohoto návrhu CS)  
 **Role:** Fyzické umístění nádob a lokalizace objednaných služeb.
 
 ### Klíčové atributy
@@ -627,13 +693,13 @@
 
 ### Vazby
 
-- `Nádoba (N) → Stanoviště (1)` (z pohledu nádoby)
+- `Stanoviště (1) → Nadoba_Stanoviste (N)` (časově platné přiřazení nádob)
 
 ### Pravidla a poznámky
 
 - V ER v1 **není přímá vazba Stanoviště → RPO**.
-- Atribut `rpo_id` byl z návrhu odstraněn.
-- Vazba na RPO je nepřímá přes `Nádoba`.
+- Vazba `Stanoviště ↔ Nádoba` je vedena přes existující vazební entitu `Nadoba_Stanoviste`.
+- Vazba na RPO je nepřímá přes `Nádobu`.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
@@ -644,16 +710,21 @@
 
 ### Návrh fyzického DDL (SQL)
 
-**Tabulka:** `stanoviste` (rozšíření existující)
+**Tabulka:** `stanoviste` (existující; bez nové FK na RPO v tomto návrhu)
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Stanoviště / `site`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `adresa` | `address_id` | částečně | ER atribut je zjednodušený pohled; v inventáři je reference na entitu Adresa |
+| `gps_lat` | `lat` | nalezeno | přímá shoda významu |
+| `gps_lon` | `lng` | nalezeno | přímá shoda významu |
 
 **Sloupce (návrh / delta):**
 | Položka | Popis |
 |---|---|
-| stávající sloupce entity `stanoviste` | — |
-| adresa nvarchar(500) null | — |
-| gps_lat decimal(10,7) null | — |
-| gps_lon decimal(10,7) null | — |
-| bez `rpo_id` (odebráno z návrhu) | — |
+| stávající sloupce entity `stanoviste` | beze změn pro CS v této kapitole |
+| bez `rpo_id` (přímá vazba na RPO se v ER nevyskytuje) | — |
 
 **FK (návrh):**
 | FK sloupec | Reference / poznámka |
@@ -682,11 +753,12 @@
 
 ### Vazby
 
-- `Nádoba (N) → Typ nádoby (1)`
+- `RPO (N) → Typ nádoby (1)`
 
 ### Pravidla a poznámky
 
 - ER v1 uvádí zdroj ERP HEN/WINX (read-only) s editovatelným `cas_obsluhy_sec`.
+- V aktuálním ER je vazba na `Typ nádoby` vedena z `RPO` (nikoli přímo z `Nádoby`).
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
@@ -697,6 +769,14 @@
 ### Návrh fyzického DDL (SQL)
 
 **Tabulka:** `typ_nadoby` (rozšíření existující)
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Typ nádoby / `container_type`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `nazev` | `name` | nalezeno | přímá shoda významu |
+| `objem_litry` | — | nenalezeno | v inventáři DDL `container_type` není přímý sloupec objemu |
+| `cas_obsluhy_sec` | — | nenalezeno | CS rozšíření v ER; inventář `container_type` ho neuvádí |
 
 **Sloupce (návrh / delta):**
 | Položka | Popis |
@@ -745,7 +825,6 @@
   - ukončí aktuální vazbu (`platnost_do`)
   - založí nový záznam v `RPO_Okruh_Rozvrh`
 - V jednom čase má mít `RPO` maximálně jednu aktivní vazbu.
-- `RPO.rpo_okruh_rozvrh_id` může sloužit jako rychlá reference na aktuálně aktivní záznam.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
@@ -760,6 +839,11 @@
 ### Návrh fyzického DDL (SQL)
 
 **Tabulka:** `rpo_okruh_rozvrh`
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md`:**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id`, `rpo_id`, `okruh_id`, `rozvrh_id`, `platnost_od`, `platnost_do` | — | nenalezeno | nová CS entita; v inventáři PP není explicitně popsána |
 
 **Sloupce (návrh):**
 | Položka | Popis |
@@ -791,9 +875,163 @@
 
 ---
 
+## 13. Nadoba_Stanoviste
+
+**Stav:** Existující vazební entita (využitá v návrhu CS)  
+**Role:** Časově platné přiřazení `Nádoba ↔ Stanoviště`; zdroj lokalizace nádoby a nepřímě i lokalizace RPO/OS.
+
+### Klíčové atributy
+
+- `id` (PK)
+- `nadoba_id` (FK → `Nádoba`)
+- `stanoviste_id` (FK → `Stanoviště`)
+- `platnost_od`
+- `platnost_do` (`NULL = aktivní`)
+
+### Vazby
+
+- `Nádoba (1) → Nadoba_Stanoviste (N)`
+- `Stanoviště (1) → Nadoba_Stanoviste (N)`
+
+### Pravidla a poznámky
+
+- V aktuálním ER v1 nahrazuje tato vazební entita přímý atribut `Nádoba.stanoviste_id`.
+- Vazba je modelována jako časově platná (historie přistavení / stažení nádoby).
+- Vazba `RPO → Stanoviště` zůstává nepřímá: `RPO -> Nádoba -> Nadoba_Stanoviste -> Stanoviště`.
+- Je vhodné potvrdit business pravidlo, zda smí mít jedna nádoba více souběžně aktivních přiřazení ke stanovišti (typicky se očekává max. 1 aktivní přiřazení).
+
+### Businessové požadavky (z `vytah-cilovy-koncept.md`)
+
+- Stanoviště nádob jsou primárním zdrojem lokalizace pro plánování a realizaci CS.
+- Při generování lokací OS se využívají stanoviště navázaných nádob; pokud chybí, používá se fallback přes místo realizace RPO.
+- Časová platnost vazby nádoba–stanoviště je důležitá pro správné vyhodnocení aktuální lokace v plánovacím období.
+
+### Návrh fyzického DDL (SQL)
+
+**Tabulka:** `site_container_assignment` (existující DDL; v ER alias `nadoba_stanoviste`)
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md` (entita: Přiřazení nádoby ke stanovišti / `site_container_assignment`):**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id` | `id` | nalezeno | přímá shoda |
+| `nadoba_id` | `container_id` | nalezeno | přímá shoda významu |
+| `stanoviste_id` | `site_id` | nalezeno | přímá shoda významu |
+| `platnost_od` | `valid_from` | nalezeno | přímá shoda významu |
+| `platnost_do` | `valid_to` | nalezeno | přímá shoda významu |
+
+**Sloupce (návrh / delta):**
+| Položka | Popis |
+|---|---|
+| stávající sloupce entity `site_container_assignment` | beze změn pro CS v tomto návrhu |
+| container_id (`nadoba_id`) | existující FK na `container` |
+| site_id (`stanoviste_id`) | existující FK na `site` |
+| valid_from (`platnost_od`) | začátek platnosti přiřazení |
+| valid_to (`platnost_do`) | konec platnosti přiřazení |
+
+**FK (návrh):**
+| FK sloupec | Reference / poznámka |
+|---|---|
+| nadoba_id / `container_id` | → `nadoba(id)` / `container(id)` |
+| stanoviste_id / `site_id` | → `stanoviste(id)` / `site(id)` |
+
+**Indexy (návrh):**
+| Index | Definice / poznámka |
+|---|---|
+| IX_ns_nadoba | (`nadoba_id`) / (`container_id`) |
+| IX_ns_stanoviste | (`stanoviste_id`) / (`site_id`) |
+| IX_ns_platnost | (`platnost_od`, `platnost_do`) / (`valid_from`, `valid_to`) |
+| IX_ns_nadoba_historie | (`nadoba_id`, `platnost_od` desc) |
+| UX_ns_nadoba_aktivni | filtrovaný index na `nadoba_id` kde `platnost_do is null` [jen pokud business potvrdí max 1 aktivní vazbu] |
+
+---
+
+## 14. Skupina_Druh_odpadu
+
+**Stav:** Nová entita pro CS  
+**Role:** Temporální mapování `Druh odpadu ↔ Skupina odpadu` pro odvození plánovací skupiny odpadu v čase.
+
+### Klíčové atributy
+
+- `id` (PK)
+- `skupina_odpadu_id` (FK → `Skupina odpadu`)
+- `druh_odpadu_id` (FK → `Druh odpadu`)
+- `platnost_od`
+- `platnost_do` (`NULL = aktivní`)
+
+### Vazby
+
+- `Skupina odpadu (1) → Skupina_Druh_odpadu (N)`
+- `Druh odpadu (1) → Skupina_Druh_odpadu (N)`
+
+### Pravidla a poznámky
+
+- V aktuálním ER v1 je mapování `Druh odpadu -> Skupina odpadu` vedeno nepřímo přes tuto vazební entitu (nikoli přímým FK v `Druh odpadu`).
+- Entita zavádí časovou platnost mapování, aby bylo možné dohledat historické změny klasifikace pro plánování a audit.
+- Výsledek mapování slouží jako vstup pro vyplnění `RPO.skupina_odpadu_id`.
+- Je nutné potvrdit business pravidlo, zda v jednom čase smí mít `Druh odpadu` více aktivních mapování na různé skupiny (zejména vzhledem ke skupině `MIX` a automatickým pravidlům).
+
+### Businessové požadavky (z `vytah-cilovy-koncept.md`)
+
+- PP je místem správy mapování druhů odpadů na skupiny odpadů pro potřeby plánování CS.
+- Mapování slouží ke zjednodušení výběru RPO a k automatickému doplňování skupiny odpadu při synchronizaci / přípravě dat.
+- Pravidla pro skupinu `MIX` vyžadují kontrolovanou správu mapování a omezení běžné editace.
+- Správnost mapování přímo ovlivňuje seskupování OS do okruhů dne v RP (1 okruh dne = 1 skupina odpadu).
+
+### Návrh fyzického DDL (SQL)
+
+**Tabulka:** `skupina_druh_odpadu`
+
+**Mapování atributů na DDL dle `inventar-entit-PP.md`:**
+| Atribut (ER) | DDL sloupec v inventáři PP | Stav | Poznámka |
+|---|---|---|---|
+| `id`, `skupina_odpadu_id`, `druh_odpadu_id`, `platnost_od`, `platnost_do` | — | nenalezeno | nová CS vazební entita; v inventáři PP není popsána |
+
+**Sloupce (návrh):**
+| Položka | Popis |
+|---|---|
+| id bigint identity primary key | — |
+| skupina_odpadu_id bigint not null | — |
+| druh_odpadu_id bigint not null | — |
+| platnost_od datetime2(0) not null | — |
+| platnost_do datetime2(0) null | — |
+| audit/tenant sloupce dle standardu PP | — |
+
+**FK (návrh):**
+| FK sloupec | Reference / poznámka |
+|---|---|
+| skupina_odpadu_id | → `garbage_group(id)` |
+| druh_odpadu_id | → `garbage_type(id)` |
+
+**Indexy (návrh):**
+| Index | Definice / poznámka |
+|---|---|
+| IX_sdo_skupina | (`skupina_odpadu_id`) |
+| IX_sdo_druh | (`druh_odpadu_id`) |
+| IX_sdo_platnost | (`platnost_od`, `platnost_do`) |
+| IX_sdo_druh_historie | (`druh_odpadu_id`, `platnost_od` desc) |
+| UX_sdo_druh_aktivni | filtrovaný index na `druh_odpadu_id` kde `platnost_do is null` [pokud business potvrdí max 1 aktivní mapování na druh] |
+| UX_sdo_kombinace_obdobi | (`druh_odpadu_id`, `skupina_odpadu_id`, `platnost_od`) [min. ochrana proti duplicitnímu vložení] |
+
+---
+
 ## Doporučení pro další rozpracování DS/DDL
 
 - U každé kapitoly doplnit fyzický DDL návrh (typy sloupců, indexy, FK, `NULL/NOT NULL`).
 - U temporální tabulky `RPO_Okruh_Rozvrh` doplnit constraint / pravidlo pro „max 1 aktivní vazba na RPO“.
 - U `Nádoba.skupina_odpadu_id` popsat prioritu vyhodnocení vůči `RPO.skupina_odpadu_id` v aplikační logice.
 - U `Adresy` doplnit význam atributů `X`, `Y` (souřadnice / lokální souřadný systém / jiný význam).
+
+### Poznámky k návrhu řešení
+
+**Kolize / nesoulady vůči `inventar-entit-PP`:**
+
+- Vazba `RPO -> Nádoba (1:N)` a atribut `Nádoba.rpo_id` jsou v kolizi s inventářem PP. V inventáři je vazba vedena přes existující vazební entitu **Přiřazení nádoby k položce objednávky** (`container_order_item_assignment`), nikoliv přímým FK v `Nádoba`.
+- Entita `Skupina odpadu` je v návrhu rozšířena o `provozovna_id` a popsána jako evidovaná per provozovna. Inventář PP pro `garbage_group` tuto vazbu neuvádí (entita je popsána jako standardní číselník se systémovými atributy a vazbou na barvu skupiny odpadu).
+- Umístění nových entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` přímo do modelu PP je v napětí s inventářem PP. Inventář je uvádí jako „nové pro CS“, ale zároveň poznamenává, že pravděpodobně budou vznikat v RoadPlanu, nikoliv v PasPortu.
+
+**Další problémy / nejasnosti v návrhu:**
+
+- Popis `RPO_Okruh_Rozvrh` stále obsahuje pravidlo „max 1 aktivní vazba na RPO“, což je potřeba explicitně potvrdit nebo upravit podle finální business logiky (zejména pokud se připustí více souběžně aktivních vazeb).
+- `Stanoviště` je nyní správně značeno jako existující entita, ale textový popis je formulován jako „Rozšířená existující entita“; to je vhodné sjednotit.
+- `Skupina_Druh_odpadu` je validní CS rozšíření návrhu, ale není zatím promítnuta do `inventar-entit-PP` (inventář u `Druh odpadu` aktuálně uvádí bez referenčních asociací). Je potřeba rozhodnout, zda půjde o nové PP rozšíření, nebo jen aplikační mapování mimo DS/DDL PP.
+- `RPO_Okruh_Rozvrh` není zatím explicitně zapsána v inventáři PP mezi novými entitami pro CS; doporučeno doplnit inventář nebo uvést, že jde pouze o konceptuální / integrační vrstvu mimo PP DS.
