@@ -1035,3 +1035,106 @@
 - `Stanoviště` je nyní správně značeno jako existující entita, ale textový popis je formulován jako „Rozšířená existující entita“; to je vhodné sjednotit.
 - `Skupina_Druh_odpadu` je validní CS rozšíření návrhu, ale není zatím promítnuta do `inventar-entit-PP` (inventář u `Druh odpadu` aktuálně uvádí bez referenčních asociací). Je potřeba rozhodnout, zda půjde o nové PP rozšíření, nebo jen aplikační mapování mimo DS/DDL PP.
 - `RPO_Okruh_Rozvrh` není zatím explicitně zapsána v inventáři PP mezi novými entitami pro CS; doporučeno doplnit inventář nebo uvést, že jde pouze o konceptuální / integrační vrstvu mimo PP DS.
+
+### Poznámky k prověření k datovému modelu (viz Findings — kolize / problémy)
+
+- Prověřit a rozhodnout kolizi `RPO -> Nádoba (1:N)` + `Nádoba.rpo_id` vs. existující PP vazba přes `container_order_item_assignment` (inventář PP vede vazbu přes vazební entitu, ne přímým FK v `Nádoba`).
+- Prověřit, zda `Skupina odpadu.provozovna_id` je skutečně cílové CS rozšíření PP, nebo zda má zůstat `garbage_group` globální/tenantový číselník bez přímé vazby na provozovnu.
+- Prověřit architektonické umístění nových entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` (PP vs. RP) a sjednotit to napříč ER diagramem, `datovy-model-PP.md` a inventářem PP.
+- Prověřit a explicitně potvrdit pravidlo pro maximální počet aktivních vazeb v `RPO_Okruh_Rozvrh` (aktuálně model předpokládá max. 1 aktivní vazbu na `RPO`).
+- Dopsat / sjednotit dokumentaci existujících entit a vazebních entit:
+  - `Stanoviště` (textový popis vs. status existující entity),
+  - `Skupina_Druh_odpadu` (doplnění do inventáře PP nebo označení jako mimo DS/DDL PP),
+  - `RPO_Okruh_Rozvrh` (doplnění do inventáře PP nebo označení jako konceptuální vrstva).
+
+### Poznámky k HELIOS (viz Připomínky — kolize / rizika z `vytah-helios-nephrite-zvoz.md` vůči `datovy-model-PP.md`)
+
+- Prověřit zásadní rozpor HEN vs. PP modelu u okruhů:
+  - HEN připouští, že jeden PZ může být ve více okruzích,
+  - PP model `RPO_Okruh_Rozvrh` aktuálně předpokládá max. 1 aktivní vazbu na `RPO`.
+- Prověřit, zda kombinovaná entita `RPO_Okruh_Rozvrh` odpovídá HEN integrační realitě:
+  - HEN komunikuje vazby PZ↔Rozvrh, PZ↔Okruh, PZ↔Zóna separátně,
+  - může být potřeba rozdělit model nebo přesně popsat transformační logiku v integraci.
+- Doplnit do kapitol `RPO`, `Rozvrh`, `RPO_Okruh_Rozvrh` explicitní integrační pravidlo z HEN:
+  - Rozvrh je na PZ **dynamický vztah**, ne prostý atribut na PZ.
+- Doplnit do kapitol `Zóna` a `Stanoviště` logiku odvození zóny:
+  - zóna se v HEN na PZ doplňuje podle **adresy stanoviska**,
+  - v modelu PP je potřeba zachytit původ/derivaci `RPO.zona_id` a validační podmínky (aktivní zóna, shoda útvaru).
+- Rozšířit kapitoly `Rozvrh` a `Kalendar` o detailnější model HEN rozvrhu (nebo explicitně popsat, že PP přebírá zjednodušený/flattened přenos):
+  - HEN rozvrh má detailní parametrizaci a položky rozvrhu (dny vývozu).
+- Rozšířit kapitolu `Okruh` o HEN odvozené atributy (nebo explicitně označit jako odvozené/nepersistované):
+  - celkový počet nádob,
+  - celkový objem nádob,
+  - dny zvozu,
+  - typ týdne.
+- Doplnit do kapitoly `Typ nádoby` poznámku k rozlišení:
+  - typ nádoby jako kontraktační údaj na PZ/RPO,
+  - vs. fyzická nádoba a její evidence/pohyby.
+- Prověřit dopad dvojí historizace:
+  - HEN verzuje PZ při materiálních změnách,
+  - PP navrhuje temporální vazby (`RPO_Okruh_Rozvrh`, `Nadoba_Stanoviste`, `Skupina_Druh_odpadu`),
+  - je nutné přesně vymezit odpovědnost jednotlivých vrstev historizace.
+
+#### Dotazy pro zákazníka
+
+- Má být v cílovém řešení zachována možnost, aby **jeden PZ / RPO byl současně ve více okruzích**, nebo se má v PP/RP zavést omezení na jeden aktivní okruh?
+- Pokud HEN umožňuje více okruhů na jeden PZ, jaký je očekávaný business význam této situace:
+  - paralelní plánovací varianty,
+  - různé okruhy podle období / typu svozu,
+  - výjimečné provozní stavy?
+- Má PP v Etapě 1 přebírat z HEN pouze výsledný stav vazeb, nebo i plnou historii změn (včetně dat účinnosti) pro `PZ↔Rozvrh`, `PZ↔Okruh`, `PZ↔Zóna`?
+- Má být `RPO.zona_id` v PP považováno za:
+  - odvozenou/synchronizovanou hodnotu z adresy stanoviska,
+  - nebo za samostatně editovatelný údaj?
+- Jaké validační podmínky pro doplnění zóny z HEN jsou pro zákazníka závazné i v PP (aktivní zóna, shoda útvaru, kontrola zóny)?
+- Požaduje zákazník v PP evidovat/persistovat odvozené atributy okruhu (`celkový počet nádob`, `celkový objem`, `typ týdne`, `dny zvozu`), nebo stačí jejich výpočet/on-demand zobrazení?
+- Jak detailní data rozvrhu potřebuje zákazník v PP/RP pro plánování:
+  - pouze seznam dní vývozu,
+  - nebo i kompletní parametrizaci rozvrhu z HEN?
+- Jak má být řešena historizace z pohledu auditu:
+  - stačí historizace v HEN (verze PZ),
+  - nebo je požadována i samostatná historizace vazeb v PP?
+- Má být typ nádoby v PP primárně chápán jako **kontraktační údaj na RPO**, nebo je požadována i přímá vazba na fyzickou nádobu pro plánovací účely?
+
+#### Dotazy pro dodavatele informačního systému (HELIOS Nephrite)
+
+- Jak přesně je v HEN reprezentován **dynamický vztah PZ↔Rozvrh**:
+  - samostatná tabulka / API resource,
+  - embedded kolekce v payloadu PZ,
+  - jiný mechanismus?
+- Jaké identifikátory a atributy jsou dostupné pro vazbu `PZ↔Rozvrh`:
+  - ID vazby,
+  - datum účinnosti od/do,
+  - stav/aktivita vazby,
+  - auditní metadata?
+- Jak je v HEN reprezentována vazba `PZ↔Okruh`:
+  - je samostatná od vazby na Rozvrh,
+  - obsahuje časovou platnost,
+  - může mít PZ více aktivních vazeb současně?
+- Jaký je přesný datový model vazby `PZ↔Zóna`:
+  - je fyzicky uložená na PZ,
+  - nebo pouze odvozená ze stanoviska/adresy při výpočtu?
+- Potvrďte, zda zóna na PZ vzniká vždy automaticky z **adresy stanoviska**, a jaké jsou přesné podmínky / validační pravidla (aktivní zóna, útvar, kontrola zóny).
+- Jak v HEN vypadá datový model **Rozvrhu vývozu** a jeho položek (dní vývozu):
+  - seznam tabulek/entit,
+  - klíčové atributy,
+  - vazba na PZ,
+  - způsob rozlišení C/N cyklického svozu.
+- Jaké atributy **Okruhu trasy** jsou persistentní a jaké pouze odvozené (např. počet nádob, objem, typ týdne, dny zvozu)?
+- Je možné z HEN získat přes API/export i odvozené hodnoty okruhu, nebo je musí PP dopočítávat?
+- Jak HEN verzuje PZ při materiálních změnách (rozvrh, typ nádoby, uživatelé, LM apod.):
+  - vzniká vždy nová verze,
+  - jak se značí návaznost verzí,
+  - jak je dostupná historie přes API/export?
+- Jaké jsou integrační garance pro konzistenci mezi:
+  - PZ,
+  - stanoviskem,
+  - adresou stanoviska,
+  - zónou,
+  - rozvrhem,
+  - okruhem?
+- Existují omezení nebo doporučení pro přenos do PP (FR-01) z pohledu:
+  - inkrementálních změn,
+  - mazání / deaktivací vazeb,
+  - časových razítek účinnosti,
+  - pořadí zpracování entit a vazeb?
