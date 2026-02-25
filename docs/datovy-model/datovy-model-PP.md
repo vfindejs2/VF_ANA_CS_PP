@@ -1077,64 +1077,31 @@
 
 #### Dotazy pro zákazníka
 
-- Má být v cílovém řešení zachována možnost, aby **jeden PZ / RPO byl současně ve více okruzích**, nebo se má v PP/RP zavést omezení na jeden aktivní okruh?
-- Pokud HEN umožňuje více okruhů na jeden PZ, jaký je očekávaný business význam této situace:
-  - paralelní plánovací varianty,
-  - různé okruhy podle období / typu svozu,
-  - výjimečné provozní stavy?
-- Má PP v Etapě 1 přebírat z HEN pouze výsledný stav vazeb, nebo i plnou historii změn (včetně dat účinnosti) pro `PZ↔Rozvrh`, `PZ↔Okruh`, `PZ↔Zóna`?
+- Má být v cílovém řešení zachována možnost, aby **jeden PZ / RPO byl současně ve více okruzích a rozvrzích**? A pokud ano, tak dochází ke změně okruhu a rozvrhu najednou?
+- Má PP v Etapě 1 přebírat z HEN pouze výsledný stav vazeb pro `PZ↔Rozvrh`, `PZ↔Okruh`, `PZ↔Zóna`? Co bude spuštěčem přenosu do PP?
 - Má být `RPO.zona_id` v PP považováno za:
   - odvozenou/synchronizovanou hodnotu z adresy stanoviska,
   - nebo za samostatně editovatelný údaj?
-- Jaké validační podmínky pro doplnění zóny z HEN jsou pro zákazníka závazné i v PP (aktivní zóna, shoda útvaru, kontrola zóny)?
-- Požaduje zákazník v PP evidovat/persistovat odvozené atributy okruhu (`celkový počet nádob`, `celkový objem`, `typ týdne`, `dny zvozu`), nebo stačí jejich výpočet/on-demand zobrazení?
-- Jak detailní data rozvrhu potřebuje zákazník v PP/RP pro plánování:
-  - pouze seznam dní vývozu,
-  - nebo i kompletní parametrizaci rozvrhu z HEN?
-- Jak má být řešena historizace z pohledu auditu:
+- Existují nějaké validační podmínky pro doplnění zóny z HEN jsou pro zákazníka závazné i v PP (aktivní zóna, shoda útvaru, kontrola zóny)?
+- Pro plánování v RP počítáme s tím, že RP bude pracovat pouze se seznamem dní vývozu. Okruh, Rozvrh a Zóna budou pouze infromativní u OS. Je to v pořádku?
+- Jak má být řešena historizace řazení RPO do Okruhu, Rozvrhu a Zóny:
   - stačí historizace v HEN (verze PZ),
   - nebo je požadována i samostatná historizace vazeb v PP?
-- Má být typ nádoby v PP primárně chápán jako **kontraktační údaj na RPO**, nebo je požadována i přímá vazba na fyzickou nádobu pro plánovací účely?
+
 
 #### Dotazy pro dodavatele informačního systému (HELIOS Nephrite)
 
-- Jak přesně je v HEN reprezentován **dynamický vztah PZ↔Rozvrh**:
-  - samostatná tabulka / API resource,
-  - embedded kolekce v payloadu PZ,
-  - jiný mechanismus?
-- Jaké identifikátory a atributy jsou dostupné pro vazbu `PZ↔Rozvrh`:
-  - ID vazby,
-  - datum účinnosti od/do,
-  - stav/aktivita vazby,
-  - auditní metadata?
+- Jak přesně je v HEN reprezentován **dynamický vztah PZ↔Rozvrh**
+- Jaké identifikátory a atributy jsou dostupné pro vazbu `PZ↔Rozvrh↔Kalendář`
 - Jak je v HEN reprezentována vazba `PZ↔Okruh`:
-  - je samostatná od vazby na Rozvrh,
-  - obsahuje časovou platnost,
-  - může mít PZ více aktivních vazeb současně?
 - Jaký je přesný datový model vazby `PZ↔Zóna`:
-  - je fyzicky uložená na PZ,
-  - nebo pouze odvozená ze stanoviska/adresy při výpočtu?
 - Potvrďte, zda zóna na PZ vzniká vždy automaticky z **adresy stanoviska**, a jaké jsou přesné podmínky / validační pravidla (aktivní zóna, útvar, kontrola zóny).
 - Jak v HEN vypadá datový model **Rozvrhu vývozu** a jeho položek (dní vývozu):
   - seznam tabulek/entit,
   - klíčové atributy,
   - vazba na PZ,
   - způsob rozlišení C/N cyklického svozu.
-- Jaké atributy **Okruhu trasy** jsou persistentní a jaké pouze odvozené (např. počet nádob, objem, typ týdne, dny zvozu)?
-- Je možné z HEN získat přes API/export i odvozené hodnoty okruhu, nebo je musí PP dopočítávat?
-- Jak HEN verzuje PZ při materiálních změnách (rozvrh, typ nádoby, uživatelé, LM apod.):
+- Jak HEN verzuje PZ při materiálních změnách (okruh, rozvrh, typ nádoby apod.):
   - vzniká vždy nová verze,
   - jak se značí návaznost verzí,
   - jak je dostupná historie přes API/export?
-- Jaké jsou integrační garance pro konzistenci mezi:
-  - PZ,
-  - stanoviskem,
-  - adresou stanoviska,
-  - zónou,
-  - rozvrhem,
-  - okruhem?
-- Existují omezení nebo doporučení pro přenos do PP (FR-01) z pohledu:
-  - inkrementálních změn,
-  - mazání / deaktivací vazeb,
-  - časových razítek účinnosti,
-  - pořadí zpracování entit a vazeb?
