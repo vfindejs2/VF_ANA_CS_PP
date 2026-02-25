@@ -1,0 +1,47 @@
+flowchart TD
+    A["1. Oprávněný uživatel spustí manuální generování<br/>(synchronní proces)"]:::manual
+    B{"2. Typ manuálního generování?"}:::decision
+
+    %% Větev A - z rozvrhů/okruhů
+    subgraph VA["Větev A: Z rozvrhů / okruhů"]
+      direction TD
+      A1["A1. Nastavení rozsahu<br/>období + výběr rozvrhů/okruhů"]:::manual
+      A2["A2. Aplikace stejných podmínek jako automat<br/>Rozvrh + den v období / duplicity / přegenerování"]:::auto
+      A3["A3. Vznik OS / lokací / Okruhů dne<br/>a případně DV"]:::auto
+      A4["A4. Výstupní souhrn běhu<br/>počty RPO, OS, lokací, okruhů"]:::output
+      A1 --> A2 --> A3 --> A4
+    end
+
+    %% Větev B - na výzvu
+    subgraph VB["Větev B: „Na výzvu“ z RPO (mimořádné svozy)"]
+      direction TD
+      B1["B1. Výběr konkrétního dne"]:::manual
+      B2["B2. Nabídka kandidátních RPO<br/>(jen bez existující OS pro den)"]:::auto
+      B3{"B3. Je RPO zařazeno v okruhu?"}:::decision
+      B4A["B4A. Okruh se ignoruje<br/>vznik OS bez Okruhu dne"]:::warn
+      B4B["B4B. Standardní vznik OS bez okruhu<br/>(mimořádný podklad)"]:::manual
+      B5["B5. OS „mimo rozvrh“ připravena k doplánování<br/>doporučeno evidovat původ"]:::output
+      B1 --> B2 --> B3
+      B3 -- "ANO" --> B4A --> B5
+      B3 -- "NE" --> B4B --> B5
+    end
+
+    A --> B
+    B -- "z rozvrhů/okruhů" --> A1
+    B -- "na výzvu" --> B1
+
+    C1["Společné kontroly (obě větve):<br/>• prevence duplicit OS (RPO+den)<br/>• lokalizace stanoviště → fallback MR<br/>• audit původu vzniku OS<br/>• logování spuštění"]:::rule
+    C2["Governance (kap. 4.4):<br/>role/oprávnění, limity rozsahu,<br/>volitelně schvalování"]:::rule
+    C3["Manuální workflow slouží i pro operativní doplnění podkladu<br/>(analogie položek „mimo rozvrh“ v HEN)"]:::rule
+
+    A -.-> C2
+    A2 -.-> C1
+    B5 -.-> C1
+    B -.-> C3
+
+    classDef auto fill:#ecfdf5,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef manual fill:#fff7ed,stroke:#b45309,color:#7c2d12,stroke-width:1.5px;
+    classDef decision fill:#eff6ff,stroke:#1d4ed8,color:#1e3a8a,stroke-width:1.5px;
+    classDef warn fill:#fef2f2,stroke:#b91c1c,color:#7f1d1d,stroke-width:1.5px;
+    classDef output fill:#ecfeff,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef rule fill:#fffbeb,stroke:#d97706,color:#78350f,stroke-dasharray: 4 3;

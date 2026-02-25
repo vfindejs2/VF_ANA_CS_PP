@@ -1,0 +1,48 @@
+flowchart TD
+    A["1. Spuštění automatu (scheduler)<br/>frekvence / čas / období"]:::auto
+    B["2. Načtení vstupů a kontextu<br/>RPO + vazby Rozvrh/Okruh + Nádoby/Stanoviště + Zóna (pomocně)"]:::auto
+    C{"3. Má RPO účinný Rozvrh<br/>s dnem v období?"}:::decision
+    C_NO["Bez standardního vzniku OS<br/>(možná ruční větev „na výzvu“)"]:::warn
+    D["4. Výběr rozvrhů / kalendářních dnů<br/>a příprava generování"]:::auto
+    E{"5. Existuje už OS<br/>pro stejné RPO + den?"}:::decision
+    F1["6A. Založení nové OS a lokací"]:::auto
+    F2["6B. Přegenerování<br/>deaktivace původní OS + nová OS/lokace<br/>+ noční cleanup"]:::warn
+    G{"7. Je dostupné stanoviště nádoby?"}:::decision
+    H1["8A. Lokalizace OS dle stanoviště<br/>(primární zdroj)"]:::auto
+    H2["8B. Fallback lokalizace z místa realizace RPO"]:::manual
+    I{"9. Má RPO vazbu na Okruh?"}:::decision
+    J1["10A. Zařazení do Okruhu dne<br/>(existující / nový)"]:::auto
+    J2["10B. OS bez Okruhu dne<br/>čeká na ruční zařazení"]:::manual
+    K{"11. Má Okruh přiřazené vozidlo?"}:::decision
+    L1["12A. Automatické zařazení<br/>Okruhu dne do DV"]:::auto
+    L2["12B. Připraveno k doplánování<br/>(bez DV / N/A)"]:::manual
+    M["13. Výstup generování = podklad pro plán<br/>OS + lokace + Okruhy dne + případně DV<br/>+ stav/původ OS"]:::output
+
+    A --> B --> C
+    C -- "ANO" --> D --> E
+    C -- "NE" --> C_NO
+    E -- "NE" --> F1 --> G
+    E -- "ANO" --> F2 --> G
+    G -- "ANO" --> H1 --> I
+    G -- "NE" --> H2 --> I
+    I -- "ANO" --> J1 --> K
+    I -- "NE" --> J2 --> M
+    K -- "ANO" --> L1 --> M
+    K -- "NE / N/A" --> L2 --> M
+
+    R1["Pravidlo: Rozvrh = nutná podmínka<br/>pro standardní automatické generování"]:::rule
+    R2["Kontrola: bez duplicit OS<br/>(RPO + den)"]:::rule
+    R3["Zóna = pomocný/filtrační kontext<br/>není nutnou podmínkou vzniku OS"]:::rule
+    R4["Doporučení: evidovat původ OS<br/>(dle rozvrhu / mimo rozvrh / přegenerováno / přeplánováno)"]:::rule
+
+    C -.-> R1
+    E -.-> R2
+    B -.-> R3
+    M -.-> R4
+
+    classDef auto fill:#ecfdf5,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef manual fill:#fff7ed,stroke:#b45309,color:#7c2d12,stroke-width:1.5px;
+    classDef decision fill:#eff6ff,stroke:#1d4ed8,color:#1e3a8a,stroke-width:1.5px;
+    classDef warn fill:#fef2f2,stroke:#b91c1c,color:#7f1d1d,stroke-width:1.5px;
+    classDef output fill:#ecfeff,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef rule fill:#fffbeb,stroke:#d97706,color:#78350f,stroke-dasharray: 4 3;

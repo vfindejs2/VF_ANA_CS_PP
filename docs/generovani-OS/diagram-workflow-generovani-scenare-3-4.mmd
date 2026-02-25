@@ -1,0 +1,37 @@
+flowchart TD
+    A["Start: posouzení RPO pro konkrétní den"]:::auto
+    B{"1. Je RPO v Rozvrhu?"}:::decision
+    S4["Scénář 4<br/>OS a lokace se standardním generováním nevzniknou"]:::warn
+
+    C{"2. Je RPO v Okruhu?"}:::decision
+    S3["Scénář 3<br/>Založeny OS + lokace<br/>dispečer musí zařadit do Okruhů dne"]:::manual
+
+    D{"3. Má Okruh přiřazené vozidlo?"}:::decision
+    S1["Scénář 1<br/>OS zařazeny do Okruhu dne<br/>→ Okruh dne zařazen do DV"]:::output
+    S2["Scénář 2<br/>OS zařazeny do Okruhu dne<br/>→ připraven k zaplánování do DV"]:::manual
+
+    A --> B
+    B -- "NE" --> S4
+    B -- "ANO" --> C
+    C -- "NE" --> S3
+    C -- "ANO" --> D
+    D -- "ANO" --> S1
+    D -- "NE" --> S2
+
+    P1["Klíčový princip:<br/>Rozvrh = nutná podmínka<br/>Okruh + vozidlo = míra automatizace"]:::rule
+    P2["Scénáře 2 a 3 jsou validní výsledek generování<br/>(připravený podklad, ne chyba)"]:::rule
+    P3["Doporučeno reportovat počty RPO<br/>ve scénářích 1–4 po každém běhu"]:::rule
+
+    B -.-> P1
+    D -.-> P1
+    S2 -.-> P2
+    S3 -.-> P2
+    S1 -.-> P3
+    S4 -.-> P3
+
+    classDef auto fill:#ecfdf5,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef manual fill:#fff7ed,stroke:#b45309,color:#7c2d12,stroke-width:1.5px;
+    classDef decision fill:#eff6ff,stroke:#1d4ed8,color:#1e3a8a,stroke-width:1.5px;
+    classDef warn fill:#fef2f2,stroke:#b91c1c,color:#7f1d1d,stroke-width:1.5px;
+    classDef output fill:#ecfeff,stroke:#0f766e,color:#134e4a,stroke-width:1.5px;
+    classDef rule fill:#fffbeb,stroke:#d97706,color:#78350f,stroke-dasharray: 4 3;
