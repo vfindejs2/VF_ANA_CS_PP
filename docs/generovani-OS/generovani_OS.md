@@ -1,5 +1,43 @@
 ﻿# Generování OS
 
+## Jak číst tento dokument
+
+Tento dokument je kombinací business popisu, pravidel generování, Use Cases a dopadů do `RP`. Pro lepší orientaci je níže stručná navigace podle cíle čtení.
+
+### Rychlá navigace podle cíle
+
+- **Chci rychle pochopit smysl generování OS:** čti `1` -> `3.1` -> `5.1` až `5.3`.
+- **Chci řešit vstupy a kvalitu dat:** čti `4` (zejména `4.1` a `4.3`) + `8.1` až `8.3`.
+- **Chci řešit implementaci workflow / chování systému:** čti `3` + `5` + `6`.
+- **Chci řešit dopady do RoadPlan:** čti `7` + navazující otevřené body v `8.2`, `8.5`, `8.6`.
+- **Chci jen seznam věcí k rozhodnutí:** jdi rovnou na `8`.
+
+### Mapa kapitol (co v nich najdu)
+
+| Kapitola | Účel | Typ výstupu |
+|---|---|---|
+| `1` | Business shrnutí procesu generování OS | Kontext / smysl |
+| `2` | Analogie v HEN (HELIOS) | Referenční srovnání |
+| `3` | Navržené workflow (standard + manuál) | Procesní návrh |
+| `4` | Vstupní data, entity a podmínky připravenosti | Vstupní předpoklady |
+| `5` | Business pravidla generování OS | Normativní pravidla |
+| `6` | Use Cases včetně alternativ a výjimek | Scénáře použití |
+| `7` | Dopady do RoadPlan (datový model + UI) | Dopadová analýza |
+| `8` | Otevřená rozhodnutí k dopracování | Decision backlog |
+
+### Zkratky a pojmy (rychlé sjednocení)
+
+| Zkratka / pojem | Význam v dokumentu |
+|---|---|
+| `OS` | Objednaná služba (plánovací/realizační jednotka pro konkrétní den) |
+| `RPO` | Revize položky objednávky (zdrojová business entita) |
+| `RP` | RoadPlan |
+| `PP` | Pasport |
+| `HEN` | Helios Nephrite |
+| `DV` | Denní výkon |
+| `Okruh dne` | Seskupení OS pro konkrétní den (plánovací jednotka v RP) |
+| „na výzvu“ | Manuální generování OS bez vazby na Rozvrh (mimořádné/reklamační situace) |
+
 ## 1. Businessové shrnutí
 
 Generování objednaných služeb (OS) je klíčový proces, který převádí data z revizí položek objednávek (RPO), rozvrhů a okruhů do provozně použitelných jednotek pro denní plánování v RoadPlan (RP).
@@ -137,9 +175,9 @@ Podmínky pro manuální generování „na výzvu“ z RPO (návaznost na `WF-P
 
 ### 4.4 Otevřené body navázané na vstupní data
 
-- Finální technická reprezentace vazeb `RPO ↔ Okruh ↔ Rozvrh` a jejich platností (včetně umístění entit) je dále řešena v `7.1` a `7.6`.
-- Architektonické umístění entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` (PP vs. RP) zůstává otevřené a má přímý dopad na integrační kontrakt i generování OS (viz `7.1`, `7.5`, `7.6`).
-- Pravidla validace kvality vstupních dat (např. konzistence skupin odpadu v Okruhu) jsou rozpracována v `7.3`.
+- Finální technická reprezentace vazeb `RPO ↔ Okruh ↔ Rozvrh` a jejich platností (včetně umístění entit) je dále řešena v `8.1` a `8.6`.
+- Architektonické umístění entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` (PP vs. RP) zůstává otevřené a má přímý dopad na integrační kontrakt i generování OS (viz `8.1`, `8.5`, `8.6`).
+- Pravidla validace kvality vstupních dat (např. konzistence skupin odpadu v Okruhu) jsou rozpracována v `8.3`.
 
 ## 5. Business pravidlo generování OS
 
@@ -150,34 +188,48 @@ Tato kapitola definuje společné business pravidlo generování OS, na které s
 
 ### 5.1 Základní business pravidlo (jádro)
 
-- `BR-PP-01` (Definice a den plánování): Objednaná služba (`OS`) představuje realizaci služby pro konkrétní `RPO` v konkrétní den; u standardního generování je tento den určen entitou **Kalendář** navázanou na **Rozvrh** (Kalendář obsahuje kalendářní dny plánování).
-- `BR-PP-02` (Podmínky vzniku OS): Vznik OS se řídí režimem generování:
-  - **standardní generování**: OS může vzniknout pouze tehdy, pokud má RPO účinnou vazbu na Rozvrh a Kalendář navázaný na tento Rozvrh obsahuje daný den v generovaném období,
-  - **manuální generování na výzvu**: OS může vzniknout i bez vazby na Rozvrh, pokud oprávněný uživatel explicitně zvolí den a RPO a pro daný den ještě neexistuje OS.
-- `BR-PP-03` (Míra automatizace vs. vznik): Vazba na **Okruh** ani přiřazení **Vozidla** nejsou nutnou podmínkou vzniku OS; určují pouze míru automatického dokončení podkladu (zařazení do Okruhu dne a případně do DV).
+- `BR-PP-01` (Definice a den plánování):
+  - Objednaná služba (`OS`) představuje realizaci služby pro konkrétní `RPO` v konkrétní den;
+  - u standardního generování je tento den určen entitou **Kalendář** navázanou na **Rozvrh** (Kalendář obsahuje kalendářní dny plánování).
+- `BR-PP-02` (Podmínky vzniku OS):
+  - Vznik OS se řídí režimem generování:
+    - **standardní generování**: OS může vzniknout pouze tehdy, pokud má RPO účinnou vazbu na Rozvrh a Kalendář navázaný na tento Rozvrh obsahuje daný den v generovaném období,
+    - **manuální generování na výzvu**: OS může vzniknout i bez vazby na Rozvrh, pokud oprávněný uživatel explicitně zvolí den a RPO a pro daný den ještě neexistuje OS.
+- `BR-PP-03` (Míra automatizace vs. vznik):
+  - Vazba na **Okruh** ani přiřazení **Vozidla** nejsou nutnou podmínkou vzniku OS;
+  - určují pouze míru automatického dokončení podkladu (zařazení do Okruhu dne a případně do DV).
 
 ### 5.2 Rozhodovací logika a dopady na výsledek
 
-- `BR-PP-04` (Rozhodovací logika plánovacího zařazení): Rozvrh spolu s navázaným Kalendářem rozhoduje o způsobilosti RPO pro standardní generování v konkrétní den; Okruh rozhoduje o zařazení do **Okruhu dne** a přiřazení Vozidla k Okruhu rozhoduje o automatickém propsání do **Denního výkonu (DV)**.
-- `BR-PP-05` (Plánovací kontext a konzistence dat): Zóna slouží jako pomocný/filtrační kontext a sama o sobě nevytváří ani neblokuje vznik OS; lokalizace OS se primárně odvozuje ze stanoviště nádoby (jinak fallback z místa realizace RPO); Okruh dne obsahuje pouze OS jedné skupiny odpadu.
+- `BR-PP-04` (Rozhodovací logika plánovacího zařazení):
+  - Rozvrh spolu s navázaným Kalendářem rozhoduje o způsobilosti RPO pro standardní generování v konkrétní den;
+  - Okruh rozhoduje o zařazení do **Okruhu dne** a přiřazení Vozidla k Okruhu rozhoduje o automatickém propsání do **Denního výkonu (DV)**.
+- `BR-PP-05` (Plánovací kontext a konzistence dat):
+  - Zóna slouží jako pomocný/filtrační kontext a sama o sobě nevytváří ani neblokuje vznik OS;
+  - lokalizace OS se primárně odvozuje ze stanoviště nádoby (jinak fallback z místa realizace RPO);
+  - Okruh dne obsahuje pouze OS jedné skupiny odpadu.
 
 ### 5.3 Povolené výsledky generování (business pohled)
 
-- `BR-PP-06` (Validní business výsledky): Za validní výsledek generování se považují všechny následující stavy:
-  - vznik OS + lokace + zařazení do Okruhu dne + zařazení do DV,
-  - vznik OS + lokace + zařazení do Okruhu dne bez DV,
-  - vznik OS + lokace bez zařazení do Okruhu dne (čeká na doplánování),
-  - nevznik OS při standardním generování, pokud RPO nesplní podmínku Rozvrhu/Kalendáře.
-- `BR-PP-07` (Výjimková větev manuálního generování): Manuální generování „na výzvu“ je samostatná business větev pro operativní potřeby (mimořádné svozy, reklamace apod.) a nemá být zaměňováno se standardním generováním dle Rozvrhu; v této větvi je duplicita pro `RPO + den` důvodem k nenabídnutí / nevytvoření OS.
+- `BR-PP-06` (Validní business výsledky):
+  - Za validní výsledek generování se považují všechny následující stavy:
+    - vznik OS + lokace + zařazení do Okruhu dne + zařazení do DV,
+    - vznik OS + lokace + zařazení do Okruhu dne bez DV,
+    - vznik OS + lokace bez zařazení do Okruhu dne (čeká na doplánování),
+    - nevznik OS při standardním generování, pokud RPO nesplní podmínku Rozvrhu/Kalendáře.
+- `BR-PP-07` (Výjimková větev manuálního generování):
+  - Manuální generování „na výzvu“ je samostatná business větev pro operativní potřeby (mimořádné svozy, reklamace apod.) a nemá být zaměňováno se standardním generováním dle Rozvrhu; v této větvi je duplicita pro `RPO + den` důvodem k nenabídnutí / nevytvoření OS.
 - Scénáře „bez DV“ a „bez Okruhu dne“ nejsou samy o sobě chyba; jsou to businessově validní mezistavy připraveného podkladu.
 
 ### 5.4 Pravidla konzistence, duplicity a auditovatelnosti
 
-- `BR-PP-08` (Duplicitní vznik a přegenerování): Pro kombinaci `RPO + den` může vzniknout nejvýše jedna aktivní OS v rámci jednoho typu vzniku (standardní vs. mimořádný); systém musí bránit duplicitnímu vzniku OS v rámci běhu a při opakovaných bězích použít režim přegenerování. Přegenerování musí být auditovatelné:
-  - původní OS je deaktivována a označena jako přegenerovaná,
-  - nová OS vzniká jako aktuální platný podklad,
-  - navazující cleanup řeší odstranění/úklid neaktivních přegenerovaných vazeb.
-- `BR-PP-09` (Audit a evidence původu): Business evidence má podporovat audit a operativní práci dispečera minimálně přes evidenci původu OS (např. `dle Rozvrhu`, `mimo Rozvrh`, `přegenerováno`, `přeplánováno`) a u manuálního spuštění evidenci kdo/kdy/v jakém rozsahu spouštěl generování a s jakým výsledkem (počty RPO/OS/lokací/Okruhů, varování/chyby).
+- `BR-PP-08` (Duplicitní vznik a přegenerování):
+  - Pro kombinaci `RPO + den` může vzniknout nejvýše jedna aktivní OS v rámci jednoho typu vzniku (standardní vs. mimořádný); systém musí bránit duplicitnímu vzniku OS v rámci běhu a při opakovaných bězích použít režim přegenerování. Přegenerování musí být auditovatelné:
+    - původní OS je deaktivována a označena jako přegenerovaná,
+    - nová OS vzniká jako aktuální platný podklad,
+    - navazující cleanup řeší odstranění/úklid neaktivních přegenerovaných vazeb.
+- `BR-PP-09` (Audit a evidence původu):
+  - Business evidence má podporovat audit a operativní práci dispečera minimálně přes evidenci původu OS (např. `dle Rozvrhu`, `mimo Rozvrh`, `přegenerováno`, `přeplánováno`) a u manuálního spuštění evidenci kdo/kdy/v jakém rozsahu spouštěl generování a s jakým výsledkem (počty RPO/OS/lokací/Okruhů, varování/chyby).
 
 ### 5.5 Použití pravidla v navazujících Use Cases
 
@@ -260,7 +312,7 @@ Alternativní workflow (návrh):
 Výjimkové workflow (návrh):
 - `EWF-PP-01A`: RPO nesplní podmínku Rozvrhu/Kalendáře -> OS ve standardním generování nevznikne; jde o validní business výsledek, nikoli technickou chybu (`BR-PP-02`, `BR-PP-06`).
 - `EWF-PP-01B`: Pro `RPO + den` již existuje OS -> systém použije režim přegenerování (deaktivace původní OS, vznik nové OS, audit) dle `BR-PP-08`.
-- `EWF-PP-01C`: Porušení validačního pravidla přiřazení do Okruhu / skupiny odpadu -> reakce (blokace vs. varování) bude upřesněna v otevřeném bodu `7.3`; UC má počítat s oběma variantami.
+- `EWF-PP-01C`: Porušení validačního pravidla přiřazení do Okruhu / skupiny odpadu -> reakce (blokace vs. varování) bude upřesněna v otevřeném bodu `8.3`; UC má počítat s oběma variantami.
 
 Výstup UC:
 - Připravená data pro operativní plánování a audit běhu generování.
@@ -284,9 +336,9 @@ Alternativní workflow (návrh):
 - `AWF-PP-02C`: V průběhu manuálního běhu systém narazí na existující OS pro `RPO + den` -> provede přegenerování dle `BR-PP-08`.
 
 Výjimkové workflow (návrh):
-- `EWF-PP-02A`: Uživatel nemá oprávnění ke spuštění manuálního generování -> systém akci zamítne a zaloguje pokus (návaznost na governance; otevřený bod `7.4`).
-- `EWF-PP-02B`: Zadaný rozsah překročí provozní limit (období / počet Rozvrhů) -> systém běh nepovolí nebo vyžádá potvrzení dle budoucích pravidel governance (otevřený bod `7.4`, `7.6`).
-- `EWF-PP-02C`: Současný běh koliduje s jiným generováním nad stejným rozsahem -> systém běh odmítne / odloží; přesné chování bude dopracováno v provozních parametrech (otevřený bod `7.6`).
+- `EWF-PP-02A`: Uživatel nemá oprávnění ke spuštění manuálního generování -> systém akci zamítne a zaloguje pokus (návaznost na governance; otevřený bod `8.4`).
+- `EWF-PP-02B`: Zadaný rozsah překročí provozní limit (období / počet Rozvrhů) -> systém běh nepovolí nebo vyžádá potvrzení dle budoucích pravidel governance (otevřený bod `8.4`, `8.6`).
+- `EWF-PP-02C`: Současný běh koliduje s jiným generováním nad stejným rozsahem -> systém běh odmítne / odloží; přesné chování bude dopracováno v provozních parametrech (otevřený bod `8.6`).
 
 Výstup UC:
 - Manuálně vyvolaný běh generování s auditovatelným výsledkem a souhrnem pro uživatele.
@@ -311,74 +363,224 @@ Alternativní workflow (návrh):
 
 Výjimkové workflow (návrh):
 - `EWF-PP-03A`: Pro vybranou kombinaci `RPO + den` již existuje OS -> systém RPO nenabídne / nevytvoří OS (`BR-PP-07`, `BR-PP-08`).
-- `EWF-PP-03B`: Uživatel nemá oprávnění pro manuální generování „na výzvu“ -> systém akci zamítne a zaloguje pokus (otevřený bod `7.4`).
+- `EWF-PP-03B`: Uživatel nemá oprávnění pro manuální generování „na výzvu“ -> systém akci zamítne a zaloguje pokus (otevřený bod `8.4`).
 - `EWF-PP-03C`: Vybraný den nebo RPO jsou neplatné / nedostupné -> systém běh neprovede a vrátí validační chybu vstupu.
 
 Výstup UC:
 - Auditovatelně vytvořená OS mimo Rozvrh jako podklad pro operativní doplánování.
 
-## 7. Otevřené body / rozhodnutí k dopracování
+## 7. Dopady do Road Plan
 
-### 7.1 Platnost Rozvrhů a přiřazení (zásadní pro generování)
+Tato kapitola shrnuje dopady definovaného workflow a business pravidel generování OS na datový model a UI chování aplikace `RP` (RoadPlan). Vychází z `docs/datovy-model/plan-navrh-datoveho-modelu.md` a z cílového konceptu `01-vstupni-data-zadni/vytah-cilovy-koncept.md`.
 
-- Upřesnit datový model a pravidla pro `platnost Rozvrhu` (v CK je uvedeno jako bod k dopracování).
-- Upřesnit práci s `platností přiřazení RPO -> Okruh` a `RPO -> Rozvrh`:
+### 7.1 Dopady na datový model RP
+
+Struktura níže kopíruje seznam entit `RP-1` až `RP-9` z plánu návrhu datového modelu. Popisuje pouze dopady relevantní pro generování OS a navazující plánování DV.
+
+#### 7.1.1 RP-1 Skupina odpadu
+
+- Pro generování OS je `Skupina odpadu` klíč pro seskupení do `Okruhu dne` (business pravidlo: 1 okruh dne = 1 skupina odpadu).
+- Hodnota musí být dostupná minimálně na vstupu z `RPO` a promítnutá do `OS`/`Okruhu dne` pro validace a filtrování.
+- V RP se předpokládá sdílený/read-only charakter číselníku; generování OS nad ní pouze validuje konzistenci.
+
+#### 7.1.2 RP-2 Okruh
+
+- `Okruh` je vstupní plánovací šablona pro automatické generování `Okruhů dne` a zařazení OS do předpřipravených celků.
+- Vazba `Okruh -> vozidlo` přímo ovlivňuje, zda nově vzniklý `Okruh dne` bude automaticky zařazen do `DV`.
+- Datový model musí podporovat stav aktivní/neaktivní a návaznost na změny při přegenerování OS.
+
+#### 7.1.3 RP-3 Rozvrh
+
+- `Rozvrh` je nutná podmínka standardního generování OS (mimo UC „na výzvu“).
+- RP potřebuje minimálně vyhodnotit, zda `Rozvrh` obsahuje konkrétní kalendářní den v generovaném období.
+- Datový model / integrační kontrakt musí pokrýt i variantu, kdy RP pracuje jen se seznamem dní (flattened), nikoli plnou parametrizací Rozvrhu.
+
+#### 7.1.4 RP-4 RPO
+
+- `RPO` je primární zdrojová entita pro vznik `Objednané služby` (OS) v RP.
+- Importovaná sada musí pokrýt identifikaci RPO, skupinu odpadu, vazby na Okruh/Rozvrh a data pro vznik lokací OS (stanoviště / fallback na místo realizace).
+- Z pohledu generování je klíčová auditní dohledatelnost `OS -> RPO` a prevence duplicit pro kombinaci `RPO + den`.
+
+#### 7.1.5 RP-5 Okruh dne
+
+- `Okruh dne` je nová runtime entita vznikající generováním (nebo manuálně) pro konkrétní den jako kontejner OS.
+- Musí nést vazbu na zdrojový `Okruh`, datum, skupinu odpadu a stav realizace (stavový automat navázaný na FOB/RP).
+- Datový model musí umožnit existenci `Okruhu dne` bez zařazení do `DV` (např. chybí vozidlo na Okruhu).
+
+#### 7.1.6 RP-6 Objednaná služba
+
+- `Objednaná služba` je hlavní výstup generování OS: vzniká z `RPO` pro konkrétní den, s vazbou na `RPO` a volitelně na `Okruh dne`.
+- Je potřeba rozšířit model o původ vzniku (standard / manuální / „na výzvu“), stav aktivace/deaktivace a audit přegenerování.
+- OS musí podporovat 1..n lokací a vazbu na plánovací/realizační procesy `DV`.
+
+#### 7.1.7 RP-7 Typ položky DV
+
+- `Typ položky DV` musí být rozšířen o hodnotu reprezentující `Okruh dne`, aby šel DV skládat nad novou plánovací jednotkou CS.
+- Rozšíření má dopad na UI přehledy, pořadí položek DV a serializaci položek pro navazující integrace/realizaci.
+
+#### 7.1.8 RP-8 Denní výkon
+
+- `Denní výkon` se v CS plánuje primárně přes `Okruhy dne`, nikoli přímo přes jednotlivé OS.
+- Model `DV` musí umět nést CS specifické položky (okruhy dne) vedle stávajících položek (přestávky, servis) a podporovat přesuny mezi vozidly.
+- Po spuštění CS je RP zdrojem pravdy pro entitu `Denní výkon` vůči HEN.
+
+#### 7.1.9 RP-9 Realizace DV
+
+- `Realizace DV` musí zpracovat stavy `Okruhů dne` a potvrzení obsluhy lokací/OS přicházející z FOB.
+- Datový model realizace musí podporovat průběžné aktualizace stavu (monitoring) i následné potvrzení / korekci v RP.
+- Vazba na `DV` a `Okruh dne` je zásadní pro vyhodnocení úspěšnosti realizace a audit změn po přegenerování/přeplánování.
+
+### 7.2 Zobrazení objednaných služeb a denních výkonů uživateli pro RP
+
+Vychází z cílového konceptu (`01-vstupni-data-zadni/vytah-cilovy-koncept.md`, část *Aplikace RoadPlan*). Cílem je zachytit očekávané UI chování, na které musí návrh generování OS navazovat.
+
+#### 7.2.1 Zobrazení objednaných služeb (OS)
+
+- V RP vzniká separátní modul/záložka pro přehled `Objednaných služeb` CS, analogický ke stávajícím OS nepravidelné dopravy.
+- Přehled OS má podporovat filtrování (např. nenaplánované / nerealizované OS) a základní editaci omezenou na dosud nenaplánované OS (datum/čas, poznámka).
+- Detail OS má zobrazit:
+  - navázané nádoby a stanoviště (lokace),
+  - elementární údaje o souvisejícím `RPO`,
+  - proklik do PP pro kompletní detail objednávky.
+- Z pohledu generování OS je důležité, aby UI rozlišilo OS vzniklé standardně vs. manuálně (včetně „na výzvu“) a případně stav přegenerování/deaktivace.
+
+#### 7.2.2 Zobrazení a plánování denních výkonů (DV)
+
+- Pro CS vzniká samostatná záložka plánování `Denních výkonů`; stávající plánování DV pro jiný typ dopravy zůstává beze změny.
+- Uživatel plánuje pro konkrétní provozovnu a den; primární plánovací jednotkou je `Okruh dne`, který sdružuje OS a jejich lokace.
+- Klíčová očekávání UI navázaná na generování:
+  - všechny plánované OS musí být zařazeny do nějakého `Okruhu dne`,
+  - `Okruh dne` může vznikat automaticky generováním i manuálně,
+  - pokud má `Okruh dne` při vzniku přiřazené vozidlo, automaticky se zařadí do `DV`.
+- UI má podporovat dva pohledy pro práci s DV:
+  - pohled přes `Okruhy dne` (práce s většími celky, pořadí, přestávky/servis),
+  - pohled přes `OS a lokace` (přesuny OS mezi okruhy dne/DV, deaktivace jednotlivých OS).
+- V detailu `Okruhu dne` lze přesouvat OS/lokace mezi okruhy dne; business pravidlo cílového konceptu zachovává nedělitelnost OS (nepřesouvají se jednotlivé lokace samostatně).
+
+#### 7.2.3 Monitoring a potvrzení realizace DV (navazující zobrazení)
+
+- Cílový koncept počítá s novými CS záložkami pro monitoring realizace a potvrzení realizace `DV`.
+- Uživatel sleduje stav realizace na úrovni `DV` a `Okruhů dne`; stavy se průběžně propisují z FOB.
+- UI potvrzení realizace musí pracovat i s neobslouženými OS (změna stavu, přeplánování, případně zrušení při potvrzení DV), což má přímý dopad na stavový model OS/DV v RP.
+
+## 8. Otevřené body / rozhodnutí k dopracování
+
+Kapitoly `1` až `7` již definují:
+- business kontext a hlavní princip generování (`1` až `5`),
+- Use Cases včetně výjimek a auditního chování (`6`),
+- dopady na datový model RP a očekávané UI chování v RP (`7`).
+
+Kapitola `8` proto eviduje už jen rozhodnutí, která zůstávají otevřená pro implementační/specifikační dopracování. Neotevírá znovu již potvrzené principy (např. vznik OS z `RPO`, role `Okruhu dne`, nebo primární plánování `DV` přes `Okruhy dne`).
+
+### Mapa otevřených rozhodnutí (rychlý přehled)
+
+| Sekce | Co je hlavní rozhodnutí | Typicky řeší |
+|---|---|---|
+| `8.1` | Jak reprezentovat platnost Rozvrhů a přiřazení | Datový model + kontrakt PP -> RP |
+| `8.2` | Kdy a jak spouštět přegenerování po změnách z HEN | Synchronizace + audit |
+| `8.3` | Které validace jsou blokující vs. varovné | Business pravidla + UX běhu |
+| `8.4` | Kdo a za jakých podmínek smí spouštět manuální běhy | Role/oprávnění + governance |
+| `8.5` | Jak řídit souběh plánování HEN vs. RP | Provozní model + integrace |
+| `8.6` | Jaké budou technické parametry a monitoring běhu | Konfigurace + provoz |
+
+### 8.1 Platnost Rozvrhů a přiřazení (zásadní pro generování)
+
+- V kap. `4` až `6` je již potvrzeno, že pro standardní generování je rozhodující `Rozvrh/Kalendář`, zatímco vazba na `Okruh` ovlivňuje zejména míru automatizace plánovacího zařazení.
+- Otevřené zůstává finální datové vyjádření `platnosti Rozvrhu` a `platnosti přiřazení RPO -> Okruh/Rozvrh`:
   - v HEN chybí časový údaj „od kdy“,
   - v PP se zavádí vlastní platnost,
   - v Etapě 1 má být platnost nepovinná.
-- Rozhodnout, jak se platnost promítne do generování OS při změnách v průběhu období (od kdy přegenerovat, co ponechat).
-- Potvrdit, zda má být vazba na Rozvrh v PP/RP chápána striktně jako samostatná (dynamická) vazba i v integračním kontraktu, nebo zda bude přenášena ve zploštěné podobě.
+- Rozhodnout, jak se platnost promítne do přegenerování OS při změnách v průběhu období:
+  - od jakého dne se změna uplatní,
+  - co se ponechá beze změny,
+  - co se označí jako přegenerované.
+- Potvrdit, zda vazby na `Rozvrh` a `Okruh` budou v kontraktu PP -> RP přenášeny:
+  - jako samostatné (dynamické) vazby s platností,
+  - nebo ve zploštěné podobě dostatečné pro generování a audit.
+- Doplnit pravidlo priority pro případ souběhu více platných přiřazení k jednomu `RPO` v tentýž den (pokud takový stav připustíme importem / přechodným stavem).
 
-### 7.2 Pravidla pro změny v HEN a dopad na přegenerování OS
+### 8.2 Pravidla pro změny v HEN a dopad na přegenerování OS
 
+- Kap. `5` a `6` už počítají s režimem přegenerování (deaktivace původní OS, vznik nové OS, audit). Otevřené je, kdy přesně se tento režim spouští na základě změn ze zdroje.
 - HEN umožňuje editaci RPO i do minulosti; je potřeba potvrdit:
   - zda generování/přegenerování sahá i do minulých dnů,
   - jaké období je chráněné před automatickými zásahy,
-  - jak se budou evidovat a auditovat přegenerované OS.
-- Přidání/odebrání RPO z Okruhu v HEN nevytváří novou verzi RPO:
-  - je nutné definovat, podle čeho RP bezpečně pozná změnu a spustí odpovídající přegenerování.
-- Naopak některé materiální změny v HEN verziují PZ/RPO (např. změna Rozvrhu / typu nádoby); je nutné popsat, jak se tato historizace propíše do pravidel přegenerování na straně PP/RP.
+  - jaká část historie se řeší jen evidenčně bez automatických přegenerací.
+- Přidání/odebrání `RPO` z `Okruhu` v HEN nevytváří novou verzi RPO:
+  - definovat detekci změny (delta) na straně PP/RP,
+  - definovat, zda změna vede k okamžitému přegenerování OS, nebo až při dalším plánovaném běhu.
+- Naopak některé materiální změny v HEN verziují `PZ/RPO` (např. změna `Rozvrhu` / typu nádoby):
+  - popsat mapování historizace HEN do pravidel přegenerování na straně PP/RP,
+  - potvrdit vazbu nové OS na starou OS kvůli auditu a dohledatelnosti.
+- Dodefinovat pravidla pro dopad přegenerování na již ručně upravené `Okruhy dne` / `DV` (vazba na UI chování z kap. `7.2`).
 
-### 7.3 Validace business pravidel při generování
+### 8.3 Validace business pravidel při generování
 
-- HEN nevaliduje logiku přiřazení RPO do Okruhu; potvrdit, která validační pravidla musí být v RP/FLW povinná.
-- HEN nevaliduje skupiny/druhy odpadu v Okruhu; dopracovat konkrétní validaci na straně FLW/RP:
-  - kdy generování zablokovat,
-  - kdy pouze varovat dispečera.
-- Dodefinovat validaci a původ hodnoty `zóna` na RPO (odvození z adresy stanoviska vs. ruční zásah), včetně reakce na nesoulad mezi adresou stanoviska a přiřazenou zónou.
-- Potvrdit finální pravidla pro vznik „fiktivního Okruhu dne“ a kdy má být použité jako default.
+- Kapitoly `5` až `7` již zavádějí klíčové invarianty (např. 1 aktivní OS pro `RPO + den`, `Okruh dne` obsahuje OS jedné skupiny odpadu, fallback lokace z místa realizace).
+- Otevřené zůstává, které validace budou:
+  - tvrdě blokující (běh se neprovede / položka se nevygeneruje),
+  - měkké (varování pro dispečera, ale generování proběhne).
+- HEN nevaliduje logiku přiřazení `RPO` do `Okruhu`; potvrdit minimální povinnou validační sadu na straně RP/FLW pro běh generování.
+- HEN nevaliduje skupiny/druhy odpadu v `Okruhu`; dopracovat konkrétní validační matici:
+  - kdy blokovat generování `Okruhu dne`,
+  - kdy vytvořit OS mimo `Okruh dne`,
+  - kdy pouze zalogovat varování.
+- Dodefinovat validaci a původ hodnoty `zóna` na `RPO` (odvození z adresy stanoviska vs. ruční zásah), včetně reakce na nesoulad mezi adresou stanoviska a přiřazenou zónou.
+- Potvrdit finální pravidla pro vznik „fiktivního Okruhu dne“:
+  - kdy se použije jako default,
+  - jak bude označen v UI/auditu,
+  - jak se s ním pracuje při následném přeplánování.
 
-### 7.4 Governance manuálního generování
+### 8.4 Governance manuálního generování
 
-- Potvrdit oprávnění a role pro manuální spuštění generování (CK uvádí doporučení omezit počet uživatelů).
+- Kap. `6.2` a `6.3` již definují dva manuální režimy (`z Rozvrhů/Okruhů` a `na výzvu`) a jejich výjimkové stavy.
+- Otevřené zůstává oprávnění a role pro jednotlivé manuální akce:
+  - manuální generování z `Rozvrhů/Okruhů`,
+  - manuální generování „na výzvu“ z `RPO`,
+  - případné ruční přegenerování / opakovaný běh.
 - Dodefinovat provozní pravidla:
   - kdo může spouštět generování za provozovnu,
-  - zda bude potřeba schvalování / logování spuštění,
-  - limity rozsahu (období, počet Rozvrhů) kvůli výkonu a riziku kolizí.
-- Potvrdit, jak se v UI a auditu rozliší manuálně vytvořené OS „mimo Rozvrh“ od OS vzniklých standardním generováním.
+  - zda bude potřeba schvalování,
+  - jak bude vypadat povinné logování spuštění (uživatel, čas, rozsah, výsledek),
+  - limity rozsahu (období, počet `Rozvrhů` / `Okruhů`) kvůli výkonu a riziku kolizí.
+- Potvrdit, jak se v UI a auditu rozliší:
+  - OS vzniklé standardním automatem,
+  - OS vzniklé manuálním během,
+  - OS vzniklé manuálně „na výzvu“ (mimo Rozvrh).
 
-### 7.5 Paralelní plánování HEN vs. RP
+### 8.5 Paralelní plánování HEN vs. RP
 
+- Kap. `7.1` a `7.2` již popisují cílový pracovní model v RP (plánování přes `Okruhy dne`, RP jako zdroj pravdy pro `DV` v CS). Otevřený zůstává provozní režim souběhu s HEN.
 - Otevřený bod z CK: nutnost paralelního plánování v HEN i RP.
-- Rozhodnutí je kritické pro workflow generování OS, protože ovlivňuje:
-  - kdo je finální autorita pro denní plán,
-  - jak řešit kolize změn po vygenerování OS,
+- Rozhodnutí je kritické pro workflow generování OS a navazující plánování, protože ovlivňuje:
+  - kdo je finální autorita pro denní plán v jednotlivých stavech procesu,
+  - jak řešit kolize změn po vygenerování OS a po ručním přeplánování v RP,
   - jak nastavit synchronizaci a přepisování dat mezi RP a HEN.
-- Upřesnit mapování mezi „Trasa dňa“ v HEN a „Denní výkon“ v RP/PP při scénářích přeplánování a položek mimo Rozvrh.
+- Upřesnit mapování mezi „Trasa dňa“ v HEN a `Denní výkon` v RP/PP při scénářích:
+  - standardní generování a export,
+  - položky mimo Rozvrh („na výzvu“),
+  - změny po zahájení realizace / po importu stavů z FOB.
+- Dodefinovat, zda a kdy se mají po exportu do HEN zamykat vybrané části plánu v RP (nebo naopak v HEN), aby se snížilo riziko divergence.
 
-### 7.6 Technické a provozní parametry generování k potvrzení
+### 8.6 Technické a provozní parametry generování k potvrzení
 
+- Kap. `3`, `5` a `6` definují business workflow a výsledky běhu, ale neuzavírají technicko-provozní parametry implementace.
 - Výchozí konfigurace automatu:
   - frekvence a čas spuštění,
   - generované období dopředu,
-  - zapnutí/vypnutí fiktivního Okruhu dne.
-- Rozsah přenášených dat z HEN pro Rozvrh:
+  - zapnutí/vypnutí fiktivního `Okruhu dne`.
+- Rozsah přenášených dat z HEN pro `Rozvrh` (návaznost na `8.1`):
   - pouze seznam dní vývozu (flattened),
   - nebo i detailní parametrizace Rozvrhu (pro audit/rekonstrukci logiky).
 - Chování při opakovaném spuštění ve stejném dni:
   - jak agresivně přegenerovávat,
-  - co dělat s již ručně upravenými Okruhy dne / DV.
-- Definovat technický klíč/strategii prevence duplicit (min. kombinace RPO + den + typ vzniku/původ OS).
-- Definovat očekávané výstupy a monitoring běhu:
-  - minimální sada metrik (počet RPO, OS, lokací, Okruhů, chyb, varování),
+  - co dělat s již ručně upravenými `Okruhy dne` / `DV`,
+  - jak řešit souběh více běhů nad stejným rozsahem.
+- Definovat technický klíč/strategii prevence duplicit v souladu s `BR-PP-08`:
+  - minimálně kombinace `RPO + den`,
+  - doplnění o typ vzniku / původ OS,
+  - pravidla pro aktivní vs. deaktivované (přegenerované) OS.
+- Definovat očekávané výstupy a monitoring běhu (návaznost na `BR-PP-09` a UC `6.2`):
+  - minimální sada metrik (počet `RPO`, `OS`, lokací, `Okruhů dne`, chyb, varování),
+  - struktura souhrnu pro uživatele po doběhu,
   - způsob upozornění při neúspěšném nebo částečně úspěšném běhu.
