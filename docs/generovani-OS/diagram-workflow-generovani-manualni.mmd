@@ -4,7 +4,6 @@ flowchart TD
 
     %% Větev A - z rozvrhů/okruhů
     subgraph VA["Větev A: Z rozvrhů / okruhů"]
-      direction TD
       A1["A1. Nastavení rozsahu<br/>období + výběr rozvrhů/okruhů"]:::manual
       A2["A2. Aplikace stejných podmínek jako automat<br/>Rozvrh + den v období / duplicity / přegenerování"]:::auto
       A3["A3. Vznik OS / lokací / Okruhů dne<br/>a případně DV"]:::auto
@@ -14,7 +13,6 @@ flowchart TD
 
     %% Větev B - na výzvu
     subgraph VB["Větev B: „Na výzvu“ z RPO (mimořádné svozy)"]
-      direction TD
       B1["B1. Výběr konkrétního dne"]:::manual
       B2["B2. Nabídka kandidátních RPO<br/>(jen bez existující OS pro den)"]:::auto
       B3{"B3. Je RPO zařazeno v okruhu?"}:::decision
