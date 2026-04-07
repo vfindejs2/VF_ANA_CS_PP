@@ -1,0 +1,3 @@
+Exportovano stranek: 1
+Obrazky OK: 1
+Obrazky selhaly: 0
