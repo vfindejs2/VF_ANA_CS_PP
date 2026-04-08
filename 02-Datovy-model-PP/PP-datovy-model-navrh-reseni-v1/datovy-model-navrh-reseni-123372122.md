@@ -1,4 +1,4 @@
-# Datový model - návrh řešení
+﻿# Datový model - návrh řešení
 
 - Page ID: 123372122
 - Source URL: https://confluence.radium.cz/pages/viewpage.action?pageId=123372122
@@ -16,15 +16,18 @@ Původní dokumenty v GitHub:
 
 2
 
-# Datový model PP — Entitní analýza pro CS (stav dle ER v1)
+# Datový model PP — Návrh řešení pro CS (Etapa 1)
 
-**Účel:** Konsolidovaný popis tabulek a vazeb pro Cyklické svozy v PP podle aktuálního ER diagramu.
+**Účel:** Kompletní business analytický návrh datového modelu PP pro Cyklické svozy — entity, atributy, vazby a business pravidla.
 
-**Zdroj diagramu:** `docs/datovy-model/er-diagram-pasport_v1.html`
+**Vstupní podklady:**
+- `01-vstupni-data-zadni/vytah-cilovy-koncept.md` — business zadání (CK v0.10)
+- `02-Datovy-model-PP/hen-nove-entity-analyza.md` — analýza entit HEN (StudiaRealizovatelnosti.docx + Obec Košariská.xlsx)
+- `02-Datovy-model-PP/gap-analyza-navrhu-reseni.md` — 11 identifikovaných mezer mezi návrhem a realitou HEN
+- `PP-datovy-model-navrh-reseni-v1/er-diagram-pasport_v1.html` — ER diagram
 
-**Šablona:** `docs/datovy-model/sablona-entitni-analyza.md`
-
-**Aktualizováno:** 2026-02-24
+**Verze:** v2 (přepracovaná)
+**Aktualizováno:** 2026-04-07
 
 ---
 
@@ -40,6 +43,73 @@ Původní dokumenty v GitHub:
    - `RPO → Zóna` má kardinalitu `N:1`
    - `Stanoviště` nemá přímou vazbu na `RPO`
    - `RPO` odkazuje na `Adresy` referencí (`misto_realizace_adresa_id`)
+
+---
+
+## Architektonická rozhodnutí
+
+> Tato rozhodnutí ovlivňují více entit a musí být zafixována před detailním návrhem.
+
+### AR-01: Vazební model Okruh/Rozvrh ↔ RPO
+
+**Problém (Gap #9):** V HEN existují dvě oddělené struktury — `Okruh trasy položky` (snapshot RPO v okruhu, bez platnosti) a přiřazení `Rozvrh ↔ Predmet` (na úrovni predmětu). Návrh PP v1 sdružuje obě vazby do jedné temporální entity `RPO_Okruh_Rozvrh`.
+
+**Rozhodnutí:** Zachovat PP model `RPO_Okruh_Rozvrh` (Varianta A).
+
+**Zdůvodnění:**
+- PP konsoliduje dvě HEN struktury do jednoho záznamu → jednodušší správa a dotazování.
+- Temporální platnost (`platnost_od/do`) umožňuje dohledatelnost změn, což HEN model nenabízí.
+- Mapování z HEN: integrační vrstva složí dohromady přiřazení okruhu a rozvrhu k RPO do jednoho záznamu v PP.
+- V Etapě 2+ (přechod SoT na PP) je konsolidovaný model výhodnější pro UI správu přiřazení.
+
+**Dopad:** Entity RPO, Okruh, Rozvrh, RPO_Okruh_Rozvrh zachovávají design dle ER v1.
+
+---
+
+### AR-02: Model Zóny — geometrie vs. adresní definice
+
+**Problém (Gap #5):** Návrh PP v1 obsahuje `geometrie geometry(Polygon)` na Zóně. HEN definuje zónu hierarchickou adresní podmínkou (Okres → Obec → Ulica → č.domu) bez geometrie.
+
+**Rozhodnutí:** Geometrie v PP = odvozená vizualizační pomůcka (Varianta A). Přidat entitu `Zóna položky` pro přenos adresní definice z HEN.
+
+**Zdůvodnění:**
+- HEN je v Etapě 1 SoT pro zóny; PP musí převzít HEN model definice zóny (adresní hierarchie).
+- `geometrie` na entitě Zóna bude technický/odvozený atribut pro vizualizaci na mapě — nepatří do business DS.
+- Entita `Zóna položky` (`zona_polozka`) umožní přenést a zobrazit detailní definici zóny z HEN.
+
+**Dopad:** Entita Zóna — odebrán atribut `geometrie` z business DS. Nová entita `Zóna položky`. Nová entita `Región` (číselník z HEN).
+
+---
+
+### AR-03: Rozvrh — modelování parametrů frekvence
+
+**Problém (Gap #4):** HEN Rozvrh má atribut `Frekvencia` (Denne/Týždenne/Vlastné) s parametry specifickými pro každý typ. Návrh PP v1 tyto atributy nemá.
+
+**Rozhodnutí:** Nullable sloupce přímo na entitě `Rozvrh` (Varianta A — denormalizovaný přístup).
+
+**Zdůvodnění:**
+- Typy frekvence jsou stabilní číselník (3 hodnoty) — denormalizace nezpůsobí výrazný technický dluh.
+- Jednodušší dotazy a čitelný model pro Etapu 1 (PP je reader, ne editor rozvrhů).
+- V Etapě 2+ lze přehodnotit při potřebě rozšíření typů frekvence.
+
+**Dopad:** Entita Rozvrh — přidán `frekvence` + nullable parametrové sloupce.
+
+---
+
+## Strategie `external_id`
+
+Každá entita synchronizovaná z HEN musí mít atribut `external_id` (nvarchar) pro jednoznačnou identifikaci záznamu v HEN. Tento atribut slouží jako **technický integrační klíč** — odlišný od business identifikátoru (`referencia`, `kod_polozky` apod.), který slouží uživatelům.
+
+| Entita | `external_id` zdroj v HEN | Poznámka |
+|---|---|---|
+| RPO | číslo nonsubjektu třídy `lcs.d2b_w_predmet_zmluvy` | Kritický předpoklad celé integrace |
+| Okruh | číslo nonsubjektu Okruh trasy | |
+| Rozvrh | Referencia rozvrhu vývozov | |
+| Kalendar | ID záznamu Dni vývozu | |
+| Zóna | číslo nonsubjektu Zóna | |
+| Región | Referencia regionu | |
+
+> Integrační model (API služby, triggery synchronizace, datové kontrakty) je předmětem samostatné analýzy — v tomto dokumentu se nerozpracovává.
 
 ---
 
@@ -59,7 +129,8 @@ Aktuální stav: [Datový slovník](#)
 ### Klíčové atributy
 
 - `id` (PK)
-- `kod_polozky` (z HEN)
+- `external_id` (číslo nonsubjektu z HEN — integrační klíč, viz strategie `external_id`)
+- `kod_polozky` (z HEN — business identifikátor pro uživatele)
 - `misto_realizace_adresa_id` (FK → `Adresy`)
  Pozn.: nahrazuje původní textové `misto_realizace`.
 - `druh_odpadu_id` (FK → `Druh odpadu`)
@@ -73,15 +144,24 @@ Aktuální stav: [Datový slovník](#)
 ### Vazby
 
 - `RPO (N) → Zóna (1)`
+- `Zóna (1) → Zóna položky (N)` (adresní definice zóny — viz sekce 15)
+- `Zóna (N) → Región (1)` (kategorizace)
 - `RPO (N) → Adresy (1)`
 - `RPO (N) → Skupina odpadu (1)`
 - `RPO (N) → Typ nádoby (1)`
 - `RPO (1) → Nádoba (N)`
 - `RPO (1) → RPO_Okruh_Rozvrh (N)` (historie přiřazení)
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP přijímá RPO a vazby z HEN přes integraci | PP eviduje a zobrazuje, needituje |
+| E2+ | HEN (data RPO), PP (vazby na okruh/rozvrh/zónu) | Writer vazeb — PP spravuje přiřazení RPO do okruhů/zón/rozvrhů | Změna SoT pro vazby, ne pro kmenová data RPO |
 ### Pravidla a poznámky
 
 - `RPO` je nositel obchodního kontextu pro obsluhu místa realizace.
+- `external_id` je technický integrační klíč (číslo nonsubjektu z HEN); `kod_polozky` je business identifikátor zobrazovaný uživateli. Obě hodnoty plní jinou roli a koexistují.
 - Historie přiřazení `Okruh + Rozvrh` je vedena v `RPO_Okruh_Rozvrh`; `RPO` v aktuálním ER nenese přímý FK na „aktivní“ záznam této vazby.
 - Vazba na `Stanoviště` je **nepřímá přes `Nádobu` a vazební entitu `Nadoba_Stanoviste`**.
 
@@ -118,7 +198,8 @@ Aktuální stav: [Datový slovník](#)
 | Položka                               | Popis |
 | ------------------------------------- | ----- |
 | id bigint identity primary key        | —     |
-| kod_polozky nvarchar(100) not null    | —     |
+| external_id nvarchar(50) not null     | integrační klíč — číslo nonsubjektu z HEN |
+| kod_polozky nvarchar(100) not null    | business identifikátor pro uživatele |
 | misto_realizace_adresa_id bigint null | —     |
 | druh_odpadu_id bigint null            | —     |
 | typ_nadoby_id bigint null             | —     |
@@ -145,6 +226,7 @@ Aktuální stav: [Datový slovník](#)
 
 | Index                 | Definice / poznámka           |
 | --------------------- | ----------------------------- |
+| UX_rpo_external_id    | (`external_id`) UNIQUE        |
 | IX_rpo_kod_polozky    | (`kod_polozky`)               |
 | IX_rpo_provozovna     | (`provozovna_id`)             |
 | IX_rpo_zona           | (`zona_id`)                   |
@@ -163,18 +245,29 @@ Aktuální stav: [Datový slovník](#)
 ### Klíčové atributy
 
 - `id` (PK)
+- `external_id` (integrační klíč z HEN)
+- `referencia` (business identifikátor z HEN — zadávaný uživatelem, negenerovaný)
 - `nazev`
 - `provozovna_id` (FK)
-- `vozidlo_id` (FK)
+- `vozidlo_id` (FK, záměrné rozšíření PP nad HEN — pravidelné vozidlo pro plánování)
 - `aktivni`
+- `poznamka`
 
 ### Vazby
 
 - `Okruh (1) → RPO_Okruh_Rozvrh (N)`
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP importuje okruhy z HEN | Read-only, bez editace |
+| E2+ | PP | Writer — PP zakládá, edituje a deaktivuje okruhy | SoT přechází z HEN na PP, synchronizace zpět do HEN |
+
 ### Pravidla a poznámky
 
 - V ER je vazba na RPO realizována přes `RPO_Okruh_Rozvrh` (nikoli přímou M:N tabulkou jen pro Okruh).
+- `vozidlo_id` je záměrné rozšíření PP nad rámec HEN — HEN vozidlo na okruhu neeviduje. V PP slouží k přednastavení pravidelného vozidla pro automatizaci generování DV v RP.
 - Změna přiřazení okruhu na RPO se řeší historizací v `RPO_Okruh_Rozvrh`.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
@@ -200,10 +293,13 @@ Aktuální stav: [Datový slovník](#)
 | Položka                               | Popis |
 | ------------------------------------- | ----- |
 | id bigint identity primary key        | —     |
+| external_id nvarchar(50) not null     | integrační klíč z HEN |
+| referencia nvarchar(50) null          | business identifikátor z HEN (zadávaný uživatelem) |
 | nazev nvarchar(255) not null          | —     |
 | provozovna_id bigint not null         | —     |
-| vozidlo_id bigint null                | —     |
+| vozidlo_id bigint null                | rozšíření PP nad HEN — pravidelné vozidlo |
 | aktivni bit not null default 1        | —     |
+| poznamka nvarchar(max) null           | —     |
 | audit/tenant sloupce dle standardu PP | —     |
 
 **FK (návrh):**
@@ -231,14 +327,30 @@ Aktuální stav: [Datový slovník](#)
 ### Klíčové atributy
 
 - `id` (PK)
-- `nazev`
+- `external_id` (integrační klíč z HEN — Referencia rozvrhu vývozov)
+- `nazev` (v HEN kompozitní — automaticky sestavený z roku/týdne/dnů)
+- `frekvence` (DENNI / TYDENNI / VLASTNI — viz AR-03)
 - `provozovna_id` (FK)
 - `platnost_od`, `platnost_do`
+- Parametry frekvence (nullable, dle AR-03):
+  - `start_datum` (denní: startovací datum)
+  - `interval_dni` (denní: každý N-tý den)
+  - `pocet_opakovani` (denní: počet opakování)
+  - `dny_v_tydnu` (týdenní: vybrané dny, bitová maska nebo CSV)
+  - `typ_tydne` (týdenní: PARNY / NEPARNY / VSECHNY)
+  - `pocet_dni_mesic` (vlastní: počet dnů svozu na měsíc)
 
 ### Vazby
 
 - `Rozvrh (1) → Kalendar (N)`
 - `Rozvrh (1) → RPO_Okruh_Rozvrh (N)`
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP importuje rozvrhy z HEN, read-only | Správa rozvrhů a generování kalendářů zůstává v HEN |
+| E2+ | HEN (definice rozvrhů), PP (vazba RPO na rozvrh) | PP spravuje vazbu RPO → Rozvrh | Rozvrhy samotné zůstávají v HEN i v E2 |
 
 ### Pravidla a poznámky
 
@@ -268,10 +380,18 @@ Aktuální stav: [Datový slovník](#)
 | Položka                               | Popis |
 | ------------------------------------- | ----- |
 | id bigint identity primary key        | —     |
-| nazev nvarchar(255) not null          | —     |
+| external_id nvarchar(50) not null     | integrační klíč — Referencia z HEN |
+| nazev nvarchar(255) not null          | v HEN kompozitní (automaticky sestavený) |
+| frekvence nvarchar(20) not null       | DENNI / TYDENNI / VLASTNI |
 | provozovna_id bigint not null         | —     |
 | platnost_od date null                 | —     |
 | platnost_do date null                 | —     |
+| start_datum date null                 | denní: startovací datum |
+| interval_dni int null                 | denní: opakování každý N-tý den |
+| pocet_opakovani int null              | denní: počet opakování |
+| dny_v_tydnu nvarchar(20) null         | týdenní: bitová maska/CSV vybraných dnů |
+| typ_tydne nvarchar(20) null           | týdenní: PARNY / NEPARNY / VSECHNY |
+| pocet_dni_mesic int null              | vlastní: počet dnů svozu na měsíc |
 | audit/tenant sloupce dle standardu PP | —     |
 
 **FK (návrh):**
@@ -298,17 +418,36 @@ Aktuální stav: [Datový slovník](#)
 ### Klíčové atributy
 
 - `id` (PK)
+- `external_id` (integrační klíč z HEN — ID záznamu Dni vývozu)
 - `rozvrh_id` (FK → `Rozvrh`)
-- `datum`
-- `typ_dne`
+- `datum` (date, konkrétní kalendářní den)
+- `vyvoz` (boolean — ANO/NE, klíčový atribut; nahrazuje původní `typ_dne`)
+- `den_v_tydnu` (text — Pondelok, Utorok, ...)
+- `tyden_v_mesici` (int)
+- `tyden` (int — číslo týdne v roce)
+- `typ_tydne` (text — Párny / Nepárny)
+- `stvrteleti` (int — číslo čtvrtletí)
+- `vikend` (boolean)
+- `svatek` (boolean)
+- `posledni_v_mesici` (boolean)
+- `poznamka` (text)
 
 ### Vazby
 
 - `Kalendar (N) → Rozvrh (1)`
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP přijímá kalendářní dny z HEN | Generování dnů z rozvrhu zůstává v HEN |
+| E2+ | HEN | Reader | Kalendáře zůstávají v kompetenci HEN i v E2 |
+
 ### Pravidla a poznámky
 
 - Entita reprezentuje provozní dny, ve kterých se reálně sváží.
+- Klíčový atribut je `vyvoz` (boolean ANO/NE) — nahrazuje původní `typ_dne` z ER v1. V HEN je `vyvoz` přepínatelný funkcí (formulář je needitovatelný přímo).
+- Atributy `den_v_tydnu`, `tyden_v_mesici`, `stvrteleti`, `tyden`, `typ_tydne`, `vikend`, `svatek`, `posledni_v_mesici` jsou v HEN počítány z `datum`. Rozhodnutí: v PP budou přenášeny z HEN jako data (ne počítány aplikačně) pro konzistenci a jednoduchost synchronizace.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
@@ -332,9 +471,19 @@ Aktuální stav: [Datový slovník](#)
 | Položka                               | Popis |
 | ------------------------------------- | ----- |
 | id bigint identity primary key        | —     |
+| external_id nvarchar(50) not null     | integrační klíč z HEN |
 | rozvrh_id bigint not null             | —     |
 | datum date not null                   | —     |
-| typ_dne nvarchar(50) null             | —     |
+| vyvoz bit not null                    | ANO/NE — klíčový atribut (nahrazuje typ_dne) |
+| den_v_tydnu nvarchar(20) null         | Pondelok, Utorok, ... |
+| tyden_v_mesici int null               | —     |
+| tyden int null                        | číslo týdne v roce |
+| typ_tydne nvarchar(20) null           | Párny / Nepárny |
+| stvrteleti int null                   | —     |
+| vikend bit null                       | —     |
+| svatek bit null                       | —     |
+| posledni_v_mesici bit null            | —     |
+| poznamka nvarchar(max) null           | —     |
 | audit/tenant sloupce dle standardu PP | —     |
 
 **FK (návrh):**
@@ -361,18 +510,31 @@ Aktuální stav: [Datový slovník](#)
 ### Klíčové atributy
 
 - `id` (PK)
+- `external_id` (integrační klíč z HEN — číslo nonsubjektu Zóna)
 - `nazev`
 - `provozovna_id` (FK)
-- `geometrie`
+- `region_id` (FK → `Región` — kategorizace zón, viz sekce 16)
+- `stav` (aktivní / neaktivní)
+- `poznamka`
 
 ### Vazby
 
 - `RPO (N) → Zóna (1)`
+- `Zóna (1) → Zóna položky (N)` (adresní definice zóny — viz sekce 15)
+- `Zóna (N) → Región (1)` (kategorizace)
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP importuje zóny a jejich definice z HEN | Adresní definice přenášena přes Zóna položky |
+| E2+ | PP | Writer — PP spravuje zóny a přiřazení RPO | SoT přechází z HEN na PP |
 
 ### Pravidla a poznámky
 
 - Aktuální kardinalita v ER v1 je **N:1** (více RPO může spadat do jedné zóny).
-- Zóna je samostatná entita, nepřebírá se kompletní adresní struktura HEN.
+- Zóna je samostatná entita. Adresní definice z HEN (Okres → Obec → Ulica → č.domu) je přenášena do entity `Zóna položky` (viz sekce 15).
+- Atribut `geometrie` z ER v1 je odebrán z business DS (viz AR-02). Pokud bude potřeba vizualizace na mapě, geometrie bude odvozená/computed hodnota — řešení je technické, nepatří do DM návrhu.
 
 ### Businessové požadavky (z `vytah-cilovy-koncept.md`)
 
@@ -397,13 +559,13 @@ Aktuální stav: [Datový slovník](#)
 | Položka                               | Popis                                |
 | ------------------------------------- | ------------------------------------ |
 | id bigint identity primary key        | —                                    |
-| name nvarchar(255) not null           | —                                    |
-| external_id nvarchar(255) null        | —                                    |
-| organization_unit_id bigint not null  | —                                    |
-| geometry nvarchar(max) null           | / `geometry` (SQL typ dle platformy) |
-| note nvarchar(255) null               | —                                    |
-| is_active bit not null default 1      | —                                    |
-| audit/tenant sloupce dle standardu PP | —                                    |
+| external_id nvarchar(50) not null     | integrační klíč z HEN |
+| name nvarchar(255) not null           | —     |
+| organization_unit_id bigint not null  | provozovna |
+| region_id bigint null                 | FK → región (kategorizace zón) |
+| stav nvarchar(20) not null default 'AKTIVNI' | enum: AKTIVNI / NEAKTIVNI |
+| note nvarchar(max) null               | —     |
+| audit/tenant sloupce dle standardu PP | —     |
 
 **FK (návrh):**
 
@@ -441,6 +603,13 @@ Aktuální stav: [Datový slovník](#)
 ### Vazby
 
 - `RPO (N) → Adresy (1)`
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | PP | Writer — PP je SoT pro adresy | Adresy se zakládají a spravují v PP |
+| E2+ | PP | Writer | Beze změn |
 
 ### Pravidla a poznámky
 
@@ -522,6 +691,13 @@ Aktuální stav: [Datový slovník](#)
 - `Skupina odpadu (1) → Skupina_Druh_odpadu (N)` (mapování druhů na skupiny přes vazební entitu)
 - `Nádoba (N) → Skupina odpadu (1)` (volitelná fallback vazba, přerušovaně v ER)
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | PP | Writer — PP je SoT pro skupiny odpadu a mapování | Skupiny a mapování druh→skupina se spravují v PP |
+| E2+ | PP | Writer | Beze změn |
+
 ### Pravidla a poznámky
 
 - V aktuálním ER v1 je `Skupina odpadu` evidována **per provozovna** (`provozovna_id`).
@@ -594,6 +770,13 @@ Aktuální stav: [Datový slovník](#)
 - `Druh odpadu (1) → Skupina_Druh_odpadu (N)` (mapování na skupiny přes vazební entitu)
 - `RPO (N) → Druh odpadu (1)` (přes atribut na RPO)
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN/WINX | Reader — PP přebírá číselník druhů odpadu | Standardní ERP číselník |
+| E2+ | HEN/WINX | Reader | Beze změn — číselník zůstává v ERP |
+
 ### Pravidla a poznámky
 
 - ER v1 modeluje vazbu na `Skupina odpadu` nepřímo přes vazební entitu `Skupina_Druh_odpadu` (temporální mapování).
@@ -658,6 +841,13 @@ Aktuální stav: [Datový slovník](#)
 - `Nádoba (N) → RPO (1)`
 - `Nádoba (1) → Nadoba_Stanoviste (N)` (časově platné přiřazení ke stanovištím)
 - `Nádoba (N) → Skupina odpadu (1)` (volitelná / fallback, přerušovaná vazba v ER)
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | PP | Writer — PP je SoT pro nádoby, jejich lokace a vazby | Pasportizace nádob je primární funkce PP |
+| E2+ | PP | Writer | Beze změn |
 
 ### Pravidla a poznámky
 
@@ -741,6 +931,13 @@ Aktuální stav: [Datový slovník](#)
 
 - `Stanoviště (1) → Nadoba_Stanoviste (N)` (časově platné přiřazení nádob)
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | PP | Writer — PP je SoT pro stanoviště | Pasportizace stanovišť je primární funkce PP |
+| E2+ | PP | Writer | Beze změn |
+
 ### Pravidla a poznámky
 
 - V ER v1 **není přímá vazba Stanoviště → RPO**.
@@ -804,6 +1001,13 @@ Aktuální stav: [Datový slovník](#)
 ### Vazby
 
 - `RPO (N) → Typ nádoby (1)`
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN/WINX (číselník), PP (`cas_obsluhy_sec`) | Reader + Writer rozšíření | Číselník z ERP, `cas_obsluhy_sec` spravuje PP |
+| E2+ | HEN/WINX + PP | Reader + Writer rozšíření | Přibudou atributy pro kapacitní výpočty |
 
 ### Pravidla a poznámky
 
@@ -872,6 +1076,13 @@ Aktuální stav: [Datový slovník](#)
 - `RPO (1) → RPO_Okruh_Rozvrh (N)`
 - `Okruh (1) → RPO_Okruh_Rozvrh (N)`
 - `Rozvrh (1) → RPO_Okruh_Rozvrh (N)`
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN → PP | Reader — PP skládá záznamy z HEN (okruh + rozvrh na RPO) | Mapování dvou HEN struktur do jednoho PP záznamu (viz AR-01) |
+| E2+ | PP | Writer — PP přímo spravuje přiřazení | SoT vazeb přechází na PP |
 
 ### Pravidla a poznámky
 
@@ -951,6 +1162,13 @@ Aktuální stav: [Datový slovník](#)
 - `Nádoba (1) → Nadoba_Stanoviste (N)`
 - `Stanoviště (1) → Nadoba_Stanoviste (N)`
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | PP | Writer — PP je SoT pro přiřazení nádob ke stanovištím | Existující funkce pasportizace |
+| E2+ | PP | Writer | Beze změn |
+
 ### Pravidla a poznámky
 
 - V aktuálním ER v1 nahrazuje tato vazební entita přímý atribut `Nádoba.stanoviste_id`.
@@ -1025,6 +1243,13 @@ Aktuální stav: [Datový slovník](#)
 - `Skupina odpadu (1) → Skupina_Druh_odpadu (N)`
 - `Druh odpadu (1) → Skupina_Druh_odpadu (N)`
 
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | PP | Writer — PP je SoT pro mapování druh → skupina per provozovna | Správa mapování v PP, výsledek se používá v integraci pro RP |
+| E2+ | PP | Writer | Beze změn |
+
 ### Pravidla a poznámky
 
 - V aktuálním ER v1 je mapování `Druh odpadu -> Skupina odpadu` vedeno nepřímo přes tuto vazební entitu (nikoli přímým FK v `Druh odpadu`).
@@ -1080,96 +1305,175 @@ Aktuální stav: [Datový slovník](#)
 
 ---
 
-# Doporučení pro další rozpracování DS/DDL
+## 15. Zóna položky
 
-- U každé kapitoly doplnit fyzický DDL návrh (typy sloupců, indexy, FK, `NULL/NOT NULL`).
-- U temporální tabulky `RPO_Okruh_Rozvrh` doplnit constraint / pravidlo pro „max 1 aktivní vazba na RPO“.
-- U `Nádoba.skupina_odpadu_id` popsat prioritu vyhodnocení vůči `RPO.skupina_odpadu_id` v aplikační logice.
-- U `Adresy` doplnit význam atributů `X`, `Y` (souřadnice / lokální souřadný systém / jiný význam).
+**Stav:** Nová entita pro CS
+**Role:** Adresní definice zóny z HEN — hierarchická podmínka (Okres → Obec → Ulica → č.domu) přenášená z HEN.
 
-### Poznámky k návrhu řešení
+### Klíčové atributy
 
-**Kolize / nesoulady vůči `inventar-entit-PP`:**
+- `id` (PK)
+- `zona_id` (FK → `Zóna`)
+- `poradi` (int — řádek/pořadí definice)
+- `okres` (text — okres nebo FK na číselník)
+- `obec` (text — obec)
+- `cast_obce` (text — časť obce)
+- `mestska_cast` (text — městská část)
+- `ulica` (text — ulice)
+- `cislo_od` (int — číslo domu od)
+- `cislo_do` (int — číslo domu do)
 
-- Vazba `RPO -> Nádoba (1:N)` a atribut `Nádoba.rpo_id` jsou v kolizi s inventářem PP. V inventáři je vazba vedena přes existující vazební entitu **Přiřazení nádoby k položce objednávky** (`container_order_item_assignment`), nikoliv přímým FK v `Nádoba`.
-- Entita `Skupina odpadu` je v návrhu rozšířena o `provozovna_id` a popsána jako evidovaná per provozovna. Inventář PP pro `garbage_group` tuto vazbu neuvádí (entita je popsána jako standardní číselník se systémovými atributy a vazbou na barvu skupiny odpadu).
-- Umístění nových entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` přímo do modelu PP je v napětí s inventářem PP. Inventář je uvádí jako „nové pro CS“, ale zároveň poznamenává, že pravděpodobně budou vznikat v RoadPlanu, nikoliv v PasPortu.
+### Vazby
 
-**Další problémy / nejasnosti v návrhu:**
+- `Zóna položky (N) → Zóna (1)`
 
-- Popis `RPO_Okruh_Rozvrh` stále obsahuje pravidlo „max 1 aktivní vazba na RPO“, což je potřeba explicitně potvrdit nebo upravit podle finální business logiky (zejména pokud se připustí více souběžně aktivních vazeb).
-- `Stanoviště` je nyní správně značeno jako existující entita, ale textový popis je formulován jako „Rozšířená existující entita“; to je vhodné sjednotit.
-- `Skupina_Druh_odpadu` je validní CS rozšíření návrhu, ale není zatím promítnuta do `inventar-entit-PP` (inventář u `Druh odpadu` aktuálně uvádí bez referenčních asociací). Je potřeba rozhodnout, zda půjde o nové PP rozšíření, nebo jen aplikační mapování mimo DS/DDL PP.
-- `RPO_Okruh_Rozvrh` není zatím explicitně zapsána v inventáři PP mezi novými entitami pro CS; doporučeno doplnit inventář nebo uvést, že jde pouze o konceptuální / integrační vrstvu mimo PP DS.
+### Source of Truth (SoT)
 
-### Poznámky k prověření k datovému modelu (viz Findings — kolize / problémy)
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP přijímá kompletní definici zóny z HEN | PP eviduje a zobrazuje, needituje |
+| E2+ | PP | Writer — PP spravuje definice zón | SoT přechází na PP |
 
-- Prověřit a rozhodnout kolizi `RPO -> Nádoba (1:N)` + `Nádoba.rpo_id` vs. existující PP vazba přes `container_order_item_assignment` (inventář PP vede vazbu přes vazební entitu, ne přímým FK v `Nádoba`).
-- Prověřit, zda `Skupina odpadu.provozovna_id` je skutečně cílové CS rozšíření PP, nebo zda má zůstat `garbage_group` globální/tenantový číselník bez přímé vazby na provozovnu.
-- Prověřit architektonické umístění nových entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` (PP vs. RP) a sjednotit to napříč ER diagramem, `datovy-model-PP.md` a inventářem PP.
-- Prověřit a explicitně potvrdit pravidlo pro maximální počet aktivních vazeb v `RPO_Okruh_Rozvrh` (aktuálně model předpokládá max. 1 aktivní vazbu na `RPO`).
-- Dopsat / sjednotit dokumentaci existujících entit a vazebních entit:
-   - `Stanoviště` (textový popis vs. status existující entity),
-   - `Skupina_Druh_odpadu` (doplnění do inventáře PP nebo označení jako mimo DS/DDL PP),
-   - `RPO_Okruh_Rozvrh` (doplnění do inventáře PP nebo označení jako konceptuální vrstva).
+### Pravidla a poznámky
 
-### Poznámky k HELIOS (viz Připomínky — kolize / rizika z `vytah-helios-nephrite-zvoz.md` vůči `datovy-model-PP.md`)
+- Každá položka zóny reprezentuje jeden řádek adresní podmínky z HEN (tabulka `ZonaPolozky`).
+- Položky zóny slouží jako filtr — vyšší úrovně (Okres) zužují rozsah pro nižší úrovně (Obec, Ulica, č.domu).
+- V PP jsou položky zóny primárně zobrazovány; konkrétní adresné body se dopočítávají.
+- Definice zóny je v HEN čistě adresní — neobsahuje geometrii (viz AR-02).
 
-- Prověřit zásadní rozpor HEN vs. PP modelu u okruhů:
-   - HEN připouští, že jeden PZ může být ve více okruzích,
-   - PP model `RPO_Okruh_Rozvrh` aktuálně předpokládá max. 1 aktivní vazbu na `RPO`.
-- Prověřit, zda kombinovaná entita `RPO_Okruh_Rozvrh`odpovídá HEN integrační realitě:
-   - HEN komunikuje vazby PZ↔Rozvrh, PZ↔Okruh, PZ↔Zóna separátně,
-   - může být potřeba rozdělit model nebo přesně popsat transformační logiku v integraci.
-- Doplnit do kapitol `RPO`, `Rozvrh`, `RPO_Okruh_Rozvrh`explicitní integrační pravidlo z HEN:
-   - Rozvrh je na PZ **dynamický vztah**, ne prostý atribut na PZ.
-- Doplnit do kapitol `Zóna` a `Stanoviště`logiku odvození zóny:
-   - zóna se v HEN na PZ doplňuje podle **adresy stanoviska**,
-   - v modelu PP je potřeba zachytit původ/derivaci `RPO.zona_id` a validační podmínky (aktivní zóna, shoda útvaru).
-- Rozšířit kapitoly `Rozvrh` a `Kalendar`o detailnější model HEN rozvrhu (nebo explicitně popsat, že PP přebírá zjednodušený/flattened přenos):
-   - HEN rozvrh má detailní parametrizaci a položky rozvrhu (dny vývozu).
-- Rozšířit kapitolu `Okruh`o HEN odvozené atributy (nebo explicitně označit jako odvozené/nepersistované):
-   - celkový počet nádob,
-   - celkový objem nádob,
-   - dny zvozu,
-   - typ týdne.
-- Doplnit do kapitoly `Typ nádoby`poznámku k rozlišení:
-   - typ nádoby jako kontraktační údaj na PZ/RPO,
-   - vs. fyzická nádoba a její evidence/pohyby.
-- Prověřit dopad dvojí historizace:
-   - HEN verzuje PZ při materiálních změnách,
-   - PP navrhuje temporální vazby (`RPO_Okruh_Rozvrh`, `Nadoba_Stanoviste`, `Skupina_Druh_odpadu`),
-   - je nutné přesně vymezit odpovědnost jednotlivých vrstev historizace.
+### Businessové požadavky (z `hen-nove-entity-analyza.md`)
 
-#### Dotazy pro zákazníka
+- Zóna v HEN se definuje přes hierarchické adresní podmínky, nikoliv geometrií.
+- Každý řádek (položka) zóny zužuje rozsah přes vyšší adresní úrovně na nižší.
+- PP musí přenést a zobrazit kompletní definici zóny pro uživatele (dispečer, plánovač).
 
-- Má být v cílovém řešení zachována možnost, aby **jeden PZ / RPO byl současně ve více okruzích a rozvrzích**? A pokud ano, tak dochází ke změně okruhu a rozvrhu najednou?
-- Má PP v Etapě 1 přebírat z HEN pouze výsledný stav vazeb pro `PZ↔Rozvrh`, `PZ↔Okruh`, `PZ↔Zóna`? Co bude spuštěčem přenosu do PP?
-   - Nastavení výchozího vozidla Okruhu?
-- Má být `RPO.zona_id`v PP považováno za:
+### Návrh fyzického DDL (SQL)
 
-   - odvozenou/synchronizovanou hodnotu z adresy stanoviska,
-   - nebo za samostatně editovatelný údaj?
-- Existují nějaké validační podmínky pro doplnění zóny z HEN jsou pro zákazníka závazné i v PP (aktivní zóna, shoda útvaru, kontrola zóny)?
-- Pro plánování v RP počítáme s tím, že RP bude pracovat pouze se seznamem dní vývozu. Okruh, Rozvrh a Zóna budou pouze infromativní u OS. Je to v pořádku?
-- Jak má být řešena historizace řazení RPO do Okruhu, Rozvrhu a Zóny:
+**Tabulka:** `zona_polozka`
 
-   - stačí historizace v HEN (verze PZ),
-   - nebo je požadována i samostatná historizace vazeb v PP?
+**Sloupce (návrh):**
 
-#### Dotazy pro dodavatele informačního systému (HELIOS Nephrite)
+| Položka                               | Popis |
+| ------------------------------------- | ----- |
+| id bigint identity primary key        | —     |
+| zona_id bigint not null               | FK → `zone` |
+| poradi int not null                   | řádek/pořadí v definici zóny |
+| okres nvarchar(255) null              | —     |
+| obec nvarchar(255) null               | —     |
+| cast_obce nvarchar(255) null          | —     |
+| mestska_cast nvarchar(255) null       | —     |
+| ulica nvarchar(255) null              | —     |
+| cislo_od int null                     | —     |
+| cislo_do int null                     | —     |
+| audit/tenant sloupce dle standardu PP | —     |
 
-- Jak přesně je v HEN reprezentován **dynamický vztah PZ↔Rozvrh**
-- Jaké identifikátory a atributy jsou dostupné pro vazbu `PZ↔Rozvrh↔Kalendář`
-- Jak je v HEN reprezentována vazba `PZ↔Okruh`:
-- Jaký je přesný datový model vazby `PZ↔Zóna`:
-- Potvrďte, zda zóna na PZ vzniká vždy automaticky z **adresy stanoviska**, a jaké jsou přesné podmínky / validační pravidla (aktivní zóna, útvar, kontrola zóny).
-- Jak v HEN vypadá datový model **Rozvrhu vývozu**a jeho položek (dní vývozu):
-   - seznam tabulek/entit,
-   - klíčové atributy,
-   - vazba na PZ,
-   - způsob rozlišení C/N cyklického svozu.
-- Jak HEN verzuje PZ při materiálních změnách (okruh, rozvrh, typ nádoby apod.):
-   - vzniká vždy nová verze,
-   - jak se značí návaznost verzí,
-   - jak je dostupná historie přes API/export?
+**FK (návrh):**
+
+| FK sloupec | Reference / poznámka |
+| ---------- | -------------------- |
+| zona_id    | → `zone(id)`       |
+
+**Indexy (návrh):**
+
+| Index                     | Definice / poznámka      |
+| ------------------------- | ------------------------ |
+| IX_zona_polozka_zona      | (`zona_id`)            |
+| UX_zona_polozka_poradi    | (`zona_id`, `poradi`) |
+
+---
+
+## 16. Región
+
+**Stav:** Nová entita pro CS
+**Role:** Jednoduchý číselník pro kategorizaci zón (přenášený z HEN).
+
+### Klíčové atributy
+
+- `id` (PK)
+- `external_id` (integrační klíč — Referencia regionu z HEN)
+- `nazev`
+
+### Vazby
+
+- `Zóna (N) → Región (1)`
+
+### Source of Truth (SoT)
+
+| Etapa | SoT | PP role | Poznámka |
+|---|---|---|---|
+| E1 | HEN | Reader — PP přijímá regiony z HEN | Jednoduchý číselník, synchronizace přes API |
+| E2+ | PP | Writer | Při přechodu SoT zón na PP přechází i regiony |
+
+### Pravidla a poznámky
+
+- Jednoduchý číselníkový záznam (`Referencia`, `Název`), na který odkazuje hlavička Zóny.
+- Slouží jako kategorizace zón (Region v adresním smyslu — oblast, district apod.).
+
+### Businessové požadavky (z `hen-nove-entity-analyza.md`)
+
+- Región je na záhlaví Zóny jako statický vztah (číselník).
+- V HEN obsahuje atributy `Referencia` (business kód) a `Název`.
+
+### Návrh fyzického DDL (SQL)
+
+**Tabulka:** `region`
+
+**Sloupce (návrh):**
+
+| Položka                               | Popis |
+| ------------------------------------- | ----- |
+| id bigint identity primary key        | —     |
+| external_id nvarchar(50) not null     | integrační klíč — Referencia z HEN |
+| nazev nvarchar(255) not null          | —     |
+| audit/tenant sloupce dle standardu PP | —     |
+
+**FK (návrh):**
+
+| FK sloupec | Reference / poznámka |
+| ---------- | -------------------- |
+| (bez FK)   | Číselník bez vazeb nahoru |
+
+**Indexy (návrh):**
+
+| Index                | Definice / poznámka       |
+| -------------------- | ------------------------- |
+| UX_region_external_id | (`external_id`) UNIQUE  |
+| UX_region_nazev       | (`nazev`) UNIQUE        |
+
+---
+# Doporučení a otevřené body
+
+## Zapracované mezery z gap analýzy
+
+| Gap # | Oblast | Stav v této verzi |
+|---|---|---|
+| 1 | Zóna položky — chybějící entita | **Přidáno** — sekce 15 |
+| 2 | Región — chybějící entita | **Přidáno** — sekce 16 |
+| 3 | Kalendar — nekompletní atributy | **Zapracováno** — 8 atributů z HEN + `vyvoz` místo `typ_dne` |
+| 4 | Rozvrh — frekvence a parametry | **Zapracováno** — `frekvence` + nullable parametrové sloupce (AR-03) |
+| 5 | Zóna — geometrie vs. adresní definice | **Zapracováno** — geometrie odebrána z DS (AR-02), Zóna položky přidána |
+| 6 | RPO — chybějící `external_id` | **Zapracováno** — `external_id` přidán + strategie pro všechny synchronizované entity |
+| 7 | Okruh — chybějící atributy | **Zapracováno** — `poznamka`, `referencia`, `external_id` |
+| 8 | Integrační model | **Mimo scope** — řeší samostatná integrační analýza |
+| 9 | Okruh-položky vs. RPO_Okruh_Rozvrh | **Rozhodnuto** — zachován PP model `RPO_Okruh_Rozvrh` (AR-01) |
+| 10 | Zóna → Région a Útvar | **Zapracováno** — `region_id` přidán na Zónu |
+| 11 | `vozidlo_id` na Okruhu | **Zdůvodněno** — záměrné rozšíření PP nad HEN pro plánování DV |
+
+## Otevřené body k potvrzení
+
+- U `RPO_Okruh_Rozvrh`: Potvrdit business pravidlo „max 1 aktivní vazba na RPO" (nebo povolit souběžné).
+- Potvrdit, zda `provozovna_id` v PP odpovídá HEN konceptu `Útvar/Stredisko` u entit Okruh, Rozvrh, Zóna.
+- Atributy Kalendáře (`den_v_tydnu`, `tyden_v_mesici` aj.): Potvrdit, zda se přenášejí z HEN jako data nebo počítají v PP aplikačně.
+- U `Nádoba → RPO`: Kolize s inventářem PP — vazba je v inventáři vedena přes `container_order_item_assignment`, v ER v1 přes přímý FK.
+- U `Skupina odpadu → provozovna_id`: Inventář PP tuto vazbu neuvádí — potvrdit migrační strategii.
+- Umístění nových entit `Okruh`, `Rozvrh`, `Kalendář`, `Zóna` — inventář poznamenává možné umístění v RP místo PP. Potvrdit cílový systém.
+
+## Integrační model
+
+> Integrační model (API služby HEN → PP, triggery synchronizace, datové kontrakty a chybové stavy) je předmětem samostatné integrační analýzy. Tento dokument definuje cílový datový model PP — integrační specifikace bude na něj navazovat.
+
+## Kolize návrhu vs. inventář PP
+
+- Vazba `RPO → Nádoba (1:N)` — v inventáři PP vedena přes `container_order_item_assignment`, v ER v1 přes přímý FK `Nádoba.rpo_id`.
+- `Skupina odpadu.provozovna_id` — inventář `garbage_group` tuto vazbu neuvádí.
+- Lokace nových entit (Okruh, Rozvrh, Kalendář, Zóna) — inventář poznamenává, že mohou vznikat v RP, nikoli PP.
